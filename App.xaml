@@ -2,8 +2,175 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:ClienteBibliotecaElSaber"
-             StartupUri="MainWindow.xaml">
+             xmlns:extensiones="clr-namespace:ClienteBibliotecaElSaber.Extensiones"
+             xmlns:utilidades="clr-namespace:ClienteBibliotecaElSaber.Utilidades"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             StartupUri="/Ventanas/VentanaMenuPrincipalBibliotecario.xaml">
     <Application.Resources>
-         
+        <utilidades:CadenaVisibilidadConverter x:Key="CadenaVisibilidadConverter" />
+        
+        <Style TargetType="TextBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="White" 
+                                CornerRadius="20">
+                            <Grid>
+                                <TextBlock x:Name="TextoSugerido"
+                                   Text="{Binding RelativeSource={RelativeSource AncestorType=TextBox}, 
+                                          Path=(extensiones:TextBoxExtensiones.TextoSugerido)}" 
+                                   Foreground="Black"
+                                   Opacity="0.4"
+                                   VerticalAlignment="Center" 
+                                   Margin="15,0,0,0" 
+                                   Visibility="{Binding Text, RelativeSource={RelativeSource AncestorType=TextBox}, 
+                                                Converter={StaticResource CadenaVisibilidadConverter}}"/>
+                                <ScrollViewer x:Name="PART_ContentHost" 
+                                              Background="Transparent" />
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="Black" 
+                                      BlurRadius="5" 
+                                      ShadowDepth="5" 
+                                      Opacity="0.5" />
+                </Setter.Value>
+            </Setter>
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="Padding" Value="15,0,15,0" />
+            <Setter Property="Width" Value="300" />
+            <Setter Property="Height" Value="36.6" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+
+        <Style TargetType="PasswordBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="PasswordBox">
+                        <Border Background="White" CornerRadius="20">
+                            <Grid>
+                                <TextBlock x:Name="TextoSugerido"
+                                   Text="{Binding RelativeSource={RelativeSource AncestorType=PasswordBox}, 
+                                          Path=(extensiones:PasswordBoxExtensiones.TextoSugerido)}"  
+                                   Foreground="Black"
+                                   Opacity="0.4"
+                                   VerticalAlignment="Center" 
+                                   Margin="15,0,0,0" 
+                                   Visibility="{Binding Password, RelativeSource={RelativeSource AncestorType=PasswordBox}, 
+                                                Converter={StaticResource CadenaVisibilidadConverter}}"/>
+                                <ScrollViewer x:Name="PART_ContentHost" Background="Transparent" />
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="Black" 
+                                      BlurRadius="5" 
+                                      ShadowDepth="5" 
+                                      Opacity="0.5" />
+                </Setter.Value>
+            </Setter>
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="Padding" Value="15,0,15,0" />
+            <Setter Property="Width" Value="300" />
+            <Setter Property="Height" Value="36.6" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border x:Name="BordeBase" 
+                                    Background="{TemplateBinding Background}" 
+                                    BorderBrush="{TemplateBinding BorderBrush}" 
+                                    CornerRadius="20" 
+                                    Padding="10" 
+                                    HorizontalAlignment="Stretch" 
+                                    VerticalAlignment="Center">
+                                <ContentPresenter HorizontalAlignment="Center" 
+                                                  VerticalAlignment="Center" />
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="BordeBase" Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect ShadowDepth="5" 
+                                                          BlurRadius="15" 
+                                                          Opacity="0.5" 
+                                                          Color="Black" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="FontFamily" Value="Inter" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="Black" 
+                                      BlurRadius="5" 
+                                      ShadowDepth="2" 
+                                      Opacity="0.5" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="BotonMenu"
+               TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="Height" Value="70"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border x:Name="BordeBase"
+                                    Background="{TemplateBinding Background}"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch">
+                                <Grid>
+                                    <Image x:Name="IconoBoton"
+                                           Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Tag}"
+                                           Width="50"/>
+                                    <Image x:Name="IconoOscuroBoton"
+                                           Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ToolTip}"
+                                           Width="50"/>
+                                    <ContentPresenter HorizontalAlignment="Center"
+                                                      VerticalAlignment="Center"/>
+                                </Grid>
+                            </Border>
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FAF3E0"/>
+                                <Setter Property="Foreground" Value="#FF5F5F5F"/>
+                                <Setter TargetName="IconoBoton" Property="Opacity" Value="0"/>
+                                <Setter TargetName="IconoOscuroBoton" Property="Opacity" Value="1"/>
+                            </Trigger>
+
+                            <Trigger Property="IsMouseOver" Value="False">
+                                <Setter TargetName="IconoBoton" Property="Opacity" Value="1"/>
+                                <Setter TargetName="IconoOscuroBoton" Property="Opacity" Value="0"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Application.Resources>
 </Application>
