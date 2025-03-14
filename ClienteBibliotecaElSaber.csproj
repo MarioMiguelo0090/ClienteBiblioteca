@@ -55,6 +55,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Extensiones\PasswordBoxExtensiones.cs" />
+    <Compile Include="Extensiones\TextBoxExtensiones.cs" />
+    <Compile Include="Utilidades\CadenaVisibilidadConverter.cs" />
+    <Compile Include="Utilidades\ContraseñaHelper.cs" />
+    <Compile Include="Ventanas\VentanaInicioDeSesion.xaml.cs">
+      <DependentUpon>VentanaInicioDeSesion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\VentanaMenuPrincipalBibliotecario.xaml.cs">
+      <DependentUpon>VentanaMenuPrincipalBibliotecario.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -67,8 +77,18 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Ventanas\VentanaInicioDeSesion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\VentanaMenuPrincipalBibliotecario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Nucleo\ComandoDelegado.cs" />
+    <Compile Include="Nucleo\ObjetoObservador.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -95,8 +115,27 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Logica\" />
-    <Folder Include="Ventanas\" />
+    <Folder Include="Fuentes\" />
+    <Folder Include="MVVM\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\BuhoElSaber.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Iconos\Libro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Iconos\LibroOscuro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Iconos\Socio.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Iconos\SocioOscuro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Iconos\Devolucion.png" />
+    <Resource Include="Imagenes\Iconos\DevolucionOscuro.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

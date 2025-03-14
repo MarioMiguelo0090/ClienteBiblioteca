@@ -1,0 +1,123 @@
+﻿<Window x:Class="ClienteBibliotecaElSaber.Ventanas.VentanaInicioDeSesion"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClienteBibliotecaElSaber.Ventanas"
+        xmlns:extensiones="clr-namespace:ClienteBibliotecaElSaber.Extensiones"
+        mc:Ignorable="d"
+        Title="VentanaInicioDeSesion" Height="600" Width="920"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        AllowsTransparency="True">
+    <Border Background="#F5F5DC"
+            CornerRadius="25">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="500"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.ColumnSpan="2"
+                  Background="#FF432716"
+                  MouseDown="Grid_MouseDown">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="6"
+                        Content="Salir"
+                        FontSize="14"
+                        FontWeight="DemiBold"
+                        Click="Button_Click_1"
+                        Cursor="Hand">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FAF3E0"/>
+                                    <Setter Property="Foreground" Value="#FF5F5F5F"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+
+            <StackPanel Grid.Row="1">
+                <Label Content="Inicio de Sesión"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Margin="0,150,0,0"
+                       FontSize="48"
+                       Foreground="Black"/>
+                <TextBox extensiones:TextBoxExtensiones.TextoSugerido="Usuario"
+                         Margin="0,35,0,0"/>
+                <PasswordBox extensiones:PasswordBoxExtensiones.TextoSugerido="Contraseña"
+                             PasswordChanged="PBCambioDeContraseña"
+                             Margin="0,15,0,0"/>
+                <TextBlock Text="Recuperar contraseña"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Margin="0,10,0,0"
+                           FontSize="16"
+                           FontWeight="DemiBold"
+                           TextDecorations="Underline"
+                           Foreground="#FF5F5F5F"/>
+                <Button Content="Iniciar sesión"
+                        Width="150"
+                        Margin="0,30,0,0" 
+                        Background="#E6D5B8"
+                        Foreground="Black" 
+                        Click="Button_Click"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1"
+                        Grid.Row="1">
+                <Border Background="#D2B48C"
+                        Height="570"
+                        CornerRadius="0,0,25,0"
+                        BorderThickness="0">
+                    <StackPanel>
+                        <Image Source="/Imagenes/BuhoElSaber.png"
+                               Width="300"
+                               Margin="0,100,0,0"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+
+                        <Label Content="El Saber"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               FontSize="62"
+                               FontFamily="Garamond"
+                               Foreground="White"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>
