@@ -15,11 +15,6 @@
     <Border Background="#F5F5DC"
             CornerRadius="25">
         <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="120"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
                 <RowDefinition/>
@@ -42,7 +37,7 @@
                         Content="Salir"
                         FontSize="14"
                         FontWeight="DemiBold"
-                        Click="Button_Click_1"
+                        Click="BotonClicSalir"
                         Cursor="Hand">
                     <Button.Style>
                         <Style TargetType="Button">
@@ -68,20 +63,153 @@
                 </Button>
             </Grid>
 
-            <Grid Grid.Row="1" Background="#8C5A3C">
+            <Grid Grid.Row="1" 
+                  Background="#8C5A3C"
+                  Width="80"
+                  HorizontalAlignment="Left">
+                <Grid.Triggers>
+                    <EventTrigger RoutedEvent="MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Width"
+                                                 To="250" Duration="0:0:0.3"
+                                                 AccelerationRatio="0.2"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+
+                    <EventTrigger RoutedEvent="MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Width"
+                                                 To="80" Duration="0:0:0.3"
+                                                 AccelerationRatio="0.2"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Grid.Triggers>
+                
                 <StackPanel>
-                    <Image Source="/Imagenes/BuhoElSaber.png"
+                    <Image Source="/Imagenes/LogoNegativo.png"
                            Width="70"
                            Margin="0,20,0,20"/>
+
                     <Button Style="{StaticResource BotonMenu}"
                             Tag="/Imagenes/Iconos/Socio.png"
-                            ToolTip="/Imagenes/Iconos/SocioOscuro.png"/>
+                            HorizontalContentAlignment="Center">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <TextBlock x:Name="TextoBoton"
+                                           Text=""
+                                           VerticalAlignment="Center"
+                                           Opacity="0"/>
+                                <TextBlock Text="" Width="70"/>
+                            </StackPanel>
+                        </Button.Content>
+                        
+                        <Button.Triggers>
+                            <EventTrigger RoutedEvent="MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <StringAnimationUsingKeyFrames Storyboard.TargetName="TextoBoton"
+                                                                       Storyboard.TargetProperty="Text">
+                                            <DiscreteStringKeyFrame KeyTime="0:0:0" Value="Socios"/>
+                                        </StringAnimationUsingKeyFrames>
+                                        <DoubleAnimation Storyboard.TargetName="TextoBoton"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="TextoBoton"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0" Duration="0:0:0"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Button.Triggers>
+                    </Button>
+
                     <Button Style="{StaticResource BotonMenu}"
                             Tag="/Imagenes/Iconos/Libro.png"
-                            ToolTip="/Imagenes/Iconos/LibroOscuro.png"/>
+                            HorizontalContentAlignment="Center">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <TextBlock x:Name="TextoBoton2"
+                                           Text=""
+                                           VerticalAlignment="Center"
+                                           Opacity="0"/>
+                                <TextBlock Text="" Width="70"/>
+                            </StackPanel>
+                        </Button.Content>
+
+                        <Button.Triggers>
+                            <EventTrigger RoutedEvent="MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <StringAnimationUsingKeyFrames Storyboard.TargetName="TextoBoton2"
+                                               Storyboard.TargetProperty="Text">
+                                            <DiscreteStringKeyFrame KeyTime="0:0:0" Value="Libros"/>
+                                        </StringAnimationUsingKeyFrames>
+                                        <DoubleAnimation Storyboard.TargetName="TextoBoton2"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="TextoBoton2"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0" Duration="0:0:0"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Button.Triggers>
+                    </Button>
+
                     <Button Style="{StaticResource BotonMenu}"
                             Tag="/Imagenes/Iconos/Devolucion.png"
-                            ToolTip="/Imagenes/Iconos/DevolucionOscuro.png"/>
+                            HorizontalContentAlignment="Center">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <TextBlock x:Name="TextoBoton3"
+                                           Text=""
+                                           VerticalAlignment="Center"
+                                           Opacity="0"/>
+                                <TextBlock Text="" Width="70"/>
+                            </StackPanel>
+                        </Button.Content>
+
+                        <Button.Triggers>
+                            <EventTrigger RoutedEvent="MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <StringAnimationUsingKeyFrames Storyboard.TargetName="TextoBoton3"
+                                               Storyboard.TargetProperty="Text">
+                                            <DiscreteStringKeyFrame KeyTime="0:0:0" Value="Devoluciones"/>
+                                        </StringAnimationUsingKeyFrames>
+                                        <DoubleAnimation Storyboard.TargetName="TextoBoton3"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="TextoBoton3"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0" Duration="0:0:0"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Button.Triggers>
+                    </Button>
                 </StackPanel>
             </Grid>
         </Grid>

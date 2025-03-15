@@ -24,17 +24,18 @@ namespace ClienteBibliotecaElSaber.Ventanas
             InitializeComponent();
         }
 
+
+        private void BotonClicSalir(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
                 DragMove();
             }
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            this.Close();
         }
     }
 }

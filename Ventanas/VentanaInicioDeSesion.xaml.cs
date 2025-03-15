@@ -16,9 +16,14 @@ namespace ClienteBibliotecaElSaber.Ventanas
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void BotonClicIniciarSesion(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void BotonClicSalir(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
@@ -34,11 +39,6 @@ namespace ClienteBibliotecaElSaber.Ventanas
             var passwordBox = sender as PasswordBox;
             var textoSugerido = ContraseñaHelper.EncontrarHijoVisual<TextBlock>(passwordBox, "TextoSugerido");
             ContraseñaHelper.ActualizarVisibilidadTextoSugerido(passwordBox, textoSugerido);
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            this.Close();
         }
     }
 }

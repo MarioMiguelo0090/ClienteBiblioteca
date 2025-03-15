@@ -42,7 +42,7 @@
                         Content="Salir"
                         FontSize="14"
                         FontWeight="DemiBold"
-                        Click="Button_Click_1"
+                        Click="BotonClicSalir"
                         Cursor="Hand">
                     <Button.Style>
                         <Style TargetType="Button">
@@ -93,7 +93,7 @@
                         Margin="0,30,0,0" 
                         Background="#E6D5B8"
                         Foreground="Black" 
-                        Click="Button_Click"/>
+                        Click="BotonClicIniciarSesion"/>
             </StackPanel>
 
             <StackPanel Grid.Column="1"
@@ -103,18 +103,11 @@
                         CornerRadius="0,0,25,0"
                         BorderThickness="0">
                     <StackPanel>
-                        <Image Source="/Imagenes/BuhoElSaber.png"
+                        <Image Source="/Imagenes/LogoPrincipal.png"
                                Width="300"
                                Margin="0,100,0,0"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"/>
-
-                        <Label Content="El Saber"
-                               VerticalAlignment="Center"
-                               HorizontalAlignment="Center"
-                               FontSize="62"
-                               FontFamily="Garamond"
-                               Foreground="White"/>
                     </StackPanel>
                 </Border>
             </StackPanel>

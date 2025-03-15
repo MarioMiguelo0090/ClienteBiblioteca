@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" name="ElSaberServices" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="NetTcpBinding_IUsuarioManejador_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
+          <wsrm:InactivityTimeout Milliseconds="600000" />
+          <wsrm:AcknowledgementInterval Milliseconds="200" />
+        </wsrm:RMAssertion>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IRestablecimientoCuentaManejador_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
+          <wsrm:InactivityTimeout Milliseconds="600000" />
+          <wsrm:AcknowledgementInterval Milliseconds="200" />
+        </wsrm:RMAssertion>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IAccesoManejador_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
+          <wsrm:InactivityTimeout Milliseconds="600000" />
+          <wsrm:AcknowledgementInterval Milliseconds="200" />
+        </wsrm:RMAssertion>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IDireccionManejador_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
+          <wsrm:InactivityTimeout Milliseconds="600000" />
+          <wsrm:AcknowledgementInterval Milliseconds="200" />
+        </wsrm:RMAssertion>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_ISocioManejador_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
+          <wsrm:InactivityTimeout Milliseconds="600000" />
+          <wsrm:AcknowledgementInterval Milliseconds="200" />
+        </wsrm:RMAssertion>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:1442/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:1442/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:1442/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IUsuarioManejador_RegistrarUsuarioAlaBaseDeDatos_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarUsuarioAlaBaseDeDatos" />
+  </wsdl:message>
+  <wsdl:message name="IUsuarioManejador_RegistrarUsuarioAlaBaseDeDatos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarUsuarioAlaBaseDeDatosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsuarioManejador_VerificarExistenciaDeUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:VerificarExistenciaDeUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IUsuarioManejador_VerificarExistenciaDeUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VerificarExistenciaDeUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRestablecimientoCuentaManejador_CorreoDeRestablecimientoDeContrasenia_InputMessage">
+    <wsdl:part name="parameters" element="tns:CorreoDeRestablecimientoDeContrasenia" />
+  </wsdl:message>
+  <wsdl:message name="IRestablecimientoCuentaManejador_CorreoDeRestablecimientoDeContrasenia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CorreoDeRestablecimientoDeContraseniaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRestablecimientoCuentaManejador_RestablecimientoDeContrasenia_InputMessage">
+    <wsdl:part name="parameters" element="tns:RestablecimientoDeContrasenia" />
+  </wsdl:message>
+  <wsdl:message name="IRestablecimientoCuentaManejador_RestablecimientoDeContrasenia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RestablecimientoDeContraseniaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRestablecimientoCuentaManejador_VerificarCodigoDeVerificacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:VerificarCodigoDeVerificacion" />
+  </wsdl:message>
+  <wsdl:message name="IRestablecimientoCuentaManejador_VerificarCodigoDeVerificacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VerificarCodigoDeVerificacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAccesoManejador_VerificarCredenciales_InputMessage">
+    <wsdl:part name="parameters" element="tns:VerificarCredenciales" />
+  </wsdl:message>
+  <wsdl:message name="IAccesoManejador_VerificarCredenciales_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VerificarCredencialesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAccesoManejador_VerificarCorreoExistente_InputMessage">
+    <wsdl:part name="parameters" element="tns:VerificarCorreoExistente" />
+  </wsdl:message>
+  <wsdl:message name="IAccesoManejador_VerificarCorreoExistente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VerificarCorreoExistenteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAccesoManejador_ModificarContrasenia_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarContrasenia" />
+  </wsdl:message>
+  <wsdl:message name="IAccesoManejador_ModificarContrasenia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarContraseniaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDireccionManejador_RegistrarDireccion_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarDireccion" />
+  </wsdl:message>
+  <wsdl:message name="IDireccionManejador_RegistrarDireccion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarDireccionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISocioManejador_RegistrarSocioEnBaseDeDatos_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarSocioEnBaseDeDatos" />
+  </wsdl:message>
+  <wsdl:message name="ISocioManejador_RegistrarSocioEnBaseDeDatos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarSocioEnBaseDeDatosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISocioManejador_VerificarExistenciaDeSocioEnBaseDeDatos_InputMessage">
+    <wsdl:part name="parameters" element="tns:VerificarExistenciaDeSocioEnBaseDeDatos" />
+  </wsdl:message>
+  <wsdl:message name="ISocioManejador_VerificarExistenciaDeSocioEnBaseDeDatos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VerificarExistenciaDeSocioEnBaseDeDatosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISocioManejador_ConsultarSociosPorNombre_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarSociosPorNombre" />
+  </wsdl:message>
+  <wsdl:message name="ISocioManejador_ConsultarSociosPorNombre_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarSociosPorNombreResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISocioManejador_ConsultarSocioPorNumeroDeSocio_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarSocioPorNumeroDeSocio" />
+  </wsdl:message>
+  <wsdl:message name="ISocioManejador_ConsultarSocioPorNumeroDeSocio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarSocioPorNumeroDeSocioResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IUsuarioManejador">
+    <wsdl:operation name="RegistrarUsuarioAlaBaseDeDatos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsuarioManejador/RegistrarUsuarioAlaBaseDeDatos" message="tns:IUsuarioManejador_RegistrarUsuarioAlaBaseDeDatos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsuarioManejador/RegistrarUsuarioAlaBaseDeDatosResponse" message="tns:IUsuarioManejador_RegistrarUsuarioAlaBaseDeDatos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VerificarExistenciaDeUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsuarioManejador/VerificarExistenciaDeUsuario" message="tns:IUsuarioManejador_VerificarExistenciaDeUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsuarioManejador/VerificarExistenciaDeUsuarioResponse" message="tns:IUsuarioManejador_VerificarExistenciaDeUsuario_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IRestablecimientoCuentaManejador">
+    <wsdl:operation name="CorreoDeRestablecimientoDeContrasenia">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRestablecimientoCuentaManejador/CorreoDeRestablecimientoDeContrasenia" message="tns:IRestablecimientoCuentaManejador_CorreoDeRestablecimientoDeContrasenia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRestablecimientoCuentaManejador/CorreoDeRestablecimientoDeContraseniaResponse" message="tns:IRestablecimientoCuentaManejador_CorreoDeRestablecimientoDeContrasenia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RestablecimientoDeContrasenia">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRestablecimientoCuentaManejador/RestablecimientoDeContrasenia" message="tns:IRestablecimientoCuentaManejador_RestablecimientoDeContrasenia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRestablecimientoCuentaManejador/RestablecimientoDeContraseniaResponse" message="tns:IRestablecimientoCuentaManejador_RestablecimientoDeContrasenia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VerificarCodigoDeVerificacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRestablecimientoCuentaManejador/VerificarCodigoDeVerificacion" message="tns:IRestablecimientoCuentaManejador_VerificarCodigoDeVerificacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRestablecimientoCuentaManejador/VerificarCodigoDeVerificacionResponse" message="tns:IRestablecimientoCuentaManejador_VerificarCodigoDeVerificacion_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IAccesoManejador">
+    <wsdl:operation name="VerificarCredenciales">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAccesoManejador/VerificarCredenciales" message="tns:IAccesoManejador_VerificarCredenciales_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAccesoManejador/VerificarCredencialesResponse" message="tns:IAccesoManejador_VerificarCredenciales_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VerificarCorreoExistente">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAccesoManejador/VerificarCorreoExistente" message="tns:IAccesoManejador_VerificarCorreoExistente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAccesoManejador/VerificarCorreoExistenteResponse" message="tns:IAccesoManejador_VerificarCorreoExistente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarContrasenia">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAccesoManejador/ModificarContrasenia" message="tns:IAccesoManejador_ModificarContrasenia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAccesoManejador/ModificarContraseniaResponse" message="tns:IAccesoManejador_ModificarContrasenia_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IDireccionManejador">
+    <wsdl:operation name="RegistrarDireccion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDireccionManejador/RegistrarDireccion" message="tns:IDireccionManejador_RegistrarDireccion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDireccionManejador/RegistrarDireccionResponse" message="tns:IDireccionManejador_RegistrarDireccion_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ISocioManejador">
+    <wsdl:operation name="RegistrarSocioEnBaseDeDatos">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISocioManejador/RegistrarSocioEnBaseDeDatos" message="tns:ISocioManejador_RegistrarSocioEnBaseDeDatos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocioManejador/RegistrarSocioEnBaseDeDatosResponse" message="tns:ISocioManejador_RegistrarSocioEnBaseDeDatos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VerificarExistenciaDeSocioEnBaseDeDatos">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISocioManejador/VerificarExistenciaDeSocioEnBaseDeDatos" message="tns:ISocioManejador_VerificarExistenciaDeSocioEnBaseDeDatos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocioManejador/VerificarExistenciaDeSocioEnBaseDeDatosResponse" message="tns:ISocioManejador_VerificarExistenciaDeSocioEnBaseDeDatos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarSociosPorNombre">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISocioManejador/ConsultarSociosPorNombre" message="tns:ISocioManejador_ConsultarSociosPorNombre_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocioManejador/ConsultarSociosPorNombreResponse" message="tns:ISocioManejador_ConsultarSociosPorNombre_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarSocioPorNumeroDeSocio">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISocioManejador/ConsultarSocioPorNumeroDeSocio" message="tns:ISocioManejador_ConsultarSocioPorNumeroDeSocio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocioManejador/ConsultarSocioPorNumeroDeSocioResponse" message="tns:ISocioManejador_ConsultarSocioPorNumeroDeSocio_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NetTcpBinding_IUsuarioManejador" type="tns:IUsuarioManejador">
+    <wsp:PolicyReference URI="#NetTcpBinding_IUsuarioManejador_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="RegistrarUsuarioAlaBaseDeDatos">
+      <soap12:operation soapAction="http://tempuri.org/IUsuarioManejador/RegistrarUsuarioAlaBaseDeDatos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerificarExistenciaDeUsuario">
+      <soap12:operation soapAction="http://tempuri.org/IUsuarioManejador/VerificarExistenciaDeUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IRestablecimientoCuentaManejador" type="tns:IRestablecimientoCuentaManejador">
+    <wsp:PolicyReference URI="#NetTcpBinding_IRestablecimientoCuentaManejador_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="CorreoDeRestablecimientoDeContrasenia">
+      <soap12:operation soapAction="http://tempuri.org/IRestablecimientoCuentaManejador/CorreoDeRestablecimientoDeContrasenia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RestablecimientoDeContrasenia">
+      <soap12:operation soapAction="http://tempuri.org/IRestablecimientoCuentaManejador/RestablecimientoDeContrasenia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerificarCodigoDeVerificacion">
+      <soap12:operation soapAction="http://tempuri.org/IRestablecimientoCuentaManejador/VerificarCodigoDeVerificacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IAccesoManejador" type="tns:IAccesoManejador">
+    <wsp:PolicyReference URI="#NetTcpBinding_IAccesoManejador_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="VerificarCredenciales">
+      <soap12:operation soapAction="http://tempuri.org/IAccesoManejador/VerificarCredenciales" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerificarCorreoExistente">
+      <soap12:operation soapAction="http://tempuri.org/IAccesoManejador/VerificarCorreoExistente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarContrasenia">
+      <soap12:operation soapAction="http://tempuri.org/IAccesoManejador/ModificarContrasenia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IDireccionManejador" type="tns:IDireccionManejador">
+    <wsp:PolicyReference URI="#NetTcpBinding_IDireccionManejador_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="RegistrarDireccion">
+      <soap12:operation soapAction="http://tempuri.org/IDireccionManejador/RegistrarDireccion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_ISocioManejador" type="tns:ISocioManejador">
+    <wsp:PolicyReference URI="#NetTcpBinding_ISocioManejador_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="RegistrarSocioEnBaseDeDatos">
+      <soap12:operation soapAction="http://tempuri.org/ISocioManejador/RegistrarSocioEnBaseDeDatos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerificarExistenciaDeSocioEnBaseDeDatos">
+      <soap12:operation soapAction="http://tempuri.org/ISocioManejador/VerificarExistenciaDeSocioEnBaseDeDatos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarSociosPorNombre">
+      <soap12:operation soapAction="http://tempuri.org/ISocioManejador/ConsultarSociosPorNombre" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarSocioPorNumeroDeSocio">
+      <soap12:operation soapAction="http://tempuri.org/ISocioManejador/ConsultarSocioPorNumeroDeSocio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ElSaberServices">
+    <wsdl:port name="NetTcpBinding_IUsuarioManejador" binding="tns:NetTcpBinding_IUsuarioManejador">
+      <soap12:address location="net.tcp://localhost:1441/ServicioUsuario" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:1441/ServicioUsuario</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IRestablecimientoCuentaManejador" binding="tns:NetTcpBinding_IRestablecimientoCuentaManejador">
+      <soap12:address location="net.tcp://localhost:1441/ServicioCorreo" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:1441/ServicioCorreo</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IAccesoManejador" binding="tns:NetTcpBinding_IAccesoManejador">
+      <soap12:address location="net.tcp://localhost:1441/ServicioAcceso" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:1441/ServicioAcceso</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IDireccionManejador" binding="tns:NetTcpBinding_IDireccionManejador">
+      <soap12:address location="net.tcp://localhost:1441/ServicioDireccion" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:1441/ServicioDireccion</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_ISocioManejador" binding="tns:NetTcpBinding_ISocioManejador">
+      <soap12:address location="net.tcp://localhost:1441/ServicioSocio" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:1441/ServicioSocio</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

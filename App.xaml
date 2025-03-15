@@ -7,8 +7,9 @@
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              StartupUri="/Ventanas/VentanaMenuPrincipalBibliotecario.xaml">
     <Application.Resources>
-        <utilidades:CadenaVisibilidadConverter x:Key="CadenaVisibilidadConverter" />
-        
+        <utilidades:CadenaVisibilidadConverter x:Key="CadenaVisibilidadConverter"/>
+        <utilidades:CursoSobreImagenConverter x:Key="CursoSobreImagenConverter"/>
+
         <Style TargetType="TextBox">
             <Setter Property="Template">
                 <Setter.Value>
@@ -147,10 +148,12 @@
                                            Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Tag}"
                                            Width="50"/>
                                     <Image x:Name="IconoOscuroBoton"
-                                           Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ToolTip}"
-                                           Width="50"/>
+                                           Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Tag, Converter={StaticResource CursoSobreImagenConverter}}"
+                                           Width="50"
+                                           Opacity="0"/>
                                     <ContentPresenter HorizontalAlignment="Center"
-                                                      VerticalAlignment="Center"/>
+                                                      VerticalAlignment="Center"
+                                                      Content="{TemplateBinding Content}"/>
                                 </Grid>
                             </Border>
                         </Grid>
@@ -167,6 +170,28 @@
                                 <Setter TargetName="IconoBoton" Property="Opacity" Value="1"/>
                                 <Setter TargetName="IconoOscuroBoton" Property="Opacity" Value="0"/>
                             </Trigger>
+
+                            <EventTrigger RoutedEvent="MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetName="IconoOscuroBoton"
+                                                            Storyboard.TargetProperty="Margin"
+                                                            To="130,0,0,0"
+                                                            Duration="0:0:0.3"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+
+                            <EventTrigger RoutedEvent="MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetName="IconoOscuroBoton"
+                                                            Storyboard.TargetProperty="Margin"
+                                                            To="0,0,0,0"
+                                                            Duration="0:0:0.3"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>

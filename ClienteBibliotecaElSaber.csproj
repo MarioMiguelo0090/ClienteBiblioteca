@@ -35,8 +35,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=3.0.4.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>packages\log4net.3.0.4\lib\net462\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,26 +62,25 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Connected Services\ServidorElSaber\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Extensiones\PasswordBoxExtensiones.cs" />
     <Compile Include="Extensiones\TextBoxExtensiones.cs" />
     <Compile Include="Utilidades\CadenaVisibilidadConverter.cs" />
     <Compile Include="Utilidades\ContraseñaHelper.cs" />
+    <Compile Include="Utilidades\CursoSobreImagenConverter.cs" />
+    <Compile Include="Utilidades\LoggerManager.cs" />
     <Compile Include="Ventanas\VentanaInicioDeSesion.xaml.cs">
       <DependentUpon>VentanaInicioDeSesion.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ventanas\VentanaMenuPrincipalBibliotecario.xaml.cs">
       <DependentUpon>VentanaMenuPrincipalBibliotecario.xaml</DependentUpon>
     </Compile>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Ventanas\VentanaInicioDeSesion.xaml">
@@ -106,6 +112,23 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Connected Services\ServidorElSaber\ClienteBibliotecaElSaber.ServidorElSaber.SocioBinding.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServidorElSaber\ElSaberServices.wsdl" />
+    <None Include="Connected Services\ServidorElSaber\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServidorElSaber\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServidorElSaber\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Resource Include="Fuentes\RePublicTRIAL-Condensed-BF676e0d99ce7bf.otf" />
+    <Resource Include="Fuentes\RePublicTRIAL-Medium-BF676e0d99d7ecc.otf" />
+    <Resource Include="Fuentes\RePublicTRIAL-Regular-BF676e0d99d81b6.otf" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -115,11 +138,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Fuentes\" />
     <Folder Include="MVVM\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Imagenes\BuhoElSaber.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Imagenes\Iconos\Libro.png" />
@@ -136,6 +155,34 @@
   <ItemGroup>
     <Resource Include="Imagenes\Iconos\Devolucion.png" />
     <Resource Include="Imagenes\Iconos\DevolucionOscuro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ServidorElSaber\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServidorElSaber\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServidorElSaber\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServidorElSaber\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServidorElSaber\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Emblema.png" />
+    <Resource Include="Imagenes\LogoNegativo.png" />
+    <Resource Include="Imagenes\LogoPositivo.png" />
+    <Resource Include="Imagenes\LogoPrincipal.png" />
+    <Resource Include="Imagenes\LogoSecundario.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
