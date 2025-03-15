@@ -73,6 +73,18 @@
     <Compile Include="Utilidades\ContraseñaHelper.cs" />
     <Compile Include="Utilidades\CursoSobreImagenConverter.cs" />
     <Compile Include="Utilidades\LoggerManager.cs" />
+    <Compile Include="Ventanas\VentanaBuscarLibro.xaml.cs">
+      <DependentUpon>VentanaBuscarLibro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\VentanaBuscarSocio.xaml.cs">
+      <DependentUpon>VentanaBuscarSocio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\VentanaDetallesLibro.xaml.cs">
+      <DependentUpon>VentanaDetallesLibro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\VentanaDetallesSocio.xaml.cs">
+      <DependentUpon>VentanaDetallesSocio.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas\VentanaInicioDeSesion.xaml.cs">
       <DependentUpon>VentanaInicioDeSesion.xaml</DependentUpon>
     </Compile>
@@ -83,6 +95,28 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Ventanas\VentanaRegistrarSocio.xaml.cs">
+      <DependentUpon>VentanaRegistrarSocio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\VentanaRegistroLibro.xaml.cs">
+      <DependentUpon>VentanaRegistroLibro.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Ventanas\VentanaBuscarLibro.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ventanas\VentanaBuscarSocio.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ventanas\VentanaDetallesLibro.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ventanas\VentanaDetallesSocio.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Ventanas\VentanaInicioDeSesion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -90,6 +124,14 @@
     <Page Include="Ventanas\VentanaMenuPrincipalBibliotecario.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\VentanaRegistrarSocio.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ventanas\VentanaRegistroLibro.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -183,6 +225,22 @@
     <Resource Include="Imagenes\LogoPositivo.png" />
     <Resource Include="Imagenes\LogoPrincipal.png" />
     <Resource Include="Imagenes\LogoSecundario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\FondoLibros.png" />
+    <Resource Include="Imagenes\LibrosRecortado.png" />
+    <Resource Include="Imagenes\Logo Negativo Café.png" />
+    <Resource Include="Imagenes\Logo Negativo.png" />
+    <Resource Include="Imagenes\Logo Positivo Claro.png" />
+    <Resource Include="Imagenes\Logo Positivo.png" />
+    <Resource Include="Imagenes\Logo Principal.png" />
+    <Resource Include="Imagenes\Logo Secundario Negativo.png" />
+    <Resource Include="Imagenes\Logo Secundario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\BuhoSofia.png" />
+    <Resource Include="Imagenes\Emblema Negativo.png" />
+    <Resource Include="Imagenes\Iconos\calendario.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
