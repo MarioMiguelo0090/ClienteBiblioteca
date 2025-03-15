@@ -69,53 +69,51 @@
             </Grid>
 
             <StackPanel Grid.Row="1">
+
+                <Image Source="/Imagenes/Emblema.png"
+           Width="126" Height="144"
+           />
+
                 <Label Content="Inicio de Sesión"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Center"
-                       Margin="0,150,0,0"
-                       FontSize="48"
-                       Foreground="Black"/>
+           VerticalAlignment="Center"
+           HorizontalAlignment="Center"
+           Margin="0,20,0,0"
+           FontSize="48"
+           Foreground="Black"/>
+
                 <TextBox extensiones:TextBoxExtensiones.TextoSugerido="Usuario"
-                         Margin="0,35,0,0"/>
+             Margin="0,35,0,0"/>
+
                 <PasswordBox extensiones:PasswordBoxExtensiones.TextoSugerido="Contraseña"
-                             PasswordChanged="PBCambioDeContraseña"
-                             Margin="0,15,0,0"/>
+                 PasswordChanged="PBCambioDeContraseña"
+                 Margin="0,15,0,0"/>
+
                 <TextBlock Text="Recuperar contraseña"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           Margin="0,10,0,0"
-                           FontSize="16"
-                           FontWeight="DemiBold"
-                           TextDecorations="Underline"
-                           Foreground="#FF5F5F5F"/>
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"
+               Margin="0,10,0,0"
+               FontSize="16"
+               FontWeight="DemiBold"
+               TextDecorations="Underline"
+               Foreground="#FF5F5F5F"/>
+
                 <Button Content="Iniciar sesión"
-                        Width="150"
-                        Margin="0,30,0,0" 
-                        Background="#E6D5B8"
-                        Foreground="Black" 
-                        Click="Button_Click"/>
+            Width="150"
+            Margin="0,30,0,0" 
+            Background="#E6D5B8"
+            Foreground="Black" 
+            Click="Button_Click"/>
             </StackPanel>
 
             <StackPanel Grid.Column="1"
                         Grid.Row="1">
-                <Border Background="#D2B48C"
-                        Height="570"
-                        CornerRadius="0,0,25,0"
-                        BorderThickness="0">
-                    <StackPanel>
-                        <Image Source="/Imagenes/BuhoElSaber.png"
-                               Width="300"
-                               Margin="0,100,0,0"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"/>
-
-                        <Label Content="El Saber"
-                               VerticalAlignment="Center"
-                               HorizontalAlignment="Center"
-                               FontSize="62"
-                               FontFamily="Garamond"
-                               Foreground="White"/>
-                    </StackPanel>
+                <Border Height="570"
+        CornerRadius="0,0,25,0"
+        BorderThickness="0">
+                    <Border.Background>
+                        <ImageBrush ImageSource="/Imagenes/LibrosRecortado.png" Stretch="Fill"/>
+                    </Border.Background>
+                    <StackPanel/>
                 </Border>
             </StackPanel>
         </Grid>
