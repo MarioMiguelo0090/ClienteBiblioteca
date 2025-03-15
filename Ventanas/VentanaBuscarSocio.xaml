@@ -1,0 +1,52 @@
+﻿<Page x:Class="ClienteBibliotecaElSaber.Ventanas.VentanaBuscarSocio"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ClienteBibliotecaElSaber.Ventanas"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="920"
+      Title="VentanaBuscarSocio">
+
+    <Grid Background="#F5F5DC">
+        <Border Background="#FF432716" CornerRadius="10" Padding="10" Margin="136,19,155,483">
+            <TextBlock Text="Buscar Socio"
+                Foreground="White"
+                FontSize="42"
+                FontWeight="Bold"
+                TextAlignment="Center"
+                VerticalAlignment="Center"/>
+        </Border>
+
+        <Label Content="Nombre o &#xD;&#xA;Número de Socio" FontWeight="Bold" FontSize="20" Margin="160,131,585,371"/>
+        <TextBox x:Name="txb_Busqueda" Margin="340,147,255,416" KeyDown="Buscar_Enter"/>
+
+        <Button Content="Buscar"
+                Background="Green"
+                Foreground="White"
+                FontWeight="Bold"
+                Margin="673,131,89,414" Click="Buscar_Click"/>
+
+        <ListView x:Name="ltv_Resultados" Margin="40,270,40,80">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Nombre" Width="250" DisplayMemberBinding="{Binding Nombre}"/>
+                    <GridViewColumn Header="Número de Socio" Width="150" DisplayMemberBinding="{Binding NumeroSocio}"/>
+                    <GridViewColumn Header="Acciones" Width="150">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Detalles" Click="Detalles_Click"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Button Content="Regresar"
+                Background="Red"
+                Foreground="White"
+                FontWeight="Bold"
+                Margin="384,525,384,29" Click="Regresar_Click"/>
+    </Grid>
+</Page>

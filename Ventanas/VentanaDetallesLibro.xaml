@@ -1,0 +1,80 @@
+﻿<Page x:Class="ClienteBibliotecaElSaber.Ventanas.VentanaDetallesLibro"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ClienteBibliotecaElSaber.Ventanas"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="920"
+      Title="VentanaRegistroLibro">
+
+    <Grid Background="#F5F5DC">
+        <Border Background="#FF432716" CornerRadius="10" Padding="10" Margin="136,39,155,463">
+            <TextBlock Text="Detalles del Libro"
+           Foreground="White"
+           FontSize="42"
+           FontWeight="Bold"
+           TextAlignment="Center"
+           VerticalAlignment="Center"/>
+        </Border>
+
+        <Image Source="/Imagenes/Logo Positivo.png"
+           Width="144"
+           HorizontalAlignment="Left"
+           Margin="770,23,0,410"/>
+
+        <Label Content="Título:" FontWeight="Bold" FontSize="20" Margin="40,242,760,326"/>
+        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" Margin="118,242,524,326">
+            <TextBlock x:Name="txb_Titulo" FontSize="18" Margin="118,242,524,326" />
+        </Border>
+
+
+        <Label Content="Autor(es):" FontWeight="Bold" FontSize="20" Margin="460,243,352,322"/>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="590,243,42,322">
+            <TextBlock x:Name="txb_Autor" FontSize="18"/>
+        </Border>
+
+        <Label Content="Género:" FontWeight="Bold" FontSize="20" Margin="40,306,793,260"/>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="118,306,524,260">
+            <TextBlock x:Name="txb_Genero" FontSize="18"/>
+        </Border>
+
+        <Label Content="Edición:" FontWeight="Bold" FontSize="20" Margin="458,306,378,259"/>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="590,306,42,259">
+            <TextBlock x:Name="txb_Edicion" FontSize="18"/>
+        </Border>
+
+        <Label Content="Folio:" FontWeight="Bold" FontSize="20" Margin="40,360,793,201"/>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="118,360,524,201">
+            <TextBlock x:Name="txb_Folio" FontSize="18"/>
+        </Border>
+
+        <Label Content="Clasificación:" FontWeight="Bold" FontSize="20" Margin="460,362,286,204"/>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="590,362,42,204">
+            <TextBlock x:Name="txb_Clasificacion" FontSize="18"/>
+        </Border>
+
+        <Label Content="ISBN:" FontWeight="Bold" FontSize="20" Margin="40,413,778,153"/>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="118,413,524,153">
+            <TextBlock x:Name="txb_ISBN" FontSize="18"/>
+        </Border>
+        <Label Content="Editorial:" FontWeight="Bold" FontSize="20" Margin="460,413,353,137"/>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="590,413,42,137">
+            <TextBlock x:Name="txb_Editorial" FontSize="18"/>
+        </Border>
+
+        <Label Content="Fecha de &#xD;&#xA;Publicación:" FontWeight="Bold" FontSize="20" Margin="40,470,751,60"/>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="174,470,524,80">
+            <TextBlock x:Name="txb_FechaPublicacion" FontSize="18" Margin="-1,0,9,34"/>
+        </Border>
+
+        <Button Content="Regresar"
+            Background="Red"
+            Foreground="White"
+            FontWeight="Bold"
+            Margin="384,525,384,29"
+            Click="Regresar_Click"/>
+    </Grid>
+
+
+</Page>

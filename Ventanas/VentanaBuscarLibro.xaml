@@ -1,0 +1,102 @@
+﻿<Page x:Class="ClienteBibliotecaElSaber.Ventanas.VentanaBuscarLibro"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ClienteBibliotecaElSaber.Ventanas"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="920"
+      Title="VentanaBuscarLibro">
+
+    <Grid Background="#F5F5DC">
+
+        <Border Background="#FF432716" CornerRadius="10" Padding="10" Margin="136,19,155,483">
+            <TextBlock Text="Buscar Libro"
+                Foreground="White"
+                FontSize="42"
+                FontWeight="Bold"
+                TextAlignment="Center"
+                VerticalAlignment="Center"/>
+        </Border>
+
+        <Image Source="/Imagenes/Logo Positivo.png"
+               Width="120"
+               HorizontalAlignment="Left"
+               Margin="794,7,0,482"/>
+
+        <Label Content="ISBN" FontWeight="Bold" FontSize="20" Margin="146,208,704,352"/>
+        <TextBox x:Name="txb_ISBN" Margin="210,208,410,355" KeyDown="Buscar_Enter"/>
+
+        <Label Content="Título" FontWeight="Bold" FontSize="20" Margin="135,147,710,411"/>
+        <TextBox x:Name="txb_Titulo" Margin="210,147,410,416" KeyDown="Buscar_Enter"/>
+
+        <Label Content="Género" FontWeight="Bold" FontSize="20" Margin="515,144,318,422"/>
+        <ComboBox x:Name="cmb_Genero" Margin="602,144,40,416" SelectionChanged="ComboBox_Genero">
+            <ComboBoxItem Content="Ficción"/>
+            <ComboBoxItem Content="Suspenso"/>
+            <ComboBoxItem Content="Novela histórica"/>
+            <ComboBoxItem Content="Romántico"/>
+            <ComboBoxItem Content="Ciencia Ficción"/>
+            <ComboBoxItem Content="Distopía"/>
+            <ComboBoxItem Content="Aventuras"/>
+            <ComboBoxItem Content="Fantasía"/>
+            <ComboBoxItem Content="Terror"/>
+            <ComboBoxItem Content="Paranormal"/>
+            <ComboBoxItem Content="Poesía"/>
+            <ComboBoxItem Content="Juvenil"/>
+            <ComboBoxItem Content="Infantil"/>
+            <ComboBoxItem Content="Autoayuda"/>
+            <ComboBoxItem Content="Salud y deporte"/>
+            <ComboBoxItem Content="Memorias"/>
+            <ComboBoxItem Content="Biografías"/>
+            <ComboBoxItem Content="Cocina"/>
+            <ComboBoxItem Content="Viajes"/>
+            <ComboBoxItem Content="Técnico"/>
+            <ComboBoxItem Content="Divulgativos"/>
+            <ComboBoxItem Content="Arte"/>
+        </ComboBox>
+
+
+        <Label Content="Editorial" FontWeight="Bold" FontSize="20" Margin="509,208,305,342"/>
+        <ComboBox x:Name="cmb_Editorial" IsEditable="True" Margin="602,208,40,350" LostFocus="Editorial_BusquedaPerdida"/>
+
+        <Button Content="Buscar"
+                Background="Green"
+                Foreground="White"
+                FontWeight="Bold"
+                Margin="18,144,790,406" Click="Buscar_Click"/>
+
+        <ListView x:Name="ltv_Resultados" Margin="40,270,40,80">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Título" Width="250" DisplayMemberBinding="{Binding Titulo}"/>
+                    <GridViewColumn Header="Cantidad" Width="80" DisplayMemberBinding="{Binding Cantidad}"/>
+                    <GridViewColumn Header="Imagen" Width="120">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding Imagen}" Width="50" Height="50"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Acciones" Width="250">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Content="Detalles" Margin="2" Click="Detalles_Click"/>
+                                    <Button Content="Editar" Margin="2" Click="Editar_Click"/>
+                                    <Button Content="Eliminar" Margin="2" Click="Eliminar_Click"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Button Content="Regresar"
+                Background="Red"
+                Foreground="White"
+                FontWeight="Bold"
+                Margin="384,525,384,29" Click="Regresar_Click"/>
+    </Grid>
+</Page>
