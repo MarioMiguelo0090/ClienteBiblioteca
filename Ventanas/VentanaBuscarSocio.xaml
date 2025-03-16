@@ -27,21 +27,9 @@
                 FontWeight="Bold"
                 Margin="673,131,89,414" Click="Buscar_Click"/>
 
-        <ListView x:Name="ltv_Resultados" Margin="40,270,40,80">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Nombre" Width="250" DisplayMemberBinding="{Binding Nombre}"/>
-                    <GridViewColumn Header="Número de Socio" Width="150" DisplayMemberBinding="{Binding NumeroSocio}"/>
-                    <GridViewColumn Header="Acciones" Width="150">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Content="Detalles" Click="Detalles_Click"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <ScrollViewer Margin="40,270,40,80">
+            <StackPanel x:Name="sp_Resultados" />
+        </ScrollViewer>
 
         <Button Content="Regresar"
                 Background="Red"

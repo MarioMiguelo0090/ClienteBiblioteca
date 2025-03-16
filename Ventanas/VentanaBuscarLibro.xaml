@@ -56,7 +56,6 @@
             <ComboBoxItem Content="Arte"/>
         </ComboBox>
 
-
         <Label Content="Editorial" FontWeight="Bold" FontSize="20" Margin="509,208,305,342"/>
         <ComboBox x:Name="cmb_Editorial" IsEditable="True" Margin="602,208,40,350" LostFocus="Editorial_BusquedaPerdida"/>
 
@@ -66,32 +65,9 @@
                 FontWeight="Bold"
                 Margin="18,144,790,406" Click="Buscar_Click"/>
 
-        <ListView x:Name="ltv_Resultados" Margin="40,270,40,80">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Título" Width="250" DisplayMemberBinding="{Binding Titulo}"/>
-                    <GridViewColumn Header="Cantidad" Width="80" DisplayMemberBinding="{Binding Cantidad}"/>
-                    <GridViewColumn Header="Imagen" Width="120">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Image Source="{Binding Imagen}" Width="50" Height="50"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="Acciones" Width="250">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <Button Content="Detalles" Margin="2" Click="Detalles_Click"/>
-                                    <Button Content="Editar" Margin="2" Click="Editar_Click"/>
-                                    <Button Content="Eliminar" Margin="2" Click="Eliminar_Click"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <ScrollViewer Margin="40,270,40,80">
+            <StackPanel x:Name="sp_Resultados" Orientation="Vertical" />
+        </ScrollViewer>
 
         <Button Content="Regresar"
                 Background="Red"
