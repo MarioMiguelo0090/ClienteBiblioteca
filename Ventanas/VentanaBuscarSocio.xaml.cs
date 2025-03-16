@@ -18,18 +18,18 @@ namespace ClienteBibliotecaElSaber.Ventanas
         public VentanaBuscarSocio(Socio socioSeleccionado)
         {
             InitializeComponent();
-            lvResultados.ItemsSource = new List<Socio>();
+            Ltv_Resultados.ItemsSource = new List<Socio>();
         }
 
         private void Buscar_Click(object sender, RoutedEventArgs e)
         {
-            string filtro = txtBusqueda.Text.Trim().ToLower();
+            string filtro = Txb_Busqueda.Text.Trim().ToLower();
             if (!string.IsNullOrEmpty(filtro))
             {
                 var resultados = socios.FindAll(s =>
                     s.Nombre.ToLower().Contains(filtro) || s.NumeroSocio.ToString().Contains(filtro));
 
-                lvResultados.ItemsSource = resultados;
+                Ltv_Resultados.ItemsSource = resultados;
             }
             else
             {

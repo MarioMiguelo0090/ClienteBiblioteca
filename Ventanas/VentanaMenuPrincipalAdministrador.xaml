@@ -1,19 +1,18 @@
-﻿<Window x:Class="ClienteBibliotecaElSaber.Ventanas.VentanaMenuPrincipalBibliotecario"
+﻿<Window x:Class="ClienteBibliotecaElSaber.Ventanas.VentanaMenuPrincipalAdministrador"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClienteBibliotecaElSaber.Ventanas"
         mc:Ignorable="d"
-        Title="VentanaMenuPrincipalBibliotecario" Height="600" Width="920"
+        Title="VentanaMenuPrincipalAdministrador" Height="600" Width="920"
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         Background="Transparent"
         AllowsTransparency="True">
-
     <Border Background="#F5F5DC"
-            CornerRadius="25">
+        CornerRadius="25">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
@@ -21,8 +20,8 @@
             </Grid.RowDefinitions>
 
             <Grid Grid.ColumnSpan="2"
-                  Background="#FF432716"
-                  MouseDown="Grid_MouseDown">
+              Background="#FF432716"
+              MouseDown="Grid_MouseDown">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -34,11 +33,11 @@
                 </Grid.ColumnDefinitions>
 
                 <Button Grid.Column="6"
-                        Content="Salir"
-                        FontSize="14"
-                        FontWeight="DemiBold"
-                        Click="Salir_Click"
-                        Cursor="Hand">
+                    Content="Salir"
+                    FontSize="14"
+                    FontWeight="DemiBold"
+                    Click="Salir_Click"
+                    Cursor="Hand" Height="30" VerticalAlignment="Bottom">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Background" Value="Transparent"/>
@@ -56,7 +55,7 @@
                         <ControlTemplate TargetType="Button">
                             <Border Background="{TemplateBinding Background}">
                                 <ContentPresenter VerticalAlignment="Center"
-                                                  HorizontalAlignment="Center"/>
+                                              HorizontalAlignment="Center"/>
                             </Border>
                         </ControlTemplate>
                     </Button.Template>
@@ -64,60 +63,60 @@
             </Grid>
 
             <Grid Grid.Row="1"
-                  Margin="80,0,0,0">
+      Margin="80,0,0,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="200"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
                 <Image Source="/Imagenes/EstanteLibros.jpg" 
-                       Stretch="UniformToFill"
-                       Opacity="0.9"/>
+           Stretch="UniformToFill"
+           Opacity="0.9"/>
                 <StackPanel HorizontalAlignment="Center"
-                            VerticalAlignment="Center">
+                VerticalAlignment="Center">
                     <TextBlock Text="Sistema Bibliotecario"
-                               FontSize="42"
-                               FontWeight="DemiBold"
-                               Foreground="White"/>
+                   FontSize="42"
+                   FontWeight="DemiBold"
+                   Foreground="White"/>
                     <TextBlock Text="El Saber"
-                               FontSize="62"
-                               FontWeight="SemiBold"
-                               Foreground="White"/>
+                   FontSize="62"
+                   FontWeight="SemiBold"
+                   Foreground="White"/>
                 </StackPanel>
                 <StackPanel Grid.Row="1">
                     <TextBlock Text="Bienvenido, Josué Melgarejo García"
-                               FontSize="32"
-                               Margin="35,20"/>
+                   FontSize="32"
+                   Margin="35,20"/>
                     <Border Background="Chocolate"
-                            CornerRadius="15"
-                            Margin="30,0"
-                            Padding="50,20">
+                CornerRadius="15"
+                Margin="30,0"
+                Padding="50,20">
                         <StackPanel>
                             <TextBlock Text='"El secreto de una buena vejez no es otra cosa que un pacto honrado con la soledad. Se llega a la vejez como a todo lo demás, sin aviso. Un día, de repente, te das cuenta de que tienes más pasado que futuro, y es entonces cuando el tiempo, que antes parecía inagotable, empieza a apretarse como un lazo invisible alrededor de los días que quedan."'
-                                       TextWrapping="Wrap"
-                                       FontSize="14"
-                                       FontStyle="Italic"/>
+                           TextWrapping="Wrap"
+                           FontSize="14"
+                           FontStyle="Italic"/>
                             <TextBlock Text="Cien años de soledad - Gabriel García Marquez"
-                                       Margin="0,15,0,0"
-                                       FontSize="13"
-                                       HorizontalAlignment="Right"/>
+                           Margin="0,15,0,0"
+                           FontSize="13"
+                           HorizontalAlignment="Right"/>
                         </StackPanel>
                     </Border>
-                    
+
                 </StackPanel>
             </Grid>
 
             <Grid Grid.Row="1" 
-                  Background="#8C5A3C"
-                  Width="80"
-                  HorizontalAlignment="Left">
+              Background="#8C5A3C"
+              Width="80"
+              HorizontalAlignment="Left">
                 <Grid.Triggers>
                     <EventTrigger RoutedEvent="MouseEnter">
                         <BeginStoryboard>
                             <Storyboard>
                                 <DoubleAnimation Storyboard.TargetProperty="Width"
-                                                 To="250" Duration="0:0:0.3"
-                                                 AccelerationRatio="0.2"/>
+                                             To="250" Duration="0:0:0.3"
+                                             AccelerationRatio="0.2"/>
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger>
@@ -126,42 +125,42 @@
                         <BeginStoryboard>
                             <Storyboard>
                                 <DoubleAnimation Storyboard.TargetProperty="Width"
-                                                 To="80" Duration="0:0:0.3"
-                                                 AccelerationRatio="0.2"/>
+                                             To="80" Duration="0:0:0.3"
+                                             AccelerationRatio="0.2"/>
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger>
                 </Grid.Triggers>
-                
+
                 <StackPanel>
                     <Image Source="/Imagenes/Logo Negativo.png"
-                           Width="70"
-                           Margin="0,20,0,20"/>
+                       Width="70"
+                       Margin="0,20,0,20"/>
 
                     <Button Style="{StaticResource BotonMenu}"
-                            Tag="/Imagenes/Iconos/Socio.png"
-                            HorizontalContentAlignment="Center">
+                        Tag="/Imagenes/Iconos/Libro.png"
+                        HorizontalContentAlignment="Center">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                 <TextBlock x:Name="TextoBoton"
-                                           Text=""
-                                           VerticalAlignment="Center"
-                                           Opacity="0"/>
+                                       Text=""
+                                       VerticalAlignment="Center"
+                                       Opacity="0"/>
                                 <TextBlock Text="" Width="70"/>
                             </StackPanel>
                         </Button.Content>
-                        
+
                         <Button.Triggers>
                             <EventTrigger RoutedEvent="MouseEnter">
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <StringAnimationUsingKeyFrames Storyboard.TargetName="TextoBoton"
-                                                                       Storyboard.TargetProperty="Text">
-                                            <DiscreteStringKeyFrame KeyTime="0:0:0" Value="Socios"/>
+                                           Storyboard.TargetProperty="Text">
+                                            <DiscreteStringKeyFrame KeyTime="0:0:0" Value="Libros"/>
                                         </StringAnimationUsingKeyFrames>
                                         <DoubleAnimation Storyboard.TargetName="TextoBoton"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To="1" Duration="0:0:0.2"/>
+                                                     Storyboard.TargetProperty="Opacity"
+                                                     To="1" Duration="0:0:0.2"/>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger>
@@ -169,8 +168,8 @@
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <DoubleAnimation Storyboard.TargetName="TextoBoton"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To="0" Duration="0:0:0"/>
+                                                     Storyboard.TargetProperty="Opacity"
+                                                     To="0" Duration="0:0:0"/>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger>
@@ -178,14 +177,14 @@
                     </Button>
 
                     <Button Style="{StaticResource BotonMenu}"
-                            Tag="/Imagenes/Iconos/Libro.png"
-                            HorizontalContentAlignment="Center">
+                        Tag="/Imagenes/Iconos/Usuarios.png"
+                        HorizontalContentAlignment="Center">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                 <TextBlock x:Name="TextoBoton2"
-                                           Text=""
-                                           VerticalAlignment="Center"
-                                           Opacity="0"/>
+                                       Text=""
+                                       VerticalAlignment="Center"
+                                       Opacity="0"/>
                                 <TextBlock Text="" Width="70"/>
                             </StackPanel>
                         </Button.Content>
@@ -195,12 +194,12 @@
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <StringAnimationUsingKeyFrames Storyboard.TargetName="TextoBoton2"
-                                               Storyboard.TargetProperty="Text">
-                                            <DiscreteStringKeyFrame KeyTime="0:0:0" Value="Libros"/>
+                                           Storyboard.TargetProperty="Text">
+                                            <DiscreteStringKeyFrame KeyTime="0:0:0" Value="Usuarios"/>
                                         </StringAnimationUsingKeyFrames>
                                         <DoubleAnimation Storyboard.TargetName="TextoBoton2"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To="1" Duration="0:0:0.2"/>
+                                                     Storyboard.TargetProperty="Opacity"
+                                                     To="1" Duration="0:0:0.2"/>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger>
@@ -208,47 +207,8 @@
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <DoubleAnimation Storyboard.TargetName="TextoBoton2"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To="0" Duration="0:0:0"/>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger>
-                        </Button.Triggers>
-                    </Button>
-
-                    <Button Style="{StaticResource BotonMenu}"
-                            Tag="/Imagenes/Iconos/Devolucion.png"
-                            HorizontalContentAlignment="Center">
-                        <Button.Content>
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                <TextBlock x:Name="TextoBoton3"
-                                           Text=""
-                                           VerticalAlignment="Center"
-                                           Opacity="0"/>
-                                <TextBlock Text="" Width="70"/>
-                            </StackPanel>
-                        </Button.Content>
-
-                        <Button.Triggers>
-                            <EventTrigger RoutedEvent="MouseEnter">
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <StringAnimationUsingKeyFrames Storyboard.TargetName="TextoBoton3"
-                                               Storyboard.TargetProperty="Text">
-                                            <DiscreteStringKeyFrame KeyTime="0:0:0" Value="Devoluciones"/>
-                                        </StringAnimationUsingKeyFrames>
-                                        <DoubleAnimation Storyboard.TargetName="TextoBoton3"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To="1" Duration="0:0:0.2"/>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger>
-                            <EventTrigger RoutedEvent="MouseLeave">
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetName="TextoBoton3"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To="0" Duration="0:0:0"/>
+                                                     Storyboard.TargetProperty="Opacity"
+                                                     To="0" Duration="0:0:0"/>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger>

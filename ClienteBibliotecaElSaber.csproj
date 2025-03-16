@@ -88,6 +88,9 @@
     <Compile Include="Ventanas\VentanaInicioDeSesion.xaml.cs">
       <DependentUpon>VentanaInicioDeSesion.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas\VentanaMenuPrincipalAdministrador.xaml.cs">
+      <DependentUpon>VentanaMenuPrincipalAdministrador.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas\VentanaMenuPrincipalBibliotecario.xaml.cs">
       <DependentUpon>VentanaMenuPrincipalBibliotecario.xaml</DependentUpon>
     </Compile>
@@ -118,6 +121,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Ventanas\VentanaInicioDeSesion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\VentanaMenuPrincipalAdministrador.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -180,7 +187,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="MVVM\" />
+    <Resource Include="Imagenes\Iconos\Usuarios.png" />
+    <Resource Include="Imagenes\Iconos\UsuariosOscuro.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Imagenes\Iconos\Libro.png" />
@@ -221,10 +229,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Imagenes\Emblema.png" />
-    <Resource Include="Imagenes\LogoNegativo.png" />
-    <Resource Include="Imagenes\LogoPositivo.png" />
-    <Resource Include="Imagenes\LogoPrincipal.png" />
-    <Resource Include="Imagenes\LogoSecundario.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Imagenes\FondoLibros.png" />
@@ -241,6 +245,9 @@
     <Resource Include="Imagenes\BuhoSofia.png" />
     <Resource Include="Imagenes\Emblema Negativo.png" />
     <Resource Include="Imagenes\Iconos\calendario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\EstanteLibros.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

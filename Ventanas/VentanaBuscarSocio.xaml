@@ -19,7 +19,7 @@
         </Border>
 
         <Label Content="Nombre o &#xD;&#xA;Número de Socio" FontWeight="Bold" FontSize="20" Margin="160,131,585,371"/>
-        <TextBox x:Name="txb_Busqueda" Margin="340,147,255,416" KeyDown="Buscar_Enter"/>
+        <TextBox x:Name="Txb_Busqueda" Margin="340,147,255,416" KeyDown="Buscar_Enter"/>
 
         <Button Content="Buscar"
                 Background="Green"
@@ -27,7 +27,7 @@
                 FontWeight="Bold"
                 Margin="673,131,89,414" Click="Buscar_Click"/>
 
-        <ListView x:Name="ltv_Resultados" Margin="40,270,40,80">
+        <ListView x:Name="Ltv_Resultados" Margin="40,270,40,80">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Nombre" Width="250" DisplayMemberBinding="{Binding Nombre}"/>

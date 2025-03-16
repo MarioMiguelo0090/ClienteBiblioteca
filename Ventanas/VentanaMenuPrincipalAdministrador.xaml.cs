@@ -15,15 +15,14 @@ using System.Windows.Shapes;
 namespace ClienteBibliotecaElSaber.Ventanas
 {
     /// <summary>
-    /// Lógica de interacción para VentanaMenuPrincipal.xaml
+    /// Lógica de interacción para VentanaMenuPrincipalAdministrador.xaml
     /// </summary>
-    public partial class VentanaMenuPrincipalBibliotecario : Window
+    public partial class VentanaMenuPrincipalAdministrador : Window
     {
-        public VentanaMenuPrincipalBibliotecario()
+        public VentanaMenuPrincipalAdministrador()
         {
             InitializeComponent();
         }
-
 
         private void Salir_Click(object sender, RoutedEventArgs e)
         {

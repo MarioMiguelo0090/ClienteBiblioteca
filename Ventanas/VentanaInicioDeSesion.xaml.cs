@@ -16,12 +16,12 @@ namespace ClienteBibliotecaElSaber.Ventanas
             InitializeComponent();
         }
 
-        private void BotonClicIniciarSesion(object sender, RoutedEventArgs e)
+        private void IniciarSesion_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void BotonClicSalir(object sender, RoutedEventArgs e)
+        private void Salir_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
