@@ -40,5 +40,11 @@ namespace ClienteBibliotecaElSaber.Ventanas
             var textoSugerido = ContraseñaHelper.EncontrarHijoVisual<TextBlock>(passwordBox, "TextoSugerido");
             ContraseñaHelper.ActualizarVisibilidadTextoSugerido(passwordBox, textoSugerido);
         }
+
+        private void IrVentanaRecuperarContraseña(object sender, MouseButtonEventArgs e)
+        {
+            VentanaRecuperarContraseña ventanaRecuperarContraseña = new VentanaRecuperarContraseña();
+            ventanaRecuperarContraseña.ShowDialog();
+        }
     }
 }

@@ -5,7 +5,7 @@
              xmlns:extensiones="clr-namespace:ClienteBibliotecaElSaber.Extensiones"
              xmlns:utilidades="clr-namespace:ClienteBibliotecaElSaber.Utilidades"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
-             StartupUri="/Ventanas/VentanaMenuPrincipalAdministrador.xaml">
+             StartupUri="/Ventanas/VentanaInicioDeSesion.xaml">
     <Application.Resources>
         <utilidades:CadenaVisibilidadConverter x:Key="CadenaVisibilidadConverter"/>
         <utilidades:CursoSobreImagenConverter x:Key="CursoSobreImagenConverter"/>
@@ -15,7 +15,9 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="TextBox">
                         <Border Background="White" 
-                                CornerRadius="20">
+                                CornerRadius="20"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch">
                             <Grid>
                                 <TextBlock x:Name="TextoSugerido"
                                    Text="{Binding RelativeSource={RelativeSource AncestorType=TextBox}, 
@@ -43,8 +45,8 @@
             </Setter>
             <Setter Property="FontSize" Value="20" />
             <Setter Property="Padding" Value="15,0,15,0" />
-            <Setter Property="Width" Value="300" />
-            <Setter Property="Height" Value="36.6" />
+            <Setter Property="MinWidth" Value="150" />
+            <Setter Property="MinHeight" Value="36.6" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
         </Style>
 
@@ -115,9 +117,10 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-            <Setter Property="FontSize" Value="22"/>
-            <Setter Property="FontFamily" Value="Inter" />
-            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontFamily" Value="Inter"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Effect">
                 <Setter.Value>
@@ -197,5 +200,32 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <Style x:Key="CustomCalendarStyle" TargetType="Calendar">
+            <Setter Property="Background" Value="#A67B5B"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="CalendarDayButtonStyle">
+                <Setter.Value>
+                    <Style TargetType="CalendarDayButton">
+                        <Setter Property="Background" Value="White"/>
+                        <Setter Property="BorderBrush" Value="Gray"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="FontSize" Value="14"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="LightBlue"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                            <Trigger Property="IsToday" Value="True">
+                                <Setter Property="Background" Value="#8C5A3C"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </Application.Resources>
 </Application>

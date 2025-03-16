@@ -20,6 +20,10 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
+            <Frame x:Name="MarcoPrincipal"
+                   Grid.RowSpan="2"
+                   Panel.ZIndex="1"/>
+
             <Grid Grid.ColumnSpan="2"
                   Background="#FF432716"
                   MouseDown="Grid_MouseDown">
@@ -140,7 +144,8 @@
 
                     <Button Style="{StaticResource BotonMenu}"
                             Tag="/Imagenes/Iconos/Socio.png"
-                            HorizontalContentAlignment="Center">
+                            HorizontalContentAlignment="Center"
+                            Click="IrVentanaSocios_Click">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                 <TextBlock x:Name="TextoBoton"
@@ -179,7 +184,8 @@
 
                     <Button Style="{StaticResource BotonMenu}"
                             Tag="/Imagenes/Iconos/Libro.png"
-                            HorizontalContentAlignment="Center">
+                            HorizontalContentAlignment="Center"
+                            Click="IrVentanaLibro_Click">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                 <TextBlock x:Name="TextoBoton2"
@@ -218,7 +224,8 @@
 
                     <Button Style="{StaticResource BotonMenu}"
                             Tag="/Imagenes/Iconos/Devolucion.png"
-                            HorizontalContentAlignment="Center">
+                            HorizontalContentAlignment="Center" 
+                            Click="IrVentanaDevolucion_Click">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                 <TextBlock x:Name="TextoBoton3"

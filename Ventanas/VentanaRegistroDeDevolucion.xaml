@@ -1,0 +1,63 @@
+﻿<Window x:Class="ClienteBibliotecaElSaber.Ventanas.VentanaRegistroDeDevolucion"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClienteBibliotecaElSaber.Ventanas"
+        mc:Ignorable="d"
+        Title="VentanaRegistroDeDevolucion" Height="330" Width="630"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen">
+    <Border Background="#D2B48C"
+            CornerRadius="20"
+            Margin="15">
+        <Border.Effect>
+            <DropShadowEffect Color="Black"
+                              BlurRadius="15"
+                              ShadowDepth="5"
+                              Opacity="0.8"/>
+        </Border.Effect>
+        
+        <StackPanel Margin="30,20">
+            <TextBlock Text="Registro de devolución"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       Margin="0,0,0,10"/>
+            <CheckBox x:Name="Chb_Dañado"
+                      Content="Dañado"
+                      FontSize="20"
+                      VerticalContentAlignment="Center"/>
+            <StackPanel Orientation="Horizontal"
+                        Margin="0,10">
+                <TextBlock Text="Notas:"
+                           FontSize="20"/>
+                <TextBox Padding="10"
+                         Width="460"
+                         Height="100"
+                         TextWrapping="Wrap"
+                         AcceptsReturn="True"
+                         Margin="20,10"
+                         FontSize="20"
+                         VerticalContentAlignment="Top"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        Margin="0,5">
+                <Button Content="Aceptar"
+                        Margin="0,0,20,0"
+                        Width="150"
+                        Background="Green"
+                        Foreground="White" 
+                        Click="Aceptar_Click"/>
+                <Button Content="Cancelar"
+                        Width="150"
+                        Background="Red"
+                        Foreground="White" 
+                        Click="Cancelar_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Border>
+</Window>

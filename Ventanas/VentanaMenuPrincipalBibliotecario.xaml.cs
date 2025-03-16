@@ -37,5 +37,26 @@ namespace ClienteBibliotecaElSaber.Ventanas
                 DragMove();
             }
         }
+
+        private void IrVentanaSocios_Click(object sender, RoutedEventArgs e)
+        {
+            //VentanaDevolucion ventanaDevolucion = new VentanaDevolucion();
+            VentanaRegistroDeDevolucion ventanaRegistroDePrestamo = new VentanaRegistroDeDevolucion();
+            ventanaRegistroDePrestamo.Show();
+        }
+
+        private void IrVentanaLibro_Click(object sender, RoutedEventArgs e)
+        {
+            //VentanaDevolucion ventanaDevolucion = new VentanaDevolucion();
+            VentanaRegistroDePrestamo ventanaRegistroDePrestamo = new VentanaRegistroDePrestamo();
+            MarcoPrincipal.Navigate(ventanaRegistroDePrestamo);
+        }
+
+        private void IrVentanaDevolucion_Click(object sender, RoutedEventArgs e)
+        {
+            //VentanaDevolucion ventanaDevolucion = new VentanaDevolucion();
+            VentanaRegistroDePrestamo ventanaRegistroDePrestamo = new VentanaRegistroDePrestamo();
+            MarcoPrincipal.Navigate(ventanaRegistroDePrestamo);
+        }
     }
 }

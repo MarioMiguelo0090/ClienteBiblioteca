@@ -19,6 +19,10 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
+            <Frame x:Name="MarcoPrincipal"
+                   Grid.RowSpan="2"
+                   Panel.ZIndex="1"/>
+
             <Grid Grid.ColumnSpan="2"
               Background="#FF432716"
               MouseDown="Grid_MouseDown">

@@ -83,6 +83,7 @@
                        Foreground="Black"/>
 
                 <TextBox extensiones:TextBoxExtensiones.TextoSugerido="Usuario"
+                         Width="300"
                          Margin="0,35,0,0"/>
 
                 <PasswordBox extensiones:PasswordBoxExtensiones.TextoSugerido="Contraseña"
@@ -96,7 +97,9 @@
                            FontSize="16"
                            FontWeight="DemiBold"
                            TextDecorations="Underline"
-                           Foreground="#FF5F5F5F"/>
+                           Foreground="#FF5F5F5F" 
+                           Cursor="Hand"
+                           MouseLeftButtonDown="IrVentanaRecuperarContraseña"/>
 
                 <Button Content="Iniciar sesión"
                         Width="150"
