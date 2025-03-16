@@ -35,8 +35,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=3.0.4.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>packages\log4net.3.0.4\lib\net462\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,35 +62,118 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Connected Services\ServidorElSaber\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Extensiones\PasswordBoxExtensiones.cs" />
     <Compile Include="Extensiones\TextBoxExtensiones.cs" />
     <Compile Include="Utilidades\CadenaVisibilidadConverter.cs" />
     <Compile Include="Utilidades\ContraseñaHelper.cs" />
+    <Compile Include="Utilidades\CursoSobreImagenConverter.cs" />
+    <Compile Include="Utilidades\LoggerManager.cs" />
+    <Compile Include="Ventanas\VentanaBuscarLibro.xaml.cs">
+      <DependentUpon>VentanaBuscarLibro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\VentanaBuscarSocio.xaml.cs">
+      <DependentUpon>VentanaBuscarSocio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\VentanaDetallesLibro.xaml.cs">
+      <DependentUpon>VentanaDetallesLibro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\VentanaDetallesSocio.xaml.cs">
+      <DependentUpon>VentanaDetallesSocio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\VentanaDevolucion.xaml.cs">
+      <DependentUpon>VentanaDevolucion.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas\VentanaInicioDeSesion.xaml.cs">
       <DependentUpon>VentanaInicioDeSesion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\VentanaMenuPrincipalAdministrador.xaml.cs">
+      <DependentUpon>VentanaMenuPrincipalAdministrador.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ventanas\VentanaMenuPrincipalBibliotecario.xaml.cs">
       <DependentUpon>VentanaMenuPrincipalBibliotecario.xaml</DependentUpon>
     </Compile>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
+    <Compile Include="Ventanas\VentanaRecuperarContraseña.xaml.cs">
+      <DependentUpon>VentanaRecuperarContraseña.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas\VentanaRegistrarSocio.xaml.cs">
+      <DependentUpon>VentanaRegistrarSocio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\VentanaRegistroDeDevolucion.xaml.cs">
+      <DependentUpon>VentanaRegistroDeDevolucion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\VentanaRegistroDePrestamo.xaml.cs">
+      <DependentUpon>VentanaRegistroDePrestamo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\VentanaRegistroDeUsuario.xaml.cs">
+      <DependentUpon>VentanaRegistroDeUsuario.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\VentanaRegistroLibro.xaml.cs">
+      <DependentUpon>VentanaRegistroLibro.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Ventanas\VentanaBuscarLibro.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ventanas\VentanaBuscarSocio.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ventanas\VentanaDetallesLibro.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ventanas\VentanaDetallesSocio.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ventanas\VentanaDevolucion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Ventanas\VentanaInicioDeSesion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\VentanaMenuPrincipalAdministrador.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Ventanas\VentanaMenuPrincipalBibliotecario.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\VentanaRecuperarContraseña.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\VentanaRegistrarSocio.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ventanas\VentanaRegistroDeDevolucion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\VentanaRegistroDePrestamo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\VentanaRegistroDeUsuario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\VentanaRegistroLibro.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -106,6 +196,23 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Connected Services\ServidorElSaber\ClienteBibliotecaElSaber.ServidorElSaber.SocioBinding.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServidorElSaber\ElSaberServices.wsdl" />
+    <None Include="Connected Services\ServidorElSaber\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServidorElSaber\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServidorElSaber\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Resource Include="Fuentes\RePublicTRIAL-Condensed-BF676e0d99ce7bf.otf" />
+    <Resource Include="Fuentes\RePublicTRIAL-Medium-BF676e0d99d7ecc.otf" />
+    <Resource Include="Fuentes\RePublicTRIAL-Regular-BF676e0d99d81b6.otf" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -115,11 +222,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Fuentes\" />
-    <Folder Include="MVVM\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Imagenes\BuhoElSaber.png" />
+    <Resource Include="Imagenes\Iconos\Usuarios.png" />
+    <Resource Include="Imagenes\Iconos\UsuariosOscuro.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Imagenes\Iconos\Libro.png" />
@@ -136,6 +240,52 @@
   <ItemGroup>
     <Resource Include="Imagenes\Iconos\Devolucion.png" />
     <Resource Include="Imagenes\Iconos\DevolucionOscuro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ServidorElSaber\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServidorElSaber\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServidorElSaber\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServidorElSaber\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServidorElSaber\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Emblema.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\FondoLibros.png" />
+    <Resource Include="Imagenes\LibrosRecortado.png" />
+    <Resource Include="Imagenes\Logo Negativo Café.png" />
+    <Resource Include="Imagenes\Logo Negativo.png" />
+    <Resource Include="Imagenes\Logo Positivo Claro.png" />
+    <Resource Include="Imagenes\Logo Positivo.png" />
+    <Resource Include="Imagenes\Logo Principal.png" />
+    <Resource Include="Imagenes\Logo Secundario Negativo.png" />
+    <Resource Include="Imagenes\Logo Secundario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\BuhoSofia.png" />
+    <Resource Include="Imagenes\Emblema Negativo.png" />
+    <Resource Include="Imagenes\Iconos\calendario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\EstanteLibros.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Iconos\BuscarOscuro.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

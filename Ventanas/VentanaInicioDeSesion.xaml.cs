@@ -16,9 +16,14 @@ namespace ClienteBibliotecaElSaber.Ventanas
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void IniciarSesion_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Salir_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
@@ -36,9 +41,10 @@ namespace ClienteBibliotecaElSaber.Ventanas
             ContraseñaHelper.ActualizarVisibilidadTextoSugerido(passwordBox, textoSugerido);
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void IrVentanaRecuperarContraseña(object sender, MouseButtonEventArgs e)
         {
-            this.Close();
+            VentanaRecuperarContraseña ventanaRecuperarContraseña = new VentanaRecuperarContraseña();
+            ventanaRecuperarContraseña.ShowDialog();
         }
     }
 }
