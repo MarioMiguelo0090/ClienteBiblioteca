@@ -12,8 +12,8 @@
         Background="Transparent"
         WindowStartupLocation="CenterScreen">
     <Border Background="#D2B48C"
-        CornerRadius="20"
-        Margin="20">
+            CornerRadius="20"
+            Margin="20">
         <Border.Effect>
             <DropShadowEffect Color="Black"
                           BlurRadius="15"

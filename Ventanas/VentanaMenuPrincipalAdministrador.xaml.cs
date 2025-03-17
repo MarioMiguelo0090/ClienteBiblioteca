@@ -24,6 +24,12 @@ namespace ClienteBibliotecaElSaber.Ventanas
             InitializeComponent();
         }
 
+        private void IrVentanaRegistrarUsuario_Click(object sender, RoutedEventArgs e)
+        {
+            VentanaRegistroDeUsuario ventanaRegistroDeUsuario = new VentanaRegistroDeUsuario();
+            MarcoPrincipal.Navigate(ventanaRegistroDeUsuario);
+        }
+
         private void Salir_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

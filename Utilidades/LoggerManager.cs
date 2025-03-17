@@ -28,14 +28,14 @@ namespace ClienteBibliotecaElSaber.Utilidades
             Logger.Warn(mensaje);
         }
 
-        public static void Error(string mensaje, Exception ex = null)
+        public static void Error(string mensaje)
         {
-            Logger.Error(mensaje, ex);
+            Logger.Error(mensaje);
         }
 
-        public static void Fatal(string mensaje, Exception ex = null)
+        public static void Fatal(string mensaje)
         {
-            Logger.Fatal(mensaje, ex);
+            Logger.Fatal(mensaje);
         }
     }
 }
