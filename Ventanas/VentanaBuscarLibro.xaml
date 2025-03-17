@@ -66,13 +66,23 @@
                 Margin="18,144,790,406" Click="Buscar_Click"/>
 
         <ScrollViewer Margin="40,270,40,80">
-            <StackPanel x:Name="sp_Resultados" Orientation="Vertical" />
+            <StackPanel x:Name="sp_Resultados" Orientation="Vertical">
+                <Border Background="#FFF" Padding="10" Margin="5" CornerRadius="5">
+                    <StackPanel>
+                        <TextBlock Text="Título del Libro" FontSize="16" FontWeight="Bold"/>
+                        <TextBlock Text="Cantidad: " FontSize="14"/>
+                        <Button Content="Ver Detalles" Background="Blue" Foreground="White" Margin="5" Click="Detalles_Click"/>
+                        <Button Content="Editar" Background="Orange" Foreground="White" Margin="5" Click="Editar_Click"/>
+                        <Button Content="Eliminar" Background="Red" Foreground="White" Margin="5" Click="Eliminar_Click"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
         </ScrollViewer>
 
         <Button Content="Regresar"
                 Background="Red"
                 Foreground="White"
                 FontWeight="Bold"
-                Margin="384,525,384,29" Click="Regresar_Click"/>
+                Margin="384,525,384,29" Click="Regresar_Click" Cursor="Hand"/>
     </Grid>
 </Page>

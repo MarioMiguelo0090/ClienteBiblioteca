@@ -28,7 +28,15 @@
                 Margin="673,131,89,414" Click="Buscar_Click"/>
 
         <ScrollViewer Margin="40,270,40,80">
-            <StackPanel x:Name="sp_Resultados" />
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Nombre(s): " FontSize="16" FontWeight="Bold"/>
+                <TextBlock Text="Apellido Paterno: " FontSize="16"/>
+                <TextBlock Text="Apellido Materno: " FontSize="16"/>
+                <TextBlock Text="Número de Socio: " FontSize="16"/>
+                <Button Content="Ver Detalles" Background="Blue" Foreground="White" FontWeight="Bold" Margin="5" Click="Detalles_Click"/>
+                <Button Content="Editar" Background="Orange" Foreground="White" FontWeight="Bold" Margin="5" Click="Editar_Click"/>
+                <Button Content="Eliminar" Background="Red" Foreground="White" FontWeight="Bold" Margin="5" Click="Eliminar_Click"/>
+            </StackPanel>
         </ScrollViewer>
 
         <Button Content="Regresar"
