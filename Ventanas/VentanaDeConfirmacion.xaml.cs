@@ -10,24 +10,27 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ClienteBibliotecaElSaber.Ventanas
 {
     /// <summary>
-    /// Lógica de interacción para DetallesLibro.xaml
+    /// Lógica de interacción para VentanaDeConfirmacion.xaml
     /// </summary>
-    public partial class VentanaDetallesLibro : Window
+    public partial class VentanaDeConfirmacion : Window
     {
-        public VentanaDetallesLibro()
+        public VentanaDeConfirmacion()
         {
             InitializeComponent();
         }
-
-        private void Regresar_Click(object sender, RoutedEventArgs e)
+        private void Aceptar_Click(object sender, RoutedEventArgs e)
         {
+            this.DialogResult = true;
+        }
 
+        private void Cancelar_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = false;
         }
     }
 }

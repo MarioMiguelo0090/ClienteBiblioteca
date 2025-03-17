@@ -18,7 +18,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
     /// <summary>
     /// Lógica de interacción para VentanaRegistroLibro.xaml
     /// </summary>
-    public partial class VentanaRegistroLibro : Page
+    public partial class VentanaRegistroLibro : Window
     {
         public VentanaRegistroLibro()
         {
@@ -69,7 +69,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
 
         private void Cancelar_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack();
+
         }
     }
 }

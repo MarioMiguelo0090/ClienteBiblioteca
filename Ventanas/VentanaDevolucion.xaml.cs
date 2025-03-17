@@ -18,7 +18,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
     /// <summary>
     /// Lógica de interacción para VentanaDevolucion.xaml
     /// </summary>
-    public partial class VentanaDevolucion : Page
+    public partial class VentanaDevolucion : Window
     {
         public VentanaDevolucion()
         {

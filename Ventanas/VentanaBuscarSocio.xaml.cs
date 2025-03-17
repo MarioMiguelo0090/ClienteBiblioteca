@@ -7,7 +7,7 @@ using System.Windows.Navigation;
 
 namespace ClienteBibliotecaElSaber.Ventanas
 {
-    public partial class VentanaBuscarSocio : Page
+    public partial class VentanaBuscarSocio : Window
     {
         public VentanaBuscarSocio()
         {
@@ -16,7 +16,6 @@ namespace ClienteBibliotecaElSaber.Ventanas
 
         private void Buscar_Click(object sender, RoutedEventArgs e)
         {
-            sp_Resultados.Children.Clear();
 
         }
 
@@ -42,7 +41,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
 
         private void Regresar_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack();
+
         }
     }
 }

@@ -18,7 +18,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
     /// <summary>
     /// Lógica de interacción para VentanaDetallesSocio.xaml
     /// </summary>
-    public partial class VentanaDetallesSocio : Page
+    public partial class VentanaDetallesSocio : Window
     {
         public VentanaDetallesSocio()
         {
@@ -27,7 +27,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
 
         private void Regresar_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack();
+            
         }
     }
 }

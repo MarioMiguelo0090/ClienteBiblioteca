@@ -18,7 +18,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
     /// <summary>
     /// Lógica de interacción para VentanaRegistroDePrestamo.xaml
     /// </summary>
-    public partial class VentanaRegistroDePrestamo : Page
+    public partial class VentanaRegistroDePrestamo : Window
     {
         public VentanaRegistroDePrestamo()
         {

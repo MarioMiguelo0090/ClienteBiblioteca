@@ -70,14 +70,20 @@
     <Compile Include="Extensiones\PasswordBoxExtensiones.cs" />
     <Compile Include="Extensiones\TextBoxExtensiones.cs" />
     <Compile Include="Utilidades\CadenaVisibilidadConverter.cs" />
+    <Compile Include="Utilidades\Constantes.cs" />
     <Compile Include="Utilidades\ContraseñaHelper.cs" />
     <Compile Include="Utilidades\CursoSobreImagenConverter.cs" />
+    <Compile Include="Utilidades\GeneradorContrasenia.cs" />
     <Compile Include="Utilidades\LoggerManager.cs" />
+    <Compile Include="Utilidades\Validador.cs" />
     <Compile Include="Ventanas\VentanaBuscarLibro.xaml.cs">
       <DependentUpon>VentanaBuscarLibro.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ventanas\VentanaBuscarSocio.xaml.cs">
       <DependentUpon>VentanaBuscarSocio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\VentanaDeConfirmacion.xaml.cs">
+      <DependentUpon>VentanaDeConfirmacion.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ventanas\VentanaDetallesLibro.xaml.cs">
       <DependentUpon>VentanaDetallesLibro.xaml</DependentUpon>
@@ -87,6 +93,9 @@
     </Compile>
     <Compile Include="Ventanas\VentanaDevolucion.xaml.cs">
       <DependentUpon>VentanaDevolucion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\VentanaEmergente.xaml.cs">
+      <DependentUpon>VentanaEmergente.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ventanas\VentanaInicioDeSesion.xaml.cs">
       <DependentUpon>VentanaInicioDeSesion.xaml</DependentUpon>
@@ -127,6 +136,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Ventanas\VentanaDeConfirmacion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Ventanas\VentanaDetallesLibro.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -136,6 +149,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Ventanas\VentanaDevolucion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\VentanaEmergente.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -286,6 +303,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Imagenes\Iconos\BuscarOscuro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Iconos\Advertencia.png" />
+    <Resource Include="Imagenes\Iconos\Error.png" />
+    <Resource Include="Imagenes\Iconos\Exito.png" />
+    <Resource Include="Imagenes\Iconos\Info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Iconos\Pregunta.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
