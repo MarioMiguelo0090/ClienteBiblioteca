@@ -24,6 +24,12 @@ namespace ClienteBibliotecaElSaber.Ventanas
             InitializeComponent();
         }
 
+
+        private void Salir_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -32,9 +38,25 @@ namespace ClienteBibliotecaElSaber.Ventanas
             }
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void IrVentanaSocios_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            //VentanaDevolucion ventanaDevolucion = new VentanaDevolucion();
+            VentanaRegistroDeDevolucion ventanaRegistroDePrestamo = new VentanaRegistroDeDevolucion();
+            ventanaRegistroDePrestamo.Show();
+        }
+
+        private void IrVentanaLibro_Click(object sender, RoutedEventArgs e)
+        {
+            //VentanaDevolucion ventanaDevolucion = new VentanaDevolucion();
+            VentanaRegistroDePrestamo ventanaRegistroDePrestamo = new VentanaRegistroDePrestamo();
+            MarcoPrincipal.Navigate(ventanaRegistroDePrestamo);
+        }
+
+        private void IrVentanaDevolucion_Click(object sender, RoutedEventArgs e)
+        {
+            //VentanaDevolucion ventanaDevolucion = new VentanaDevolucion();
+            VentanaRegistroDePrestamo ventanaRegistroDePrestamo = new VentanaRegistroDePrestamo();
+            MarcoPrincipal.Navigate(ventanaRegistroDePrestamo);
         }
     }
 }

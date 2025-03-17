@@ -13,16 +13,26 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ClienteBibliotecaElSaber
+namespace ClienteBibliotecaElSaber.Ventanas
 {
     /// <summary>
-    /// Lógica de interacción para MainWindow.xaml
+    /// Lógica de interacción para VentanaRegistroDeUsuario.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class VentanaRegistroDeUsuario : Page
     {
-        public MainWindow()
+        public VentanaRegistroDeUsuario()
         {
             InitializeComponent();
+        }
+
+        private void Guardar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Cancelar_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
