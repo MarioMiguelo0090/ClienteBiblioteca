@@ -22,7 +22,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
     /// <summary>
     /// Lógica de interacción para VentanaRegistroDeUsuario.xaml
     /// </summary>
-    public partial class VentanaRegistroDeUsuario : Page
+    public partial class VentanaRegistroDeUsuario : Window
     {
         private string _opcionSeleccionada;
         public VentanaRegistroDeUsuario()
@@ -95,7 +95,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
 
         private void Cancelar_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Content = null;
+            
         }
     }
 }

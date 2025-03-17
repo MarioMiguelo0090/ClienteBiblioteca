@@ -75,6 +75,7 @@
     <Compile Include="Utilidades\CursoSobreImagenConverter.cs" />
     <Compile Include="Utilidades\GeneradorContrasenia.cs" />
     <Compile Include="Utilidades\LoggerManager.cs" />
+    <Compile Include="Utilidades\Validador.cs" />
     <Compile Include="Ventanas\VentanaBuscarLibro.xaml.cs">
       <DependentUpon>VentanaBuscarLibro.xaml</DependentUpon>
     </Compile>

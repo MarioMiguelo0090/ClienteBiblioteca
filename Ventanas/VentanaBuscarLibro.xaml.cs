@@ -7,7 +7,7 @@ using System.Windows.Media.Imaging;
 
 namespace ClienteBibliotecaElSaber.Ventanas
 {
-    public partial class VentanaBuscarLibro : Page
+    public partial class VentanaBuscarLibro : Window
     {
         public VentanaBuscarLibro()
         {
@@ -52,7 +52,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
 
         private void Regresar_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack();
+
         }
 
 
