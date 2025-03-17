@@ -129,10 +129,14 @@
                     <TextBlock Text="Tipo de usuario:"
                                FontSize="20"
                                FontWeight="DemiBold"/>
-                    <RadioButton Content="Administrador"
+                    <RadioButton GroupName="TipoUsuario"
+                                 Checked="RadioButton_Checked"
+                                 Content="Administrador"
                                  FontSize="20"
                                  VerticalContentAlignment="Center"/>
-                    <RadioButton Content="Bibliotecario"
+                    <RadioButton GroupName="TipoUsuario"
+                                 Checked="RadioButton_Checked"
+                                 Content="Bibliotecario"
                                  FontSize="20"
                                  VerticalContentAlignment="Center"/>
                 </StackPanel>
