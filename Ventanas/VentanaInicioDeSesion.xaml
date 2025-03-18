@@ -82,11 +82,13 @@
                        FontSize="48"
                        Foreground="Black"/>
 
-                <TextBox extensiones:TextBoxExtensiones.TextoSugerido="Usuario"
+                <TextBox x:Name="txtb_Correo"
+                         extensiones:TextBoxExtensiones.TextoSugerido="Correo electrónico"
                          Width="300"
                          Margin="0,35,0,0"/>
 
-                <PasswordBox extensiones:PasswordBoxExtensiones.TextoSugerido="Contraseña"
+                <PasswordBox x:Name="pb_Contrasenia"
+                             extensiones:PasswordBoxExtensiones.TextoSugerido="Contraseña"
                              PasswordChanged="PBCambioDeContraseña"
                              Margin="0,15,0,0"/>
 

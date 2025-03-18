@@ -19,9 +19,11 @@ namespace ClienteBibliotecaElSaber.Ventanas
     /// </summary>
     public partial class VentanaDeConfirmacion : Window
     {
-        public VentanaDeConfirmacion()
+        public VentanaDeConfirmacion(string titulo, string contenido)
         {
             InitializeComponent();
+            Txbl_Titulo.Text = titulo;
+            Txbl_Contenido.Text = contenido; 
         }
         private void Aceptar_Click(object sender, RoutedEventArgs e)
         {

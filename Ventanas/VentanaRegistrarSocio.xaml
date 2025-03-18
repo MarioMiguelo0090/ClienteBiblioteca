@@ -10,7 +10,7 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         Background="Transparent"
-        AllowsTransparency="True">  
+        AllowsTransparency="True">
     <DockPanel>
         <Grid Background="#F5F5DC">
 
@@ -20,46 +20,68 @@
                    FontSize="42"
                    FontWeight="Bold"
                    TextAlignment="Center"
-                   VerticalAlignment="Center"/> 
+                   VerticalAlignment="Center"/>
             </Border>
 
             <Image Source="/Imagenes/Logo Positivo.png"
                Width="144"
                HorizontalAlignment="Left"
-               Margin="770,23,0,410"/>  
+               Margin="770,23,0,410"/>
 
             <Label Content="Para registrar un socio por favor rellene los siguientes campos solicitados." FontWeight="Bold" FontSize="18" Margin="136,137,155,410"/>
 
-            <Label Content="Nombre(s): " FontWeight="Bold" FontSize="20" Margin="26,196,774,355"/>
-            <TextBox x:Name="txtb_Nombre" Width="Auto" Height="Auto" Margin="152,196,472,351"/>
+            <Label Content="Nombre(s): " FontWeight="Bold" FontSize="20" Margin="29,210,771,341"/>
+            <TextBox x:Name="txtb_Nombre" Width="Auto" Height="Auto" Margin="154,210,470,351" MaxLength="75"/>
 
-            <Label Content="Primer &#xD;&#xA;Apellido:" FontWeight="Bold" FontSize="20" Margin="462,183,334,337"/>
-            <TextBox x:Name="txtb_PrimerApellido" Width="Auto" Height="Auto" Margin="572,197,34,351"/>
+            <Label Content="Primer &#xD;&#xA;Apellido:" FontWeight="Bold" FontSize="20" Margin="467,196,329,324"/>
+            <TextBox x:Name="txtb_PrimerApellido" Width="Auto" Height="Auto" Margin="572,210,34,351" MaxLength="50"/>
 
-            <Label Content="Segundo &#xA;Apellido:" FontWeight="Bold" FontSize="20" Margin="39,247,751,268"/>
-            <TextBox x:Name="txtb_SegundoApellido" Width="Auto" Height="Auto" Margin="154,263,470,284"/>
+            <Label Content="Segundo &#xA;Apellido:" FontWeight="Bold" FontSize="20" Margin="44,251,766,264"/>
+            <TextBox x:Name="txtb_SegundoApellido" Width="Auto" Height="Auto" Margin="154,266,470,292" MaxLength="50"/>
 
-            <Label Content="Teléfono:" FontWeight="Bold" FontSize="20" Margin="463,261,348,286" RenderTransformOrigin="0.307,0.523"/>
-            <TextBox x:Name="txtb_Telefono" Width="Auto" Height="Auto" Margin="572,261,42,286"/>
+            <Label Content="Teléfono:" FontWeight="Bold" FontSize="20" Margin="467,268,344,279" RenderTransformOrigin="0.307,0.523"/>
+            <TextBox x:Name="txtb_Telefono" Width="Auto" Height="Auto" Margin="572,268,34,294" MaxLength="10"/>
 
-            <Label Content="Dirección:" FontWeight="Bold" FontSize="20" Margin="39,324,775,227" RenderTransformOrigin="0.494,0.669"/>
-            <TextBox x:Name="txtb_Direccion" Width="Auto" Height="Auto" Margin="154,324,469,223"/>
+            <Label Content="Dirección &#xA;(Calle):" FontWeight="Bold" FontSize="20" Margin="40,316,774,225" RenderTransformOrigin="0.494,0.669"/>
+            <TextBox x:Name="txtb_calle" Width="Auto" Height="Auto" Margin="155,326,34,237" MaxLength="40"/>
 
-            <Label Content="CP:" FontWeight="Bold" FontSize="20" Margin="518,319,320,223"/>
-            <TextBox x:Name="txtb_CodigoPostal" Width="Auto" Height="Auto" Margin="580,322,34,225"/>
+            <Label Content="Codigo &#xA;Postal:" FontWeight="Bold" FontSize="20" Margin="326,374,512,168"/>
+            <TextBox x:Name="txtb_CodigoPostal" Width="Auto" Height="Auto" Margin="411,384,357,178" MaxLength="5"/>
 
-            <Label Content="Fecha de &#xD;&#xA;Nacimiento:" FontWeight="Bold" FontSize="20" Margin="40,375,751,141"/>
-            <Grid Margin="171,394,491,156">
-                <Border Background="White" BorderBrush="Black" BorderThickness="1" CornerRadius="5" Height="30" Width="180"/>
-                <Image Source="/Imagenes/Iconos/calendario.png" Width="38" HorizontalAlignment="Left" Margin="220,3,0,3" RenderTransformOrigin="1.021,0.477"/>
-                <DatePicker x:Name="dp_FechaNacimiento" Width="180" Height="30" Background="Transparent" BorderThickness="0" FontSize="16" Opacity="0" Margin="25,10,29,10"/>
+            <Label Content="Número:" FontWeight="Bold" FontSize="20" Margin="40,390,774,161" RenderTransformOrigin="0.494,0.669"/>
+            <TextBox x:Name="txtb_numero" Width="Auto" Height="Auto" Margin="146,390,617,173" MaxLength="3"/>
+            
+            <Label Content="Ciudad:" FontWeight="Bold" FontSize="20" Margin="580,384,256,167" RenderTransformOrigin="0.494,0.669"/>
+            <TextBox x:Name="txtb_ciudad" Width="Auto" Height="Auto" Margin="664,385,34,178" MaxLength="50"/>
+
+            <Label Content="Fecha de &#xD;&#xA;Nacimiento:" FontWeight="Bold" FontSize="20" Margin="38,442,753,74"/>
+            <Grid Margin="167,454,495,96">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="49*"/>
+                </Grid.RowDefinitions>
+                <Border x:Name="brd_FechaDeNacimiento" Background="White" BorderBrush="Black" BorderThickness="1" CornerRadius="5" Height="30" Width="180" Margin="39,9,39,10" Grid.Row="1"/>
+                <Image Source="/Imagenes/Iconos/calendario.png" Width="38" HorizontalAlignment="Left" Margin="220,2,0,3" RenderTransformOrigin="1.021,0.477" Grid.Row="1"/>
+                <DatePicker x:Name="dp_FechaNacimiento" Height="30" Background="Transparent" BorderThickness="0" FontSize="16" Opacity="2" Margin="39,9,41,10" Grid.Row="1">
+                    <DatePicker.Resources>
+                        <Style TargetType="TextBox">
+                            <Setter Property="IsReadOnly" Value="True"/>
+                        </Style>
+                    </DatePicker.Resources>
+                </DatePicker>
             </Grid>
 
-            <Label Content="Fecha de &#xD;&#xA;Incripción:" FontWeight="Bold" FontSize="20" Margin="450,379,340,141"/>
-            <Grid Margin="580,394,66,156">
-                <Border Background="White" BorderBrush="Black" BorderThickness="1" CornerRadius="5" Height="30" Width="180"/>
+            <Label Content="Fecha de &#xD;&#xA;Incripción:" FontWeight="Bold" FontSize="20" Margin="467,443,323,77"/>
+            <Grid Margin="577,453,69,97">
+                <Border x:Name="brd_FechaDeInscripcion" Background="White" BorderBrush="Black" BorderThickness="1" CornerRadius="5" Height="30" Width="180"/>
                 <Image Source="/Imagenes/Iconos/calendario.png" Width="42" HorizontalAlignment="Left" Margin="232,6,0,6" RenderTransformOrigin="1.092,0.567"/>
-                <DatePicker x:Name="dp_FechaInscripcion" Height="30" Background="Transparent" BorderThickness="0" FontSize="16" Opacity="0" Margin="28,10,109,10"/>
+                <DatePicker x:Name="dp_FechaInscripcion" Height="30" Background="Transparent" BorderThickness="0" FontSize="16" Opacity="2" Margin="68,10,69,10">
+                    <DatePicker.Resources>
+                        <Style TargetType="TextBox">
+                            <Setter Property="IsReadOnly" Value="True"/>
+                        </Style>
+                    </DatePicker.Resources>
+                </DatePicker>
             </Grid>
 
             <Button Content="Registrar"
@@ -72,7 +94,7 @@
                 Background="Red"
                 Foreground="White"
                 FontWeight="Bold"
-                Margin="727,533,42,10" Click="Cancelar_Click"/> 
+                Margin="727,533,42,10" Click="Cancelar_Click"/>
         </Grid>
     </DockPanel>
 </Window>
