@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
+using ClienteBibliotecaElSaber.Utilidades;
+using System.ServiceModel;
+using ClienteBibliotecaElSaber.ServidorElSaber;
+using System.Runtime.CompilerServices;
+using System.Net.NetworkInformation;
 
 namespace ClienteBibliotecaElSaber.Ventanas
 {
@@ -24,50 +31,324 @@ namespace ClienteBibliotecaElSaber.Ventanas
         {
             InitializeComponent();
             CargarDatos();
+            dp_FechaLanzamiento.DisplayDateStart = new DateTime(1920, 1, 1);
+            dp_FechaLanzamiento.DisplayDateEnd = DateTime.Today;
+            dp_FechaLanzamiento.SelectedDate = DateTime.Today;
         }
 
-        private List<string> autores = new List<string> { "Autor 1", "Autor 2", "Autor 3" }; 
-        private List<string> editoriales = new List<string> { "Editorial A", "Editorial B", "Editorial C" };
+        private List<EditorialBinding> _editoriales;
+        private List<AutorBinding> _autores;
+        private List<GeneroBinding> _generos;
+        private string _rutaDestinoCliente;
+        private string _rutaArchivoOriginal;
 
         private void CargarDatos()
         {
-            cbAutor.ItemsSource = autores;
-            cbEditorial.ItemsSource = editoriales;
-        }
-
-        private void Autor_BusquedaPerdida(object sender, RoutedEventArgs e)
-        {
-            string nuevoAutor = cbAutor.Text.Trim();
-            if (!string.IsNullOrEmpty(nuevoAutor) && !autores.Contains(nuevoAutor))
+            try
             {
-                autores.Add(nuevoAutor);
-                cbAutor.ItemsSource = null; // Resetear ItemsSource
-                cbAutor.ItemsSource = autores;
+                LibroManejadorClient libroManejadorClient = new LibroManejadorClient();
+                _autores = libroManejadorClient.ObtenerListaDeAutores().ToList();
+                _editoriales = libroManejadorClient.ObtenerEditoriales().ToList();
+                _generos = libroManejadorClient.ObtenerListaDeGeneros().ToList();   
+                cbAutor.ItemsSource = _autores;
+                cbEditorial.ItemsSource = _editoriales;
+                cbGenero.ItemsSource = _generos;
+                cbGenero.DisplayMemberPath = "Genero";
+                cbAutor.DisplayMemberPath = "Autor";
+                cbEditorial.DisplayMemberPath = "Editorial";
+            }
+            catch (EndpointNotFoundException endpointNotFoundException)
+            {
+                LoggerManager.Error($"Excepción de EndpointNotFoundException: {endpointNotFoundException.Message}." +
+                                    $"\nTraza: {endpointNotFoundException.StackTrace}.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Punto de conexión fallido", "No se ha podido establecer conexión con el servidor.");
+                ventanaEmergente.ShowDialog();
+            }
+            catch (TimeoutException timeoutException)
+            {
+                LoggerManager.Error($"Excepción de TimeoutException: {timeoutException.Message}." +
+                                    $"\nTraza: {timeoutException.StackTrace}.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoInformacion, "Tiempo de espera agotado", "El tiempo de espera ha caducado, inténtelo de nuevo.");
+                ventanaEmergente.ShowDialog();
+            }
+            catch (CommunicationException communicationException)
+            {
+                LoggerManager.Error($"Excepción de CommunicationException: {communicationException.Message}." +
+                                    $"\nTraza: {communicationException.StackTrace}.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Comunicacion fallida", "La comunicacion con el servidor se ha perdido, por favor verifique su conexión a internet.");
+                ventanaEmergente.ShowDialog();
             }
         }
 
-        private void Editorial_BusquedaPerdida(object sender, RoutedEventArgs e)
-        {
-            string nuevaEditorial = cbEditorial.Text.Trim();
-            if (!string.IsNullOrEmpty(nuevaEditorial) && !editoriales.Contains(nuevaEditorial))
-            {
-                editoriales.Add(nuevaEditorial);
-                cbEditorial.ItemsSource = null; // Resetear ItemsSource
-                cbEditorial.ItemsSource = editoriales;
-            }
-        }
-
-        private void ComboBox_Genero(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
 
         private void Guardar_Click(object sender, RoutedEventArgs e)
         {
+            if (ValidarDatos())
+            {
+                int resultadoValidacion = ValidarExistenciaDeLibro();
+                if(resultadoValidacion == 0)
+                {
+                    RealizarRegistroDeLibro();
+                }
+                else if (resultadoValidacion >= 1)
+                {
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoInformacion, "Datos duplicados", "El ISBN que desea ingresar, ya ha sido registrado previamente o verifique que los datos sean correctos.");
+                    ventanaEmergente.ShowDialog();
+                }
+            }
+            else
+            {
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoInformacion, "Datos incorrectos", "Por favor verifique que los datos ingresados sean los correctos.");
+                ventanaEmergente.ShowDialog();
+            }
+        }
 
+        public void RealizarRegistroDeLibro()
+        {
+            try
+            {
+                int resultadoGuardadoImagen = GuardarImagenDeLibro();
+                if(resultadoGuardadoImagen != -1)
+                {
+                    LibroManejadorClient libroManejadorClient = new LibroManejadorClient();
+                    GeneroBinding genero = cbGenero.SelectedItem as GeneroBinding;
+                    AutorBinding autor = cbAutor.SelectedItem as AutorBinding;
+                    EditorialBinding editorial = cbEditorial.SelectedItem as EditorialBinding;
+                    string fechaSeleccionada = dp_FechaLanzamiento.SelectedDate.Value.ToString("yyyy");
+                    LibroBinding libroBinding = new LibroBinding()
+                    {
+                        Titulo = txb_titulo.Text,
+                        Isbn = txb_isbn.Text,
+                        FK_IdAutor = autor.IdAutor,
+                        FK_IdEditorial = editorial.IdEditorial,
+                        FK_IdGenero = genero.IdGenero,
+                        AnioDePublicacion = fechaSeleccionada,
+                        NumeroDePaginas = txb_noPaginas.Text,
+                        RutaPortada = _rutaDestinoCliente,
+                        Estado = "Disponible",
+                        CantidadEjemplares = int.Parse(txb_noEjemplares.Text)
+                    };
+                    int resultadoRegistro = libroManejadorClient.RegistrarNuevoLibro(libroBinding);
+                    if(resultadoRegistro == 1)
+                    {
+                        VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoExito, "Datos ingresados", "Los datos se han registradod de manera exitosa");
+                        ventanaEmergente.ShowDialog();
+                    }
+                    else
+                    {
+                        VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Error en la conexión a la base de datos", "Se ha perdido la conexión a la base de datos");
+                        ventanaEmergente.ShowDialog();
+                    }
+                }
+            }
+            catch (EndpointNotFoundException endpointNotFoundException)
+            {
+                LoggerManager.Error($"Excepción de EndpointNotFoundException: {endpointNotFoundException.Message}." +
+                                    $"\nTraza: {endpointNotFoundException.StackTrace}.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Punto de conexión fallido", "No se ha podido establecer conexión con el servidor.");
+                ventanaEmergente.ShowDialog();
+            }
+            catch (TimeoutException timeoutException)
+            {
+                LoggerManager.Error($"Excepción de TimeoutException: {timeoutException.Message}." +
+                                    $"\nTraza: {timeoutException.StackTrace}.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoInformacion, "Tiempo de espera agotado", "El tiempo de espera ha caducado, inténtelo de nuevo.");
+                ventanaEmergente.ShowDialog();
+            }
+            catch (CommunicationException communicationException)
+            {
+                LoggerManager.Error($"Excepción de CommunicationException: {communicationException.Message}." +
+                                    $"\nTraza: {communicationException.StackTrace}.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Comunicacion fallida", "La comunicacion con el servidor se ha perdido, por favor verifique su conexión a internet.");
+                ventanaEmergente.ShowDialog();
+            }
+        }
+
+        private int GuardarImagenDeLibro()
+        {
+            int resultadoGuardado = -1;
+            try
+            {
+                string directorioDestino = System.IO.Path.GetDirectoryName(_rutaDestinoCliente);
+                string extension = System.IO.Path.GetExtension(_rutaArchivoOriginal);
+                string nuevaRutaDestino = System.IO.Path.Combine(directorioDestino, txb_titulo.Text + extension);
+                File.Copy(_rutaArchivoOriginal, nuevaRutaDestino, true);
+                resultadoGuardado = 1;
+            }
+            catch(FileNotFoundException fileNotFoundException)
+            {
+                LoggerManager.Error($"Excepción de FileNotFoundException: {fileNotFoundException.Message}." +
+                                    $"\nTraza: {fileNotFoundException.StackTrace}.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Comunicacion fallida", "La comunicacion con el servidor se ha perdido, por favor verifique su conexión a internet.");
+                ventanaEmergente.ShowDialog();
+            }
+            catch(IOException ioException)
+            {
+                LoggerManager.Error($"Excepción de IOException: {ioException.Message}." +
+                                    $"\nTraza: {ioException.StackTrace}.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Comunicacion fallida", "La comunicacion con el servidor se ha perdido, por favor verifique su conexión a internet.");
+                ventanaEmergente.ShowDialog();
+            }
+            return resultadoGuardado;
+        }
+
+        private int ValidarExistenciaDeLibro()
+        {
+            int resultadoValidacion = -1;
+            try
+            {
+                LibroManejadorClient libroManejadorClient = new LibroManejadorClient();
+                int idLibro = libroManejadorClient.ObtenerIdLibroPorISBN(txb_isbn.Text);
+                if(idLibro == -1)
+                {
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente("Error", "Error en la conexión a la base de datos", "Se ha perdido la conexión a la base de datos");
+                    ventanaEmergente.ShowDialog();
+                }
+                else
+                {
+                    resultadoValidacion = idLibro;
+                }
+            }
+            catch (EndpointNotFoundException endpointNotFoundException)
+            {
+                LoggerManager.Error($"Excepción de EndpointNotFoundException: {endpointNotFoundException.Message}." +
+                                    $"\nTraza: {endpointNotFoundException.StackTrace}.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Punto de conexión fallido", "No se ha podido establecer conexión con el servidor.");
+                ventanaEmergente.ShowDialog();
+            }
+            catch (TimeoutException timeoutException)
+            {
+                LoggerManager.Error($"Excepción de TimeoutException: {timeoutException.Message}." +
+                                    $"\nTraza: {timeoutException.StackTrace}.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoInformacion, "Tiempo de espera agotado", "El tiempo de espera ha caducado, inténtelo de nuevo.");
+                ventanaEmergente.ShowDialog();
+            }
+            catch (CommunicationException communicationException)
+            {
+                LoggerManager.Error($"Excepción de CommunicationException: {communicationException.Message}." +
+                                    $"\nTraza: {communicationException.StackTrace}.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Comunicacion fallida", "La comunicacion con el servidor se ha perdido, por favor verifique su conexión a internet.");
+                ventanaEmergente.ShowDialog();
+            }
+            return resultadoValidacion;
+        }
+
+        private bool ValidarDatos()
+        {
+            AutorBinding autor = cbAutor.SelectedItem as AutorBinding;
+            EditorialBinding editorialBinding = cbEditorial.SelectedItem as EditorialBinding;
+            string fechaDePublicacion = dp_FechaLanzamiento.SelectedDate.Value.ToString("yyyy-MM-dd");
+            bool validarTitulo = Validador.ValidarTitulo(txb_titulo.Text);
+            bool validarNoPaginas = Validador.ValidarSoloNumeros(txb_noPaginas.Text);
+            bool validarNoEjemplares = Validador.ValidarSoloNumeros(txb_noEjemplares.Text);
+            bool validarIsbn = Validador.ValidarISBN(txb_isbn.Text);
+            bool validarFechaDePublicacion = Validador.ValidarFechas(fechaDePublicacion);
+            bool validarAutor = Validador.ValidarNombre(autor.Autor);
+            bool validarEditorial = Validador.ValidarNombre(editorialBinding.Editorial);
+
+            if (!validarAutor)
+            {
+                cbAutor.BorderBrush = Brushes.Red;
+            }
+
+            if (!validarEditorial)
+            {
+                cbEditorial.BorderBrush = Brushes.Red;
+            }
+
+            if (cbGenero.SelectedItem == null)
+            {
+                cbGenero.BorderBrush = Brushes.Red;
+            }
+
+            if (!validarTitulo)
+            {
+                txb_titulo.BorderBrush = Brushes.Red;
+            }
+
+            if (!validarNoPaginas)
+            {
+                txb_noPaginas.BorderBrush = Brushes.Red;    
+            }
+
+            if (!validarNoEjemplares)
+            {
+                txb_noEjemplares.BorderBrush = Brushes.Red;
+            }
+
+            if (!validarIsbn)
+            {
+                txb_isbn.BorderBrush = Brushes.Red;    
+            }
+
+            if (!validarFechaDePublicacion)
+            {
+                brd_dp.BorderBrush = Brushes.Red;   
+            }
+
+            if(txb_imagen.Text == " ")
+            {
+                txb_imagen.BorderBrush = Brushes.Red;
+            }
+
+            return validarAutor && validarEditorial && autor != null &&  editorialBinding != null && cbGenero.SelectedItem != null 
+                && validarNoPaginas && validarNoEjemplares && validarIsbn && validarFechaDePublicacion && txb_imagen.Text != " ";
         }
 
         private void Cancelar_Click(object sender, RoutedEventArgs e)
+        {
+            VentanaMenuPrincipalBibliotecario ventanaMenuPrincipalBibliotecario = new VentanaMenuPrincipalBibliotecario();
+            ventanaMenuPrincipalBibliotecario.ShowDialog();
+            this.Close();
+        }
+
+        private void AgregarEditorial_Click(object sender, RoutedEventArgs e)
+        {
+            VentanaRegistrarEditorial ventanaRegistrarEditorial = new VentanaRegistrarEditorial();
+            ventanaRegistrarEditorial.ShowDialog();
+        }
+
+        private void AgregarAutor_Click(object sender, RoutedEventArgs e)
+        {
+            VentanaRegistrarAutor ventanaRegistrarAutor = new VentanaRegistrarAutor();
+            ventanaRegistrarAutor.ShowDialog();
+        }
+
+        private void SubirImagen_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog()
+            {
+                Title = "Seleccionar imagen",
+                Filter = "Archivos de imagen|*.jpg;*.jpeg;*.png",
+                Multiselect = false,
+            };
+            if (openFileDialog.ShowDialog() == true)
+            {
+                _rutaArchivoOriginal = openFileDialog.FileName;
+                long tamanioArchivoImagen = new FileInfo(_rutaArchivoOriginal).Length;
+                double tamanioEnMb = tamanioArchivoImagen / (1024.0 * 1024.0);
+                if( tamanioEnMb > 2)
+                {
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoInformacion, "Imagen pesada", "Solo se admiten imagenes menores a 2MB");
+                    ventanaEmergente.ShowDialog();
+                }
+                else
+                {
+                    string nombreArchivo = System.IO.Path.GetFileName(_rutaArchivoOriginal);
+                    string directorioBase = AppDomain.CurrentDomain.BaseDirectory;
+                    string rutaDestino = System.IO.Path.GetFullPath(System.IO.Path.Combine(directorioBase, "../../"));
+                    string rutaFinalDestino = System.IO.Path.Combine(rutaDestino, "ImagenesLibro");
+                    if (!Directory.Exists(rutaDestino))
+                    {
+                        Directory.CreateDirectory(rutaDestino);
+                    }
+                    _rutaDestinoCliente = System.IO.Path.Combine(rutaFinalDestino, nombreArchivo);
+                    txb_imagen.Text = System.IO.Path.GetFileName(_rutaArchivoOriginal);
+                }
+            }
+        }
+
+        private void cbEditorial_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }

@@ -407,6 +407,9 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
         private System.DateTime fechaDeInscripcionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime fechaDeNacimientoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string nombreField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -466,6 +469,19 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
                 if ((this.fechaDeInscripcionField.Equals(value) != true)) {
                     this.fechaDeInscripcionField = value;
                     this.RaisePropertyChanged("fechaDeInscripcion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime fechaDeNacimiento {
+            get {
+                return this.fechaDeNacimientoField;
+            }
+            set {
+                if ((this.fechaDeNacimientoField.Equals(value) != true)) {
+                    this.fechaDeNacimientoField = value;
+                    this.RaisePropertyChanged("fechaDeNacimiento");
                 }
             }
         }
@@ -531,6 +547,660 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
                 if ((object.ReferenceEquals(this.telefonoField, value) != true)) {
                     this.telefonoField = value;
                     this.RaisePropertyChanged("telefono");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DevolucionBinding", Namespace="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos")]
+    [System.SerializableAttribute()]
+    public partial class DevolucionBinding : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EstadoLibroField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int FK_IdPrestamoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime FechaDevolucionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdDevolucionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NotaField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string EstadoLibro {
+            get {
+                return this.EstadoLibroField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EstadoLibroField, value) != true)) {
+                    this.EstadoLibroField = value;
+                    this.RaisePropertyChanged("EstadoLibro");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int FK_IdPrestamo {
+            get {
+                return this.FK_IdPrestamoField;
+            }
+            set {
+                if ((this.FK_IdPrestamoField.Equals(value) != true)) {
+                    this.FK_IdPrestamoField = value;
+                    this.RaisePropertyChanged("FK_IdPrestamo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime FechaDevolucion {
+            get {
+                return this.FechaDevolucionField;
+            }
+            set {
+                if ((this.FechaDevolucionField.Equals(value) != true)) {
+                    this.FechaDevolucionField = value;
+                    this.RaisePropertyChanged("FechaDevolucion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdDevolucion {
+            get {
+                return this.IdDevolucionField;
+            }
+            set {
+                if ((this.IdDevolucionField.Equals(value) != true)) {
+                    this.IdDevolucionField = value;
+                    this.RaisePropertyChanged("IdDevolucion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Nota {
+            get {
+                return this.NotaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NotaField, value) != true)) {
+                    this.NotaField = value;
+                    this.RaisePropertyChanged("Nota");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="LibroBinding", Namespace="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos")]
+    [System.SerializableAttribute()]
+    public partial class LibroBinding : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AnioDePublicacionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CantidadEjemplaresField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CantidadEjemplaresPrestadosField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EstadoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int FK_IdAutorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int FK_IdEditorialField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int FK_IdGeneroField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IsbnField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NumeroDePaginasField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RutaPortadaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TituloField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string AnioDePublicacion {
+            get {
+                return this.AnioDePublicacionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AnioDePublicacionField, value) != true)) {
+                    this.AnioDePublicacionField = value;
+                    this.RaisePropertyChanged("AnioDePublicacion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CantidadEjemplares {
+            get {
+                return this.CantidadEjemplaresField;
+            }
+            set {
+                if ((this.CantidadEjemplaresField.Equals(value) != true)) {
+                    this.CantidadEjemplaresField = value;
+                    this.RaisePropertyChanged("CantidadEjemplares");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CantidadEjemplaresPrestados {
+            get {
+                return this.CantidadEjemplaresPrestadosField;
+            }
+            set {
+                if ((this.CantidadEjemplaresPrestadosField.Equals(value) != true)) {
+                    this.CantidadEjemplaresPrestadosField = value;
+                    this.RaisePropertyChanged("CantidadEjemplaresPrestados");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Estado {
+            get {
+                return this.EstadoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EstadoField, value) != true)) {
+                    this.EstadoField = value;
+                    this.RaisePropertyChanged("Estado");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int FK_IdAutor {
+            get {
+                return this.FK_IdAutorField;
+            }
+            set {
+                if ((this.FK_IdAutorField.Equals(value) != true)) {
+                    this.FK_IdAutorField = value;
+                    this.RaisePropertyChanged("FK_IdAutor");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int FK_IdEditorial {
+            get {
+                return this.FK_IdEditorialField;
+            }
+            set {
+                if ((this.FK_IdEditorialField.Equals(value) != true)) {
+                    this.FK_IdEditorialField = value;
+                    this.RaisePropertyChanged("FK_IdEditorial");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int FK_IdGenero {
+            get {
+                return this.FK_IdGeneroField;
+            }
+            set {
+                if ((this.FK_IdGeneroField.Equals(value) != true)) {
+                    this.FK_IdGeneroField = value;
+                    this.RaisePropertyChanged("FK_IdGenero");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Isbn {
+            get {
+                return this.IsbnField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IsbnField, value) != true)) {
+                    this.IsbnField = value;
+                    this.RaisePropertyChanged("Isbn");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string NumeroDePaginas {
+            get {
+                return this.NumeroDePaginasField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NumeroDePaginasField, value) != true)) {
+                    this.NumeroDePaginasField = value;
+                    this.RaisePropertyChanged("NumeroDePaginas");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RutaPortada {
+            get {
+                return this.RutaPortadaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RutaPortadaField, value) != true)) {
+                    this.RutaPortadaField = value;
+                    this.RaisePropertyChanged("RutaPortada");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Titulo {
+            get {
+                return this.TituloField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TituloField, value) != true)) {
+                    this.TituloField = value;
+                    this.RaisePropertyChanged("Titulo");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GeneroBinding", Namespace="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos")]
+    [System.SerializableAttribute()]
+    public partial class GeneroBinding : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string GeneroField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdGeneroField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Genero {
+            get {
+                return this.GeneroField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.GeneroField, value) != true)) {
+                    this.GeneroField = value;
+                    this.RaisePropertyChanged("Genero");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdGenero {
+            get {
+                return this.IdGeneroField;
+            }
+            set {
+                if ((this.IdGeneroField.Equals(value) != true)) {
+                    this.IdGeneroField = value;
+                    this.RaisePropertyChanged("IdGenero");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="AutorBinding", Namespace="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos")]
+    [System.SerializableAttribute()]
+    public partial class AutorBinding : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AutorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdAutorField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Autor {
+            get {
+                return this.AutorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AutorField, value) != true)) {
+                    this.AutorField = value;
+                    this.RaisePropertyChanged("Autor");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdAutor {
+            get {
+                return this.IdAutorField;
+            }
+            set {
+                if ((this.IdAutorField.Equals(value) != true)) {
+                    this.IdAutorField = value;
+                    this.RaisePropertyChanged("IdAutor");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EditorialBinding", Namespace="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos")]
+    [System.SerializableAttribute()]
+    public partial class EditorialBinding : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EditorialField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdEditorialField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Editorial {
+            get {
+                return this.EditorialField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EditorialField, value) != true)) {
+                    this.EditorialField = value;
+                    this.RaisePropertyChanged("Editorial");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdEditorial {
+            get {
+                return this.IdEditorialField;
+            }
+            set {
+                if ((this.IdEditorialField.Equals(value) != true)) {
+                    this.IdEditorialField = value;
+                    this.RaisePropertyChanged("IdEditorial");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PrestamoBinding", Namespace="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos")]
+    [System.SerializableAttribute()]
+    public partial class PrestamoBinding : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EstadoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int FK_IdLibroField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int FK_IdSocioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int FK_IdUsuarioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime FechaDevolucionEsperadaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime FechaPrestamoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdPrestamoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NotaField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Estado {
+            get {
+                return this.EstadoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EstadoField, value) != true)) {
+                    this.EstadoField = value;
+                    this.RaisePropertyChanged("Estado");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int FK_IdLibro {
+            get {
+                return this.FK_IdLibroField;
+            }
+            set {
+                if ((this.FK_IdLibroField.Equals(value) != true)) {
+                    this.FK_IdLibroField = value;
+                    this.RaisePropertyChanged("FK_IdLibro");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int FK_IdSocio {
+            get {
+                return this.FK_IdSocioField;
+            }
+            set {
+                if ((this.FK_IdSocioField.Equals(value) != true)) {
+                    this.FK_IdSocioField = value;
+                    this.RaisePropertyChanged("FK_IdSocio");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int FK_IdUsuario {
+            get {
+                return this.FK_IdUsuarioField;
+            }
+            set {
+                if ((this.FK_IdUsuarioField.Equals(value) != true)) {
+                    this.FK_IdUsuarioField = value;
+                    this.RaisePropertyChanged("FK_IdUsuario");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime FechaDevolucionEsperada {
+            get {
+                return this.FechaDevolucionEsperadaField;
+            }
+            set {
+                if ((this.FechaDevolucionEsperadaField.Equals(value) != true)) {
+                    this.FechaDevolucionEsperadaField = value;
+                    this.RaisePropertyChanged("FechaDevolucionEsperada");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime FechaPrestamo {
+            get {
+                return this.FechaPrestamoField;
+            }
+            set {
+                if ((this.FechaPrestamoField.Equals(value) != true)) {
+                    this.FechaPrestamoField = value;
+                    this.RaisePropertyChanged("FechaPrestamo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdPrestamo {
+            get {
+                return this.IdPrestamoField;
+            }
+            set {
+                if ((this.IdPrestamoField.Equals(value) != true)) {
+                    this.IdPrestamoField = value;
+                    this.RaisePropertyChanged("IdPrestamo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Nota {
+            get {
+                return this.NotaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NotaField, value) != true)) {
+                    this.NotaField = value;
+                    this.RaisePropertyChanged("Nota");
                 }
             }
         }
@@ -903,6 +1573,335 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
         
         public System.Threading.Tasks.Task<ClienteBibliotecaElSaber.ServidorElSaber.SocioBinding> ConsultarSocioPorNumeroDeSocioAsync(int numeroDeSocio) {
             return base.Channel.ConsultarSocioPorNumeroDeSocioAsync(numeroDeSocio);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServidorElSaber.IDevolucionManejador")]
+    public interface IDevolucionManejador {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDevolucionManejador/RegistrarNuevaDevolucion", ReplyAction="http://tempuri.org/IDevolucionManejador/RegistrarNuevaDevolucionResponse")]
+        int RegistrarNuevaDevolucion(ClienteBibliotecaElSaber.ServidorElSaber.DevolucionBinding devolucion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDevolucionManejador/RegistrarNuevaDevolucion", ReplyAction="http://tempuri.org/IDevolucionManejador/RegistrarNuevaDevolucionResponse")]
+        System.Threading.Tasks.Task<int> RegistrarNuevaDevolucionAsync(ClienteBibliotecaElSaber.ServidorElSaber.DevolucionBinding devolucion);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IDevolucionManejadorChannel : ClienteBibliotecaElSaber.ServidorElSaber.IDevolucionManejador, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class DevolucionManejadorClient : System.ServiceModel.ClientBase<ClienteBibliotecaElSaber.ServidorElSaber.IDevolucionManejador>, ClienteBibliotecaElSaber.ServidorElSaber.IDevolucionManejador {
+        
+        public DevolucionManejadorClient() {
+        }
+        
+        public DevolucionManejadorClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public DevolucionManejadorClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public DevolucionManejadorClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public DevolucionManejadorClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public int RegistrarNuevaDevolucion(ClienteBibliotecaElSaber.ServidorElSaber.DevolucionBinding devolucion) {
+            return base.Channel.RegistrarNuevaDevolucion(devolucion);
+        }
+        
+        public System.Threading.Tasks.Task<int> RegistrarNuevaDevolucionAsync(ClienteBibliotecaElSaber.ServidorElSaber.DevolucionBinding devolucion) {
+            return base.Channel.RegistrarNuevaDevolucionAsync(devolucion);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServidorElSaber.ILibroManejador")]
+    public interface ILibroManejador {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/ObtenerIdLibroPorISBN", ReplyAction="http://tempuri.org/ILibroManejador/ObtenerIdLibroPorISBNResponse")]
+        int ObtenerIdLibroPorISBN(string isbn);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/ObtenerIdLibroPorISBN", ReplyAction="http://tempuri.org/ILibroManejador/ObtenerIdLibroPorISBNResponse")]
+        System.Threading.Tasks.Task<int> ObtenerIdLibroPorISBNAsync(string isbn);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/ValidarExistenciaDeLibros", ReplyAction="http://tempuri.org/ILibroManejador/ValidarExistenciaDeLibrosResponse")]
+        int ValidarExistenciaDeLibros();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/ValidarExistenciaDeLibros", ReplyAction="http://tempuri.org/ILibroManejador/ValidarExistenciaDeLibrosResponse")]
+        System.Threading.Tasks.Task<int> ValidarExistenciaDeLibrosAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/RegistrarNuevoLibro", ReplyAction="http://tempuri.org/ILibroManejador/RegistrarNuevoLibroResponse")]
+        int RegistrarNuevoLibro(ClienteBibliotecaElSaber.ServidorElSaber.LibroBinding libro);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/RegistrarNuevoLibro", ReplyAction="http://tempuri.org/ILibroManejador/RegistrarNuevoLibroResponse")]
+        System.Threading.Tasks.Task<int> RegistrarNuevoLibroAsync(ClienteBibliotecaElSaber.ServidorElSaber.LibroBinding libro);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/AumentarCantidadLibrosDisponiblesPorISBN", ReplyAction="http://tempuri.org/ILibroManejador/AumentarCantidadLibrosDisponiblesPorISBNRespon" +
+            "se")]
+        int AumentarCantidadLibrosDisponiblesPorISBN(string isbn);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/AumentarCantidadLibrosDisponiblesPorISBN", ReplyAction="http://tempuri.org/ILibroManejador/AumentarCantidadLibrosDisponiblesPorISBNRespon" +
+            "se")]
+        System.Threading.Tasks.Task<int> AumentarCantidadLibrosDisponiblesPorISBNAsync(string isbn);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/ObtenerLibrosPorTitulo", ReplyAction="http://tempuri.org/ILibroManejador/ObtenerLibrosPorTituloResponse")]
+        ClienteBibliotecaElSaber.ServidorElSaber.LibroBinding[] ObtenerLibrosPorTitulo(string titulo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/ObtenerLibrosPorTitulo", ReplyAction="http://tempuri.org/ILibroManejador/ObtenerLibrosPorTituloResponse")]
+        System.Threading.Tasks.Task<ClienteBibliotecaElSaber.ServidorElSaber.LibroBinding[]> ObtenerLibrosPorTituloAsync(string titulo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/ObtenerLibrosPorISBN", ReplyAction="http://tempuri.org/ILibroManejador/ObtenerLibrosPorISBNResponse")]
+        ClienteBibliotecaElSaber.ServidorElSaber.LibroBinding[] ObtenerLibrosPorISBN(string isbn);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/ObtenerLibrosPorISBN", ReplyAction="http://tempuri.org/ILibroManejador/ObtenerLibrosPorISBNResponse")]
+        System.Threading.Tasks.Task<ClienteBibliotecaElSaber.ServidorElSaber.LibroBinding[]> ObtenerLibrosPorISBNAsync(string isbn);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/ObtenerLibrosPorIdAutor", ReplyAction="http://tempuri.org/ILibroManejador/ObtenerLibrosPorIdAutorResponse")]
+        ClienteBibliotecaElSaber.ServidorElSaber.LibroBinding[] ObtenerLibrosPorIdAutor(int idAutor);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/ObtenerLibrosPorIdAutor", ReplyAction="http://tempuri.org/ILibroManejador/ObtenerLibrosPorIdAutorResponse")]
+        System.Threading.Tasks.Task<ClienteBibliotecaElSaber.ServidorElSaber.LibroBinding[]> ObtenerLibrosPorIdAutorAsync(int idAutor);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/ObtenerLibrosPorIdGenero", ReplyAction="http://tempuri.org/ILibroManejador/ObtenerLibrosPorIdGeneroResponse")]
+        ClienteBibliotecaElSaber.ServidorElSaber.LibroBinding[] ObtenerLibrosPorIdGenero(int idGenero);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/ObtenerLibrosPorIdGenero", ReplyAction="http://tempuri.org/ILibroManejador/ObtenerLibrosPorIdGeneroResponse")]
+        System.Threading.Tasks.Task<ClienteBibliotecaElSaber.ServidorElSaber.LibroBinding[]> ObtenerLibrosPorIdGeneroAsync(int idGenero);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/ObtenerListaDeGeneros", ReplyAction="http://tempuri.org/ILibroManejador/ObtenerListaDeGenerosResponse")]
+        ClienteBibliotecaElSaber.ServidorElSaber.GeneroBinding[] ObtenerListaDeGeneros();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/ObtenerListaDeGeneros", ReplyAction="http://tempuri.org/ILibroManejador/ObtenerListaDeGenerosResponse")]
+        System.Threading.Tasks.Task<ClienteBibliotecaElSaber.ServidorElSaber.GeneroBinding[]> ObtenerListaDeGenerosAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/ObtenerListaDeAutores", ReplyAction="http://tempuri.org/ILibroManejador/ObtenerListaDeAutoresResponse")]
+        ClienteBibliotecaElSaber.ServidorElSaber.AutorBinding[] ObtenerListaDeAutores();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/ObtenerListaDeAutores", ReplyAction="http://tempuri.org/ILibroManejador/ObtenerListaDeAutoresResponse")]
+        System.Threading.Tasks.Task<ClienteBibliotecaElSaber.ServidorElSaber.AutorBinding[]> ObtenerListaDeAutoresAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/ObtenerEditoriales", ReplyAction="http://tempuri.org/ILibroManejador/ObtenerEditorialesResponse")]
+        ClienteBibliotecaElSaber.ServidorElSaber.EditorialBinding[] ObtenerEditoriales();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/ObtenerEditoriales", ReplyAction="http://tempuri.org/ILibroManejador/ObtenerEditorialesResponse")]
+        System.Threading.Tasks.Task<ClienteBibliotecaElSaber.ServidorElSaber.EditorialBinding[]> ObtenerEditorialesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/RegistrarNuevoAutor", ReplyAction="http://tempuri.org/ILibroManejador/RegistrarNuevoAutorResponse")]
+        int RegistrarNuevoAutor(string autor);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/RegistrarNuevoAutor", ReplyAction="http://tempuri.org/ILibroManejador/RegistrarNuevoAutorResponse")]
+        System.Threading.Tasks.Task<int> RegistrarNuevoAutorAsync(string autor);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/RegistrarNuevaEditorial", ReplyAction="http://tempuri.org/ILibroManejador/RegistrarNuevaEditorialResponse")]
+        int RegistrarNuevaEditorial(string editorial);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/RegistrarNuevaEditorial", ReplyAction="http://tempuri.org/ILibroManejador/RegistrarNuevaEditorialResponse")]
+        System.Threading.Tasks.Task<int> RegistrarNuevaEditorialAsync(string editorial);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface ILibroManejadorChannel : ClienteBibliotecaElSaber.ServidorElSaber.ILibroManejador, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class LibroManejadorClient : System.ServiceModel.ClientBase<ClienteBibliotecaElSaber.ServidorElSaber.ILibroManejador>, ClienteBibliotecaElSaber.ServidorElSaber.ILibroManejador {
+        
+        public LibroManejadorClient() {
+        }
+        
+        public LibroManejadorClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public LibroManejadorClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public LibroManejadorClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public LibroManejadorClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public int ObtenerIdLibroPorISBN(string isbn) {
+            return base.Channel.ObtenerIdLibroPorISBN(isbn);
+        }
+        
+        public System.Threading.Tasks.Task<int> ObtenerIdLibroPorISBNAsync(string isbn) {
+            return base.Channel.ObtenerIdLibroPorISBNAsync(isbn);
+        }
+        
+        public int ValidarExistenciaDeLibros() {
+            return base.Channel.ValidarExistenciaDeLibros();
+        }
+        
+        public System.Threading.Tasks.Task<int> ValidarExistenciaDeLibrosAsync() {
+            return base.Channel.ValidarExistenciaDeLibrosAsync();
+        }
+        
+        public int RegistrarNuevoLibro(ClienteBibliotecaElSaber.ServidorElSaber.LibroBinding libro) {
+            return base.Channel.RegistrarNuevoLibro(libro);
+        }
+        
+        public System.Threading.Tasks.Task<int> RegistrarNuevoLibroAsync(ClienteBibliotecaElSaber.ServidorElSaber.LibroBinding libro) {
+            return base.Channel.RegistrarNuevoLibroAsync(libro);
+        }
+        
+        public int AumentarCantidadLibrosDisponiblesPorISBN(string isbn) {
+            return base.Channel.AumentarCantidadLibrosDisponiblesPorISBN(isbn);
+        }
+        
+        public System.Threading.Tasks.Task<int> AumentarCantidadLibrosDisponiblesPorISBNAsync(string isbn) {
+            return base.Channel.AumentarCantidadLibrosDisponiblesPorISBNAsync(isbn);
+        }
+        
+        public ClienteBibliotecaElSaber.ServidorElSaber.LibroBinding[] ObtenerLibrosPorTitulo(string titulo) {
+            return base.Channel.ObtenerLibrosPorTitulo(titulo);
+        }
+        
+        public System.Threading.Tasks.Task<ClienteBibliotecaElSaber.ServidorElSaber.LibroBinding[]> ObtenerLibrosPorTituloAsync(string titulo) {
+            return base.Channel.ObtenerLibrosPorTituloAsync(titulo);
+        }
+        
+        public ClienteBibliotecaElSaber.ServidorElSaber.LibroBinding[] ObtenerLibrosPorISBN(string isbn) {
+            return base.Channel.ObtenerLibrosPorISBN(isbn);
+        }
+        
+        public System.Threading.Tasks.Task<ClienteBibliotecaElSaber.ServidorElSaber.LibroBinding[]> ObtenerLibrosPorISBNAsync(string isbn) {
+            return base.Channel.ObtenerLibrosPorISBNAsync(isbn);
+        }
+        
+        public ClienteBibliotecaElSaber.ServidorElSaber.LibroBinding[] ObtenerLibrosPorIdAutor(int idAutor) {
+            return base.Channel.ObtenerLibrosPorIdAutor(idAutor);
+        }
+        
+        public System.Threading.Tasks.Task<ClienteBibliotecaElSaber.ServidorElSaber.LibroBinding[]> ObtenerLibrosPorIdAutorAsync(int idAutor) {
+            return base.Channel.ObtenerLibrosPorIdAutorAsync(idAutor);
+        }
+        
+        public ClienteBibliotecaElSaber.ServidorElSaber.LibroBinding[] ObtenerLibrosPorIdGenero(int idGenero) {
+            return base.Channel.ObtenerLibrosPorIdGenero(idGenero);
+        }
+        
+        public System.Threading.Tasks.Task<ClienteBibliotecaElSaber.ServidorElSaber.LibroBinding[]> ObtenerLibrosPorIdGeneroAsync(int idGenero) {
+            return base.Channel.ObtenerLibrosPorIdGeneroAsync(idGenero);
+        }
+        
+        public ClienteBibliotecaElSaber.ServidorElSaber.GeneroBinding[] ObtenerListaDeGeneros() {
+            return base.Channel.ObtenerListaDeGeneros();
+        }
+        
+        public System.Threading.Tasks.Task<ClienteBibliotecaElSaber.ServidorElSaber.GeneroBinding[]> ObtenerListaDeGenerosAsync() {
+            return base.Channel.ObtenerListaDeGenerosAsync();
+        }
+        
+        public ClienteBibliotecaElSaber.ServidorElSaber.AutorBinding[] ObtenerListaDeAutores() {
+            return base.Channel.ObtenerListaDeAutores();
+        }
+        
+        public System.Threading.Tasks.Task<ClienteBibliotecaElSaber.ServidorElSaber.AutorBinding[]> ObtenerListaDeAutoresAsync() {
+            return base.Channel.ObtenerListaDeAutoresAsync();
+        }
+        
+        public ClienteBibliotecaElSaber.ServidorElSaber.EditorialBinding[] ObtenerEditoriales() {
+            return base.Channel.ObtenerEditoriales();
+        }
+        
+        public System.Threading.Tasks.Task<ClienteBibliotecaElSaber.ServidorElSaber.EditorialBinding[]> ObtenerEditorialesAsync() {
+            return base.Channel.ObtenerEditorialesAsync();
+        }
+        
+        public int RegistrarNuevoAutor(string autor) {
+            return base.Channel.RegistrarNuevoAutor(autor);
+        }
+        
+        public System.Threading.Tasks.Task<int> RegistrarNuevoAutorAsync(string autor) {
+            return base.Channel.RegistrarNuevoAutorAsync(autor);
+        }
+        
+        public int RegistrarNuevaEditorial(string editorial) {
+            return base.Channel.RegistrarNuevaEditorial(editorial);
+        }
+        
+        public System.Threading.Tasks.Task<int> RegistrarNuevaEditorialAsync(string editorial) {
+            return base.Channel.RegistrarNuevaEditorialAsync(editorial);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServidorElSaber.IPrestamoManejador")]
+    public interface IPrestamoManejador {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrestamoManejador/RegistrarNuevoPrestamo", ReplyAction="http://tempuri.org/IPrestamoManejador/RegistrarNuevoPrestamoResponse")]
+        int RegistrarNuevoPrestamo(ClienteBibliotecaElSaber.ServidorElSaber.PrestamoBinding prestamo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrestamoManejador/RegistrarNuevoPrestamo", ReplyAction="http://tempuri.org/IPrestamoManejador/RegistrarNuevoPrestamoResponse")]
+        System.Threading.Tasks.Task<int> RegistrarNuevoPrestamoAsync(ClienteBibliotecaElSaber.ServidorElSaber.PrestamoBinding prestamo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrestamoManejador/ObtenerPrestamosActivosYVencidosPorNumeroSo" +
+            "cio", ReplyAction="http://tempuri.org/IPrestamoManejador/ObtenerPrestamosActivosYVencidosPorNumeroSo" +
+            "cioResponse")]
+        ClienteBibliotecaElSaber.ServidorElSaber.PrestamoBinding[] ObtenerPrestamosActivosYVencidosPorNumeroSocio(int numeroSocio);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrestamoManejador/ObtenerPrestamosActivosYVencidosPorNumeroSo" +
+            "cio", ReplyAction="http://tempuri.org/IPrestamoManejador/ObtenerPrestamosActivosYVencidosPorNumeroSo" +
+            "cioResponse")]
+        System.Threading.Tasks.Task<ClienteBibliotecaElSaber.ServidorElSaber.PrestamoBinding[]> ObtenerPrestamosActivosYVencidosPorNumeroSocioAsync(int numeroSocio);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IPrestamoManejadorChannel : ClienteBibliotecaElSaber.ServidorElSaber.IPrestamoManejador, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class PrestamoManejadorClient : System.ServiceModel.ClientBase<ClienteBibliotecaElSaber.ServidorElSaber.IPrestamoManejador>, ClienteBibliotecaElSaber.ServidorElSaber.IPrestamoManejador {
+        
+        public PrestamoManejadorClient() {
+        }
+        
+        public PrestamoManejadorClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public PrestamoManejadorClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public PrestamoManejadorClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public PrestamoManejadorClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public int RegistrarNuevoPrestamo(ClienteBibliotecaElSaber.ServidorElSaber.PrestamoBinding prestamo) {
+            return base.Channel.RegistrarNuevoPrestamo(prestamo);
+        }
+        
+        public System.Threading.Tasks.Task<int> RegistrarNuevoPrestamoAsync(ClienteBibliotecaElSaber.ServidorElSaber.PrestamoBinding prestamo) {
+            return base.Channel.RegistrarNuevoPrestamoAsync(prestamo);
+        }
+        
+        public ClienteBibliotecaElSaber.ServidorElSaber.PrestamoBinding[] ObtenerPrestamosActivosYVencidosPorNumeroSocio(int numeroSocio) {
+            return base.Channel.ObtenerPrestamosActivosYVencidosPorNumeroSocio(numeroSocio);
+        }
+        
+        public System.Threading.Tasks.Task<ClienteBibliotecaElSaber.ServidorElSaber.PrestamoBinding[]> ObtenerPrestamosActivosYVencidosPorNumeroSocioAsync(int numeroSocio) {
+            return base.Channel.ObtenerPrestamosActivosYVencidosPorNumeroSocioAsync(numeroSocio);
         }
     }
 }
