@@ -18,7 +18,12 @@ namespace ClienteBibliotecaElSaber.Utilidades
         private static Regex _direccionRegex = new Regex(@"^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9,.'""\-\s]+$", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
         private static Regex _codigoPostalRegex = new Regex(@"^[0-9]{5}$", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
         private static Regex _fechaRegex = new Regex(@"^(19|20)\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
-        private static Regex _numeroCalleRegex = new Regex(@"^[0-9]{3}$", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
+        private static Regex _numeroCasaRegex = new Regex(@"^[0-9]{1,3}$", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
+        private static Regex _numeroSocioRegex = new Regex(@"^[0-9]{1,5}$", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
+        private static Regex _editorialRegex = new Regex(@"^[a-zA-Z0-9\s]+$", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
+        private static Regex _TituloLibroRegex = new Regex(@"^[\p{L}0-9\s'’""“”\-:;.,!?()]+$",RegexOptions.None, TimeSpan.FromMilliseconds(1000));
+        private static Regex _isbnRegex = new Regex(@"^[0-9]{13}$", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
+        private static Regex _soloNumerosRegex = new Regex(@"^[0-9]{1,5}$", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
 
         public static bool ValidarPatronRegex(string datos,Regex regex)
         {
@@ -125,6 +130,17 @@ namespace ClienteBibliotecaElSaber.Utilidades
             return esValido;
         }
 
+        public static bool ValidarNumeroCasa(string numero)
+        {
+            bool esValido = false;
+            string numeroCasaLimpio = Regex.Replace(numero.Trim(), @"\s+", " ", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
+            if (!string.IsNullOrWhiteSpace(numeroCasaLimpio) && ValidarPatronRegex(numeroCasaLimpio, _numeroCasaRegex))
+            {
+                esValido = true;
+            }
+            return esValido;
+        }
+
         public static bool ValidarCalle(string calle)
         {
             bool esValido = false;
@@ -135,12 +151,67 @@ namespace ClienteBibliotecaElSaber.Utilidades
             }
             return esValido;
         }
-
-        public static bool ValidarNumeroCalle(string numeroCalle)
+  
+        public static bool ValidarNumeroDeSocio(string numero)
         {
             bool esValido = false;
-            string numeroCalleLimpio = Regex.Replace(numeroCalle.Trim(), @"\s+", " ", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
-            if (!string.IsNullOrWhiteSpace(numeroCalleLimpio) && ValidarPatronRegex(numeroCalleLimpio, _numeroCalleRegex))
+            string numeroSocioLimpio = Regex.Replace(numero.Trim(), @"\s+", " ", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
+            if (!string.IsNullOrWhiteSpace(numeroSocioLimpio) && ValidarPatronRegex(numeroSocioLimpio, _numeroSocioRegex))
+            {
+                esValido = true;
+            }
+            return esValido;
+        }
+
+        public static bool ValidarNombreCiudad(string ciudad)
+        {
+            bool esValido = false;
+            string ciudadLimpio = Regex.Replace(ciudad.Trim(), @"\s+", " ", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
+            if (!string.IsNullOrWhiteSpace(ciudadLimpio) && ValidarPatronRegex(ciudadLimpio, _nombreRegex))
+            {
+                esValido = true;
+            }
+            return esValido;
+        }
+
+        public static bool ValidarNombreEditorial(string editorial)
+        {
+            bool esValido = false;
+            string editorialLimpio = Regex.Replace(editorial.Trim(), @"\s+", " ", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
+            if (!string.IsNullOrWhiteSpace(editorialLimpio) && ValidarPatronRegex(editorialLimpio, _editorialRegex))
+            {
+                esValido = true;
+            }
+            return esValido;
+        }
+
+        public static bool ValidarTitulo(string titulo)
+        {
+            bool esValido = false;
+            string tituloLimpio = Regex.Replace(titulo.Trim(), @"\s+", " ", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
+            if (!string.IsNullOrWhiteSpace(tituloLimpio) && ValidarPatronRegex(tituloLimpio, _TituloLibroRegex))
+            {
+                esValido = true;
+            }
+            return esValido;
+        }
+
+        public static bool ValidarISBN(string isbn)
+        {
+            bool esValido = false;
+            string isbnLimpio = Regex.Replace(isbn.Trim(), @"\s+", " ", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
+            if (!string.IsNullOrWhiteSpace(isbnLimpio) && ValidarPatronRegex(isbnLimpio, _isbnRegex))
+            {
+                esValido = true;
+            }
+            return esValido;
+        }
+
+        public static bool ValidarSoloNumeros(string numeros)
+        {
+            bool esValido = false;
+            string numerosLimpio = Regex.Replace(numeros.Trim(), @"\s+", " ", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
+            if (!string.IsNullOrWhiteSpace(numerosLimpio) && ValidarPatronRegex(numerosLimpio, _soloNumerosRegex))
             {
                 esValido = true;
             }

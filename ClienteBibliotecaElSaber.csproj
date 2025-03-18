@@ -80,6 +80,9 @@
     <Compile Include="Utilidades\LoggerManager.cs" />
     <Compile Include="Utilidades\ManejadorDeCitasAutores.cs" />
     <Compile Include="Utilidades\Validador.cs" />
+    <Compile Include="Ventanas\VentanaRegistrarEditorial.xaml.cs">
+      <DependentUpon>VentanaRegistrarEditorial.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas\VentanaBuscarLibro.xaml.cs">
       <DependentUpon>VentanaBuscarLibro.xaml</DependentUpon>
     </Compile>
@@ -132,6 +135,13 @@
     <Compile Include="Ventanas\VentanaRegistroLibro.xaml.cs">
       <DependentUpon>VentanaRegistroLibro.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas\VentanaRegistrarAutor.xaml.cs">
+      <DependentUpon>VentanaRegistrarAutor.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Ventanas\VentanaRegistrarEditorial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Ventanas\VentanaBuscarLibro.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -195,6 +205,10 @@
     <Page Include="Ventanas\VentanaRegistroLibro.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ventanas\VentanaRegistrarAutor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -338,6 +352,7 @@
   <ItemGroup>
     <Resource Include="Imagenes\Iconos\CerrarSesion.png" />
     <Resource Include="Imagenes\Iconos\CerrarSesionOscuro.png" />
+    <Folder Include="ImagenesLibro\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

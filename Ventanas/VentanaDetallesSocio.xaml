@@ -14,7 +14,7 @@
 
     <Grid Background="#F5F5DC">
         <Border Background="#FF432716" CornerRadius="10" Padding="10" Margin="136,39,155,463">
-            <TextBlock Text="Detalles del Libro"
+            <TextBlock Text="Detalles del socio"
            Foreground="White"
            FontSize="42"
            FontWeight="Bold"
@@ -29,43 +29,43 @@
 
         <Label Content="Nombre(s):" FontWeight="Bold" FontSize="20" Margin="40,223,760,345"/>
         <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" Margin="160,223,482,345">
-            <TextBlock x:Name="txb_Titulo" FontSize="18" Margin="118,216,158,-186" />
+            <TextBlock x:Name="txb_nombre" FontSize="18" IsEnabled="False"/>
         </Border>
 
 
         <Label Content="Primer &#xD;&#xA;Apellido:" FontWeight="Bold" FontSize="20" Margin="477,210,335,327"/>
         <Border BorderBrush="Black" BorderThickness="1" Margin="590,224,42,341">
-            <TextBlock x:Name="txb_Autor" FontSize="18"/>
+            <TextBlock x:Name="txb_primerApellido" FontSize="18" IsEnabled="False"/>
         </Border>
 
         <Label Content="Segundo &#xD;&#xA;Apellido:" FontWeight="Bold" FontSize="20" Margin="40,269,778,257" RenderTransformOrigin="0.531,0.273"/>
         <Border BorderBrush="Black" BorderThickness="1" Margin="160,288,482,278">
-            <TextBlock x:Name="txb_Genero" FontSize="18" Margin="1,1,-1,-1"/>
+            <TextBlock x:Name="txb_segundoApellido" FontSize="18" Margin="1,1,-1,-1" IsEnabled="False"/>
         </Border>
 
         <Label Content="Teléfono:" FontWeight="Bold" FontSize="20" Margin="476,287,335,278"/>
         <Border BorderBrush="Black" BorderThickness="1" Margin="590,287,42,278">
-            <TextBlock x:Name="txb_Edicion" FontSize="18"/>
+            <TextBlock x:Name="txb_telefono" FontSize="18" IsEnabled="False"/>
         </Border>
 
         <Label Content="Dirección:" FontWeight="Bold" FontSize="20" Margin="40,341,765,220"/>
         <Border BorderBrush="Black" BorderThickness="1" Margin="160,340,482,221">
-            <TextBlock x:Name="txb_Folio" FontSize="18"/>
+            <TextBlock x:Name="txb_direccion" FontSize="18" IsEnabled="False"/>
         </Border>
 
         <Label Content="CP:" FontWeight="Bold" FontSize="20" Margin="478,343,336,223"/>
         <Border BorderBrush="Black" BorderThickness="1" Margin="590,343,42,223">
-            <TextBlock x:Name="txb_Clasificacion" FontSize="18"/>
+            <TextBlock x:Name="txb_codigoPostal" FontSize="18" IsEnabled="False"/>
         </Border>
 
         <Label Content="Fecha de &#xD;&#xA;Nacimiento:" FontWeight="Bold" FontSize="20" Margin="40,392,751,138"/>
         <Border BorderBrush="Black" BorderThickness="1" Margin="174,402,524,148">
-            <TextBlock x:Name="txb_FechaPublicacion" FontSize="18" Margin="-1,0,-1,-3"/>
+            <TextBlock x:Name="txb_fechaDeNacimiento" FontSize="18" Margin="-1,0,-1,-3" IsEnabled="False"/>
         </Border>
 
         <Label Content="Fecha de &#xD;&#xA;Inscripción:" FontWeight="Bold" FontSize="20" Margin="477,388,314,142"/>
         <Border BorderBrush="Black" BorderThickness="1" Margin="656,398,42,152">
-            <TextBlock x:Name="txb_FechaInscripcion" FontSize="18" Margin="-1,0,9,-3"/>
+            <TextBlock x:Name="txb_fechaDeInscripcion" FontSize="18" Margin="-1,0,9,-3" IsEnabled="False"/>
         </Border>
 
         <Button Content="Regresar"
