@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClienteBibliotecaElSaber.Utilidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,15 +20,22 @@ namespace ClienteBibliotecaElSaber.Ventanas
     /// </summary>
     public partial class VentanaMenuPrincipalAdministrador : Window
     {
+        private readonly ManejadorDeCitasAutores manejadorDeCitasAutores;
         public VentanaMenuPrincipalAdministrador()
         {
             InitializeComponent();
+            manejadorDeCitasAutores = new ManejadorDeCitasAutores();
+            var (autor, cita) = manejadorDeCitasAutores.ObtenerCitaAleatoria();
+            Txbl_Autor.Text = autor.ToString();
+            Txbl_Cita.Text = cita.ToString();
         }
 
         private void IrVentanaRegistrarUsuario_Click(object sender, RoutedEventArgs e)
         {
+            this.Hide();
             VentanaRegistroDeUsuario ventanaRegistroDeUsuario = new VentanaRegistroDeUsuario();
-            MarcoPrincipal.Navigate(ventanaRegistroDeUsuario);
+            ventanaRegistroDeUsuario.ShowDialog();
+            this.Show();
         }
 
         private void Salir_Click(object sender, RoutedEventArgs e)
@@ -41,6 +49,13 @@ namespace ClienteBibliotecaElSaber.Ventanas
             {
                 DragMove();
             }
+        }
+
+        private void CerrarSesion_Click(object sender, RoutedEventArgs e)
+        {
+            VentanaInicioDeSesion ventanaInicioDeSesion = new VentanaInicioDeSesion();
+            ventanaInicioDeSesion.Show();
+            this.Close();
         }
     }
 }

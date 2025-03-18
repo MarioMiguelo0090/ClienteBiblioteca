@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClienteBibliotecaElSaber.Utilidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,14 @@ namespace ClienteBibliotecaElSaber.Ventanas
     /// </summary>
     public partial class VentanaMenuPrincipalBibliotecario : Window
     {
+        private readonly ManejadorDeCitasAutores manejadorDeCitasAutores;
         public VentanaMenuPrincipalBibliotecario()
         {
             InitializeComponent();
+            manejadorDeCitasAutores = new ManejadorDeCitasAutores();
+            var (autor, cita) = manejadorDeCitasAutores.ObtenerCitaAleatoria();
+            Txbl_Autor.Text = autor.ToString();
+            Txbl_Cita.Text = cita.ToString();
         }
 
 
@@ -40,23 +46,29 @@ namespace ClienteBibliotecaElSaber.Ventanas
 
         private void IrVentanaSocios_Click(object sender, RoutedEventArgs e)
         {
-            //VentanaDevolucion ventanaDevolucion = new VentanaDevolucion();
             VentanaRegistroDeDevolucion ventanaRegistroDePrestamo = new VentanaRegistroDeDevolucion();
             ventanaRegistroDePrestamo.Show();
         }
 
         private void IrVentanaLibro_Click(object sender, RoutedEventArgs e)
         {
-            //VentanaDevolucion ventanaDevolucion = new VentanaDevolucion();
             VentanaRegistroDePrestamo ventanaRegistroDePrestamo = new VentanaRegistroDePrestamo();
-            MarcoPrincipal.Navigate(ventanaRegistroDePrestamo);
+            ventanaRegistroDePrestamo.Show();
+            this.Hide();
         }
 
         private void IrVentanaDevolucion_Click(object sender, RoutedEventArgs e)
         {
-            //VentanaDevolucion ventanaDevolucion = new VentanaDevolucion();
             VentanaRegistroDePrestamo ventanaRegistroDePrestamo = new VentanaRegistroDePrestamo();
-            MarcoPrincipal.Navigate(ventanaRegistroDePrestamo);
+            ventanaRegistroDePrestamo.Show();
+            this.Hide();
+        }
+
+        private void CerrarSesion_Click(object sender, RoutedEventArgs e)
+        {
+            VentanaInicioDeSesion ventanaInicioDeSesion = new VentanaInicioDeSesion();
+            ventanaInicioDeSesion.Show();
+            this.Close();
         }
     }
 }

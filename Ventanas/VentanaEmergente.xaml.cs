@@ -26,6 +26,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
             ColocarTipoDeIcono(tipoVentanaEmergente);
             Txbl_Titulo.Text = titulo;
             Txbl_Contenido.Text = contenido;
+            this.ShowDialog();
         }
 
         private void Aceptar_Click(object sender, RoutedEventArgs e)

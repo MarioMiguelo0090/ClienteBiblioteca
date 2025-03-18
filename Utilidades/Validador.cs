@@ -18,6 +18,7 @@ namespace ClienteBibliotecaElSaber.Utilidades
         private static Regex _direccionRegex = new Regex(@"^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9,.'""\-\s]+$", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
         private static Regex _codigoPostalRegex = new Regex(@"^[0-9]{5}$", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
         private static Regex _fechaRegex = new Regex(@"^(19|20)\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
+        private static Regex _numeroCalleRegex = new Regex(@"^[0-9]{3}$", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
 
         public static bool ValidarPatronRegex(string datos,Regex regex)
         {
@@ -107,6 +108,39 @@ namespace ClienteBibliotecaElSaber.Utilidades
         {
             bool esValido = false;
             if (!string.IsNullOrWhiteSpace(fecha) && ValidarPatronRegex(fecha, _fechaRegex))
+            {
+                esValido = true;
+            }
+            return esValido;
+        }
+
+        public static bool ValidarCorreo(string correo)
+        {
+            bool esValido = false;
+            string correoLimpio = Regex.Replace(correo.Trim(), @"\s+", " ", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
+            if (!string.IsNullOrWhiteSpace(correoLimpio) && ValidarPatronRegex(correoLimpio, _correoRegex))
+            {
+                esValido = true;
+            }
+            return esValido;
+        }
+
+        public static bool ValidarCalle(string calle)
+        {
+            bool esValido = false;
+            string calleLimpio = Regex.Replace(calle.Trim(), @"\s+", " ", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
+            if (!string.IsNullOrWhiteSpace(calleLimpio) && ValidarPatronRegex(calleLimpio, _direccionRegex))
+            {
+                esValido = true;
+            }
+            return esValido;
+        }
+
+        public static bool ValidarNumeroCalle(string numeroCalle)
+        {
+            bool esValido = false;
+            string numeroCalleLimpio = Regex.Replace(numeroCalle.Trim(), @"\s+", " ", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
+            if (!string.IsNullOrWhiteSpace(numeroCalleLimpio) && ValidarPatronRegex(numeroCalleLimpio, _numeroCalleRegex))
             {
                 esValido = true;
             }

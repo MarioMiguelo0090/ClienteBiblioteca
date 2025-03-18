@@ -5,7 +5,7 @@
              xmlns:extensiones="clr-namespace:ClienteBibliotecaElSaber.Extensiones"
              xmlns:utilidades="clr-namespace:ClienteBibliotecaElSaber.Utilidades"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
-             StartupUri="/Ventanas/VentanaMenuPrincipalAdministrador.xaml">
+             StartupUri="/Ventanas/VentanaInicioDeSesion.xaml">
     <Application.Resources>
         <utilidades:CadenaVisibilidadConverter x:Key="CadenaVisibilidadConverter"/>
         <utilidades:CursoSobreImagenConverter x:Key="CursoSobreImagenConverter"/>
@@ -16,6 +16,8 @@
                     <ControlTemplate TargetType="TextBox">
                         <Border Background="White" 
                                 CornerRadius="20"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="2"
                                 HorizontalAlignment="Stretch"
                                 VerticalAlignment="Stretch">
                             <Grid>
@@ -48,13 +50,17 @@
             <Setter Property="MinWidth" Value="150" />
             <Setter Property="MinHeight" Value="36.6" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="BorderBrush" Value="Transparent"/>
         </Style>
 
         <Style TargetType="PasswordBox">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="PasswordBox">
-                        <Border Background="White" CornerRadius="20">
+                        <Border Background="White" 
+                                CornerRadius="20"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="2">
                             <Grid>
                                 <TextBlock x:Name="TextoSugerido"
                                    Text="{Binding RelativeSource={RelativeSource AncestorType=PasswordBox}, 
@@ -84,6 +90,7 @@
             <Setter Property="Width" Value="300" />
             <Setter Property="Height" Value="36.6" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="BorderBrush" Value="Transparent"/>
         </Style>
 
         <Style TargetType="Button">
@@ -225,6 +232,14 @@
                     </Style>
                 </Setter.Value>
             </Setter>
+        </Style>
+
+        <Style TargetType="DatePicker">
+            <Style.Resources>
+                <Style TargetType="DatePickerTextBox">
+                    <Setter Property="IsEnabled" Value="False"/>
+                </Style>
+            </Style.Resources>
         </Style>
     </Application.Resources>
 </Application>
