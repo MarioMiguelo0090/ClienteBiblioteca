@@ -13,6 +13,9 @@ namespace ClienteBibliotecaElSaber.Utilidades
         public const string TipoAdvertencia = "Advertencia";
         public const string TipoExito = "Exito";
         public const string TipoConfirmarAccion = "Confirmacion";
+        public const int ErrorEnLaOperacion = -1;
+        public const int OperacionExitosa = 1;
+        public const int ValorPorDefecto = 0;
         public const string TituloExcepcionServidor = "Error de servidor";
         public const string ContenidoExcepcionServidor = "El servidor esta inactivo. Por favor inténtelo más tarde.";
         public const string TituloExcepcionBD = "Error de base de datos";

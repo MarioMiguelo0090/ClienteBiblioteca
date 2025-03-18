@@ -1,4 +1,5 @@
 ﻿<Window x:Class="ClienteBibliotecaElSaber.Ventanas.VentanaRegistroDePrestamo"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -42,6 +43,7 @@
                     <TextBox x:Name="Txb_ISBN" 
                              KeyDown="Buscar_Enter"
                              Width="570"
+                             MaxLength="13"
                              Margin="0,15"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal"
@@ -54,6 +56,7 @@
                     <TextBox x:Name="Txb_NumeroSocio" 
                              KeyDown="Buscar_Enter"
                              Width="460"
+                             MaxLength="6"
                              Margin="0,15"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal"
@@ -70,6 +73,7 @@
                              Padding="15"
                              Width="565"
                              Height="100"
+                             MaxLength="255"
                              Margin="0,15"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal"
@@ -81,6 +85,7 @@
                            VerticalAlignment="Center"/>
                     <DatePicker x:Name="dp_FechaDevolucion"
                                 FontSize="16"
+                                DisplayDateStart="{x:Static sys:DateTime.Today}"
                                 CalendarStyle="{StaticResource CustomCalendarStyle}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal"
@@ -90,13 +95,17 @@
                             Width="150"
                             Margin="20,0"
                             Background="Green"
-                            Foreground="White" Click="Aceptar_Click"/>
+                            Foreground="White" Click="RegistrarPrestamo"/>
                     <Button Content="Cancelar"
                             Width="150"
                             Background="Red"
-                            Foreground="White" Click="Cancelar_Click"/>
+                            Foreground="White" Click="CancelarRegistro"/>
                 </StackPanel>
             </StackPanel>
         </StackPanel>
     </Grid>
 </Window>
+    
+
+    
+    

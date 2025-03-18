@@ -1,6 +1,9 @@
-﻿using System;
+﻿using ClienteBibliotecaElSaber.ServidorElSaber;
+using ClienteBibliotecaElSaber.Utilidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -31,14 +34,262 @@ namespace ClienteBibliotecaElSaber.Ventanas
             }
         }
 
-        private void Aceptar_Click(object sender, RoutedEventArgs e)
+        private void RegistrarPrestamo(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine(dp_FechaDevolucion.SelectedDate.Value.ToString("yyyy-MM-dd"));
+            ReestablecerColores();
+            if (ValidarInformacion())
+            {
+                int idLibro = ObtenerIdLibro();
+                if (idLibro > Constantes.ValorPorDefecto)
+                {
+                    if (ValidarDisponibilidad(idLibro))
+                    {
+                        if (ValidarSocioSinPrestamosVencidos()) 
+                        {
+                            PrestamoBinding prestamo = new PrestamoBinding();
+                            prestamo = ObtenerDatosPrestamo();
+                            PrestamoManejadorClient prestamoManejador = new PrestamoManejadorClient();
+                            int resultadoRegistro = Constantes.ValorPorDefecto;
+                            try
+                            {
+                                resultadoRegistro = prestamoManejador.RegistrarNuevoPrestamo(prestamo);
+                            }
+                            catch (TimeoutException excepcionTiempo)
+                            {
+                                LoggerManager.Error($"Excepcion: {excepcionTiempo.Message}\nTraza {excepcionTiempo.StackTrace}");
+                                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError
+                                    , "Error de servidor", "El servidor esta inactivo. Por favor, inténtelo más tarde.");
+                                ventanaEmergente.ShowDialog();                                
+                            }
+                            catch (EndpointNotFoundException puntoNoEncontrado)
+                            {
+                                LoggerManager.Error($"Excepcion: {puntoNoEncontrado.Message}\nTraza {puntoNoEncontrado.StackTrace}");
+                                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError
+                                    , "Error de servidor", "El servidor esta inactivo. Por favor, inténtelo más tarde.");
+                                ventanaEmergente.ShowDialog();                                
+                            }
+                            catch (CommunicationException excecpionComunicacion)
+                            {
+                                LoggerManager.Error($"Excepcion: {excecpionComunicacion.Message}\nTraza {excecpionComunicacion.StackTrace}");
+                                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError
+                                    , "Error de servidor", "El servidor esta inactivo. Por favor, inténtelo más tarde.");
+                                ventanaEmergente.ShowDialog();                                
+                            }
+                            switch (resultadoRegistro)
+                            {
+                                case Constantes.ErrorEnLaOperacion:
+                                    VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError
+                                    , "Error de base de datos", "No se ha podido establecer conexión a la base de datos, inténtelo de nuevo más tarde.");
+                                    ventanaEmergente.ShowDialog();
+                                    break;
+                                case Constantes.OperacionExitosa:
+                                    VentanaEmergente ventanaEmergenteExito = new VentanaEmergente(Constantes.TipoExito,
+                                    "Registro de préstamo exitoso", $"El préstamo ha sido registrado de manera exitosa, la fecha de devolución es {Dp_FechaDevolucion.Text}");
+                                    ventanaEmergenteExito.ShowDialog();
+                                    break;
+                            }
+                        }                        
+                    }
+                }
+                else if (idLibro == Constantes.ErrorEnLaOperacion)
+                {
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError
+                    , "Error de base de datos", "No se ha podido establecer conexión a la base de datos, inténtelo de nuevo más tarde.");
+                    ventanaEmergente.ShowDialog();
+                }
+                RegresaVentanaMenuPrincipal();
+            }
+            else 
+            {
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoAdvertencia
+                    , "Datos inválidos", "Los datos que ha ingresado no son los correctos, inténtelo de nuevo.");
+                ventanaEmergente.ShowDialog();
+            }                                       
         }
 
-        private void Cancelar_Click(object sender, RoutedEventArgs e)
+        private void CancelarRegistro(object sender, RoutedEventArgs e)
         {
+            RegresaVentanaMenuPrincipal();
+        }
 
+        private bool ValidarInformacion()
+        {
+            bool validacionIsbn = ValidadorPrestamo.ValidarISBN(Txb_ISBN.Text);
+            bool validacionNumeroSocio = ValidadorPrestamo.ValidarNumeroSocio(Txb_NumeroSocio.Text);
+            bool validacionNotas = ValidadorPrestamo.ValidarNotas(Txb_Notas.Text);
+            if (!validacionIsbn)
+            {
+                Txb_ISBN.BorderBrush = Brushes.Red;
+            }
+            if (!validacionNumeroSocio) 
+            {
+                Txb_NumeroSocio.BorderBrush= Brushes.Red;
+            }
+            if (!validacionNotas) 
+            {
+                Txb_Notas.BorderBrush= Brushes.Red;
+            }
+            return validacionIsbn && validacionNumeroSocio && validacionNotas;
+        }
+
+        private PrestamoBinding ObtenerDatosPrestamo() 
+        {
+            PrestamoBinding prestamo = new PrestamoBinding
+            {
+                FK_IdSocio = int.Parse(Txb_NumeroSocio.Text),
+                Nota = Txb_Notas.Text,
+                FechaPrestamo = DateTime.Today,
+                FechaDevolucionEsperada = Dp_FechaDevolucion.SelectedDate ?? DateTime.Today.AddDays(7),
+                FK_IdLibro = ObtenerIdLibro(),
+                //Cambiar por idUsuario de Singleton
+                FK_IdUsuario = 1,
+            };
+            return prestamo;    
+        }
+
+        private int ObtenerIdLibro() 
+        {
+            LibroManejadorClient libroManejador = new LibroManejadorClient();
+            int idLibro=Constantes.ValorPorDefecto;
+            try
+            {
+                idLibro = libroManejador.ObtenerIdLibroPorISBN(Txb_ISBN.Text);
+            }
+            catch (TimeoutException excepcionTiempo)
+            {
+                LoggerManager.Error($"Excepcion: {excepcionTiempo.Message}\nTraza {excepcionTiempo.StackTrace}");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError
+                    , "Error de servidor", "El servidor esta inactivo. Por favor, inténtelo más tarde.");
+                ventanaEmergente.ShowDialog();                
+            }
+            catch (EndpointNotFoundException puntoNoEncontrado)
+            {
+                LoggerManager.Error($"Excepcion: {puntoNoEncontrado.Message}\nTraza {puntoNoEncontrado.StackTrace}");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError
+                    , "Error de servidor", "El servidor esta inactivo. Por favor, inténtelo más tarde.");
+                ventanaEmergente.ShowDialog();                
+            }
+            catch (CommunicationException excecpionComunicacion) 
+            {
+                LoggerManager.Error($"Excepcion: {excecpionComunicacion.Message}\nTraza {excecpionComunicacion.StackTrace}");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError
+                    , "Error de servidor", "El servidor esta inactivo. Por favor, inténtelo más tarde.");
+                ventanaEmergente.ShowDialog();                
+            }
+            return idLibro;
+        }
+
+        private void ReestablecerColores() 
+        {
+            Txb_ISBN.BorderBrush = Brushes.White;
+            Txb_NumeroSocio.BorderBrush = Brushes.White;
+            Txb_Notas.BorderBrush = Brushes.White;
+        }
+
+        private void RegresaVentanaMenuPrincipal() 
+        {
+            this.Hide();
+            VentanaMenuPrincipalBibliotecario ventanaMenuPrincipalBibliotecario = new VentanaMenuPrincipalBibliotecario();
+            ventanaMenuPrincipalBibliotecario.ShowDialog();
+            this.Show();
+        }
+
+        private bool ValidarDisponibilidad(int idLibro) 
+        {
+            bool validacion = false;
+            LibroManejadorClient libroManejador=new LibroManejadorClient();
+            int resultadoValidacion = 0;
+            try 
+            {
+                resultadoValidacion = libroManejador.ValidarDisponibilidadPorIdLibro(idLibro);
+            }
+            catch (TimeoutException excepcionTiempo)
+            {
+                LoggerManager.Error($"Excepcion: {excepcionTiempo.Message}\nTraza {excepcionTiempo.StackTrace}");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError
+                    , "Error de servidor", "El servidor esta inactivo. Por favor, inténtelo más tarde.");
+                ventanaEmergente.ShowDialog();                
+            }
+            catch (EndpointNotFoundException puntoNoEncontrado)
+            {
+                LoggerManager.Error($"Excepcion: {puntoNoEncontrado.Message}\nTraza {puntoNoEncontrado.StackTrace}");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError
+                    , "Error de servidor", "El servidor esta inactivo. Por favor, inténtelo más tarde.");
+                ventanaEmergente.ShowDialog();                
+            }
+            catch (CommunicationException excecpionComunicacion)
+            {
+                LoggerManager.Error($"Excepcion: {excecpionComunicacion.Message}\nTraza {excecpionComunicacion.StackTrace}");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError
+                    , "Error de servidor", "El servidor esta inactivo. Por favor, inténtelo más tarde.");
+                ventanaEmergente.ShowDialog();                
+            }            
+            switch (resultadoValidacion) 
+            {
+                case Constantes.ErrorEnLaOperacion:
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError
+                    , "Error de base de datos", "No se ha podido establecer conexión a la base de datos, inténtelo de nuevo más tarde.");
+                    ventanaEmergente.ShowDialog();
+                    break;
+                case Constantes.ValorPorDefecto:
+                    VentanaEmergente ventanaEmergenteLibroAgotado = new VentanaEmergente(Constantes.TipoError
+                    , "Libros agotados", "El libro que intenta dar en préstamo esta agotado.");
+                    ventanaEmergenteLibroAgotado.ShowDialog();
+                    break;
+                case Constantes.OperacionExitosa:
+                    validacion = true;
+                    break;                
+            }
+            return validacion;
+        }
+
+        private bool ValidarSocioSinPrestamosVencidos() 
+        {
+            bool validacion = false;
+            PrestamoManejadorClient prestamoManejador = new PrestamoManejadorClient();
+            int validacionPrestamos = Constantes.ValorPorDefecto;
+            try 
+            {
+                validacionPrestamos=prestamoManejador.ValidarPrestamosVencidosPorNumeroSocio(int.Parse(Txb_NumeroSocio.Text));
+            }
+            catch (TimeoutException excepcionTiempo)
+            {
+                LoggerManager.Error($"Excepcion: {excepcionTiempo.Message}\nTraza {excepcionTiempo.StackTrace}");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError
+                    , "Error de servidor", "El servidor esta inactivo. Por favor, inténtelo más tarde.");
+                ventanaEmergente.ShowDialog();                
+            }
+            catch (EndpointNotFoundException puntoNoEncontrado)
+            {
+                LoggerManager.Error($"Excepcion: {puntoNoEncontrado.Message}\nTraza {puntoNoEncontrado.StackTrace}");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError
+                    , "Error de servidor", "El servidor esta inactivo. Por favor, inténtelo más tarde.");
+                ventanaEmergente.ShowDialog();                
+            }
+            catch (CommunicationException excecpionComunicacion)
+            {
+                LoggerManager.Error($"Excepcion: {excecpionComunicacion.Message}\nTraza {excecpionComunicacion.StackTrace}");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError
+                    , "Error de servidor", "El servidor esta inactivo. Por favor, inténtelo más tarde.");
+                ventanaEmergente.ShowDialog();                
+            }
+            switch (validacionPrestamos)
+            {
+                case Constantes.ErrorEnLaOperacion:
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError
+                    , "Error de base de datos", "No se ha podido establecer conexión a la base de datos, inténtelo de nuevo más tarde.");
+                    ventanaEmergente.ShowDialog();
+                    break;
+                case Constantes.ValorPorDefecto:
+                    validacion = true;
+                    break;
+                case Constantes.OperacionExitosa:
+                    VentanaEmergente ventanaEmergenteMulta = new VentanaEmergente(Constantes.TipoAdvertencia
+                    , "Multa pendiente", $"El socio con número {Txb_NumeroSocio.Text} tiene al menos una multa sin pagar, esta debe ser pagada antes de realizar otro préstamo.");
+                    ventanaEmergenteMulta.ShowDialog();
+                    break;
+            }
+            return validacion;
         }
     }
 }
