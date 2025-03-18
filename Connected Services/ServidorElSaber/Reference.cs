@@ -1368,10 +1368,10 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
     public interface IAccesoManejador {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccesoManejador/VerificarCredenciales", ReplyAction="http://tempuri.org/IAccesoManejador/VerificarCredencialesResponse")]
-        int VerificarCredenciales(string correo, string telefono);
+        int VerificarCredenciales(string correo, string contrasenia);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccesoManejador/VerificarCredenciales", ReplyAction="http://tempuri.org/IAccesoManejador/VerificarCredencialesResponse")]
-        System.Threading.Tasks.Task<int> VerificarCredencialesAsync(string correo, string telefono);
+        System.Threading.Tasks.Task<int> VerificarCredencialesAsync(string correo, string contrasenia);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccesoManejador/VerificarCorreoExistente", ReplyAction="http://tempuri.org/IAccesoManejador/VerificarCorreoExistenteResponse")]
         int VerificarCorreoExistente(string correo);
@@ -1384,6 +1384,12 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccesoManejador/ModificarContrasenia", ReplyAction="http://tempuri.org/IAccesoManejador/ModificarContraseniaResponse")]
         System.Threading.Tasks.Task<int> ModificarContraseniaAsync(string correo, string contrasenia);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccesoManejador/IniciarSesion", ReplyAction="http://tempuri.org/IAccesoManejador/IniciarSesionResponse")]
+        ClienteBibliotecaElSaber.ServidorElSaber.AccesoBinding IniciarSesion(string correo, string contrasenia);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccesoManejador/IniciarSesion", ReplyAction="http://tempuri.org/IAccesoManejador/IniciarSesionResponse")]
+        System.Threading.Tasks.Task<ClienteBibliotecaElSaber.ServidorElSaber.AccesoBinding> IniciarSesionAsync(string correo, string contrasenia);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1413,12 +1419,12 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
                 base(binding, remoteAddress) {
         }
         
-        public int VerificarCredenciales(string correo, string telefono) {
-            return base.Channel.VerificarCredenciales(correo, telefono);
+        public int VerificarCredenciales(string correo, string contrasenia) {
+            return base.Channel.VerificarCredenciales(correo, contrasenia);
         }
         
-        public System.Threading.Tasks.Task<int> VerificarCredencialesAsync(string correo, string telefono) {
-            return base.Channel.VerificarCredencialesAsync(correo, telefono);
+        public System.Threading.Tasks.Task<int> VerificarCredencialesAsync(string correo, string contrasenia) {
+            return base.Channel.VerificarCredencialesAsync(correo, contrasenia);
         }
         
         public int VerificarCorreoExistente(string correo) {
@@ -1435,6 +1441,14 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
         
         public System.Threading.Tasks.Task<int> ModificarContraseniaAsync(string correo, string contrasenia) {
             return base.Channel.ModificarContraseniaAsync(correo, contrasenia);
+        }
+        
+        public ClienteBibliotecaElSaber.ServidorElSaber.AccesoBinding IniciarSesion(string correo, string contrasenia) {
+            return base.Channel.IniciarSesion(correo, contrasenia);
+        }
+        
+        public System.Threading.Tasks.Task<ClienteBibliotecaElSaber.ServidorElSaber.AccesoBinding> IniciarSesionAsync(string correo, string contrasenia) {
+            return base.Channel.IniciarSesionAsync(correo, contrasenia);
         }
     }
     

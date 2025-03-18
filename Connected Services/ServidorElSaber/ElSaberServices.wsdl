@@ -151,6 +151,12 @@
   <wsdl:message name="IAccesoManejador_ModificarContrasenia_OutputMessage">
     <wsdl:part name="parameters" element="tns:ModificarContraseniaResponse" />
   </wsdl:message>
+  <wsdl:message name="IAccesoManejador_IniciarSesion_InputMessage">
+    <wsdl:part name="parameters" element="tns:IniciarSesion" />
+  </wsdl:message>
+  <wsdl:message name="IAccesoManejador_IniciarSesion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IniciarSesionResponse" />
+  </wsdl:message>
   <wsdl:message name="IDireccionManejador_RegistrarDireccion_InputMessage">
     <wsdl:part name="parameters" element="tns:RegistrarDireccion" />
   </wsdl:message>
@@ -313,6 +319,10 @@
     <wsdl:operation name="ModificarContrasenia">
       <wsdl:input wsaw:Action="http://tempuri.org/IAccesoManejador/ModificarContrasenia" message="tns:IAccesoManejador_ModificarContrasenia_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAccesoManejador/ModificarContraseniaResponse" message="tns:IAccesoManejador_ModificarContrasenia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IniciarSesion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAccesoManejador/IniciarSesion" message="tns:IAccesoManejador_IniciarSesion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAccesoManejador/IniciarSesionResponse" message="tns:IAccesoManejador_IniciarSesion_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IDireccionManejador">
@@ -485,6 +495,15 @@
     </wsdl:operation>
     <wsdl:operation name="ModificarContrasenia">
       <soap12:operation soapAction="http://tempuri.org/IAccesoManejador/ModificarContrasenia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IniciarSesion">
+      <soap12:operation soapAction="http://tempuri.org/IAccesoManejador/IniciarSesion" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

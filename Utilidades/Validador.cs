@@ -119,6 +119,17 @@ namespace ClienteBibliotecaElSaber.Utilidades
             return esValido;
         }
 
+        public static bool ValidarCorreo(string correo)
+        {
+            bool esValido = false;
+            string correoLimpio = Regex.Replace(correo.Trim(), @"\s+", " ", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
+            if (!string.IsNullOrWhiteSpace(correoLimpio) && ValidarPatronRegex(correoLimpio, _correoRegex))
+            {
+                esValido = true;
+            }
+            return esValido;
+        }
+
         public static bool ValidarNumeroCasa(string numero)
         {
             bool esValido = false;
@@ -130,6 +141,17 @@ namespace ClienteBibliotecaElSaber.Utilidades
             return esValido;
         }
 
+        public static bool ValidarCalle(string calle)
+        {
+            bool esValido = false;
+            string calleLimpio = Regex.Replace(calle.Trim(), @"\s+", " ", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
+            if (!string.IsNullOrWhiteSpace(calleLimpio) && ValidarPatronRegex(calleLimpio, _direccionRegex))
+            {
+                esValido = true;
+            }
+            return esValido;
+        }
+  
         public static bool ValidarNumeroDeSocio(string numero)
         {
             bool esValido = false;

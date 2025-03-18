@@ -69,12 +69,16 @@
     </Compile>
     <Compile Include="Extensiones\PasswordBoxExtensiones.cs" />
     <Compile Include="Extensiones\TextBoxExtensiones.cs" />
+    <Compile Include="Singleton\SingletonAdministrador.cs" />
+    <Compile Include="Singleton\SingletonBibliotecario.cs" />
     <Compile Include="Utilidades\CadenaVisibilidadConverter.cs" />
     <Compile Include="Utilidades\Constantes.cs" />
     <Compile Include="Utilidades\ContraseñaHelper.cs" />
     <Compile Include="Utilidades\CursoSobreImagenConverter.cs" />
+    <Compile Include="Utilidades\Encriptador.cs" />
     <Compile Include="Utilidades\GeneradorContrasenia.cs" />
     <Compile Include="Utilidades\LoggerManager.cs" />
+    <Compile Include="Utilidades\ManejadorDeCitasAutores.cs" />
     <Compile Include="Utilidades\Validador.cs" />
     <Compile Include="Ventanas\VentanaRegistrarEditorial.xaml.cs">
       <DependentUpon>VentanaRegistrarEditorial.xaml</DependentUpon>
@@ -227,6 +231,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Connected Services\ServidorElSaber\ClienteBibliotecaElSaber.ServidorElSaber.AccesoBinding.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServidorElSaber\ClienteBibliotecaElSaber.ServidorElSaber.AutorBinding.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -343,6 +350,8 @@
     <Resource Include="Imagenes\Iconos\Pregunta.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Imagenes\Iconos\CerrarSesion.png" />
+    <Resource Include="Imagenes\Iconos\CerrarSesionOscuro.png" />
     <Folder Include="ImagenesLibro\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

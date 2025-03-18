@@ -79,7 +79,7 @@
                            FontSize="20"
                            Margin="0,0,50,0"
                            VerticalAlignment="Center"/>
-                    <DatePicker x:Name="Dp_FechaDevolucion"
+                    <DatePicker x:Name="dp_FechaDevolucion"
                                 FontSize="16"
                                 CalendarStyle="{StaticResource CustomCalendarStyle}"/>
                 </StackPanel>

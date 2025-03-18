@@ -19,10 +19,6 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Frame x:Name="MarcoPrincipal"
-                   Grid.RowSpan="2"
-                   Panel.ZIndex="1"/>
-
             <Grid Grid.ColumnSpan="2"
               Background="#FF432716"
               MouseDown="Grid_MouseDown">
@@ -96,11 +92,11 @@
                             Margin="30,0"
                             Padding="50,20">
                         <StackPanel>
-                            <TextBlock Text='"El secreto de una buena vejez no es otra cosa que un pacto honrado con la soledad. Se llega a la vejez como a todo lo demás, sin aviso. Un día, de repente, te das cuenta de que tienes más pasado que futuro, y es entonces cuando el tiempo, que antes parecía inagotable, empieza a apretarse como un lazo invisible alrededor de los días que quedan."'
+                            <TextBlock x:Name="Txbl_Cita"
                                        TextWrapping="Wrap"
                                        FontSize="14"
                                        FontStyle="Italic"/>
-                            <TextBlock Text="Cien años de soledad - Gabriel García Marquez"
+                            <TextBlock x:Name="Txbl_Autor"
                                        Margin="0,15,0,0"
                                        FontSize="13"
                                        HorizontalAlignment="Right"/>
@@ -220,6 +216,45 @@
                         </Button.Triggers>
                     </Button>
                 </StackPanel>
+                <Button Style="{StaticResource BotonMenu}"
+                        Tag="/Imagenes/Iconos/CerrarSesion.png"
+                        HorizontalContentAlignment="Center"
+                        VerticalAlignment="Bottom" Click="CerrarSesion_Click">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBlock x:Name="TextoBotonCerrarSesion"
+                                       Text=""
+                                       VerticalAlignment="Center"
+                                       Opacity="0"/>
+                            <TextBlock Text="" Width="70"/>
+                        </StackPanel>
+                    </Button.Content>
+
+                    <Button.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <StringAnimationUsingKeyFrames Storyboard.TargetName="TextoBotonCerrarSesion"
+                                                                   Storyboard.TargetProperty="Text">
+                                        <DiscreteStringKeyFrame KeyTime="0:0:0" Value="Cerrar Sesión"/>
+                                    </StringAnimationUsingKeyFrames>
+                                    <DoubleAnimation Storyboard.TargetName="TextoBotonCerrarSesion"
+                                                     Storyboard.TargetProperty="Opacity"
+                                                     To="1" Duration="0:0:0.2"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="TextoBotonCerrarSesion"
+                                                     Storyboard.TargetProperty="Opacity"
+                                                     To="0" Duration="0:0:0"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Button.Triggers>
+                </Button>
             </Grid>
         </Grid>
     </Border>

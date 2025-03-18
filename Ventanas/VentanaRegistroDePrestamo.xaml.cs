@@ -33,7 +33,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
 
         private void Aceptar_Click(object sender, RoutedEventArgs e)
         {
-
+            Console.WriteLine(dp_FechaDevolucion.SelectedDate.Value.ToString("yyyy-MM-dd"));
         }
 
         private void Cancelar_Click(object sender, RoutedEventArgs e)
