@@ -60,6 +60,42 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IDevolucionManejador_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
+          <wsrm:InactivityTimeout Milliseconds="600000" />
+          <wsrm:AcknowledgementInterval Milliseconds="200" />
+        </wsrm:RMAssertion>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_ILibroManejador_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
+          <wsrm:InactivityTimeout Milliseconds="600000" />
+          <wsrm:AcknowledgementInterval Milliseconds="200" />
+        </wsrm:RMAssertion>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IPrestamoManejador_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
+          <wsrm:InactivityTimeout Milliseconds="600000" />
+          <wsrm:AcknowledgementInterval Milliseconds="200" />
+        </wsrm:RMAssertion>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:1442/?xsd=xsd0" namespace="http://tempuri.org/" />
@@ -145,6 +181,102 @@
   <wsdl:message name="ISocioManejador_ConsultarSocioPorNumeroDeSocio_OutputMessage">
     <wsdl:part name="parameters" element="tns:ConsultarSocioPorNumeroDeSocioResponse" />
   </wsdl:message>
+  <wsdl:message name="IDevolucionManejador_RegistrarNuevaDevolucion_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarNuevaDevolucion" />
+  </wsdl:message>
+  <wsdl:message name="IDevolucionManejador_RegistrarNuevaDevolucion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarNuevaDevolucionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_ObtenerIdLibroPorISBN_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerIdLibroPorISBN" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_ObtenerIdLibroPorISBN_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerIdLibroPorISBNResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_ValidarExistenciaDeLibros_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarExistenciaDeLibros" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_ValidarExistenciaDeLibros_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarExistenciaDeLibrosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_RegistrarNuevoLibro_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarNuevoLibro" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_RegistrarNuevoLibro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarNuevoLibroResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_AumentarCantidadLibrosDisponiblesPorISBN_InputMessage">
+    <wsdl:part name="parameters" element="tns:AumentarCantidadLibrosDisponiblesPorISBN" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_AumentarCantidadLibrosDisponiblesPorISBN_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AumentarCantidadLibrosDisponiblesPorISBNResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_ObtenerLibrosPorTitulo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerLibrosPorTitulo" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_ObtenerLibrosPorTitulo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerLibrosPorTituloResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_ObtenerLibrosPorISBN_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerLibrosPorISBN" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_ObtenerLibrosPorISBN_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerLibrosPorISBNResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_ObtenerLibrosPorIdAutor_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerLibrosPorIdAutor" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_ObtenerLibrosPorIdAutor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerLibrosPorIdAutorResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_ObtenerLibrosPorIdGenero_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerLibrosPorIdGenero" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_ObtenerLibrosPorIdGenero_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerLibrosPorIdGeneroResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_ObtenerListaDeGeneros_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerListaDeGeneros" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_ObtenerListaDeGeneros_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerListaDeGenerosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_ObtenerListaDeAutores_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerListaDeAutores" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_ObtenerListaDeAutores_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerListaDeAutoresResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_ObtenerEditoriales_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerEditoriales" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_ObtenerEditoriales_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerEditorialesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_RegistrarNuevoAutor_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarNuevoAutor" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_RegistrarNuevoAutor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarNuevoAutorResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_RegistrarNuevaEditorial_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarNuevaEditorial" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_RegistrarNuevaEditorial_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarNuevaEditorialResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPrestamoManejador_RegistrarNuevoPrestamo_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarNuevoPrestamo" />
+  </wsdl:message>
+  <wsdl:message name="IPrestamoManejador_RegistrarNuevoPrestamo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarNuevoPrestamoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPrestamoManejador_ObtenerPrestamosActivosYVencidosPorNumeroSocio_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerPrestamosActivosYVencidosPorNumeroSocio" />
+  </wsdl:message>
+  <wsdl:message name="IPrestamoManejador_ObtenerPrestamosActivosYVencidosPorNumeroSocio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerPrestamosActivosYVencidosPorNumeroSocioResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUsuarioManejador">
     <wsdl:operation name="RegistrarUsuarioAlaBaseDeDatos">
       <wsdl:input wsaw:Action="http://tempuri.org/IUsuarioManejador/RegistrarUsuarioAlaBaseDeDatos" message="tns:IUsuarioManejador_RegistrarUsuarioAlaBaseDeDatos_InputMessage" />
@@ -205,6 +337,76 @@
     <wsdl:operation name="ConsultarSocioPorNumeroDeSocio">
       <wsdl:input wsaw:Action="http://tempuri.org/ISocioManejador/ConsultarSocioPorNumeroDeSocio" message="tns:ISocioManejador_ConsultarSocioPorNumeroDeSocio_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISocioManejador/ConsultarSocioPorNumeroDeSocioResponse" message="tns:ISocioManejador_ConsultarSocioPorNumeroDeSocio_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IDevolucionManejador">
+    <wsdl:operation name="RegistrarNuevaDevolucion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDevolucionManejador/RegistrarNuevaDevolucion" message="tns:IDevolucionManejador_RegistrarNuevaDevolucion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDevolucionManejador/RegistrarNuevaDevolucionResponse" message="tns:IDevolucionManejador_RegistrarNuevaDevolucion_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ILibroManejador">
+    <wsdl:operation name="ObtenerIdLibroPorISBN">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibroManejador/ObtenerIdLibroPorISBN" message="tns:ILibroManejador_ObtenerIdLibroPorISBN_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibroManejador/ObtenerIdLibroPorISBNResponse" message="tns:ILibroManejador_ObtenerIdLibroPorISBN_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidarExistenciaDeLibros">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibroManejador/ValidarExistenciaDeLibros" message="tns:ILibroManejador_ValidarExistenciaDeLibros_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibroManejador/ValidarExistenciaDeLibrosResponse" message="tns:ILibroManejador_ValidarExistenciaDeLibros_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarNuevoLibro">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibroManejador/RegistrarNuevoLibro" message="tns:ILibroManejador_RegistrarNuevoLibro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibroManejador/RegistrarNuevoLibroResponse" message="tns:ILibroManejador_RegistrarNuevoLibro_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AumentarCantidadLibrosDisponiblesPorISBN">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibroManejador/AumentarCantidadLibrosDisponiblesPorISBN" message="tns:ILibroManejador_AumentarCantidadLibrosDisponiblesPorISBN_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibroManejador/AumentarCantidadLibrosDisponiblesPorISBNResponse" message="tns:ILibroManejador_AumentarCantidadLibrosDisponiblesPorISBN_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerLibrosPorTitulo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibroManejador/ObtenerLibrosPorTitulo" message="tns:ILibroManejador_ObtenerLibrosPorTitulo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibroManejador/ObtenerLibrosPorTituloResponse" message="tns:ILibroManejador_ObtenerLibrosPorTitulo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerLibrosPorISBN">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibroManejador/ObtenerLibrosPorISBN" message="tns:ILibroManejador_ObtenerLibrosPorISBN_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibroManejador/ObtenerLibrosPorISBNResponse" message="tns:ILibroManejador_ObtenerLibrosPorISBN_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerLibrosPorIdAutor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibroManejador/ObtenerLibrosPorIdAutor" message="tns:ILibroManejador_ObtenerLibrosPorIdAutor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibroManejador/ObtenerLibrosPorIdAutorResponse" message="tns:ILibroManejador_ObtenerLibrosPorIdAutor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerLibrosPorIdGenero">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibroManejador/ObtenerLibrosPorIdGenero" message="tns:ILibroManejador_ObtenerLibrosPorIdGenero_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibroManejador/ObtenerLibrosPorIdGeneroResponse" message="tns:ILibroManejador_ObtenerLibrosPorIdGenero_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerListaDeGeneros">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibroManejador/ObtenerListaDeGeneros" message="tns:ILibroManejador_ObtenerListaDeGeneros_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibroManejador/ObtenerListaDeGenerosResponse" message="tns:ILibroManejador_ObtenerListaDeGeneros_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerListaDeAutores">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibroManejador/ObtenerListaDeAutores" message="tns:ILibroManejador_ObtenerListaDeAutores_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibroManejador/ObtenerListaDeAutoresResponse" message="tns:ILibroManejador_ObtenerListaDeAutores_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerEditoriales">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibroManejador/ObtenerEditoriales" message="tns:ILibroManejador_ObtenerEditoriales_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibroManejador/ObtenerEditorialesResponse" message="tns:ILibroManejador_ObtenerEditoriales_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarNuevoAutor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibroManejador/RegistrarNuevoAutor" message="tns:ILibroManejador_RegistrarNuevoAutor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibroManejador/RegistrarNuevoAutorResponse" message="tns:ILibroManejador_RegistrarNuevoAutor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarNuevaEditorial">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibroManejador/RegistrarNuevaEditorial" message="tns:ILibroManejador_RegistrarNuevaEditorial_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibroManejador/RegistrarNuevaEditorialResponse" message="tns:ILibroManejador_RegistrarNuevaEditorial_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IPrestamoManejador">
+    <wsdl:operation name="RegistrarNuevoPrestamo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPrestamoManejador/RegistrarNuevoPrestamo" message="tns:IPrestamoManejador_RegistrarNuevoPrestamo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPrestamoManejador/RegistrarNuevoPrestamoResponse" message="tns:IPrestamoManejador_RegistrarNuevoPrestamo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerPrestamosActivosYVencidosPorNumeroSocio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPrestamoManejador/ObtenerPrestamosActivosYVencidosPorNumeroSocio" message="tns:IPrestamoManejador_ObtenerPrestamosActivosYVencidosPorNumeroSocio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPrestamoManejador/ObtenerPrestamosActivosYVencidosPorNumeroSocioResponse" message="tns:IPrestamoManejador_ObtenerPrestamosActivosYVencidosPorNumeroSocio_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUsuarioManejador" type="tns:IUsuarioManejador">
@@ -344,6 +546,162 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IDevolucionManejador" type="tns:IDevolucionManejador">
+    <wsp:PolicyReference URI="#NetTcpBinding_IDevolucionManejador_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="RegistrarNuevaDevolucion">
+      <soap12:operation soapAction="http://tempuri.org/IDevolucionManejador/RegistrarNuevaDevolucion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_ILibroManejador" type="tns:ILibroManejador">
+    <wsp:PolicyReference URI="#NetTcpBinding_ILibroManejador_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="ObtenerIdLibroPorISBN">
+      <soap12:operation soapAction="http://tempuri.org/ILibroManejador/ObtenerIdLibroPorISBN" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidarExistenciaDeLibros">
+      <soap12:operation soapAction="http://tempuri.org/ILibroManejador/ValidarExistenciaDeLibros" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarNuevoLibro">
+      <soap12:operation soapAction="http://tempuri.org/ILibroManejador/RegistrarNuevoLibro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AumentarCantidadLibrosDisponiblesPorISBN">
+      <soap12:operation soapAction="http://tempuri.org/ILibroManejador/AumentarCantidadLibrosDisponiblesPorISBN" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerLibrosPorTitulo">
+      <soap12:operation soapAction="http://tempuri.org/ILibroManejador/ObtenerLibrosPorTitulo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerLibrosPorISBN">
+      <soap12:operation soapAction="http://tempuri.org/ILibroManejador/ObtenerLibrosPorISBN" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerLibrosPorIdAutor">
+      <soap12:operation soapAction="http://tempuri.org/ILibroManejador/ObtenerLibrosPorIdAutor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerLibrosPorIdGenero">
+      <soap12:operation soapAction="http://tempuri.org/ILibroManejador/ObtenerLibrosPorIdGenero" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerListaDeGeneros">
+      <soap12:operation soapAction="http://tempuri.org/ILibroManejador/ObtenerListaDeGeneros" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerListaDeAutores">
+      <soap12:operation soapAction="http://tempuri.org/ILibroManejador/ObtenerListaDeAutores" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerEditoriales">
+      <soap12:operation soapAction="http://tempuri.org/ILibroManejador/ObtenerEditoriales" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarNuevoAutor">
+      <soap12:operation soapAction="http://tempuri.org/ILibroManejador/RegistrarNuevoAutor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarNuevaEditorial">
+      <soap12:operation soapAction="http://tempuri.org/ILibroManejador/RegistrarNuevaEditorial" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IPrestamoManejador" type="tns:IPrestamoManejador">
+    <wsp:PolicyReference URI="#NetTcpBinding_IPrestamoManejador_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="RegistrarNuevoPrestamo">
+      <soap12:operation soapAction="http://tempuri.org/IPrestamoManejador/RegistrarNuevoPrestamo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerPrestamosActivosYVencidosPorNumeroSocio">
+      <soap12:operation soapAction="http://tempuri.org/IPrestamoManejador/ObtenerPrestamosActivosYVencidosPorNumeroSocio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="ElSaberServices">
     <wsdl:port name="NetTcpBinding_IUsuarioManejador" binding="tns:NetTcpBinding_IUsuarioManejador">
       <soap12:address location="net.tcp://localhost:1441/ServicioUsuario" />
@@ -373,6 +731,24 @@
       <soap12:address location="net.tcp://localhost:1441/ServicioSocio" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:1441/ServicioSocio</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IDevolucionManejador" binding="tns:NetTcpBinding_IDevolucionManejador">
+      <soap12:address location="net.tcp://localhost:1441/ServicioDevolucion" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:1441/ServicioDevolucion</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_ILibroManejador" binding="tns:NetTcpBinding_ILibroManejador">
+      <soap12:address location="net.tcp://localhost:1441/ServicioLibro" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:1441/ServicioLibro</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IPrestamoManejador" binding="tns:NetTcpBinding_IPrestamoManejador">
+      <soap12:address location="net.tcp://localhost:1441/ServicioPrestamo" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:1441/ServicioPrestamo</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
   </wsdl:service>
