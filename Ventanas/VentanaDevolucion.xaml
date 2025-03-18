@@ -39,6 +39,14 @@
                      KeyDown="MyTextBox_KeyDown"
                      MaxLength="6"
                      Width="750"/>
+
+            <TextBlock x:Name="WatermarkText"
+                       Text="Ingrese el número de socio"
+                       Foreground="Gray"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left"
+                       Margin="100,0,0,0"/>
+
             <Button HorizontalAlignment="Right"
                     Margin="0,0,85,0"
                     Background="Transparent">
@@ -58,7 +66,7 @@
                                     <ColumnDefinition Width="2*"/>
                                 </Grid.ColumnDefinitions>
 
-                                
+
                                 <StackPanel Grid.Column="0">
                                     <TextBlock FontWeight="Bold" FontSize="16" Text="{Binding TituloLibro}" />
 
@@ -95,8 +103,8 @@
                                         Padding="10"
                                         Background="Green"
                                         Foreground="White"
-                                        Command="{Binding RegistrarDevolucionCommand}"
-                                        CommandParameter="{Binding}" />
+                                        Click="RegistrarDevolucion"
+                                        CommandParameter="{Binding IdPrestamo}" />
 
                             </Grid>
                         </Border>
@@ -112,6 +120,7 @@
                     Margin="0,0,80,0"
                     Width="150"
                     Background="Red"
+                    Click="CancelarDevolucion"
                     Foreground="White"/>
         </Grid>
     </Grid>

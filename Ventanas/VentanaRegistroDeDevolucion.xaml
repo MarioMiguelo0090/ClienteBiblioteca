@@ -26,7 +26,7 @@
                        FontSize="24"
                        FontWeight="Bold"
                        Margin="0,0,0,10"/>
-            <CheckBox x:Name="Chb_Dañado"
+            <CheckBox x:Name="Chb_Daniado"
                       Content="Dañado"
                       FontSize="20"
                       VerticalContentAlignment="Center"/>
@@ -35,6 +35,7 @@
                 <TextBlock Text="Notas:"
                            FontSize="20"/>
                 <TextBox Padding="10"
+                         Name="Txb_Notas"
                          Width="460"
                          Height="100"
                          TextWrapping="Wrap"
@@ -51,12 +52,12 @@
                         Width="150"
                         Background="Green"
                         Foreground="White" 
-                        Click="Aceptar_Click"/>
+                        Click="RegistrarDevolucion"/>
                 <Button Content="Cancelar"
                         Width="150"
                         Background="Red"
                         Foreground="White" 
-                        Click="Cancelar_Click"/>
+                        Click="CancelarRegistroDevolucion"/>
             </StackPanel>
         </StackPanel>
     </Border>

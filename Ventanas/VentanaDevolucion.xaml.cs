@@ -25,7 +25,9 @@ namespace ClienteBibliotecaElSaber.Ventanas
     {
         public VentanaDevolucion()
         {
-            InitializeComponent();            
+            InitializeComponent();
+            Txb_NumeroSocio.GotFocus += Txb_NumeroSocio_GotFocus;
+            Txb_NumeroSocio.LostFocus += Txb_NumeroSocio_LostFocus;
         }
 
         private void MyTextBox_KeyDown(object sender, KeyEventArgs argumento)
@@ -47,6 +49,19 @@ namespace ClienteBibliotecaElSaber.Ventanas
             }
         }
 
+        private void Txb_NumeroSocio_GotFocus(object sender, RoutedEventArgs e)
+        {
+            WatermarkText.Visibility = Visibility.Collapsed;
+        }
+        
+        private void Txb_NumeroSocio_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(Txb_NumeroSocio.Text))
+            {
+                WatermarkText.Visibility = Visibility.Visible;
+            }
+        }
+
         private bool ValidarNumeroSocio()
         {
             bool validacionNumeroSocio = ValidadorPrestamo.ValidarNumeroSocio(Txb_NumeroSocio.Text);
@@ -59,6 +74,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
 
         private void BuscarPrestamos()
         {
+            LvPrestamos.ItemsSource = null;
             PrestamoManejadorClient prestamoManejador = new PrestamoManejadorClient();
             List<PrestamoBinding> prestamosObtenidos = new List<PrestamoBinding>();
             try
@@ -71,6 +87,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
                 VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError
                     , "Error de servidor", "El servidor esta inactivo. Por favor, inténtelo más tarde.");
                 ventanaEmergente.ShowDialog();
+                RegresaVentanaMenuPrincipal();
             }
             catch (EndpointNotFoundException puntoNoEncontrado)
             {
@@ -78,6 +95,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
                 VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError
                     , "Error de servidor", "El servidor esta inactivo. Por favor, inténtelo más tarde.");
                 ventanaEmergente.ShowDialog();
+                RegresaVentanaMenuPrincipal();
             }
             catch (CommunicationException excecpionComunicacion)
             {
@@ -85,12 +103,14 @@ namespace ClienteBibliotecaElSaber.Ventanas
                 VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError
                     , "Error de servidor", "El servidor esta inactivo. Por favor, inténtelo más tarde.");
                 ventanaEmergente.ShowDialog();
+                RegresaVentanaMenuPrincipal();
             }
             if (prestamosObtenidos.Count == Constantes.ValorPorDefecto)
             {
                 VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoAdvertencia
                     , "Socio sin préstamos", "El socio solicitado no tiene ningún préstamo activo.");
                 ventanaEmergente.ShowDialog();
+                RegresaVentanaMenuPrincipal();
             }
             else
             {
@@ -100,6 +120,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
                     VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError
                     , "Error de base de datos", "No se ha podido establecer conexión a la base de datos, inténtelo de nuevo más tarde.");
                     ventanaEmergente.ShowDialog();
+                    RegresaVentanaMenuPrincipal();
                 }
                 else if (prestamoObtenido.IdPrestamo > Constantes.ValorPorDefecto)
                 {
@@ -109,6 +130,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
                         FechaInicio = entidad.FechaPrestamo.ToString("dd/MM/yyyy"),
                         FechaDevolucion = entidad.FechaDevolucionEsperada.ToString("dd/MM/yyyy"),
                         EstadoPrestamo = entidad.Estado,
+                        IdPrestamo=entidad.IdPrestamo,
                     }).ToList();
                     LvPrestamos.ItemsSource = listaVisual;
                 }
@@ -125,6 +147,43 @@ namespace ClienteBibliotecaElSaber.Ventanas
             LibroManejadorClient libroManejador = new LibroManejadorClient();
             return libroManejador.ObtenerTituloPorIdLibro(idLibro);
         }
+
+        private void RegistrarDevolucion(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button btn && btn.CommandParameter is int idPrestamo)
+            {
+                PrestamoViewModel prestamoSeleccionado = LvPrestamos.ItemsSource
+               .Cast<PrestamoViewModel>()
+               .FirstOrDefault(entidad => entidad.IdPrestamo == idPrestamo);
+                if (prestamoSeleccionado != null)
+                {
+                    if (prestamoSeleccionado.EstadoPrestamo == Enumeradores.Prestamo.Vencido.ToString())
+                    {
+                        VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoAdvertencia,
+                            "Multa generada", "El préstamo ha generado una multa que debe ser pagada.");
+                        ventanaEmergente.ShowDialog();
+                    }
+                    else
+                    {
+                        VentanaRegistroDeDevolucion ventanaRegistroDeDevolucion = new VentanaRegistroDeDevolucion(idPrestamo);
+                        ventanaRegistroDeDevolucion.ShowDialog();
+                    }
+                }    
+            }
+        }
+
+        private void RegresaVentanaMenuPrincipal()
+        {
+            this.Hide();
+            VentanaMenuPrincipalBibliotecario ventanaMenuPrincipalBibliotecario = new VentanaMenuPrincipalBibliotecario();
+            ventanaMenuPrincipalBibliotecario.ShowDialog();
+            this.Show();
+        }
+
+        private void CancelarDevolucion(object sender, RoutedEventArgs e)
+        {
+            RegresaVentanaMenuPrincipal();
+        }
     }
 
     public class PrestamoViewModel
@@ -132,8 +191,8 @@ namespace ClienteBibliotecaElSaber.Ventanas
         public string TituloLibro { get; set; }
         public string FechaInicio { get; set; }
         public string FechaDevolucion { get; set; }
-
         public string EstadoPrestamo { get; set; }
+        public int IdPrestamo { get; set; }      
     }
 
 }
