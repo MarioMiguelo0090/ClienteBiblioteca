@@ -33,7 +33,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
                 {
                     string contraseniaHasheada = Encriptador.hashToSHA2(pb_Contrasenia.Password);
                     acceso = proxyAcceso.IniciarSesion(txtb_Correo.Text, contraseniaHasheada);
-                    Console.WriteLine(acceso.IdAcceso);
+
                     if (acceso.IdAcceso != -1 && acceso.IdAcceso != 0)
                     {
                         if (acceso.tipoDeUsuario == Constantes.TipoAdministrador)

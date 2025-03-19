@@ -1,4 +1,5 @@
-﻿using ClienteBibliotecaElSaber.Utilidades;
+﻿using ClienteBibliotecaElSaber.Singleton;
+using ClienteBibliotecaElSaber.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
     public partial class VentanaMenuPrincipalAdministrador : Window
     {
         private readonly ManejadorDeCitasAutores manejadorDeCitasAutores;
+
         public VentanaMenuPrincipalAdministrador()
         {
             InitializeComponent();
@@ -28,6 +30,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
             var (autor, cita) = manejadorDeCitasAutores.ObtenerCitaAleatoria();
             Txbl_Autor.Text = autor.ToString();
             Txbl_Cita.Text = cita.ToString();
+            txtbl_Bienvenida.Text = $"Bienvenido, {SingletonAdministrador.Instancia.ObtenerNombreCompleto()}";
         }
 
         private void IrVentanaRegistrarUsuario_Click(object sender, RoutedEventArgs e)
@@ -53,6 +56,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
 
         private void CerrarSesion_Click(object sender, RoutedEventArgs e)
         {
+            SingletonAdministrador.Instancia.CerrarSesion();
             VentanaInicioDeSesion ventanaInicioDeSesion = new VentanaInicioDeSesion();
             ventanaInicioDeSesion.Show();
             this.Close();

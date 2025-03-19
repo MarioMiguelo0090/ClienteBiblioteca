@@ -1,4 +1,5 @@
-﻿using ClienteBibliotecaElSaber.Utilidades;
+﻿using ClienteBibliotecaElSaber.Singleton;
+using ClienteBibliotecaElSaber.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,10 +27,10 @@ namespace ClienteBibliotecaElSaber.Ventanas
             InitializeComponent();
             manejadorDeCitasAutores = new ManejadorDeCitasAutores();
             var (autor, cita) = manejadorDeCitasAutores.ObtenerCitaAleatoria();
-            Txbl_Autor.Text = autor.ToString();
-            Txbl_Cita.Text = cita.ToString();
+            txtbl_Autor.Text = autor.ToString();
+            txtbl_Cita.Text = cita.ToString();
+            txtbl_Bienvenida.Text = $"Bienvenido, {SingletonBibliotecario.Instancia.ObtenerNombreCompleto()}";
         }
-
 
         private void Salir_Click(object sender, RoutedEventArgs e)
         {
@@ -46,8 +47,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
 
         private void IrVentanaSocios_Click(object sender, RoutedEventArgs e)
         {
-            VentanaRegistroDeDevolucion ventanaRegistroDePrestamo = new VentanaRegistroDeDevolucion();
-            ventanaRegistroDePrestamo.Show();
+
         }
 
         private void IrVentanaLibro_Click(object sender, RoutedEventArgs e)
@@ -59,13 +59,15 @@ namespace ClienteBibliotecaElSaber.Ventanas
 
         private void IrVentanaDevolucion_Click(object sender, RoutedEventArgs e)
         {
-            VentanaRegistroDePrestamo ventanaRegistroDePrestamo = new VentanaRegistroDePrestamo();
-            ventanaRegistroDePrestamo.Show();
             this.Hide();
+            VentanaDevolucion ventanaDevolucion = new VentanaDevolucion();
+            ventanaDevolucion.ShowDialog();
+            this.Show();
         }
 
         private void CerrarSesion_Click(object sender, RoutedEventArgs e)
         {
+            SingletonBibliotecario.Instancia.CerrarSesion();
             VentanaInicioDeSesion ventanaInicioDeSesion = new VentanaInicioDeSesion();
             ventanaInicioDeSesion.Show();
             this.Close();

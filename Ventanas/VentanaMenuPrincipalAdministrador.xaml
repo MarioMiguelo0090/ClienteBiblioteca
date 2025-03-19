@@ -84,7 +84,7 @@
                                Foreground="White"/>
                 </StackPanel>
                 <StackPanel Grid.Row="1">
-                    <TextBlock Text="Bienvenido, Josué Melgarejo García"
+                    <TextBlock x:Name="txtbl_Bienvenida"
                                FontSize="32"
                                Margin="35,20"/>
                     <Border Background="Chocolate"

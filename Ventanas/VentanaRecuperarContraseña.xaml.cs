@@ -22,16 +22,8 @@ namespace ClienteBibliotecaElSaber.Ventanas
         public VentanaRecuperarContraseña()
         {
             InitializeComponent();
-        }
-
-        private void Recuperar_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Cancelar_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
+            PaginaRecuperarContrasenia paginaRecuperarContrasenia = new PaginaRecuperarContrasenia();
+            MarcoPrincipal.Navigate(paginaRecuperarContrasenia);
         }
     }
 }

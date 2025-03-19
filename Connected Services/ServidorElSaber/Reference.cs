@@ -1368,10 +1368,10 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
     public interface IAccesoManejador {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccesoManejador/VerificarCredenciales", ReplyAction="http://tempuri.org/IAccesoManejador/VerificarCredencialesResponse")]
-        int VerificarCredenciales(string correo, string contrasenia);
+        int VerificarCredenciales(string correo, string telefono);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccesoManejador/VerificarCredenciales", ReplyAction="http://tempuri.org/IAccesoManejador/VerificarCredencialesResponse")]
-        System.Threading.Tasks.Task<int> VerificarCredencialesAsync(string correo, string contrasenia);
+        System.Threading.Tasks.Task<int> VerificarCredencialesAsync(string correo, string telefono);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccesoManejador/VerificarCorreoExistente", ReplyAction="http://tempuri.org/IAccesoManejador/VerificarCorreoExistenteResponse")]
         int VerificarCorreoExistente(string correo);
@@ -1419,12 +1419,12 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
                 base(binding, remoteAddress) {
         }
         
-        public int VerificarCredenciales(string correo, string contrasenia) {
-            return base.Channel.VerificarCredenciales(correo, contrasenia);
+        public int VerificarCredenciales(string correo, string telefono) {
+            return base.Channel.VerificarCredenciales(correo, telefono);
         }
         
-        public System.Threading.Tasks.Task<int> VerificarCredencialesAsync(string correo, string contrasenia) {
-            return base.Channel.VerificarCredencialesAsync(correo, contrasenia);
+        public System.Threading.Tasks.Task<int> VerificarCredencialesAsync(string correo, string telefono) {
+            return base.Channel.VerificarCredencialesAsync(correo, telefono);
         }
         
         public int VerificarCorreoExistente(string correo) {
@@ -1720,6 +1720,18 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/RegistrarNuevaEditorial", ReplyAction="http://tempuri.org/ILibroManejador/RegistrarNuevaEditorialResponse")]
         System.Threading.Tasks.Task<int> RegistrarNuevaEditorialAsync(string editorial);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/ValidarDisponibilidadPorIdLibro", ReplyAction="http://tempuri.org/ILibroManejador/ValidarDisponibilidadPorIdLibroResponse")]
+        int ValidarDisponibilidadPorIdLibro(int idLibro);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/ValidarDisponibilidadPorIdLibro", ReplyAction="http://tempuri.org/ILibroManejador/ValidarDisponibilidadPorIdLibroResponse")]
+        System.Threading.Tasks.Task<int> ValidarDisponibilidadPorIdLibroAsync(int idLibro);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/ObtenerTituloPorIdLibro", ReplyAction="http://tempuri.org/ILibroManejador/ObtenerTituloPorIdLibroResponse")]
+        string ObtenerTituloPorIdLibro(int idLibro);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/ObtenerTituloPorIdLibro", ReplyAction="http://tempuri.org/ILibroManejador/ObtenerTituloPorIdLibroResponse")]
+        System.Threading.Tasks.Task<string> ObtenerTituloPorIdLibroAsync(int idLibro);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1852,6 +1864,22 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
         public System.Threading.Tasks.Task<int> RegistrarNuevaEditorialAsync(string editorial) {
             return base.Channel.RegistrarNuevaEditorialAsync(editorial);
         }
+        
+        public int ValidarDisponibilidadPorIdLibro(int idLibro) {
+            return base.Channel.ValidarDisponibilidadPorIdLibro(idLibro);
+        }
+        
+        public System.Threading.Tasks.Task<int> ValidarDisponibilidadPorIdLibroAsync(int idLibro) {
+            return base.Channel.ValidarDisponibilidadPorIdLibroAsync(idLibro);
+        }
+        
+        public string ObtenerTituloPorIdLibro(int idLibro) {
+            return base.Channel.ObtenerTituloPorIdLibro(idLibro);
+        }
+        
+        public System.Threading.Tasks.Task<string> ObtenerTituloPorIdLibroAsync(int idLibro) {
+            return base.Channel.ObtenerTituloPorIdLibroAsync(idLibro);
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1873,6 +1901,14 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
             "cio", ReplyAction="http://tempuri.org/IPrestamoManejador/ObtenerPrestamosActivosYVencidosPorNumeroSo" +
             "cioResponse")]
         System.Threading.Tasks.Task<ClienteBibliotecaElSaber.ServidorElSaber.PrestamoBinding[]> ObtenerPrestamosActivosYVencidosPorNumeroSocioAsync(int numeroSocio);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrestamoManejador/ValidarPrestamosVencidosPorNumeroSocio", ReplyAction="http://tempuri.org/IPrestamoManejador/ValidarPrestamosVencidosPorNumeroSocioRespo" +
+            "nse")]
+        int ValidarPrestamosVencidosPorNumeroSocio(int numeroSocio);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrestamoManejador/ValidarPrestamosVencidosPorNumeroSocio", ReplyAction="http://tempuri.org/IPrestamoManejador/ValidarPrestamosVencidosPorNumeroSocioRespo" +
+            "nse")]
+        System.Threading.Tasks.Task<int> ValidarPrestamosVencidosPorNumeroSocioAsync(int numeroSocio);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1916,6 +1952,14 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
         
         public System.Threading.Tasks.Task<ClienteBibliotecaElSaber.ServidorElSaber.PrestamoBinding[]> ObtenerPrestamosActivosYVencidosPorNumeroSocioAsync(int numeroSocio) {
             return base.Channel.ObtenerPrestamosActivosYVencidosPorNumeroSocioAsync(numeroSocio);
+        }
+        
+        public int ValidarPrestamosVencidosPorNumeroSocio(int numeroSocio) {
+            return base.Channel.ValidarPrestamosVencidosPorNumeroSocio(numeroSocio);
+        }
+        
+        public System.Threading.Tasks.Task<int> ValidarPrestamosVencidosPorNumeroSocioAsync(int numeroSocio) {
+            return base.Channel.ValidarPrestamosVencidosPorNumeroSocioAsync(numeroSocio);
         }
     }
 }

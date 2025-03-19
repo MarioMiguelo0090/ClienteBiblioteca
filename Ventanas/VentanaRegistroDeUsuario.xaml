@@ -81,7 +81,7 @@
                                Margin="0,0,0,10"/>
                     <TextBox x:Name="txtb_Telefono"
                              Width="240"
-                             MaxLength="12"/>
+                             MaxLength="10"/>
                 </StackPanel>
                 <StackPanel>
                     <TextBlock Text="Calle:"
