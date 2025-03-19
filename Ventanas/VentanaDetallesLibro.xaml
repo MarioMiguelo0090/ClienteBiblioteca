@@ -43,19 +43,19 @@
             <TextBlock x:Name="txb_Genero" FontSize="18"/>
         </Border>
 
-        <Label Content="Edición:" FontWeight="Bold" FontSize="20" Margin="458,272,378,293"/>
+        <Label Content="Estado:" FontWeight="Bold" FontSize="20" Margin="458,272,378,293"/>
         <Border BorderBrush="Black" BorderThickness="1" Margin="590,272,42,293">
-            <TextBlock x:Name="txb_Edicion" FontSize="18"/>
+            <TextBlock x:Name="txb_Estado" FontSize="18"/>
         </Border>
 
-        <Label Content="Folio:" FontWeight="Bold" FontSize="20" Margin="40,326,793,235"/>
+        <Label Content="Cantidad&#xD;&#xA;Ejemplares:" FontWeight="Bold" FontSize="20" Margin="3,312,741,218"/>
         <Border BorderBrush="Black" BorderThickness="1" Margin="118,326,524,235">
-            <TextBlock x:Name="txb_Folio" FontSize="18"/>
+            <TextBlock x:Name="txb_CantidadEjemplares" FontSize="18"/>
         </Border>
 
-        <Label Content="Clasificación:" FontWeight="Bold" FontSize="20" Margin="460,328,286,238"/>
+        <Label Content="Cantidad Ejemplares&#xD;&#xA; Prestados:" FontWeight="Bold" FontSize="19" Margin="396,320,310,218"/>
         <Border BorderBrush="Black" BorderThickness="1" Margin="590,328,42,238">
-            <TextBlock x:Name="txb_Clasificacion" FontSize="18"/>
+            <TextBlock x:Name="txb_CantidadEjemplaresPrestados" FontSize="18" Margin="9,0,0,0"/>
         </Border>
 
         <Label Content="ISBN:" FontWeight="Bold" FontSize="20" Margin="40,379,778,187"/>
@@ -71,6 +71,12 @@
         <Border BorderBrush="Black" BorderThickness="1" Margin="174,436,524,114">
             <TextBlock x:Name="txb_FechaPublicacion" FontSize="18" Margin="-1,0,9,34"/>
         </Border>
+
+        <Label Content="Número de &#xD;&#xA;Páginas:" FontWeight="Bold" FontSize="20" Margin="460,436,331,94"/>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="589,436,109,114">
+            <TextBlock x:Name="txb_NumeroDePaginas" FontSize="18" Margin="-1,0,9,34"/>
+        </Border>
+
 
         <Button Content="Regresar"
             Background="Red"
