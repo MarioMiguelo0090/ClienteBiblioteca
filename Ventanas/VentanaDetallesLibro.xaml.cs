@@ -21,27 +21,23 @@ namespace ClienteBibliotecaElSaber.Ventanas
     /// </summary>
     public partial class VentanaDetallesLibro : Window
     {
-        private LibroDatos libro;
+        private LibroBinding libro;
 
         public VentanaDetallesLibro(LibroBinding datosDelLibro)
         {
             InitializeComponent();
             CargarDatosDeLibro(datosDelLibro);
-        }
-
-        public VentanaDetallesLibro(LibroDatos libro)
-        {
-            this.libro = libro;
+            this.libro = datosDelLibro;
         }
 
         public void CargarDatosDeLibro(LibroBinding datosLibro)
         {
             txb_Titulo.Text = datosLibro.Titulo;
-            txb_Autor.Text = datosLibro.FK_IdAutor.ToString();
+            txb_Autor.Text = datosLibro.autor.Autor;
             txb_ISBN.Text = datosLibro.Isbn;
-            txb_Editorial.Text = datosLibro.FK_IdEditorial.ToString();
+            txb_Editorial.Text = datosLibro.editorial.Editorial;
             txb_FechaPublicacion.Text = datosLibro.AnioDePublicacion.ToString();
-            txb_Genero.Text = datosLibro.FK_IdGenero.ToString();
+            txb_Genero.Text = datosLibro.genero.Genero;
             txb_NumeroDePaginas.Text = datosLibro.NumeroDePaginas.ToString();
             txb_Estado.Text = datosLibro.Estado;
             txb_CantidadEjemplares.Text = datosLibro.CantidadEjemplares.ToString();

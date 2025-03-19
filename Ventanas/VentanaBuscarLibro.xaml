@@ -26,35 +26,12 @@
         <TextBox x:Name="txb_Titulo" Margin="210,147,410,416" KeyDown="Buscar_Enter"/>
 
         <Label Content="Género" FontWeight="Bold" FontSize="20" Margin="515,144,318,422"/>
-        <ComboBox x:Name="cmb_Genero" Margin="602,144,40,416" SelectionChanged="ComboBox_Genero">
-            <ComboBoxItem Content="Ficción"/>
-            <ComboBoxItem Content="Suspenso"/>
-            <ComboBoxItem Content="Novela histórica"/>
-            <ComboBoxItem Content="Romántico"/>
-            <ComboBoxItem Content="Ciencia Ficción"/>
-            <ComboBoxItem Content="Distopía"/>
-            <ComboBoxItem Content="Aventuras"/>
-            <ComboBoxItem Content="Fantasía"/>
-            <ComboBoxItem Content="Terror"/>
-            <ComboBoxItem Content="Paranormal"/>
-            <ComboBoxItem Content="Poesía"/>
-            <ComboBoxItem Content="Juvenil"/>
-            <ComboBoxItem Content="Infantil"/>
-            <ComboBoxItem Content="Autoayuda"/>
-            <ComboBoxItem Content="Salud y deporte"/>
-            <ComboBoxItem Content="Memorias"/>
-            <ComboBoxItem Content="Biografías"/>
-            <ComboBoxItem Content="Cocina"/>
-            <ComboBoxItem Content="Viajes"/>
-            <ComboBoxItem Content="Técnico"/>
-            <ComboBoxItem Content="Divulgativos"/>
-            <ComboBoxItem Content="Arte"/>
-        </ComboBox>
+        <ComboBox x:Name="cmb_Genero" Margin="602,144,40,416"/>
 
         <Label Content="Editorial" FontWeight="Bold" FontSize="20" Margin="509,208,305,342"/>
-        <ComboBox x:Name="cmb_Editorial" IsEditable="True" Margin="602,208,40,350" LostFocus="Editorial_BusquedaPerdida"/>
+        <ComboBox x:Name="cmb_genero" IsEditable="True" Margin="602,208,40,350"/>
 
-        <Button Content="Buscar" Background="Green" Foreground="White" FontWeight="Bold" Margin="18,144,790,406" Click="Buscar_Click" Cursor="Hand"/>
+        <Button Content="Buscar" Background="Green" Foreground="White" FontWeight="Bold" Margin="29,215,779,335" Click="Buscar_Click" Cursor="Hand"/>
 
         <ListView x:Name="lw_libros" Margin="40,270,40,80">
             <ListView.ItemTemplate>

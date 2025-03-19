@@ -69,16 +69,38 @@
       <xs:element minOccurs="0" name="CantidadEjemplares" type="xs:int" />
       <xs:element minOccurs="0" name="CantidadEjemplaresPrestados" type="xs:int" />
       <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="FK_IdAutor" type="xs:int" />
-      <xs:element minOccurs="0" name="FK_IdEditorial" type="xs:int" />
-      <xs:element minOccurs="0" name="FK_IdGenero" type="xs:int" />
       <xs:element minOccurs="0" name="Isbn" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="NumeroDePaginas" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RutaPortada" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Titulo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="autor" nillable="true" type="tns:AutorBinding" />
+      <xs:element minOccurs="0" name="editorial" nillable="true" type="tns:EditorialBinding" />
+      <xs:element minOccurs="0" name="genero" nillable="true" type="tns:GeneroBinding" />
+      <xs:element minOccurs="0" name="idLibro" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="LibroBinding" nillable="true" type="tns:LibroBinding" />
+  <xs:complexType name="AutorBinding">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Autor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdAutor" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AutorBinding" nillable="true" type="tns:AutorBinding" />
+  <xs:complexType name="EditorialBinding">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Editorial" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdEditorial" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EditorialBinding" nillable="true" type="tns:EditorialBinding" />
+  <xs:complexType name="GeneroBinding">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Genero" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdGenero" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GeneroBinding" nillable="true" type="tns:GeneroBinding" />
   <xs:complexType name="ArrayOfLibroBinding">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="LibroBinding" nillable="true" type="tns:LibroBinding" />
@@ -91,39 +113,18 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfGeneroBinding" nillable="true" type="tns:ArrayOfGeneroBinding" />
-  <xs:complexType name="GeneroBinding">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Genero" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="IdGenero" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="GeneroBinding" nillable="true" type="tns:GeneroBinding" />
   <xs:complexType name="ArrayOfAutorBinding">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="AutorBinding" nillable="true" type="tns:AutorBinding" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfAutorBinding" nillable="true" type="tns:ArrayOfAutorBinding" />
-  <xs:complexType name="AutorBinding">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Autor" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="IdAutor" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="AutorBinding" nillable="true" type="tns:AutorBinding" />
   <xs:complexType name="ArrayOfEditorialBinding">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="EditorialBinding" nillable="true" type="tns:EditorialBinding" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfEditorialBinding" nillable="true" type="tns:ArrayOfEditorialBinding" />
-  <xs:complexType name="EditorialBinding">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Editorial" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="IdEditorial" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="EditorialBinding" nillable="true" type="tns:EditorialBinding" />
   <xs:complexType name="PrestamoBinding">
     <xs:sequence>
       <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:string" />

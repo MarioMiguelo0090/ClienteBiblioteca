@@ -692,15 +692,6 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
         private string EstadoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int FK_IdAutorField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int FK_IdEditorialField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int FK_IdGeneroField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string IsbnField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -711,6 +702,18 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TituloField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ClienteBibliotecaElSaber.ServidorElSaber.AutorBinding autorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ClienteBibliotecaElSaber.ServidorElSaber.EditorialBinding editorialField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ClienteBibliotecaElSaber.ServidorElSaber.GeneroBinding generoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idLibroField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -775,45 +778,6 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int FK_IdAutor {
-            get {
-                return this.FK_IdAutorField;
-            }
-            set {
-                if ((this.FK_IdAutorField.Equals(value) != true)) {
-                    this.FK_IdAutorField = value;
-                    this.RaisePropertyChanged("FK_IdAutor");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int FK_IdEditorial {
-            get {
-                return this.FK_IdEditorialField;
-            }
-            set {
-                if ((this.FK_IdEditorialField.Equals(value) != true)) {
-                    this.FK_IdEditorialField = value;
-                    this.RaisePropertyChanged("FK_IdEditorial");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int FK_IdGenero {
-            get {
-                return this.FK_IdGeneroField;
-            }
-            set {
-                if ((this.FK_IdGeneroField.Equals(value) != true)) {
-                    this.FK_IdGeneroField = value;
-                    this.RaisePropertyChanged("FK_IdGenero");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Isbn {
             get {
                 return this.IsbnField;
@@ -864,66 +828,55 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
                 }
             }
         }
-
-        public int IdLibro { get; internal set; }
-
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="GeneroBinding", Namespace="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos")]
-    [System.SerializableAttribute()]
-    public partial class GeneroBinding : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string GeneroField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdGeneroField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Genero {
+        public ClienteBibliotecaElSaber.ServidorElSaber.AutorBinding autor {
             get {
-                return this.GeneroField;
+                return this.autorField;
             }
             set {
-                if ((object.ReferenceEquals(this.GeneroField, value) != true)) {
-                    this.GeneroField = value;
-                    this.RaisePropertyChanged("Genero");
+                if ((object.ReferenceEquals(this.autorField, value) != true)) {
+                    this.autorField = value;
+                    this.RaisePropertyChanged("autor");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int IdGenero {
+        public ClienteBibliotecaElSaber.ServidorElSaber.EditorialBinding editorial {
             get {
-                return this.IdGeneroField;
+                return this.editorialField;
             }
             set {
-                if ((this.IdGeneroField.Equals(value) != true)) {
-                    this.IdGeneroField = value;
-                    this.RaisePropertyChanged("IdGenero");
+                if ((object.ReferenceEquals(this.editorialField, value) != true)) {
+                    this.editorialField = value;
+                    this.RaisePropertyChanged("editorial");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ClienteBibliotecaElSaber.ServidorElSaber.GeneroBinding genero {
+            get {
+                return this.generoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.generoField, value) != true)) {
+                    this.generoField = value;
+                    this.RaisePropertyChanged("genero");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int idLibro {
+            get {
+                return this.idLibroField;
+            }
+            set {
+                if ((this.idLibroField.Equals(value) != true)) {
+                    this.idLibroField = value;
+                    this.RaisePropertyChanged("idLibro");
                 }
             }
         }
@@ -1046,6 +999,67 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
                 if ((this.IdEditorialField.Equals(value) != true)) {
                     this.IdEditorialField = value;
                     this.RaisePropertyChanged("IdEditorial");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GeneroBinding", Namespace="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos")]
+    [System.SerializableAttribute()]
+    public partial class GeneroBinding : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string GeneroField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdGeneroField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Genero {
+            get {
+                return this.GeneroField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.GeneroField, value) != true)) {
+                    this.GeneroField = value;
+                    this.RaisePropertyChanged("Genero");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdGenero {
+            get {
+                return this.IdGeneroField;
+            }
+            set {
+                if ((this.IdGeneroField.Equals(value) != true)) {
+                    this.IdGeneroField = value;
+                    this.RaisePropertyChanged("IdGenero");
                 }
             }
         }

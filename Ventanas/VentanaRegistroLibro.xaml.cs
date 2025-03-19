@@ -119,9 +119,9 @@ namespace ClienteBibliotecaElSaber.Ventanas
                     {
                         Titulo = txb_titulo.Text,
                         Isbn = txb_isbn.Text,
-                        FK_IdAutor = autor.IdAutor,
-                        FK_IdEditorial = editorial.IdEditorial,
-                        FK_IdGenero = genero.IdGenero,
+                        autor = autor,
+                        editorial = editorial,
+                        genero = genero,
                         AnioDePublicacion = fechaSeleccionada,
                         NumeroDePaginas = txb_noPaginas.Text,
                         RutaPortada = _rutaDestinoCliente,
