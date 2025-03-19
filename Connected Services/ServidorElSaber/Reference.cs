@@ -864,7 +864,9 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
                 }
             }
         }
-        
+
+        public int IdLibro { get; internal set; }
+
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
