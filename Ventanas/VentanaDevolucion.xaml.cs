@@ -43,7 +43,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
                 {
                     VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoAdvertencia
                     , "Datos inválidos", "Los datos que ha ingresado no son los correctos, inténtelo de nuevo.");
-                    ventanaEmergente.ShowDialog();
+                    
                 }
 
             }
@@ -86,7 +86,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
                 LoggerManager.Error($"Excepcion: {excepcionTiempo.Message}\nTraza {excepcionTiempo.StackTrace}");
                 VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError
                     , "Error de servidor", "El servidor esta inactivo. Por favor, inténtelo más tarde.");
-                ventanaEmergente.ShowDialog();
+                
                 RegresaVentanaMenuPrincipal();
             }
             catch (EndpointNotFoundException puntoNoEncontrado)
@@ -94,7 +94,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
                 LoggerManager.Error($"Excepcion: {puntoNoEncontrado.Message}\nTraza {puntoNoEncontrado.StackTrace}");
                 VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError
                     , "Error de servidor", "El servidor esta inactivo. Por favor, inténtelo más tarde.");
-                ventanaEmergente.ShowDialog();
+                
                 RegresaVentanaMenuPrincipal();
             }
             catch (CommunicationException excecpionComunicacion)
@@ -102,14 +102,14 @@ namespace ClienteBibliotecaElSaber.Ventanas
                 LoggerManager.Error($"Excepcion: {excecpionComunicacion.Message}\nTraza {excecpionComunicacion.StackTrace}");
                 VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError
                     , "Error de servidor", "El servidor esta inactivo. Por favor, inténtelo más tarde.");
-                ventanaEmergente.ShowDialog();
+                
                 RegresaVentanaMenuPrincipal();
             }
             if (prestamosObtenidos.Count == Constantes.ValorPorDefecto)
             {
                 VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoAdvertencia
                     , "Socio sin préstamos", "El socio solicitado no tiene ningún préstamo activo.");
-                ventanaEmergente.ShowDialog();
+                
                 RegresaVentanaMenuPrincipal();
             }
             else
@@ -119,7 +119,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
                 {
                     VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError
                     , "Error de base de datos", "No se ha podido establecer conexión a la base de datos, inténtelo de nuevo más tarde.");
-                    ventanaEmergente.ShowDialog();
+                    
                     RegresaVentanaMenuPrincipal();
                 }
                 else if (prestamoObtenido.IdPrestamo > Constantes.ValorPorDefecto)
@@ -161,7 +161,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
                     {
                         VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoAdvertencia,
                             "Multa generada", "El préstamo ha generado una multa que debe ser pagada.");
-                        ventanaEmergente.ShowDialog();
+                        
                     }
                     else
                     {

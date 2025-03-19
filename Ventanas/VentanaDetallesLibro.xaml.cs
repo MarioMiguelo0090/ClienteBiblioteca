@@ -42,6 +42,15 @@ namespace ClienteBibliotecaElSaber.Ventanas
             txb_Estado.Text = datosLibro.Estado;
             txb_CantidadEjemplares.Text = datosLibro.CantidadEjemplares.ToString();
             txb_CantidadEjemplaresPrestados.Text = datosLibro.CantidadEjemplaresPrestados.ToString();
+            if (!string.IsNullOrEmpty(datosLibro.RutaPortada) && System.IO.File.Exists(datosLibro.RutaPortada))
+            {
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(datosLibro.RutaPortada, UriKind.Absolute);
+                bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                bitmap.EndInit();
+                img_Libro.Source = bitmap;
+            }
         }
 
         private void Regresar_Click(object sender, RoutedEventArgs e)

@@ -16,30 +16,31 @@
         <Border Background="#FF432716" CornerRadius="10" Padding="10" Margin="136,19,155,483">
             <TextBlock Text="Buscar Libro" Foreground="White" FontSize="42" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center"/>
         </Border>
+        <Label Content="Seleccione el tipo de búsqueda que desea realizar:" FontSize="24" FontWeight="Bold" Foreground="Black" Margin="160,122,164,435"/>
+        <RadioButton x:Name="rb_isbn" Content="ISBN" FontSize="20" FontWeight="Bold" VerticalAlignment="Top" GroupName="CriterioBusqueda" Checked="SeleccionarCriterioBusqueda" Tag="ISBN" Margin="530,169,320,0"/>
+        <RadioButton x:Name="rb_titulo" Content="Título" FontSize="20" FontWeight="Bold" VerticalAlignment="Top" GroupName="CriterioBusqueda" Checked="SeleccionarCriterioBusqueda" Tag="Titulo" Margin="436,169,407,0"/>
+        <RadioButton x:Name="rb_genero" Content="Género" FontSize="20" FontWeight="Bold" VerticalAlignment="Top" GroupName="CriterioBusqueda" Checked="SeleccionarCriterioBusqueda" Tag="Genero" Margin="330,169,501,0" Height="29"/>
+        <RadioButton x:Name="rb_autor" Content="Autor" FontSize="20" FontWeight="Bold" VerticalAlignment="Top" GroupName="CriterioBusqueda" Checked="SeleccionarCriterioBusqueda" Tag="Autor" Margin="234,169,610,0"/>
 
         <Image Source="/Imagenes/Logo Positivo.png" Width="120" HorizontalAlignment="Left" Margin="794,7,0,482"/>
+        <Label x:Name="lbl_isbn"  Content="ISBN" FontWeight="Bold" FontSize="20" Margin="245,207,605,353" Visibility="Hidden"/>
+        <TextBox x:Name="txb_ISBN" Margin="315,208,305,355" KeyDown="Buscar_Enter" Visibility="Hidden" BorderBrush="Black" MaxLength="13"/>
+        <Label x:Name="lbl_titulo" Content="Título" FontWeight="Bold" FontSize="20" Margin="240,208,605,350" Visibility="Hidden"/>
+        <TextBox x:Name="txb_Titulo" Margin="315,207,305,356" KeyDown="Buscar_Enter" BorderBrush="Black" Visibility="Hidden" MaxLength="50"/>
+        <Label x:Name="lbl_genero" Content="Género" FontWeight="Bold" FontSize="20" Margin="228,208,605,358" Visibility="Hidden"/>
+        <ComboBox x:Name="cmb_Genero" Margin="320,206,322,354" IsEditable="False" Visibility="Hidden"/>
+        <Label x:Name="lbl_autor" Content="Autor" FontWeight="Bold" FontSize="20" Margin="240,206,574,344" Visibility="Hidden"/>
+        <ComboBox x:Name="cmb_autor" IsEditable="False" Margin="320,204,322,354" Visibility="Hidden"/>
 
-        <Label Content="ISBN" FontWeight="Bold" FontSize="20" Margin="146,208,704,352"/>
-        <TextBox x:Name="txb_ISBN" Margin="210,208,410,355" KeyDown="Buscar_Enter"/>
+        <Button Content="Buscar" Background="Green" Foreground="White" FontWeight="Bold" Margin="643,201,165,349" Click="Buscar_Click" Cursor="Hand"/>
 
-        <Label Content="Título" FontWeight="Bold" FontSize="20" Margin="135,147,710,411"/>
-        <TextBox x:Name="txb_Titulo" Margin="210,147,410,416" KeyDown="Buscar_Enter"/>
-
-        <Label Content="Género" FontWeight="Bold" FontSize="20" Margin="515,144,318,422"/>
-        <ComboBox x:Name="cmb_Genero" Margin="602,144,40,416"/>
-
-        <Label Content="Editorial" FontWeight="Bold" FontSize="20" Margin="509,208,305,342"/>
-        <ComboBox x:Name="cmb_genero" IsEditable="True" Margin="602,208,40,350"/>
-
-        <Button Content="Buscar" Background="Green" Foreground="White" FontWeight="Bold" Margin="29,215,779,335" Click="Buscar_Click" Cursor="Hand"/>
-
-        <ListView x:Name="lw_libros" Margin="40,270,40,80">
+        <ListView x:Name="lw_libros" Margin="40,290,40,60">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border BorderThickness="2" BorderBrush="Black" CornerRadius="10" Padding="10" Background="White" Margin="5">
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                             <Image Width="100" Height="150" Stretch="UniformToFill" Margin="0,5" Source="{Binding Imagen}"/>
-                            <TextBlock Text="{Binding Titulo}" FontSize="16" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding titulo}" FontSize="16" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                 <Button Content="Ver Detalles" Background="Blue" Foreground="White" FontWeight="Bold" Width="120" Height="40" Margin="5" Click="Detalles_Click" Tag="{Binding}"/>
                                 <Button Content="Editar" Background="Orange" Foreground="White" FontWeight="Bold" Width="100" Height="40" Margin="5" Click="Editar_Click" Tag="{Binding}"/>
@@ -51,6 +52,6 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Button Content="Regresar" Background="Red" Foreground="White" FontWeight="Bold" Margin="384,525,384,29" Click="Regresar_Click" Cursor="Hand"/>
+        <Button Content="Regresar" Background="Red" Foreground="White" FontWeight="Bold" Margin="384,549,384,5" Click="Regresar_Click" Cursor="Hand"/>
     </Grid>
 </Window>
