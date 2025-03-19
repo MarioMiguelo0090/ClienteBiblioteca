@@ -42,6 +42,28 @@ namespace ClienteBibliotecaElSaber.Singleton
             Usuario = acceso.IdUsuario;
         }
 
+        public string ObtenerNombreCompleto()
+        {
+            var partes = new List<string>();
+
+            if (!string.IsNullOrEmpty(Usuario.nombre))
+            {
+                partes.Add(Usuario.nombre);
+            }
+
+            if (!string.IsNullOrEmpty(Usuario.primerApellido))
+            {
+                partes.Add(Usuario.primerApellido);
+            }
+
+            if (!string.IsNullOrEmpty(Usuario.segundoApellido))
+            {
+                partes.Add(Usuario.segundoApellido);
+            }
+
+            return string.Join(" ", partes);
+        }
+
         public void CerrarSesion()
         {
             _instancia = null;

@@ -76,10 +76,18 @@
     <Compile Include="Utilidades\ContraseñaHelper.cs" />
     <Compile Include="Utilidades\CursoSobreImagenConverter.cs" />
     <Compile Include="Utilidades\Encriptador.cs" />
+    <Compile Include="Utilidades\Enumeradores.cs" />
     <Compile Include="Utilidades\GeneradorContrasenia.cs" />
     <Compile Include="Utilidades\LoggerManager.cs" />
     <Compile Include="Utilidades\ManejadorDeCitasAutores.cs" />
     <Compile Include="Utilidades\Validador.cs" />
+    <Compile Include="Utilidades\ValidadorPrestamo.cs" />
+    <Compile Include="Ventanas\PaginaRecuperarContrasenia.xaml.cs">
+      <DependentUpon>PaginaRecuperarContrasenia.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\PaginaValidacionCodigo.xaml.cs">
+      <DependentUpon>PaginaValidacionCodigo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas\VentanaRegistrarEditorial.xaml.cs">
       <DependentUpon>VentanaRegistrarEditorial.xaml</DependentUpon>
     </Compile>
@@ -138,6 +146,14 @@
     <Compile Include="Ventanas\VentanaRegistrarAutor.xaml.cs">
       <DependentUpon>VentanaRegistrarAutor.xaml</DependentUpon>
     </Compile>
+    <Page Include="Ventanas\PaginaRecuperarContrasenia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\PaginaValidacionCodigo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Ventanas\VentanaRegistrarEditorial.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -352,7 +368,13 @@
   <ItemGroup>
     <Resource Include="Imagenes\Iconos\CerrarSesion.png" />
     <Resource Include="Imagenes\Iconos\CerrarSesionOscuro.png" />
-    <Folder Include="ImagenesLibro\" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="ImagenesLibro\aaaaa.jpg" />
+    <Resource Include="ImagenesLibro\ASASAS.jpg" />
+    <Resource Include="ImagenesLibro\Don quijote.jpg" />
+    <Resource Include="ImagenesLibro\El Quijote.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

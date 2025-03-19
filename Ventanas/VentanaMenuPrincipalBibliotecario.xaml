@@ -85,7 +85,7 @@
                                Foreground="White"/>
                 </StackPanel>
                 <StackPanel Grid.Row="1">
-                    <TextBlock Text="Bienvenido, Josué Melgarejo García"
+                    <TextBlock x:Name="txtbl_Bienvenida"
                                FontSize="32"
                                Margin="35,20"/>
                     <Border Background="Chocolate"
@@ -93,11 +93,11 @@
                             Margin="30,0"
                             Padding="50,20">
                         <StackPanel>
-                            <TextBlock x:Name="Txbl_Cita"
+                            <TextBlock x:Name="txtbl_Cita"
                                        TextWrapping="Wrap"
                                        FontSize="14"
                                        FontStyle="Italic"/>
-                            <TextBlock x:Name="Txbl_Autor"
+                            <TextBlock x:Name="txtbl_Autor"
                                        Margin="0,15,0,0"
                                        FontSize="13"
                                        HorizontalAlignment="Right"/>

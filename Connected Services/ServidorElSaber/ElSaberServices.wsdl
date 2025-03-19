@@ -271,6 +271,18 @@
   <wsdl:message name="ILibroManejador_RegistrarNuevaEditorial_OutputMessage">
     <wsdl:part name="parameters" element="tns:RegistrarNuevaEditorialResponse" />
   </wsdl:message>
+  <wsdl:message name="ILibroManejador_ValidarDisponibilidadPorIdLibro_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarDisponibilidadPorIdLibro" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_ValidarDisponibilidadPorIdLibro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarDisponibilidadPorIdLibroResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_ObtenerTituloPorIdLibro_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerTituloPorIdLibro" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_ObtenerTituloPorIdLibro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerTituloPorIdLibroResponse" />
+  </wsdl:message>
   <wsdl:message name="IPrestamoManejador_RegistrarNuevoPrestamo_InputMessage">
     <wsdl:part name="parameters" element="tns:RegistrarNuevoPrestamo" />
   </wsdl:message>
@@ -282,6 +294,12 @@
   </wsdl:message>
   <wsdl:message name="IPrestamoManejador_ObtenerPrestamosActivosYVencidosPorNumeroSocio_OutputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerPrestamosActivosYVencidosPorNumeroSocioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPrestamoManejador_ValidarPrestamosVencidosPorNumeroSocio_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarPrestamosVencidosPorNumeroSocio" />
+  </wsdl:message>
+  <wsdl:message name="IPrestamoManejador_ValidarPrestamosVencidosPorNumeroSocio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarPrestamosVencidosPorNumeroSocioResponse" />
   </wsdl:message>
   <wsdl:portType name="IUsuarioManejador">
     <wsdl:operation name="RegistrarUsuarioAlaBaseDeDatos">
@@ -408,6 +426,14 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ILibroManejador/RegistrarNuevaEditorial" message="tns:ILibroManejador_RegistrarNuevaEditorial_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILibroManejador/RegistrarNuevaEditorialResponse" message="tns:ILibroManejador_RegistrarNuevaEditorial_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ValidarDisponibilidadPorIdLibro">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibroManejador/ValidarDisponibilidadPorIdLibro" message="tns:ILibroManejador_ValidarDisponibilidadPorIdLibro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibroManejador/ValidarDisponibilidadPorIdLibroResponse" message="tns:ILibroManejador_ValidarDisponibilidadPorIdLibro_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerTituloPorIdLibro">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibroManejador/ObtenerTituloPorIdLibro" message="tns:ILibroManejador_ObtenerTituloPorIdLibro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibroManejador/ObtenerTituloPorIdLibroResponse" message="tns:ILibroManejador_ObtenerTituloPorIdLibro_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IPrestamoManejador">
     <wsdl:operation name="RegistrarNuevoPrestamo">
@@ -417,6 +443,10 @@
     <wsdl:operation name="ObtenerPrestamosActivosYVencidosPorNumeroSocio">
       <wsdl:input wsaw:Action="http://tempuri.org/IPrestamoManejador/ObtenerPrestamosActivosYVencidosPorNumeroSocio" message="tns:IPrestamoManejador_ObtenerPrestamosActivosYVencidosPorNumeroSocio_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPrestamoManejador/ObtenerPrestamosActivosYVencidosPorNumeroSocioResponse" message="tns:IPrestamoManejador_ObtenerPrestamosActivosYVencidosPorNumeroSocio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidarPrestamosVencidosPorNumeroSocio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPrestamoManejador/ValidarPrestamosVencidosPorNumeroSocio" message="tns:IPrestamoManejador_ValidarPrestamosVencidosPorNumeroSocio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPrestamoManejador/ValidarPrestamosVencidosPorNumeroSocioResponse" message="tns:IPrestamoManejador_ValidarPrestamosVencidosPorNumeroSocio_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUsuarioManejador" type="tns:IUsuarioManejador">
@@ -698,6 +728,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ValidarDisponibilidadPorIdLibro">
+      <soap12:operation soapAction="http://tempuri.org/ILibroManejador/ValidarDisponibilidadPorIdLibro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerTituloPorIdLibro">
+      <soap12:operation soapAction="http://tempuri.org/ILibroManejador/ObtenerTituloPorIdLibro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="NetTcpBinding_IPrestamoManejador" type="tns:IPrestamoManejador">
     <wsp:PolicyReference URI="#NetTcpBinding_IPrestamoManejador_policy" />
@@ -713,6 +761,15 @@
     </wsdl:operation>
     <wsdl:operation name="ObtenerPrestamosActivosYVencidosPorNumeroSocio">
       <soap12:operation soapAction="http://tempuri.org/IPrestamoManejador/ObtenerPrestamosActivosYVencidosPorNumeroSocio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidarPrestamosVencidosPorNumeroSocio">
+      <soap12:operation soapAction="http://tempuri.org/IPrestamoManejador/ValidarPrestamosVencidosPorNumeroSocio" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -168,7 +168,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
             bool correoElectronicoValidado = Validador.ValidarCorreo(txtb_CorreoElectronico.Text);
             bool telefonoValidado = Validador.ValidarTelefono(txtb_Telefono.Text);
             bool calleValidado = Validador.ValidarCalle(txtb_Calle.Text);
-            bool numeroValidado = Validador.ValidarNumeroCalle(txtb_Numero.Text);
+            bool numeroValidado = Validador.ValidarNumeroCasa(txtb_Numero.Text);
             bool codigoPostalValidado = Validador.ValidarCodigoPostal(txtb_CodigoPostal.Text);
             bool ciudadValidado = Validador.ValidarCalle(txtb_Ciudad.Text);
             bool puestoValidado = Validador.ValidarNombre(txtb_Puesto.Text);

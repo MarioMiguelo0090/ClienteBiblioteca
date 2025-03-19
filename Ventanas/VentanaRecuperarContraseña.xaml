@@ -21,30 +21,8 @@
                           Opacity="0.8"/>
         </Border.Effect>
 
-        <StackPanel Margin="50,35">
-            <TextBlock Text="Recuperación de contraseña"
-                   FontSize="22"
-                   FontWeight="Bold"/>
-            <TextBlock Text="Correo electrónico: "
-                   FontSize="20"
-                   FontWeight="DemiBold"
-                   Margin="50,20"/>
-            <TextBox Margin="50,0"/>
-            <StackPanel Orientation="Horizontal"
-                    HorizontalAlignment="Center"
-                    Margin="0,30">
-                <Button Content="Recuperar"
-                    Margin="0,0,20,0"
-                    Width="150"
-                    Background="Green"
-                    Foreground="White" 
-                    Click="Recuperar_Click"/>
-                <Button Content="Cancelar"
-                    Width="150"
-                    Background="Red"
-                    Foreground="White" 
-                    Click="Cancelar_Click"/>
-            </StackPanel>
-        </StackPanel>
+        <Frame x:Name="MarcoPrincipal"
+               Margin="50,35"
+               NavigationUIVisibility="Hidden"/>
     </Border>
 </Window>
