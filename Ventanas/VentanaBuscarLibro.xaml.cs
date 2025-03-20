@@ -359,17 +359,19 @@ namespace ClienteBibliotecaElSaber.Ventanas
             Button botonPresionado = sender as Button;
             LibroDatos libroSeleccionado = botonPresionado.DataContext as LibroDatos;
             if (libroSeleccionado != null)
-            { 
-                LibroBinding libroBinding = new LibroBinding()
+            {
+                LibroManejadorClient libroManejadorClient = new LibroManejadorClient();
+                byte[] imagenLibro = libroManejadorClient.ObtenerImagenLibro(libroSeleccionado.titulo);
+                if(imagenLibro.Length > 0)
                 {
-                    idLibro = libroSeleccionado.idLibro,
-                    Titulo = libroSeleccionado.titulo,
-                    RutaPortada = libroSeleccionado.Imagen,
-                    Estado = libroSeleccionado.estado,
-                    AnioDePublicacion = libroSeleccionado.fechaPublicacion.ToString(),
-
-                };
-                VerDetallesDeLibro(libroSeleccionado);
+                    VerDetallesDeLibro(libroSeleccionado, imagenLibro);
+                }
+                else
+                {
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Error al obtener imagen de libro", "No se ha podido recuperar la imagen del libro.");
+                    ventanaEmergente.ShowDialog();
+                }
+                
             }
             else
             {
@@ -378,7 +380,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
             }
         }
 
-        private void VerDetallesDeLibro(LibroDatos libro)
+        private void VerDetallesDeLibro(LibroDatos libro, byte[] imagen)
         {
             this.Hide();
 
@@ -390,7 +392,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
             libroBinding.genero = libro.genero;
             libroBinding.AnioDePublicacion = libro.fechaPublicacion.ToString("yyyy");
             libroBinding.Estado = libro.estado;
-            libroBinding.RutaPortada = libro.Imagen;
+            libroBinding.imagenLibro = libro.Imagen;
             libroBinding.NumeroDePaginas = libro.numeroDePaginas;
             libroBinding.CantidadEjemplares = libro.cantidadEjemplares;
             libroBinding.CantidadEjemplaresPrestados = libro.cantidadEjemplaresPrestados;
@@ -418,32 +420,54 @@ namespace ClienteBibliotecaElSaber.Ventanas
         private void CargarLibrosEncontrados(List<LibroBinding> libros)
         {
             lw_libros.Items.Clear();
-            foreach (var libroObtenido in libros)
+            try
             {
-                DateTime fechaPublicacion;
-                if (!DateTime.TryParse(libroObtenido.AnioDePublicacion, out fechaPublicacion))
+                foreach (var libroObtenido in libros)
                 {
-                    fechaPublicacion = DateTime.Now;
+                    DateTime fechaPublicacion;
+                    if (!DateTime.TryParse(libroObtenido.AnioDePublicacion, out fechaPublicacion))
+                    {
+                        fechaPublicacion = DateTime.Now;
+                    }
+                    LibroManejadorClient libroManejadorClient = new LibroManejadorClient();
+                    byte[] imagenLibro = libroManejadorClient.ObtenerImagenLibro(libroObtenido.Titulo);
+                    var libro = new LibroDatos()
+                    {
+                        idLibro = libroObtenido.idLibro,
+                        titulo = libroObtenido.Titulo,
+                        isbn = libroObtenido.Isbn,
+                        autor = libroObtenido.autor,
+                        editorial = libroObtenido.editorial,
+                        genero = libroObtenido.genero,
+                        fechaPublicacion = fechaPublicacion,
+                        estado = libroObtenido.Estado,
+                        Imagen = imagenLibro,
+                        cantidadEjemplares = libroObtenido.CantidadEjemplares,
+                        cantidadEjemplaresPrestados = libroObtenido.CantidadEjemplaresPrestados,
+                        numeroDePaginas = libroObtenido.NumeroDePaginas,
+                    };
+
+                    lw_libros.Items.Add(libro);
                 }
-
-                var libro = new LibroDatos()
-                {
-                    idLibro = libroObtenido.idLibro,
-                    titulo = libroObtenido.Titulo,
-                    isbn =  libroObtenido.Isbn,
-                    autor = libroObtenido.autor,
-                    editorial = libroObtenido.editorial,
-                    genero = libroObtenido.genero,
-                    fechaPublicacion = fechaPublicacion,
-                    estado = libroObtenido.Estado,
-                    Imagen = libroObtenido.RutaPortada,
-                    cantidadEjemplares = libroObtenido.CantidadEjemplares,
-                    cantidadEjemplaresPrestados = libroObtenido.CantidadEjemplaresPrestados,
-                    numeroDePaginas = libroObtenido.NumeroDePaginas,
-                };
-
-                lw_libros.Items.Add(libro);
             }
+            catch (EndpointNotFoundException ex)
+            {
+                LoggerManager.Error($"Error de conexión: {ex.Message}\n{ex.StackTrace}");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Punto de conexión fallido", "No se ha podido establecer conexión con el servidor.");
+            }
+            catch (TimeoutException timeoutException)
+            {
+                LoggerManager.Error($"Excepción de TimeoutException: {timeoutException.Message}." +
+                                    $"\nTraza: {timeoutException.StackTrace}.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoInformacion, "Tiempo de espera agotado", "El tiempo de espera ha caducado, inténtelo de nuevo.");
+            }
+            catch (CommunicationException communicationException)
+            {
+                LoggerManager.Error($"Excepción de CommunicationException: {communicationException.Message}." +
+                                    $"\nTraza: {communicationException.StackTrace}.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Comunicacion fallida", "La comunicacion con el servidor se ha perdido, por favor verifique su conexión a internet.");
+            }
+            
         }
 
         private bool ValidarDatosIngresadosISBN()
@@ -497,7 +521,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
             public GeneroBinding genero { get; set; }
             public DateTime fechaPublicacion { get; set; }
             public string estado { get; set; }
-            public string Imagen { get; set; }
+            public byte[] Imagen { get; set; }
             public string numeroDePaginas {  get; set; }
             public int cantidadEjemplares { get; set; }
             public int cantidadEjemplaresPrestados { get; set; }

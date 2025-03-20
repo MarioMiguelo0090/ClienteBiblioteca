@@ -69,6 +69,7 @@
       <xs:element minOccurs="0" name="CantidadEjemplares" type="xs:int" />
       <xs:element minOccurs="0" name="CantidadEjemplaresPrestados" type="xs:int" />
       <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Extension" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Isbn" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="NumeroDePaginas" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RutaPortada" nillable="true" type="xs:string" />
@@ -77,6 +78,7 @@
       <xs:element minOccurs="0" name="editorial" nillable="true" type="tns:EditorialBinding" />
       <xs:element minOccurs="0" name="genero" nillable="true" type="tns:GeneroBinding" />
       <xs:element minOccurs="0" name="idLibro" type="xs:int" />
+      <xs:element minOccurs="0" name="imagenLibro" nillable="true" type="xs:base64Binary" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="LibroBinding" nillable="true" type="tns:LibroBinding" />

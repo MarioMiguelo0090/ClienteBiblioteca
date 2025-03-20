@@ -5,7 +5,7 @@
              xmlns:extensiones="clr-namespace:ClienteBibliotecaElSaber.Extensiones"
              xmlns:utilidades="clr-namespace:ClienteBibliotecaElSaber.Utilidades"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
-             StartupUri="/Ventanas/VentanaInicioDeSesion.xaml">
+             StartupUri="/Ventanas/VentanaBuscarLibro.xaml">
     <Application.Resources>
         <utilidades:CadenaVisibilidadConverter x:Key="CadenaVisibilidadConverter"/>
         <utilidades:CursoSobreImagenConverter x:Key="CursoSobreImagenConverter"/>

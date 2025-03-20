@@ -103,8 +103,8 @@ namespace ClienteBibliotecaElSaber.Ventanas
         {
             try
             {
-                int resultadoGuardadoImagen = GuardarImagenDeLibro();
-                if(resultadoGuardadoImagen != -1)
+                string resultadoGuardadoImagen = GuardarImagenDeLibro();
+                if(resultadoGuardadoImagen != "-1")
                 {
                     LibroManejadorClient libroManejadorClient = new LibroManejadorClient();
                     GeneroBinding genero = cbGenero.SelectedItem as GeneroBinding;
@@ -158,16 +158,16 @@ namespace ClienteBibliotecaElSaber.Ventanas
             }
         }
 
-        private int GuardarImagenDeLibro()
+        private string GuardarImagenDeLibro()
         {
-            int resultadoGuardado = -1;
+            string resultadoGuardado = "-1";
             try
-            {
-                string directorioDestino = System.IO.Path.GetDirectoryName(_rutaDestinoCliente);
+            { 
                 string extension = System.IO.Path.GetExtension(_rutaArchivoOriginal);
-                string nuevaRutaDestino = System.IO.Path.Combine(directorioDestino, txb_titulo.Text + extension);
-                File.Copy(_rutaArchivoOriginal, nuevaRutaDestino, true);
-                resultadoGuardado = 1;
+                byte[] imagenEnBytes = File.ReadAllBytes(_rutaArchivoOriginal);
+                LibroManejadorClient libroManejadorClient = new LibroManejadorClient();
+                resultadoGuardado = libroManejadorClient.GuardarImagenLibro(txb_titulo.Text,imagenEnBytes,extension);
+                _rutaDestinoCliente = resultadoGuardado;
             }
             catch(FileNotFoundException fileNotFoundException)
             {

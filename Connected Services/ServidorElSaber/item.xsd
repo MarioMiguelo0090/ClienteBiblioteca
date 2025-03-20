@@ -420,6 +420,36 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GuardarImagenLibro">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="tituloLibro" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="imagenLibro" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="extension" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GuardarImagenLibroResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GuardarImagenLibroResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerImagenLibro">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="tituloLibro" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerImagenLibroResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ObtenerImagenLibroResult" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="RegistrarNuevoPrestamo">
     <xs:complexType>
       <xs:sequence>

@@ -692,6 +692,9 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
         private string EstadoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ExtensionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string IsbnField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -714,6 +717,9 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int idLibroField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte[] imagenLibroField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -773,6 +779,19 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
                 if ((object.ReferenceEquals(this.EstadoField, value) != true)) {
                     this.EstadoField = value;
                     this.RaisePropertyChanged("Estado");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Extension {
+            get {
+                return this.ExtensionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ExtensionField, value) != true)) {
+                    this.ExtensionField = value;
+                    this.RaisePropertyChanged("Extension");
                 }
             }
         }
@@ -877,6 +896,19 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
                 if ((this.idLibroField.Equals(value) != true)) {
                     this.idLibroField = value;
                     this.RaisePropertyChanged("idLibro");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte[] imagenLibro {
+            get {
+                return this.imagenLibroField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.imagenLibroField, value) != true)) {
+                    this.imagenLibroField = value;
+                    this.RaisePropertyChanged("imagenLibro");
                 }
             }
         }
@@ -1748,6 +1780,18 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/ObtenerTituloPorIdLibro", ReplyAction="http://tempuri.org/ILibroManejador/ObtenerTituloPorIdLibroResponse")]
         System.Threading.Tasks.Task<string> ObtenerTituloPorIdLibroAsync(int idLibro);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/GuardarImagenLibro", ReplyAction="http://tempuri.org/ILibroManejador/GuardarImagenLibroResponse")]
+        string GuardarImagenLibro(string tituloLibro, byte[] imagenLibro, string extension);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/GuardarImagenLibro", ReplyAction="http://tempuri.org/ILibroManejador/GuardarImagenLibroResponse")]
+        System.Threading.Tasks.Task<string> GuardarImagenLibroAsync(string tituloLibro, byte[] imagenLibro, string extension);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/ObtenerImagenLibro", ReplyAction="http://tempuri.org/ILibroManejador/ObtenerImagenLibroResponse")]
+        byte[] ObtenerImagenLibro(string tituloLibro);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/ObtenerImagenLibro", ReplyAction="http://tempuri.org/ILibroManejador/ObtenerImagenLibroResponse")]
+        System.Threading.Tasks.Task<byte[]> ObtenerImagenLibroAsync(string tituloLibro);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1895,6 +1939,22 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
         
         public System.Threading.Tasks.Task<string> ObtenerTituloPorIdLibroAsync(int idLibro) {
             return base.Channel.ObtenerTituloPorIdLibroAsync(idLibro);
+        }
+        
+        public string GuardarImagenLibro(string tituloLibro, byte[] imagenLibro, string extension) {
+            return base.Channel.GuardarImagenLibro(tituloLibro, imagenLibro, extension);
+        }
+        
+        public System.Threading.Tasks.Task<string> GuardarImagenLibroAsync(string tituloLibro, byte[] imagenLibro, string extension) {
+            return base.Channel.GuardarImagenLibroAsync(tituloLibro, imagenLibro, extension);
+        }
+        
+        public byte[] ObtenerImagenLibro(string tituloLibro) {
+            return base.Channel.ObtenerImagenLibro(tituloLibro);
+        }
+        
+        public System.Threading.Tasks.Task<byte[]> ObtenerImagenLibroAsync(string tituloLibro) {
+            return base.Channel.ObtenerImagenLibroAsync(tituloLibro);
         }
     }
     

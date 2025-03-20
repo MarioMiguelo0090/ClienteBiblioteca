@@ -283,6 +283,18 @@
   <wsdl:message name="ILibroManejador_ObtenerTituloPorIdLibro_OutputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerTituloPorIdLibroResponse" />
   </wsdl:message>
+  <wsdl:message name="ILibroManejador_GuardarImagenLibro_InputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarImagenLibro" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_GuardarImagenLibro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarImagenLibroResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_ObtenerImagenLibro_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerImagenLibro" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_ObtenerImagenLibro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerImagenLibroResponse" />
+  </wsdl:message>
   <wsdl:message name="IPrestamoManejador_RegistrarNuevoPrestamo_InputMessage">
     <wsdl:part name="parameters" element="tns:RegistrarNuevoPrestamo" />
   </wsdl:message>
@@ -433,6 +445,14 @@
     <wsdl:operation name="ObtenerTituloPorIdLibro">
       <wsdl:input wsaw:Action="http://tempuri.org/ILibroManejador/ObtenerTituloPorIdLibro" message="tns:ILibroManejador_ObtenerTituloPorIdLibro_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILibroManejador/ObtenerTituloPorIdLibroResponse" message="tns:ILibroManejador_ObtenerTituloPorIdLibro_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GuardarImagenLibro">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibroManejador/GuardarImagenLibro" message="tns:ILibroManejador_GuardarImagenLibro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibroManejador/GuardarImagenLibroResponse" message="tns:ILibroManejador_GuardarImagenLibro_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerImagenLibro">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibroManejador/ObtenerImagenLibro" message="tns:ILibroManejador_ObtenerImagenLibro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibroManejador/ObtenerImagenLibroResponse" message="tns:ILibroManejador_ObtenerImagenLibro_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IPrestamoManejador">
@@ -739,6 +759,24 @@
     </wsdl:operation>
     <wsdl:operation name="ObtenerTituloPorIdLibro">
       <soap12:operation soapAction="http://tempuri.org/ILibroManejador/ObtenerTituloPorIdLibro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GuardarImagenLibro">
+      <soap12:operation soapAction="http://tempuri.org/ILibroManejador/GuardarImagenLibro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerImagenLibro">
+      <soap12:operation soapAction="http://tempuri.org/ILibroManejador/ObtenerImagenLibro" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

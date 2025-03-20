@@ -1,6 +1,7 @@
 ﻿using ClienteBibliotecaElSaber.ServidorElSaber;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,14 +43,23 @@ namespace ClienteBibliotecaElSaber.Ventanas
             txb_Estado.Text = datosLibro.Estado;
             txb_CantidadEjemplares.Text = datosLibro.CantidadEjemplares.ToString();
             txb_CantidadEjemplaresPrestados.Text = datosLibro.CantidadEjemplaresPrestados.ToString();
-            if (!string.IsNullOrEmpty(datosLibro.RutaPortada) && System.IO.File.Exists(datosLibro.RutaPortada))
+            if(datosLibro.imagenLibro != null && datosLibro.imagenLibro.Length > 0)
+            {
+                img_Libro.Source = ConvertirBytesAImagen(datosLibro.imagenLibro);
+            }
+        }
+
+        private BitmapImage ConvertirBytesAImagen(byte[] imageData)
+        {
+            using (MemoryStream ms = new MemoryStream(imageData))
             {
                 BitmapImage bitmap = new BitmapImage();
                 bitmap.BeginInit();
-                bitmap.UriSource = new Uri(datosLibro.RutaPortada, UriKind.Absolute);
                 bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                bitmap.StreamSource = ms;
                 bitmap.EndInit();
-                img_Libro.Source = bitmap;
+                bitmap.Freeze(); 
+                return bitmap;
             }
         }
 
