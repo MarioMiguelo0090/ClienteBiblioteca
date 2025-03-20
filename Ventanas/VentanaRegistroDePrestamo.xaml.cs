@@ -1,4 +1,5 @@
 ﻿using ClienteBibliotecaElSaber.ServidorElSaber;
+using ClienteBibliotecaElSaber.Singleton;
 using ClienteBibliotecaElSaber.Utilidades;
 using System;
 using System.Collections.Generic;
@@ -141,8 +142,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
                 FechaPrestamo = DateTime.Today,
                 FechaDevolucionEsperada = Dp_FechaDevolucion.SelectedDate ?? DateTime.Today.AddDays(7),
                 FK_IdLibro = ObtenerIdLibro(),
-                //Cambiar por idUsuario de Singleton
-                FK_IdUsuario = 1,
+                FK_IdUsuario = SingletonBibliotecario.Instancia.Usuario.IdUsuario
             };
             return prestamo;    
         }
@@ -188,10 +188,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
 
         private void RegresaVentanaMenuPrincipal() 
         {
-            this.Hide();
-            VentanaMenuPrincipalBibliotecario ventanaMenuPrincipalBibliotecario = new VentanaMenuPrincipalBibliotecario();
-            ventanaMenuPrincipalBibliotecario.ShowDialog();
-            this.Show();
+            this.Close();
         }
 
         private bool ValidarDisponibilidad(int idLibro) 

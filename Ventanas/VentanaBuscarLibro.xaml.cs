@@ -402,7 +402,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
 
         public void Editar_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         public void Eliminar_Click(object sender, EventArgs e)

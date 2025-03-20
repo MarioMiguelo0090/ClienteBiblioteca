@@ -45,16 +45,48 @@ namespace ClienteBibliotecaElSaber.Ventanas
             }
         }
 
-        private void IrVentanaSocios_Click(object sender, RoutedEventArgs e)
+        private void IrVentanaRegistrarSocio_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            VentanaRegistrarSocio ventanaRegistrarSocio = new VentanaRegistrarSocio();
+            ventanaRegistrarSocio.ShowDialog();
+            this.Show();
+        }
+
+        private void IrVentanaBuscarSocio_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            VentanaBuscarSocio ventanaBuscarSocio = new VentanaBuscarSocio();
+            ventanaBuscarSocio.ShowDialog();
+            this.Show();
+        }
+
+        private void IrVentanaBuscarLibro_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            VentanaBuscarLibro ventanaBuscarLibro = new VentanaBuscarLibro();
+            ventanaBuscarLibro.ShowDialog();
+            this.Show();
+        }
+
+        private void IrVentanaValidarInventarioLibros_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void IrVentanaLibro_Click(object sender, RoutedEventArgs e)
+        private void IrVentanaBuscarPrestamoSocio_Click(object sender, RoutedEventArgs e)
         {
-            VentanaRegistroDePrestamo ventanaRegistroDePrestamo = new VentanaRegistroDePrestamo();
-            ventanaRegistroDePrestamo.Show();
-            this.Hide();
+
+        }
+
+        private void IrVentanaBuscarPrestamo_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void IrVentanaRegistrarPrestamo_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void IrVentanaDevolucion_Click(object sender, RoutedEventArgs e)

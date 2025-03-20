@@ -15,7 +15,7 @@ namespace ClienteBibliotecaElSaber.Singleton
         public int IdAcceso { get; private set; }
         public string Correo { get; private set; }
         public string TipoDeUsuario { get; private set; }
-        UsuarioBinding Usuario { get; set; }
+        public UsuarioBinding Usuario { get; set; }
 
         private SingletonBibliotecario() { }
 

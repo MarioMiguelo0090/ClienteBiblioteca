@@ -132,90 +132,259 @@
                     </EventTrigger>
                 </Grid.Triggers>
 
-                <StackPanel>
-                    <Image Source="/Imagenes/Logo Negativo.png"
-                           Width="70"
-                           Margin="0,20,0,20"/>
+                <Image Source="/Imagenes/Logo Negativo.png"
+                       Width="70"
+                       Margin="0,20,0,20"
+                       VerticalAlignment="Top"/>
 
-                    <Button Style="{StaticResource BotonMenu}"
-                            Tag="/Imagenes/Iconos/Libro.png"
-                            HorizontalContentAlignment="Center">
-                        <Button.Content>
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                <TextBlock x:Name="TextoBoton"
-                                           Text=""
-                                           VerticalAlignment="Center"
-                                           Opacity="0"/>
-                                <TextBlock Text="" Width="70"/>
-                            </StackPanel>
-                        </Button.Content>
+                <ScrollViewer Height="360"
+                              Margin="0,120,0,0"
+                              VerticalAlignment="Top"
+                              VerticalScrollBarVisibility="Hidden">
+                    <StackPanel>
+                        <Button Style="{StaticResource BotonMenu}"
+                                Tag="/Imagenes/Iconos/BuscarUsuario.png"
+                                HorizontalContentAlignment="Center"
+                                Click="IrVentanaBuscarUsuario_Click">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <TextBlock x:Name="TextoBotonBU"
+                                               Text=""
+                                               VerticalAlignment="Center"
+                                               Opacity="0"/>
+                                    <TextBlock Text="" Width="70"/>
+                                </StackPanel>
+                            </Button.Content>
 
-                        <Button.Triggers>
-                            <EventTrigger RoutedEvent="MouseEnter">
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <StringAnimationUsingKeyFrames Storyboard.TargetName="TextoBoton"
-                                                                       Storyboard.TargetProperty="Text">
-                                            <DiscreteStringKeyFrame KeyTime="0:0:0" Value="Libros"/>
-                                        </StringAnimationUsingKeyFrames>
-                                        <DoubleAnimation Storyboard.TargetName="TextoBoton"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To="1" Duration="0:0:0.2"/>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger>
-                            <EventTrigger RoutedEvent="MouseLeave">
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetName="TextoBoton"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To="0" Duration="0:0:0"/>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger>
-                        </Button.Triggers>
-                    </Button>
+                            <Button.Triggers>
+                                <EventTrigger RoutedEvent="MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <StringAnimationUsingKeyFrames Storyboard.TargetName="TextoBotonBU"
+                                                                           Storyboard.TargetProperty="Text">
+                                                <DiscreteStringKeyFrame KeyTime="0:0:0" Value="Buscar&#x0a;usuarios"/>
+                                            </StringAnimationUsingKeyFrames>
+                                            <DoubleAnimation Storyboard.TargetName="TextoBotonBU"
+                                                             Storyboard.TargetProperty="Opacity"
+                                                             To="1" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="TextoBotonBU"
+                                                             Storyboard.TargetProperty="Opacity"
+                                                             To="0" Duration="0:0:0"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Button.Triggers>
+                        </Button>
 
-                    <Button Style="{StaticResource BotonMenu}"
-                            Tag="/Imagenes/Iconos/Usuarios.png"
-                            HorizontalContentAlignment="Center"
-                            Click="IrVentanaRegistrarUsuario_Click">
-                        <Button.Content>
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                <TextBlock x:Name="TextoBoton2"
-                                           Text=""
-                                           VerticalAlignment="Center"
-                                           Opacity="0"/>
-                                <TextBlock Text="" Width="70"/>
-                            </StackPanel>
-                        </Button.Content>
+                        <Button Style="{StaticResource BotonMenu}"
+                                Tag="/Imagenes/Iconos/RegistrarUsuario.png"
+                                HorizontalContentAlignment="Center"
+                                Click="IrVentanaRegistrarUsuario_Click">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <TextBlock x:Name="TextoBotonRU"
+                                               Text=""
+                                               VerticalAlignment="Center"
+                                               Opacity="0"/>
+                                    <TextBlock Text="" Width="70"/>
+                                </StackPanel>
+                            </Button.Content>
 
-                        <Button.Triggers>
-                            <EventTrigger RoutedEvent="MouseEnter">
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <StringAnimationUsingKeyFrames Storyboard.TargetName="TextoBoton2"
-                                                                       Storyboard.TargetProperty="Text">
-                                            <DiscreteStringKeyFrame KeyTime="0:0:0" Value="Usuarios"/>
-                                        </StringAnimationUsingKeyFrames>
-                                        <DoubleAnimation Storyboard.TargetName="TextoBoton2"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To="1" Duration="0:0:0.2"/>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger>
-                            <EventTrigger RoutedEvent="MouseLeave">
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetName="TextoBoton2"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To="0" Duration="0:0:0"/>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger>
-                        </Button.Triggers>
-                    </Button>
-                </StackPanel>
+                            <Button.Triggers>
+                                <EventTrigger RoutedEvent="MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <StringAnimationUsingKeyFrames Storyboard.TargetName="TextoBotonRU"
+                                                                           Storyboard.TargetProperty="Text">
+                                                <DiscreteStringKeyFrame KeyTime="0:0:0" Value="Registrar&#x0a;usuario"/>
+                                            </StringAnimationUsingKeyFrames>
+                                            <DoubleAnimation Storyboard.TargetName="TextoBotonRU"
+                                                             Storyboard.TargetProperty="Opacity"
+                                                             To="1" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="TextoBotonRU"
+                                                             Storyboard.TargetProperty="Opacity"
+                                                             To="0" Duration="0:0:0"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Button.Triggers>
+                        </Button>
+
+                        <Button Style="{StaticResource BotonMenu}"
+                                Tag="/Imagenes/Iconos/BuscarLibro.png"
+                                HorizontalContentAlignment="Center"
+                                Click="IrVentanaBuscarLibro_Click">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <TextBlock x:Name="TextoBotonBL"
+                                               Text=""
+                                               VerticalAlignment="Center"
+                                               Opacity="0"/>
+                                    <TextBlock Text="" Width="70"/>
+                                </StackPanel>
+                            </Button.Content>
+
+                            <Button.Triggers>
+                                <EventTrigger RoutedEvent="MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <StringAnimationUsingKeyFrames Storyboard.TargetName="TextoBotonBL"
+                                                                           Storyboard.TargetProperty="Text">
+                                                <DiscreteStringKeyFrame KeyTime="0:0:0" Value="Buscar&#x0a;libro"/>
+                                            </StringAnimationUsingKeyFrames>
+                                            <DoubleAnimation Storyboard.TargetName="TextoBotonBL"
+                                                             Storyboard.TargetProperty="Opacity"
+                                                             To="1" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="TextoBotonBL"
+                                                             Storyboard.TargetProperty="Opacity"
+                                                             To="0" Duration="0:0:0"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Button.Triggers>
+                        </Button>
+
+                        <Button Style="{StaticResource BotonMenu}"
+                                Tag="/Imagenes/Iconos/Libro.png"
+                                HorizontalContentAlignment="Center"
+                                Click="IrVentanaRegistrarLibro_Click">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <TextBlock x:Name="TextoBotonRL"
+                                               Text=""
+                                               VerticalAlignment="Center"
+                                               Opacity="0"/>
+                                    <TextBlock Text="" Width="70"/>
+                                </StackPanel>
+                            </Button.Content>
+
+                            <Button.Triggers>
+                                <EventTrigger RoutedEvent="MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <StringAnimationUsingKeyFrames Storyboard.TargetName="TextoBotonRL"
+                                                                           Storyboard.TargetProperty="Text">
+                                                <DiscreteStringKeyFrame KeyTime="0:0:0" Value="Registrar&#x0a;libro"/>
+                                            </StringAnimationUsingKeyFrames>
+                                            <DoubleAnimation Storyboard.TargetName="TextoBotonRL"
+                                                             Storyboard.TargetProperty="Opacity"
+                                                             To="1" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="TextoBotonRL"
+                                                             Storyboard.TargetProperty="Opacity"
+                                                             To="0" Duration="0:0:0"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Button.Triggers>
+                        </Button>
+
+                        <Button Style="{StaticResource BotonMenu}"
+                                Tag="/Imagenes/Iconos/ValidarInventario.png"
+                                HorizontalContentAlignment="Center"
+                                Height="100"
+                                Click="IrVentanaValidarInventarioLibros_Click">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <TextBlock x:Name="TextoBotonVIL"
+                                               Text=""
+                                               VerticalAlignment="Center"
+                                               Opacity="0"/>
+                                    <TextBlock Text="" Width="70"/>
+                                </StackPanel>
+                            </Button.Content>
+
+                            <Button.Triggers>
+                                <EventTrigger RoutedEvent="MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <StringAnimationUsingKeyFrames Storyboard.TargetName="TextoBotonVIL"
+                                                       Storyboard.TargetProperty="Text">
+                                                <DiscreteStringKeyFrame KeyTime="0:0:0" Value="Validar&#x0a;inventario&#x0a;libros"/>
+                                            </StringAnimationUsingKeyFrames>
+                                            <DoubleAnimation Storyboard.TargetName="TextoBotonVIL"
+                                                             Storyboard.TargetProperty="Opacity"
+                                                             To="1" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="TextoBotonVIL"
+                                                             Storyboard.TargetProperty="Opacity"
+                                                             To="0" Duration="0:0:0"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Button.Triggers>
+                        </Button>
+
+                        <Button Style="{StaticResource BotonMenu}"
+                                Tag="/Imagenes/Iconos/Reporte.png"
+                                HorizontalContentAlignment="Center"
+                                Click="IrVentanaReporte_Click">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <TextBlock x:Name="TextoBotonR"
+                                               Text=""
+                                               VerticalAlignment="Center"
+                                               Opacity="0"/>
+                                    <TextBlock Text="" Width="70"/>
+                                </StackPanel>
+                            </Button.Content>
+
+                            <Button.Triggers>
+                                <EventTrigger RoutedEvent="MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <StringAnimationUsingKeyFrames Storyboard.TargetName="TextoBotonR"
+                                                                           Storyboard.TargetProperty="Text">
+                                                <DiscreteStringKeyFrame KeyTime="0:0:0" Value="Reportes"/>
+                                            </StringAnimationUsingKeyFrames>
+                                            <DoubleAnimation Storyboard.TargetName="TextoBotonR"
+                                                             Storyboard.TargetProperty="Opacity"
+                                                             To="1" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="TextoBotonR"
+                                                             Storyboard.TargetProperty="Opacity"
+                                                             To="0" Duration="0:0:0"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Button.Triggers>
+                        </Button>
+                    </StackPanel>
+                </ScrollViewer>
+
                 <Button Style="{StaticResource BotonMenu}"
                         Tag="/Imagenes/Iconos/CerrarSesion.png"
                         HorizontalContentAlignment="Center"
