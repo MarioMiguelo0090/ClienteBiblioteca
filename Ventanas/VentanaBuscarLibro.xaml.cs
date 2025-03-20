@@ -414,7 +414,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
 
         public void Regresar_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         private void CargarLibrosEncontrados(List<LibroBinding> libros)

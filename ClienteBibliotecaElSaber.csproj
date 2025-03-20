@@ -247,6 +247,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Fuentes\RePublicTRIAL-Condensed-BF676e0d99ce7bf.otf" />
+    <Resource Include="Fuentes\RePublicTRIAL-Medium-BF676e0d99d7ecc.otf" />
+    <Resource Include="Fuentes\RePublicTRIAL-Regular-BF676e0d99d81b6.otf" />
     <None Include="Connected Services\ServidorElSaber\ClienteBibliotecaElSaber.ServidorElSaber.AccesoBinding.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -278,9 +281,6 @@
     <None Include="Connected Services\ServidorElSaber\item2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Resource Include="Fuentes\RePublicTRIAL-Condensed-BF676e0d99ce7bf.otf" />
-    <Resource Include="Fuentes\RePublicTRIAL-Medium-BF676e0d99d7ecc.otf" />
-    <Resource Include="Fuentes\RePublicTRIAL-Regular-BF676e0d99d81b6.otf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -312,24 +312,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\ServidorElSaber\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServidorElSaber\item.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServidorElSaber\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServidorElSaber\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServidorElSaber\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Imagenes\Emblema.png" />
@@ -417,6 +399,24 @@
   <ItemGroup>
     <Resource Include="Imagenes\Iconos\BuscarLibro.png" />
     <Resource Include="Imagenes\Iconos\BuscarLibroOscuro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ServidorElSaber\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServidorElSaber\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServidorElSaber\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServidorElSaber\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServidorElSaber\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

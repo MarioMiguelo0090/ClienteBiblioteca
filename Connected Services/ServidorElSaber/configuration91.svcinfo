@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="Tquk7eq7aMaxDKRtSOeEyNEfEyNvGEe/t9YKEPdCrGY=">
+<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="IJunCBNmI3cRzchgqWl0j1E+oXp1WD1S47qU868t9As=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_IUsuarioManejador">
       <properties>
@@ -947,10 +947,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="NetTcpBinding_IUsuarioManejador" contract="ServidorElSaber.IUsuarioManejador" bindingType="netTcpBinding" address="net.tcp://localhost:1441/ServicioUsuario" bindingConfiguration="NetTcpBinding_IUsuarioManejador">
+    <endpoint name="NetTcpBinding_IUsuarioManejador" contract="ServidorElSaber.IUsuarioManejador" bindingType="netTcpBinding" address="net.tcp://148.226.51.159:1441/ServicioUsuario" bindingConfiguration="NetTcpBinding_IUsuarioManejador">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://localhost:1441/ServicioUsuario</serializedValue>
+          <serializedValue>net.tcp://148.226.51.159:1441/ServicioUsuario</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -1032,10 +1032,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IRestablecimientoCuentaManejador" contract="ServidorElSaber.IRestablecimientoCuentaManejador" bindingType="netTcpBinding" address="net.tcp://localhost:1441/ServicioCorreo" bindingConfiguration="NetTcpBinding_IRestablecimientoCuentaManejador">
+    <endpoint name="NetTcpBinding_IRestablecimientoCuentaManejador" contract="ServidorElSaber.IRestablecimientoCuentaManejador" bindingType="netTcpBinding" address="net.tcp://148.226.51.159:1441/ServicioCorreo" bindingConfiguration="NetTcpBinding_IRestablecimientoCuentaManejador">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://localhost:1441/ServicioCorreo</serializedValue>
+          <serializedValue>net.tcp://148.226.51.159:1441/ServicioCorreo</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -1117,10 +1117,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IAccesoManejador" contract="ServidorElSaber.IAccesoManejador" bindingType="netTcpBinding" address="net.tcp://localhost:1441/ServicioAcceso" bindingConfiguration="NetTcpBinding_IAccesoManejador">
+    <endpoint name="NetTcpBinding_IAccesoManejador" contract="ServidorElSaber.IAccesoManejador" bindingType="netTcpBinding" address="net.tcp://148.226.51.159:1441/ServicioAcceso" bindingConfiguration="NetTcpBinding_IAccesoManejador">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://localhost:1441/ServicioAcceso</serializedValue>
+          <serializedValue>net.tcp://148.226.51.159:1441/ServicioAcceso</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -1202,10 +1202,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IDireccionManejador" contract="ServidorElSaber.IDireccionManejador" bindingType="netTcpBinding" address="net.tcp://localhost:1441/ServicioDireccion" bindingConfiguration="NetTcpBinding_IDireccionManejador">
+    <endpoint name="NetTcpBinding_IDireccionManejador" contract="ServidorElSaber.IDireccionManejador" bindingType="netTcpBinding" address="net.tcp://148.226.51.159:1441/ServicioDireccion" bindingConfiguration="NetTcpBinding_IDireccionManejador">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://localhost:1441/ServicioDireccion</serializedValue>
+          <serializedValue>net.tcp://148.226.51.159:1441/ServicioDireccion</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -1287,10 +1287,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_ISocioManejador" contract="ServidorElSaber.ISocioManejador" bindingType="netTcpBinding" address="net.tcp://localhost:1441/ServicioSocio" bindingConfiguration="NetTcpBinding_ISocioManejador">
+    <endpoint name="NetTcpBinding_ISocioManejador" contract="ServidorElSaber.ISocioManejador" bindingType="netTcpBinding" address="net.tcp://148.226.51.159:1441/ServicioSocio" bindingConfiguration="NetTcpBinding_ISocioManejador">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://localhost:1441/ServicioSocio</serializedValue>
+          <serializedValue>net.tcp://148.226.51.159:1441/ServicioSocio</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -1372,10 +1372,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IDevolucionManejador" contract="ServidorElSaber.IDevolucionManejador" bindingType="netTcpBinding" address="net.tcp://localhost:1441/ServicioDevolucion" bindingConfiguration="NetTcpBinding_IDevolucionManejador">
+    <endpoint name="NetTcpBinding_IDevolucionManejador" contract="ServidorElSaber.IDevolucionManejador" bindingType="netTcpBinding" address="net.tcp://148.226.51.159:1441/ServicioDevolucion" bindingConfiguration="NetTcpBinding_IDevolucionManejador">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://localhost:1441/ServicioDevolucion</serializedValue>
+          <serializedValue>net.tcp://148.226.51.159:1441/ServicioDevolucion</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -1457,10 +1457,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_ILibroManejador" contract="ServidorElSaber.ILibroManejador" bindingType="netTcpBinding" address="net.tcp://localhost:1441/ServicioLibro" bindingConfiguration="NetTcpBinding_ILibroManejador">
+    <endpoint name="NetTcpBinding_ILibroManejador" contract="ServidorElSaber.ILibroManejador" bindingType="netTcpBinding" address="net.tcp://148.226.51.159:1441/ServicioLibro" bindingConfiguration="NetTcpBinding_ILibroManejador">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://localhost:1441/ServicioLibro</serializedValue>
+          <serializedValue>net.tcp://148.226.51.159:1441/ServicioLibro</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -1542,10 +1542,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IPrestamoManejador" contract="ServidorElSaber.IPrestamoManejador" bindingType="netTcpBinding" address="net.tcp://localhost:1441/ServicioPrestamo" bindingConfiguration="NetTcpBinding_IPrestamoManejador">
+    <endpoint name="NetTcpBinding_IPrestamoManejador" contract="ServidorElSaber.IPrestamoManejador" bindingType="netTcpBinding" address="net.tcp://148.226.51.159:1441/ServicioPrestamo" bindingConfiguration="NetTcpBinding_IPrestamoManejador">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://localhost:1441/ServicioPrestamo</serializedValue>
+          <serializedValue>net.tcp://148.226.51.159:1441/ServicioPrestamo</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
