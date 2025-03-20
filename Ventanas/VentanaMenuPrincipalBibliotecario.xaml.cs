@@ -86,7 +86,10 @@ namespace ClienteBibliotecaElSaber.Ventanas
 
         private void IrVentanaRegistrarPrestamo_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Hide();
+            VentanaRegistroDePrestamo ventanaRegistroDePrestamo = new VentanaRegistroDePrestamo();
+            ventanaRegistroDePrestamo.ShowDialog();
+            this.Show();
         }
 
         private void IrVentanaDevolucion_Click(object sender, RoutedEventArgs e)

@@ -98,9 +98,9 @@
   </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
-      <xsd:import schemaLocation="http://localhost:1442/?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="http://localhost:1442/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:1442/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" />
+      <xsd:import schemaLocation="http://148.226.51.159:1442/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://148.226.51.159:1442/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://148.226.51.159:1442/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IUsuarioManejador_RegistrarUsuarioAlaBaseDeDatos_InputMessage">
@@ -818,51 +818,51 @@
   </wsdl:binding>
   <wsdl:service name="ElSaberServices">
     <wsdl:port name="NetTcpBinding_IUsuarioManejador" binding="tns:NetTcpBinding_IUsuarioManejador">
-      <soap12:address location="net.tcp://localhost:1441/ServicioUsuario" />
+      <soap12:address location="net.tcp://148.226.51.159:1441/ServicioUsuario" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:1441/ServicioUsuario</wsa10:Address>
+        <wsa10:Address>net.tcp://148.226.51.159:1441/ServicioUsuario</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IRestablecimientoCuentaManejador" binding="tns:NetTcpBinding_IRestablecimientoCuentaManejador">
-      <soap12:address location="net.tcp://localhost:1441/ServicioCorreo" />
+      <soap12:address location="net.tcp://148.226.51.159:1441/ServicioCorreo" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:1441/ServicioCorreo</wsa10:Address>
+        <wsa10:Address>net.tcp://148.226.51.159:1441/ServicioCorreo</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IAccesoManejador" binding="tns:NetTcpBinding_IAccesoManejador">
-      <soap12:address location="net.tcp://localhost:1441/ServicioAcceso" />
+      <soap12:address location="net.tcp://148.226.51.159:1441/ServicioAcceso" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:1441/ServicioAcceso</wsa10:Address>
+        <wsa10:Address>net.tcp://148.226.51.159:1441/ServicioAcceso</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IDireccionManejador" binding="tns:NetTcpBinding_IDireccionManejador">
-      <soap12:address location="net.tcp://localhost:1441/ServicioDireccion" />
+      <soap12:address location="net.tcp://148.226.51.159:1441/ServicioDireccion" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:1441/ServicioDireccion</wsa10:Address>
+        <wsa10:Address>net.tcp://148.226.51.159:1441/ServicioDireccion</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_ISocioManejador" binding="tns:NetTcpBinding_ISocioManejador">
-      <soap12:address location="net.tcp://localhost:1441/ServicioSocio" />
+      <soap12:address location="net.tcp://148.226.51.159:1441/ServicioSocio" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:1441/ServicioSocio</wsa10:Address>
+        <wsa10:Address>net.tcp://148.226.51.159:1441/ServicioSocio</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IDevolucionManejador" binding="tns:NetTcpBinding_IDevolucionManejador">
-      <soap12:address location="net.tcp://localhost:1441/ServicioDevolucion" />
+      <soap12:address location="net.tcp://148.226.51.159:1441/ServicioDevolucion" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:1441/ServicioDevolucion</wsa10:Address>
+        <wsa10:Address>net.tcp://148.226.51.159:1441/ServicioDevolucion</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_ILibroManejador" binding="tns:NetTcpBinding_ILibroManejador">
-      <soap12:address location="net.tcp://localhost:1441/ServicioLibro" />
+      <soap12:address location="net.tcp://148.226.51.159:1441/ServicioLibro" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:1441/ServicioLibro</wsa10:Address>
+        <wsa10:Address>net.tcp://148.226.51.159:1441/ServicioLibro</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IPrestamoManejador" binding="tns:NetTcpBinding_IPrestamoManejador">
-      <soap12:address location="net.tcp://localhost:1441/ServicioPrestamo" />
+      <soap12:address location="net.tcp://148.226.51.159:1441/ServicioPrestamo" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:1441/ServicioPrestamo</wsa10:Address>
+        <wsa10:Address>net.tcp://148.226.51.159:1441/ServicioPrestamo</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
   </wsdl:service>
