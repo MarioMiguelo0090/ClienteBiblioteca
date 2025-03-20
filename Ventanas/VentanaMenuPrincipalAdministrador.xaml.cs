@@ -33,12 +33,43 @@ namespace ClienteBibliotecaElSaber.Ventanas
             txtbl_Bienvenida.Text = $"Bienvenido, {SingletonAdministrador.Instancia.ObtenerNombreCompleto()}";
         }
 
+        private void IrVentanaBuscarUsuario_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
         private void IrVentanaRegistrarUsuario_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
             VentanaRegistroDeUsuario ventanaRegistroDeUsuario = new VentanaRegistroDeUsuario();
             ventanaRegistroDeUsuario.ShowDialog();
             this.Show();
+        }
+
+        private void IrVentanaBuscarLibro_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            VentanaBuscarLibro ventanaBuscarLibro = new VentanaBuscarLibro();
+            ventanaBuscarLibro.ShowDialog();
+            this.Show();
+        }
+
+        private void IrVentanaRegistrarLibro_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            VentanaRegistroLibro ventanaRegistroLibro = new VentanaRegistroLibro();
+            ventanaRegistroLibro.ShowDialog();
+            this.Show();
+        }
+
+        private void IrVentanaValidarInventarioLibros_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void IrVentanaReporte_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
 
         private void Salir_Click(object sender, RoutedEventArgs e)

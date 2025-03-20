@@ -11,7 +11,8 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         Background="Transparent"
-        AllowsTransparency="True">
+        AllowsTransparency="True"
+        Icon="/Imagenes/Logo Negativo.png">
     <Border Background="#F5F5DC"
             CornerRadius="25">
         <Grid>

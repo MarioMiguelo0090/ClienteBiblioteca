@@ -369,12 +369,54 @@
     <Resource Include="Imagenes\Iconos\CerrarSesion.png" />
     <Resource Include="Imagenes\Iconos\CerrarSesionOscuro.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Imagenes\Iconos\IconoBuho.ico" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="ImagenesLibro\aaaaa.jpg" />
     <Resource Include="ImagenesLibro\ASASAS.jpg" />
     <Resource Include="ImagenesLibro\Don quijote.jpg" />
     <Resource Include="ImagenesLibro\El Quijote.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Iconos\AgregarSocio.png" />
+    <Resource Include="Imagenes\Iconos\AgregarSocioOscuro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Iconos\BuscarSocio.png" />
+    <Resource Include="Imagenes\Iconos\BuscarSocioOscuro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Iconos\AgregarLibro.png" />
+    <Resource Include="Imagenes\Iconos\AgregarLibroOscuro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Iconos\BuscarUsuario.png" />
+    <Resource Include="Imagenes\Iconos\BuscarUsuarioOscuro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Iconos\RegistrarUsuario.png" />
+    <Resource Include="Imagenes\Iconos\RegistrarUsuarioOscuro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Iconos\Reporte.png" />
+    <Resource Include="Imagenes\Iconos\ReporteOscuro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Iconos\ValidarInventario.png" />
+    <Resource Include="Imagenes\Iconos\ValidarInventarioOscuro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Iconos\BuscarPrestamo.png" />
+    <Resource Include="Imagenes\Iconos\BuscarPrestamoOscuro.png" />
+    <Resource Include="Imagenes\Iconos\BuscarPrestamoSocio.png" />
+    <Resource Include="Imagenes\Iconos\BuscarPrestamoSocioOscuro.png" />
+    <Resource Include="Imagenes\Iconos\RegistrarPrestamo.png" />
+    <Resource Include="Imagenes\Iconos\RegistrarPrestamoOscuro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Iconos\BuscarLibro.png" />
+    <Resource Include="Imagenes\Iconos\BuscarLibroOscuro.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

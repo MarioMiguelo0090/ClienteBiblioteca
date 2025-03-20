@@ -98,7 +98,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
 
         private void Regresar_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
 
         private void BuscarSocioPorNumeroDeSocio()

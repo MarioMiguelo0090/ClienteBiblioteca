@@ -5,7 +5,7 @@
              xmlns:extensiones="clr-namespace:ClienteBibliotecaElSaber.Extensiones"
              xmlns:utilidades="clr-namespace:ClienteBibliotecaElSaber.Utilidades"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
-             StartupUri="/Ventanas/VentanaMenuPrincipalBibliotecario.xaml">
+             StartupUri="/Ventanas/VentanaInicioDeSesion.xaml">
     <Application.Resources>
         <utilidades:CadenaVisibilidadConverter x:Key="CadenaVisibilidadConverter"/>
         <utilidades:CursoSobreImagenConverter x:Key="CursoSobreImagenConverter"/>
@@ -240,6 +240,10 @@
                     <Setter Property="IsEnabled" Value="False"/>
                 </Style>
             </Style.Resources>
+        </Style>
+
+        <Style TargetType="Window">
+            <Setter Property="Icon" Value="pack://application:,,,/Imagenes/Iconos/IconoBuho.ico"/>
         </Style>
     </Application.Resources>
 </Application>
