@@ -112,10 +112,13 @@ namespace ClienteBibliotecaElSaber.Ventanas
 
         private void RegresaVentanaMenuPrincipal()
         {
+            /*
             this.Hide();
             VentanaMenuPrincipalBibliotecario ventanaMenuPrincipalBibliotecario = new VentanaMenuPrincipalBibliotecario();
             ventanaMenuPrincipalBibliotecario.ShowDialog();
             this.Show();
+            */
+            this.Close();
         }
     }
 }
