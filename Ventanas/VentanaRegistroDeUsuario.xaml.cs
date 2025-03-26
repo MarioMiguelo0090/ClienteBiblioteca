@@ -302,6 +302,8 @@ namespace ClienteBibliotecaElSaber.Ventanas
             catch (Exception ex) when (ex is SmtpFailedRecipientException || ex is SmtpException)
             {
                 LoggerManager.Error($"Excepción: {ex.Message}\nTraza: {ex.StackTrace}");
+                Console.WriteLine(ex.StackTrace);
+                Console.WriteLine(ex.InnerException.Message);
                 VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Error al enviar el correo",
                     "Ocurrió un error al enviar el correo, por favor inténtelo más tarde");
             }

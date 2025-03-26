@@ -369,14 +369,12 @@ namespace ClienteBibliotecaElSaber.Ventanas
                 else
                 {
                     VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Error al obtener imagen de libro", "No se ha podido recuperar la imagen del libro.");
-                    ventanaEmergente.ShowDialog();
                 }
                 
             }
             else
             {
                 VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Error al obtener", "No se han podido obtener datos del libro seleccionado.");
-                ventanaEmergente.ShowDialog();
             }
         }
 
