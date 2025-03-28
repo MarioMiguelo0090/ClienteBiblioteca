@@ -88,6 +88,9 @@
     <Compile Include="Ventanas\PaginaValidacionCodigo.xaml.cs">
       <DependentUpon>PaginaValidacionCodigo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas\VentanaCreacionDeReportes.xaml.cs">
+      <DependentUpon>VentanaCreacionDeReportes.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas\VentanaRegistrarEditorial.xaml.cs">
       <DependentUpon>VentanaRegistrarEditorial.xaml</DependentUpon>
     </Compile>
@@ -151,6 +154,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Ventanas\PaginaValidacionCodigo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\VentanaCreacionDeReportes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -417,6 +424,21 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\ReporteInventario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\ReporteLibroMasPrestado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\ReporteMultas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\ReportePrestamoPendiente.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\BotonRegresar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
