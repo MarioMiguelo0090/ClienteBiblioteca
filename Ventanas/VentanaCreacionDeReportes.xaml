@@ -121,20 +121,35 @@
         <Border x:Name="brd_InventarioLibros" Margin="454,205,6,29" BorderBrush="Black" BorderThickness="2" Visibility="Collapsed">
             <Grid>
                 <Image Source="/Imagenes/BuhoSofia.png" Margin="158,20,158,173" Visibility="Visible"/>
-                <Button x:Name="btn_crearReporteInventarioLibros" Content="Crear reporte" FontSize="20" Background="Blue" Margin="74,205,228,107"></Button>
-                <Button x:Name="btn_cancelarCreacionReporteInventario" Content="Cancelar" FontSize="20" Background="Red" Margin="244,203,58,109"></Button>
+                <Button x:Name="btn_crearReporteInventarioLibros" Content="Crear reporte" FontSize="20" Background="Blue" Margin="74,205,228,107" Click="btn_crearReporteInventarioLibros_Click"></Button>
+                <Button x:Name="btn_cancelarCreacionReporteInventario" Content="Cancelar" FontSize="20" Background="Red" Margin="244,203,58,109" Click="btn_cancelarCreacionReporteInventario_Click"></Button>
             </Grid>
         </Border>
         <Border x:Name="brd_LibrosMasPrestados" Margin="454,205,6,29" BorderBrush="Black" BorderThickness="2" Visibility="Collapsed">
             <Grid>
                 <Label FontSize="16" FontFamily="Times New Roman" Content="Atencion: Para generar un reporte sobre los libros &#xD;&#xA;          más prestados, seleccione una opción." Margin="62,29,62,279"></Label>
                 <RadioButton x:Name="rb_dia" FontFamily="Times New Roman" FontSize="15" Content="Día"   GroupName="CriterioBusqueda" Checked="SeleccionarCriterioBusqueda" Tag="Dia" Margin="103,143,293,202"></RadioButton>
-                <RadioButton x:Name="rb_semana" FontFamily="Times New Roman" FontSize="15" Content="Semana"  GroupName="CriterioBusqueda" Checked="SeleccionarCriterioBusqueda" Tag="Semana" Margin="157,143,239,202"></RadioButton>
+                <RadioButton x:Name="rb_semana" FontFamily="Times New Roman" FontSize="15" Content="Semana"  GroupName="CriterioBusqueda" Checked="SeleccionarCriterioBusqueda" Tag="Semana" Margin="157,143,228,202"></RadioButton>
                 <RadioButton x:Name="rb_mes" FontFamily="Times New Roman" FontSize="15" Content="Mes" GroupName="CriterioBusqueda" Checked="SeleccionarCriterioBusqueda" Tag="Mes" Margin="235,143,161,202"></RadioButton>
                 <RadioButton x:Name="rb_anio" FontFamily="Times New Roman" FontSize="15" Content="Año" GroupName="CriterioBusqueda" Checked="SeleccionarCriterioBusqueda" Tag="Anio" Margin="305,143,91,202"></RadioButton>
-                <DatePicker Margin="134,181,134,157"></DatePicker>
+                <DatePicker x:Name="dtp_FechaBusqueda" Margin="140,181,128,157" SelectedDateFormat="Long"
+                                Loaded="Dp_FechaSeleccionada_Loaded">
+                        <DatePicker.Resources>
+                            <Style TargetType="DatePickerTextBox">
+                                <Setter Property="IsReadOnly" Value="True"/>
+                            </Style>
+                        </DatePicker.Resources>
+                 </DatePicker>
+                <DatePicker x:Name="dtp_FechaFinBusqueda" Margin="140,211,128,127" SelectedDateFormat="Long"
+                Loaded="Dp_FechaFinSeleccionada_Loaded">
+                    <DatePicker.Resources>
+                        <Style TargetType="DatePickerTextBox">
+                            <Setter Property="IsReadOnly" Value="True"/>
+                        </Style>
+                    </DatePicker.Resources>
+                </DatePicker>
                 <Button x:Name="btn_crearReporteLibrosMasPrestados" Content="Generar" FontSize="20" Background="Blue" Margin="63,265,239,47" Click="btn_crearReporteLibrosMasPrestados_Click"></Button>
-                <Button x:Name="btn_cancelarReporteLibrosMasPrestados" Content="Cancelar" FontSize="20" Background="Red" Margin="235,265,67,47"></Button>
+                <Button x:Name="btn_cancelarReporteLibrosMasPrestados" Content="Cancelar" FontSize="20" Background="Red" Margin="235,265,67,47" Click="btn_cancelarReporteLibrosMasPrestados_Click"></Button>
                 <Label FontSize="16" FontFamily="Times New Roman" Content="Tipo de reporte:" Margin="171,88,171,248"/>
             </Grid>
         </Border>
@@ -165,7 +180,7 @@
                         <TextBlock Text="Préstamos pendientes" Foreground="White" FontSize="18" FontWeight="Bold" VerticalAlignment="Center"/>
                     </StackPanel>
                 </Button>
-                <Button FontSize="20" Style="{StaticResource BotonRegresar}" Height="57">
+                <Button FontSize="20" Style="{StaticResource BotonRegresar}" Height="57" Click="BotonRegresar_Click">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <Image Source="/Imagenes/BotonRegresar.png" Width="55" Height="40" Margin="5"/>
                         <TextBlock Text="Regresar" Foreground="White" FontSize="18" FontWeight="Bold" VerticalAlignment="Center"/>

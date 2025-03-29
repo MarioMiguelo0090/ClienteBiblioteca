@@ -69,7 +69,10 @@ namespace ClienteBibliotecaElSaber.Ventanas
 
         private void IrVentanaReporte_Click(object sender, RoutedEventArgs e)
         {
-            
+            this.Hide();
+            VentanaCreacionDeReportes ventanaCreacionDeReportes = new VentanaCreacionDeReportes();
+            ventanaCreacionDeReportes.ShowDialog();
+            this.Show();
         }
 
         private void Salir_Click(object sender, RoutedEventArgs e)

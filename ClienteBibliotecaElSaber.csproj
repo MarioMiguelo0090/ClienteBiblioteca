@@ -279,15 +279,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServidorElSaber\ElSaberServices.wsdl" />
-    <None Include="Connected Services\ServidorElSaber\item.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServidorElSaber\item1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServidorElSaber\item2.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -408,24 +399,6 @@
     <Resource Include="Imagenes\Iconos\BuscarLibroOscuro.png" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\ServidorElSaber\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServidorElSaber\item.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServidorElSaber\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServidorElSaber\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServidorElSaber\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Imagenes\ReporteInventario.png" />
   </ItemGroup>
   <ItemGroup>
@@ -439,6 +412,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Imagenes\BotonRegresar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ServidorElSaber\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServidorElSaber\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServidorElSaber\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServidorElSaber\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
