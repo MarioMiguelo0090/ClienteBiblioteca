@@ -1,0 +1,51 @@
+﻿<Window x:Class="ClienteBibliotecaElSaber.Ventanas.VentanaArchivarLibro"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClienteBibliotecaElSaber.Ventanas"
+        mc:Ignorable="d"
+        Title="VentanaArchivarLibro" Height="330" Width="630"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen">
+    <Border Background="#D2B48C"
+            CornerRadius="20"
+            Margin="20">
+        <Border.Effect>
+            <DropShadowEffect Color="Black"
+                              BlurRadius="15"
+                              ShadowDepth="5"
+                              Opacity="0.8"/>
+        </Border.Effect>
+        <Grid Margin="50,30">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock x:Name="Txbl_Titulo" 
+                               Text="Archivar libro"
+                               FontSize="22"
+                               FontWeight="Bold"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
+                <Border Height="2" 
+                        Background="Beige"
+                        Margin="0,10"/>
+                <TextBlock x:Name="Txbl_Contenido"
+                           Text="¿Está seguro de que desea archivar este libro?"
+                           FontSize="24"
+                           TextWrapping="Wrap"/>
+            </StackPanel>
+
+            <Button Content="Aceptar"
+                    Background="Green"
+                    Width="150"
+                    VerticalAlignment="Bottom" Click="Aceptar_Click" Margin="75,0,265,0"/>
+            <Button Content="Cancelar"
+                    Background="Red"
+                    Width="150"
+                    VerticalAlignment="Top" Click="Cancelar_Click" Margin="230,188,110,0"/>
+        </Grid>
+    </Border>
+</Window>
