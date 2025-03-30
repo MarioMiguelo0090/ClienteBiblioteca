@@ -62,21 +62,18 @@ namespace ClienteBibliotecaElSaber.Ventanas
                 LoggerManager.Error($"Excepción de EndpointNotFoundException: {endpointNotFoundException.Message}." +
                                     $"\nTraza: {endpointNotFoundException.StackTrace}.");
                 VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Punto de conexión fallido", "No se ha podido establecer conexión con el servidor.");
-                ventanaEmergente.ShowDialog();
             }
             catch (TimeoutException timeoutException)
             {
                 LoggerManager.Error($"Excepción de TimeoutException: {timeoutException.Message}." +
                                     $"\nTraza: {timeoutException.StackTrace}.");
                 VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoInformacion, "Tiempo de espera agotado", "El tiempo de espera ha caducado, inténtelo de nuevo.");
-                ventanaEmergente.ShowDialog();
             }
             catch (CommunicationException communicationException)
             {
                 LoggerManager.Error($"Excepción de CommunicationException: {communicationException.Message}." +
                                     $"\nTraza: {communicationException.StackTrace}.");
-                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Comunicacion fallida", "La comunicacion con el servidor se ha perdido, por favor verifique su conexión a internet.");
-                ventanaEmergente.ShowDialog();
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Comunicacion fallida", "La comunicacion con el servidor se ha perdido, por favor verifique su conexión a internet."); 
             }
         }
 
@@ -93,13 +90,12 @@ namespace ClienteBibliotecaElSaber.Ventanas
                 else if (resultadoValidacion >= 1)
                 {
                     VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoInformacion, "Datos duplicados", "El ISBN que desea ingresar, ya ha sido registrado previamente o verifique que los datos sean correctos.");
-                    ventanaEmergente.ShowDialog();
+                    
                 }
             }
             else
             {
                 VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoInformacion, "Datos incorrectos", "Por favor verifique que los datos ingresados sean los correctos.");
-                ventanaEmergente.ShowDialog();
             }
         }
 
@@ -107,8 +103,8 @@ namespace ClienteBibliotecaElSaber.Ventanas
         {
             try
             {
-                int resultadoGuardadoImagen = GuardarImagenDeLibro();
-                if(resultadoGuardadoImagen != -1)
+                string resultadoGuardadoImagen = GuardarImagenDeLibro();
+                if(resultadoGuardadoImagen != "-1")
                 {
                     LibroManejadorClient libroManejadorClient = new LibroManejadorClient();
                     GeneroBinding genero = cbGenero.SelectedItem as GeneroBinding;
@@ -119,9 +115,9 @@ namespace ClienteBibliotecaElSaber.Ventanas
                     {
                         Titulo = txb_titulo.Text,
                         Isbn = txb_isbn.Text,
-                        FK_IdAutor = autor.IdAutor,
-                        FK_IdEditorial = editorial.IdEditorial,
-                        FK_IdGenero = genero.IdGenero,
+                        autor = autor,
+                        editorial = editorial,
+                        genero = genero,
                         AnioDePublicacion = fechaSeleccionada,
                         NumeroDePaginas = txb_noPaginas.Text,
                         RutaPortada = _rutaDestinoCliente,
@@ -131,13 +127,11 @@ namespace ClienteBibliotecaElSaber.Ventanas
                     int resultadoRegistro = libroManejadorClient.RegistrarNuevoLibro(libroBinding);
                     if(resultadoRegistro == 1)
                     {
-                        VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoExito, "Datos ingresados", "Los datos se han registradod de manera exitosa");
-                        ventanaEmergente.ShowDialog();
+                        VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoExito, "Datos ingresados", "Los datos se han registradod de manera exitosa");     
                     }
                     else
                     {
-                        VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Error en la conexión a la base de datos", "Se ha perdido la conexión a la base de datos");
-                        ventanaEmergente.ShowDialog();
+                        VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Error en la conexión a la base de datos", "Se ha perdido la conexión a la base de datos");     
                     }
                 }
             }
@@ -146,48 +140,48 @@ namespace ClienteBibliotecaElSaber.Ventanas
                 LoggerManager.Error($"Excepción de EndpointNotFoundException: {endpointNotFoundException.Message}." +
                                     $"\nTraza: {endpointNotFoundException.StackTrace}.");
                 VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Punto de conexión fallido", "No se ha podido establecer conexión con el servidor.");
-                ventanaEmergente.ShowDialog();
+                
             }
             catch (TimeoutException timeoutException)
             {
                 LoggerManager.Error($"Excepción de TimeoutException: {timeoutException.Message}." +
                                     $"\nTraza: {timeoutException.StackTrace}.");
                 VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoInformacion, "Tiempo de espera agotado", "El tiempo de espera ha caducado, inténtelo de nuevo.");
-                ventanaEmergente.ShowDialog();
+                
             }
             catch (CommunicationException communicationException)
             {
                 LoggerManager.Error($"Excepción de CommunicationException: {communicationException.Message}." +
                                     $"\nTraza: {communicationException.StackTrace}.");
                 VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Comunicacion fallida", "La comunicacion con el servidor se ha perdido, por favor verifique su conexión a internet.");
-                ventanaEmergente.ShowDialog();
+                
             }
         }
 
-        private int GuardarImagenDeLibro()
+        private string GuardarImagenDeLibro()
         {
-            int resultadoGuardado = -1;
+            string resultadoGuardado = "-1";
             try
-            {
-                string directorioDestino = System.IO.Path.GetDirectoryName(_rutaDestinoCliente);
+            { 
                 string extension = System.IO.Path.GetExtension(_rutaArchivoOriginal);
-                string nuevaRutaDestino = System.IO.Path.Combine(directorioDestino, txb_titulo.Text + extension);
-                File.Copy(_rutaArchivoOriginal, nuevaRutaDestino, true);
-                resultadoGuardado = 1;
+                byte[] imagenEnBytes = File.ReadAllBytes(_rutaArchivoOriginal);
+                LibroManejadorClient libroManejadorClient = new LibroManejadorClient();
+                resultadoGuardado = libroManejadorClient.GuardarImagenLibro(txb_titulo.Text,imagenEnBytes,extension);
+                _rutaDestinoCliente = resultadoGuardado;
             }
             catch(FileNotFoundException fileNotFoundException)
             {
                 LoggerManager.Error($"Excepción de FileNotFoundException: {fileNotFoundException.Message}." +
                                     $"\nTraza: {fileNotFoundException.StackTrace}.");
                 VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Comunicacion fallida", "La comunicacion con el servidor se ha perdido, por favor verifique su conexión a internet.");
-                ventanaEmergente.ShowDialog();
+                
             }
             catch(IOException ioException)
             {
                 LoggerManager.Error($"Excepción de IOException: {ioException.Message}." +
                                     $"\nTraza: {ioException.StackTrace}.");
                 VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Comunicacion fallida", "La comunicacion con el servidor se ha perdido, por favor verifique su conexión a internet.");
-                ventanaEmergente.ShowDialog();
+                
             }
             return resultadoGuardado;
         }
@@ -202,7 +196,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
                 if(idLibro == -1)
                 {
                     VentanaEmergente ventanaEmergente = new VentanaEmergente("Error", "Error en la conexión a la base de datos", "Se ha perdido la conexión a la base de datos");
-                    ventanaEmergente.ShowDialog();
+                    
                 }
                 else
                 {
@@ -214,21 +208,21 @@ namespace ClienteBibliotecaElSaber.Ventanas
                 LoggerManager.Error($"Excepción de EndpointNotFoundException: {endpointNotFoundException.Message}." +
                                     $"\nTraza: {endpointNotFoundException.StackTrace}.");
                 VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Punto de conexión fallido", "No se ha podido establecer conexión con el servidor.");
-                ventanaEmergente.ShowDialog();
+                
             }
             catch (TimeoutException timeoutException)
             {
                 LoggerManager.Error($"Excepción de TimeoutException: {timeoutException.Message}." +
                                     $"\nTraza: {timeoutException.StackTrace}.");
                 VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoInformacion, "Tiempo de espera agotado", "El tiempo de espera ha caducado, inténtelo de nuevo.");
-                ventanaEmergente.ShowDialog();
+                
             }
             catch (CommunicationException communicationException)
             {
                 LoggerManager.Error($"Excepción de CommunicationException: {communicationException.Message}." +
                                     $"\nTraza: {communicationException.StackTrace}.");
                 VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Comunicacion fallida", "La comunicacion con el servidor se ha perdido, por favor verifique su conexión a internet.");
-                ventanaEmergente.ShowDialog();
+                
             }
             return resultadoValidacion;
         }
@@ -297,8 +291,6 @@ namespace ClienteBibliotecaElSaber.Ventanas
 
         private void Cancelar_Click(object sender, RoutedEventArgs e)
         {
-            VentanaMenuPrincipalBibliotecario ventanaMenuPrincipalBibliotecario = new VentanaMenuPrincipalBibliotecario();
-            ventanaMenuPrincipalBibliotecario.ShowDialog();
             this.Close();
         }
 
@@ -330,7 +322,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
                 if( tamanioEnMb > 2)
                 {
                     VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoInformacion, "Imagen pesada", "Solo se admiten imagenes menores a 2MB");
-                    ventanaEmergente.ShowDialog();
+                    
                 }
                 else
                 {

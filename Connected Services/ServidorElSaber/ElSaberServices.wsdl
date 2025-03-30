@@ -96,12 +96,801 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IReporteInventarioLibroManejador_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
+          <wsrm:InactivityTimeout Milliseconds="600000" />
+          <wsrm:AcknowledgementInterval Milliseconds="200" />
+        </wsrm:RMAssertion>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IReporteLibroMasPrestadoManejador_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
+          <wsrm:InactivityTimeout Milliseconds="600000" />
+          <wsrm:AcknowledgementInterval Milliseconds="200" />
+        </wsrm:RMAssertion>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
-    <xsd:schema targetNamespace="http://tempuri.org/Imports">
-      <xsd:import schemaLocation="http://localhost:1442/?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="http://localhost:1442/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:1442/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" />
-    </xsd:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" />
+      <xs:element name="RegistrarUsuarioAlaBaseDeDatos">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="usuario" nillable="true" type="q1:UsuarioBinding" />
+            <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="direccion" nillable="true" type="q2:DireccionBinding" />
+            <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="acceso" nillable="true" type="q3:AccesoBinding" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RegistrarUsuarioAlaBaseDeDatosResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="RegistrarUsuarioAlaBaseDeDatosResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="VerificarExistenciaDeUsuario">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="correo" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="telefonp" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="VerificarExistenciaDeUsuarioResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="VerificarExistenciaDeUsuarioResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CorreoDeRestablecimientoDeContrasenia">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="correo" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CorreoDeRestablecimientoDeContraseniaResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="CorreoDeRestablecimientoDeContraseniaResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RestablecimientoDeContrasenia">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="correo" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RestablecimientoDeContraseniaResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="RestablecimientoDeContraseniaResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="VerificarCodigoDeVerificacion">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="correo" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="codigo" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="VerificarCodigoDeVerificacionResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="VerificarCodigoDeVerificacionResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="VerificarCredenciales">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="correo" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="telefono" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="VerificarCredencialesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="VerificarCredencialesResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="VerificarCorreoExistente">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="correo" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="VerificarCorreoExistenteResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="VerificarCorreoExistenteResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ModificarContrasenia">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="correo" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="contrasenia" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ModificarContraseniaResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ModificarContraseniaResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="IniciarSesion">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="correo" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="contrasenia" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="IniciarSesionResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="IniciarSesionResult" nillable="true" type="q4:AccesoBinding" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RegistrarDireccion">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="direccion" nillable="true" type="q5:DireccionBinding" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RegistrarDireccionResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="RegistrarDireccionResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RegistrarSocioEnBaseDeDatos">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="socio" nillable="true" type="q6:SocioBinding" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RegistrarSocioEnBaseDeDatosResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="RegistrarSocioEnBaseDeDatosResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="VerificarExistenciaDeSocioEnBaseDeDatos">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="telefono" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="VerificarExistenciaDeSocioEnBaseDeDatosResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="VerificarExistenciaDeSocioEnBaseDeDatosResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ConsultarSociosPorNombre">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ConsultarSociosPorNombreResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="ConsultarSociosPorNombreResult" nillable="true" type="q7:ArrayOfSocioBinding" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ConsultarSocioPorNumeroDeSocio">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="numeroDeSocio" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ConsultarSocioPorNumeroDeSocioResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="ConsultarSocioPorNumeroDeSocioResult" nillable="true" type="q8:SocioBinding" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="EditarDatosSocio">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="numeroDeSocio" type="xs:int" />
+            <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="socio" nillable="true" type="q9:SocioBinding" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="EditarDatosSocioResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EditarDatosSocioResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ModificarEstadoSocio">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="numeroDeSocio" type="xs:int" />
+            <xs:element minOccurs="0" name="estado" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ModificarEstadoSocioResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ModificarEstadoSocioResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RegistrarNuevaDevolucion">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="devolucion" nillable="true" type="q10:DevolucionBinding" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RegistrarNuevaDevolucionResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="RegistrarNuevaDevolucionResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ObtenerIdLibroPorISBN">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="isbn" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ObtenerIdLibroPorISBNResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ObtenerIdLibroPorISBNResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidarExistenciaDeLibros">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidarExistenciaDeLibrosResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ValidarExistenciaDeLibrosResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RegistrarNuevoLibro">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="libro" nillable="true" type="q11:LibroBinding" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RegistrarNuevoLibroResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="RegistrarNuevoLibroResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AumentarCantidadLibrosDisponiblesPorISBN">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="isbn" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AumentarCantidadLibrosDisponiblesPorISBNResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="AumentarCantidadLibrosDisponiblesPorISBNResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ObtenerLibrosPorTitulo">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="titulo" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ObtenerLibrosPorTituloResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="ObtenerLibrosPorTituloResult" nillable="true" type="q12:ArrayOfLibroBinding" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ObtenerLibrosPorISBN">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="isbn" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ObtenerLibrosPorISBNResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="ObtenerLibrosPorISBNResult" nillable="true" type="q13:ArrayOfLibroBinding" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ObtenerLibrosPorIdAutor">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="idAutor" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ObtenerLibrosPorIdAutorResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="ObtenerLibrosPorIdAutorResult" nillable="true" type="q14:ArrayOfLibroBinding" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ObtenerLibrosPorIdGenero">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="idGenero" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ObtenerLibrosPorIdGeneroResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="ObtenerLibrosPorIdGeneroResult" nillable="true" type="q15:ArrayOfLibroBinding" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ObtenerListaDeGeneros">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ObtenerListaDeGenerosResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="ObtenerListaDeGenerosResult" nillable="true" type="q16:ArrayOfGeneroBinding" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ObtenerListaDeAutores">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ObtenerListaDeAutoresResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="ObtenerListaDeAutoresResult" nillable="true" type="q17:ArrayOfAutorBinding" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ObtenerEditoriales">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ObtenerEditorialesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="ObtenerEditorialesResult" nillable="true" type="q18:ArrayOfEditorialBinding" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CambiarEstadoDeLibro">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="isbn" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="estado" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CambiarEstadoDeLibroResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="CambiarEstadoDeLibroResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="EditarDetallesDeLibro">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="isbn" nillable="true" type="xs:string" />
+            <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="libro" nillable="true" type="q19:LibroBinding" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="EditarDetallesDeLibroResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EditarDetallesDeLibroResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RegistrarNuevoAutor">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="autor" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RegistrarNuevoAutorResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="RegistrarNuevoAutorResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RegistrarNuevaEditorial">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="editorial" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RegistrarNuevaEditorialResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="RegistrarNuevaEditorialResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidarDisponibilidadPorIdLibro">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="idLibro" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidarDisponibilidadPorIdLibroResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ValidarDisponibilidadPorIdLibroResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ObtenerTituloPorIdLibro">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="idLibro" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ObtenerTituloPorIdLibroResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ObtenerTituloPorIdLibroResult" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GuardarImagenLibro">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="tituloLibro" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="imagenLibro" nillable="true" type="xs:base64Binary" />
+            <xs:element minOccurs="0" name="extension" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GuardarImagenLibroResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GuardarImagenLibroResult" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ObtenerImagenLibro">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="tituloLibro" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ObtenerImagenLibroResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ObtenerImagenLibroResult" nillable="true" type="xs:base64Binary" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RegistrarNuevoPrestamo">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="prestamo" nillable="true" type="q20:PrestamoBinding" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RegistrarNuevoPrestamoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="RegistrarNuevoPrestamoResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ObtenerPrestamosActivosYVencidosPorNumeroSocio">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="numeroSocio" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ObtenerPrestamosActivosYVencidosPorNumeroSocioResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="ObtenerPrestamosActivosYVencidosPorNumeroSocioResult" nillable="true" type="q21:ArrayOfPrestamoBinding" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidarPrestamosVencidosPorNumeroSocio">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="numeroSocio" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidarPrestamosVencidosPorNumeroSocioResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ValidarPrestamosVencidosPorNumeroSocioResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ObtenerReporteInventarioLibros">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ObtenerReporteInventarioLibrosResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ObtenerReporteInventarioLibrosResult" nillable="true" type="xs:base64Binary" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ObtenerReporteLibrosMasPrestado">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="fechaInicioBusqueda" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="fechaFinBusqueda" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ObtenerReporteLibrosMasPrestadoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ObtenerReporteLibrosMasPrestadoResult" nillable="true" type="xs:base64Binary" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="UsuarioBinding">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IdUsuario" type="xs:int" />
+          <xs:element minOccurs="0" name="direccion" nillable="true" type="tns:DireccionBinding" />
+          <xs:element minOccurs="0" name="estado" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="primerApellido" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="puesto" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="segundoApellido" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="telefono" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="UsuarioBinding" nillable="true" type="tns:UsuarioBinding" />
+      <xs:complexType name="DireccionBinding">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IdDireccion" type="xs:int" />
+          <xs:element minOccurs="0" name="calle" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ciudad" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="codigoPostal" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="numero" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="DireccionBinding" nillable="true" type="tns:DireccionBinding" />
+      <xs:complexType name="AccesoBinding">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IdAcceso" type="xs:int" />
+          <xs:element minOccurs="0" name="IdUsuario" nillable="true" type="tns:UsuarioBinding" />
+          <xs:element minOccurs="0" name="contrasenia" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="correo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="tipoDeUsuario" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AccesoBinding" nillable="true" type="tns:AccesoBinding" />
+      <xs:complexType name="SocioBinding">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="direccion" nillable="true" type="tns:DireccionBinding" />
+          <xs:element minOccurs="0" name="estado" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="fechaDeInscripcion" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="fechaDeNacimiento" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="numeroDeSocio" type="xs:int" />
+          <xs:element minOccurs="0" name="primerApellido" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="segundoApellido" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="telefono" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SocioBinding" nillable="true" type="tns:SocioBinding" />
+      <xs:complexType name="ArrayOfSocioBinding">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="SocioBinding" nillable="true" type="tns:SocioBinding" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfSocioBinding" nillable="true" type="tns:ArrayOfSocioBinding" />
+      <xs:complexType name="DevolucionBinding">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="EstadoLibro" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FK_IdPrestamo" type="xs:int" />
+          <xs:element minOccurs="0" name="FechaDevolucion" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="IdDevolucion" type="xs:int" />
+          <xs:element minOccurs="0" name="Nota" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="DevolucionBinding" nillable="true" type="tns:DevolucionBinding" />
+      <xs:complexType name="LibroBinding">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AnioDePublicacion" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CantidadEjemplares" type="xs:int" />
+          <xs:element minOccurs="0" name="CantidadEjemplaresPrestados" type="xs:int" />
+          <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Extension" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Isbn" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NumeroDePaginas" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RutaPortada" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Titulo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="autor" nillable="true" type="tns:AutorBinding" />
+          <xs:element minOccurs="0" name="editorial" nillable="true" type="tns:EditorialBinding" />
+          <xs:element minOccurs="0" name="genero" nillable="true" type="tns:GeneroBinding" />
+          <xs:element minOccurs="0" name="idLibro" type="xs:int" />
+          <xs:element minOccurs="0" name="imagenLibro" nillable="true" type="xs:base64Binary" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="LibroBinding" nillable="true" type="tns:LibroBinding" />
+      <xs:complexType name="AutorBinding">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Autor" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IdAutor" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AutorBinding" nillable="true" type="tns:AutorBinding" />
+      <xs:complexType name="EditorialBinding">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Editorial" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IdEditorial" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="EditorialBinding" nillable="true" type="tns:EditorialBinding" />
+      <xs:complexType name="GeneroBinding">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Genero" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IdGenero" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GeneroBinding" nillable="true" type="tns:GeneroBinding" />
+      <xs:complexType name="ArrayOfLibroBinding">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="LibroBinding" nillable="true" type="tns:LibroBinding" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfLibroBinding" nillable="true" type="tns:ArrayOfLibroBinding" />
+      <xs:complexType name="ArrayOfGeneroBinding">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="GeneroBinding" nillable="true" type="tns:GeneroBinding" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfGeneroBinding" nillable="true" type="tns:ArrayOfGeneroBinding" />
+      <xs:complexType name="ArrayOfAutorBinding">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="AutorBinding" nillable="true" type="tns:AutorBinding" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfAutorBinding" nillable="true" type="tns:ArrayOfAutorBinding" />
+      <xs:complexType name="ArrayOfEditorialBinding">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="EditorialBinding" nillable="true" type="tns:EditorialBinding" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfEditorialBinding" nillable="true" type="tns:ArrayOfEditorialBinding" />
+      <xs:complexType name="PrestamoBinding">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FK_IdLibro" type="xs:int" />
+          <xs:element minOccurs="0" name="FK_IdSocio" type="xs:int" />
+          <xs:element minOccurs="0" name="FK_IdUsuario" type="xs:int" />
+          <xs:element minOccurs="0" name="FechaDevolucionEsperada" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="FechaPrestamo" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="IdPrestamo" type="xs:int" />
+          <xs:element minOccurs="0" name="Nota" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="PrestamoBinding" nillable="true" type="tns:PrestamoBinding" />
+      <xs:complexType name="ArrayOfPrestamoBinding">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="PrestamoBinding" nillable="true" type="tns:PrestamoBinding" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfPrestamoBinding" nillable="true" type="tns:ArrayOfPrestamoBinding" />
+    </xs:schema>
   </wsdl:types>
   <wsdl:message name="IUsuarioManejador_RegistrarUsuarioAlaBaseDeDatos_InputMessage">
     <wsdl:part name="parameters" element="tns:RegistrarUsuarioAlaBaseDeDatos" />
@@ -151,6 +940,12 @@
   <wsdl:message name="IAccesoManejador_ModificarContrasenia_OutputMessage">
     <wsdl:part name="parameters" element="tns:ModificarContraseniaResponse" />
   </wsdl:message>
+  <wsdl:message name="IAccesoManejador_IniciarSesion_InputMessage">
+    <wsdl:part name="parameters" element="tns:IniciarSesion" />
+  </wsdl:message>
+  <wsdl:message name="IAccesoManejador_IniciarSesion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IniciarSesionResponse" />
+  </wsdl:message>
   <wsdl:message name="IDireccionManejador_RegistrarDireccion_InputMessage">
     <wsdl:part name="parameters" element="tns:RegistrarDireccion" />
   </wsdl:message>
@@ -180,6 +975,18 @@
   </wsdl:message>
   <wsdl:message name="ISocioManejador_ConsultarSocioPorNumeroDeSocio_OutputMessage">
     <wsdl:part name="parameters" element="tns:ConsultarSocioPorNumeroDeSocioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISocioManejador_EditarDatosSocio_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditarDatosSocio" />
+  </wsdl:message>
+  <wsdl:message name="ISocioManejador_EditarDatosSocio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditarDatosSocioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISocioManejador_ModificarEstadoSocio_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarEstadoSocio" />
+  </wsdl:message>
+  <wsdl:message name="ISocioManejador_ModificarEstadoSocio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarEstadoSocioResponse" />
   </wsdl:message>
   <wsdl:message name="IDevolucionManejador_RegistrarNuevaDevolucion_InputMessage">
     <wsdl:part name="parameters" element="tns:RegistrarNuevaDevolucion" />
@@ -253,6 +1060,18 @@
   <wsdl:message name="ILibroManejador_ObtenerEditoriales_OutputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerEditorialesResponse" />
   </wsdl:message>
+  <wsdl:message name="ILibroManejador_CambiarEstadoDeLibro_InputMessage">
+    <wsdl:part name="parameters" element="tns:CambiarEstadoDeLibro" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_CambiarEstadoDeLibro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CambiarEstadoDeLibroResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_EditarDetallesDeLibro_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditarDetallesDeLibro" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_EditarDetallesDeLibro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditarDetallesDeLibroResponse" />
+  </wsdl:message>
   <wsdl:message name="ILibroManejador_RegistrarNuevoAutor_InputMessage">
     <wsdl:part name="parameters" element="tns:RegistrarNuevoAutor" />
   </wsdl:message>
@@ -265,6 +1084,30 @@
   <wsdl:message name="ILibroManejador_RegistrarNuevaEditorial_OutputMessage">
     <wsdl:part name="parameters" element="tns:RegistrarNuevaEditorialResponse" />
   </wsdl:message>
+  <wsdl:message name="ILibroManejador_ValidarDisponibilidadPorIdLibro_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarDisponibilidadPorIdLibro" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_ValidarDisponibilidadPorIdLibro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarDisponibilidadPorIdLibroResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_ObtenerTituloPorIdLibro_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerTituloPorIdLibro" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_ObtenerTituloPorIdLibro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerTituloPorIdLibroResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_GuardarImagenLibro_InputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarImagenLibro" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_GuardarImagenLibro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarImagenLibroResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_ObtenerImagenLibro_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerImagenLibro" />
+  </wsdl:message>
+  <wsdl:message name="ILibroManejador_ObtenerImagenLibro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerImagenLibroResponse" />
+  </wsdl:message>
   <wsdl:message name="IPrestamoManejador_RegistrarNuevoPrestamo_InputMessage">
     <wsdl:part name="parameters" element="tns:RegistrarNuevoPrestamo" />
   </wsdl:message>
@@ -276,6 +1119,24 @@
   </wsdl:message>
   <wsdl:message name="IPrestamoManejador_ObtenerPrestamosActivosYVencidosPorNumeroSocio_OutputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerPrestamosActivosYVencidosPorNumeroSocioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPrestamoManejador_ValidarPrestamosVencidosPorNumeroSocio_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarPrestamosVencidosPorNumeroSocio" />
+  </wsdl:message>
+  <wsdl:message name="IPrestamoManejador_ValidarPrestamosVencidosPorNumeroSocio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarPrestamosVencidosPorNumeroSocioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReporteInventarioLibroManejador_ObtenerReporteInventarioLibros_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerReporteInventarioLibros" />
+  </wsdl:message>
+  <wsdl:message name="IReporteInventarioLibroManejador_ObtenerReporteInventarioLibros_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerReporteInventarioLibrosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReporteLibroMasPrestadoManejador_ObtenerReporteLibrosMasPrestado_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerReporteLibrosMasPrestado" />
+  </wsdl:message>
+  <wsdl:message name="IReporteLibroMasPrestadoManejador_ObtenerReporteLibrosMasPrestado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerReporteLibrosMasPrestadoResponse" />
   </wsdl:message>
   <wsdl:portType name="IUsuarioManejador">
     <wsdl:operation name="RegistrarUsuarioAlaBaseDeDatos">
@@ -314,6 +1175,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IAccesoManejador/ModificarContrasenia" message="tns:IAccesoManejador_ModificarContrasenia_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAccesoManejador/ModificarContraseniaResponse" message="tns:IAccesoManejador_ModificarContrasenia_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="IniciarSesion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAccesoManejador/IniciarSesion" message="tns:IAccesoManejador_IniciarSesion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAccesoManejador/IniciarSesionResponse" message="tns:IAccesoManejador_IniciarSesion_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IDireccionManejador">
     <wsdl:operation name="RegistrarDireccion">
@@ -337,6 +1202,14 @@
     <wsdl:operation name="ConsultarSocioPorNumeroDeSocio">
       <wsdl:input wsaw:Action="http://tempuri.org/ISocioManejador/ConsultarSocioPorNumeroDeSocio" message="tns:ISocioManejador_ConsultarSocioPorNumeroDeSocio_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISocioManejador/ConsultarSocioPorNumeroDeSocioResponse" message="tns:ISocioManejador_ConsultarSocioPorNumeroDeSocio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditarDatosSocio">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISocioManejador/EditarDatosSocio" message="tns:ISocioManejador_EditarDatosSocio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocioManejador/EditarDatosSocioResponse" message="tns:ISocioManejador_EditarDatosSocio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarEstadoSocio">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISocioManejador/ModificarEstadoSocio" message="tns:ISocioManejador_ModificarEstadoSocio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocioManejador/ModificarEstadoSocioResponse" message="tns:ISocioManejador_ModificarEstadoSocio_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IDevolucionManejador">
@@ -390,6 +1263,14 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ILibroManejador/ObtenerEditoriales" message="tns:ILibroManejador_ObtenerEditoriales_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILibroManejador/ObtenerEditorialesResponse" message="tns:ILibroManejador_ObtenerEditoriales_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="CambiarEstadoDeLibro">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibroManejador/CambiarEstadoDeLibro" message="tns:ILibroManejador_CambiarEstadoDeLibro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibroManejador/CambiarEstadoDeLibroResponse" message="tns:ILibroManejador_CambiarEstadoDeLibro_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditarDetallesDeLibro">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibroManejador/EditarDetallesDeLibro" message="tns:ILibroManejador_EditarDetallesDeLibro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibroManejador/EditarDetallesDeLibroResponse" message="tns:ILibroManejador_EditarDetallesDeLibro_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="RegistrarNuevoAutor">
       <wsdl:input wsaw:Action="http://tempuri.org/ILibroManejador/RegistrarNuevoAutor" message="tns:ILibroManejador_RegistrarNuevoAutor_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILibroManejador/RegistrarNuevoAutorResponse" message="tns:ILibroManejador_RegistrarNuevoAutor_OutputMessage" />
@@ -397,6 +1278,22 @@
     <wsdl:operation name="RegistrarNuevaEditorial">
       <wsdl:input wsaw:Action="http://tempuri.org/ILibroManejador/RegistrarNuevaEditorial" message="tns:ILibroManejador_RegistrarNuevaEditorial_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILibroManejador/RegistrarNuevaEditorialResponse" message="tns:ILibroManejador_RegistrarNuevaEditorial_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidarDisponibilidadPorIdLibro">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibroManejador/ValidarDisponibilidadPorIdLibro" message="tns:ILibroManejador_ValidarDisponibilidadPorIdLibro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibroManejador/ValidarDisponibilidadPorIdLibroResponse" message="tns:ILibroManejador_ValidarDisponibilidadPorIdLibro_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerTituloPorIdLibro">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibroManejador/ObtenerTituloPorIdLibro" message="tns:ILibroManejador_ObtenerTituloPorIdLibro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibroManejador/ObtenerTituloPorIdLibroResponse" message="tns:ILibroManejador_ObtenerTituloPorIdLibro_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GuardarImagenLibro">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibroManejador/GuardarImagenLibro" message="tns:ILibroManejador_GuardarImagenLibro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibroManejador/GuardarImagenLibroResponse" message="tns:ILibroManejador_GuardarImagenLibro_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerImagenLibro">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibroManejador/ObtenerImagenLibro" message="tns:ILibroManejador_ObtenerImagenLibro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibroManejador/ObtenerImagenLibroResponse" message="tns:ILibroManejador_ObtenerImagenLibro_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IPrestamoManejador">
@@ -407,6 +1304,22 @@
     <wsdl:operation name="ObtenerPrestamosActivosYVencidosPorNumeroSocio">
       <wsdl:input wsaw:Action="http://tempuri.org/IPrestamoManejador/ObtenerPrestamosActivosYVencidosPorNumeroSocio" message="tns:IPrestamoManejador_ObtenerPrestamosActivosYVencidosPorNumeroSocio_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPrestamoManejador/ObtenerPrestamosActivosYVencidosPorNumeroSocioResponse" message="tns:IPrestamoManejador_ObtenerPrestamosActivosYVencidosPorNumeroSocio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidarPrestamosVencidosPorNumeroSocio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPrestamoManejador/ValidarPrestamosVencidosPorNumeroSocio" message="tns:IPrestamoManejador_ValidarPrestamosVencidosPorNumeroSocio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPrestamoManejador/ValidarPrestamosVencidosPorNumeroSocioResponse" message="tns:IPrestamoManejador_ValidarPrestamosVencidosPorNumeroSocio_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IReporteInventarioLibroManejador">
+    <wsdl:operation name="ObtenerReporteInventarioLibros">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReporteInventarioLibroManejador/ObtenerReporteInventarioLibros" message="tns:IReporteInventarioLibroManejador_ObtenerReporteInventarioLibros_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReporteInventarioLibroManejador/ObtenerReporteInventarioLibrosResponse" message="tns:IReporteInventarioLibroManejador_ObtenerReporteInventarioLibros_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IReporteLibroMasPrestadoManejador">
+    <wsdl:operation name="ObtenerReporteLibrosMasPrestado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReporteLibroMasPrestadoManejador/ObtenerReporteLibrosMasPrestado" message="tns:IReporteLibroMasPrestadoManejador_ObtenerReporteLibrosMasPrestado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReporteLibroMasPrestadoManejador/ObtenerReporteLibrosMasPrestadoResponse" message="tns:IReporteLibroMasPrestadoManejador_ObtenerReporteLibrosMasPrestado_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUsuarioManejador" type="tns:IUsuarioManejador">
@@ -492,6 +1405,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="IniciarSesion">
+      <soap12:operation soapAction="http://tempuri.org/IAccesoManejador/IniciarSesion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="NetTcpBinding_IDireccionManejador" type="tns:IDireccionManejador">
     <wsp:PolicyReference URI="#NetTcpBinding_IDireccionManejador_policy" />
@@ -538,6 +1460,24 @@
     </wsdl:operation>
     <wsdl:operation name="ConsultarSocioPorNumeroDeSocio">
       <soap12:operation soapAction="http://tempuri.org/ISocioManejador/ConsultarSocioPorNumeroDeSocio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditarDatosSocio">
+      <soap12:operation soapAction="http://tempuri.org/ISocioManejador/EditarDatosSocio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarEstadoSocio">
+      <soap12:operation soapAction="http://tempuri.org/ISocioManejador/ModificarEstadoSocio" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -661,6 +1601,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="CambiarEstadoDeLibro">
+      <soap12:operation soapAction="http://tempuri.org/ILibroManejador/CambiarEstadoDeLibro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditarDetallesDeLibro">
+      <soap12:operation soapAction="http://tempuri.org/ILibroManejador/EditarDetallesDeLibro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="RegistrarNuevoAutor">
       <soap12:operation soapAction="http://tempuri.org/ILibroManejador/RegistrarNuevoAutor" style="document" />
       <wsdl:input>
@@ -672,6 +1630,42 @@
     </wsdl:operation>
     <wsdl:operation name="RegistrarNuevaEditorial">
       <soap12:operation soapAction="http://tempuri.org/ILibroManejador/RegistrarNuevaEditorial" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidarDisponibilidadPorIdLibro">
+      <soap12:operation soapAction="http://tempuri.org/ILibroManejador/ValidarDisponibilidadPorIdLibro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerTituloPorIdLibro">
+      <soap12:operation soapAction="http://tempuri.org/ILibroManejador/ObtenerTituloPorIdLibro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GuardarImagenLibro">
+      <soap12:operation soapAction="http://tempuri.org/ILibroManejador/GuardarImagenLibro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerImagenLibro">
+      <soap12:operation soapAction="http://tempuri.org/ILibroManejador/ObtenerImagenLibro" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -694,6 +1688,41 @@
     </wsdl:operation>
     <wsdl:operation name="ObtenerPrestamosActivosYVencidosPorNumeroSocio">
       <soap12:operation soapAction="http://tempuri.org/IPrestamoManejador/ObtenerPrestamosActivosYVencidosPorNumeroSocio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidarPrestamosVencidosPorNumeroSocio">
+      <soap12:operation soapAction="http://tempuri.org/IPrestamoManejador/ValidarPrestamosVencidosPorNumeroSocio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IReporteInventarioLibroManejador" type="tns:IReporteInventarioLibroManejador">
+    <wsp:PolicyReference URI="#NetTcpBinding_IReporteInventarioLibroManejador_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="ObtenerReporteInventarioLibros">
+      <soap12:operation soapAction="http://tempuri.org/IReporteInventarioLibroManejador/ObtenerReporteInventarioLibros" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IReporteLibroMasPrestadoManejador" type="tns:IReporteLibroMasPrestadoManejador">
+    <wsp:PolicyReference URI="#NetTcpBinding_IReporteLibroMasPrestadoManejador_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="ObtenerReporteLibrosMasPrestado">
+      <soap12:operation soapAction="http://tempuri.org/IReporteLibroMasPrestadoManejador/ObtenerReporteLibrosMasPrestado" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -749,6 +1778,18 @@
       <soap12:address location="net.tcp://localhost:1441/ServicioPrestamo" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:1441/ServicioPrestamo</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IReporteInventarioLibroManejador" binding="tns:NetTcpBinding_IReporteInventarioLibroManejador">
+      <soap12:address location="net.tcp://localhost:1441/ServicioReporteInventarioLibro" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:1441/ServicioReporteInventarioLibro</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IReporteLibroMasPrestadoManejador" binding="tns:NetTcpBinding_IReporteLibroMasPrestadoManejador">
+      <soap12:address location="net.tcp://localhost:1441/ServicioReporteInventarioLibro" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:1441/ServicioReporteInventarioLibro</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
   </wsdl:service>

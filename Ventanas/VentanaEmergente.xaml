@@ -28,7 +28,6 @@
                            Width="40"
                            Margin="0,0,10,0"/>
                     <TextBlock x:Name="Txbl_Titulo" 
-                               Text="Contraseña enviada"
                                FontSize="22"
                                FontWeight="Bold"
                                VerticalAlignment="Center"/>
@@ -37,7 +36,6 @@
                         Background="Beige"
                         Margin="0,10"/>
                 <TextBlock x:Name="Txbl_Contenido"
-                           Text="Se ha enviado la contraseña al correo proporcionado, favor de verificar"
                            FontSize="20"
                            HorizontalAlignment="Center"
                            TextWrapping="Wrap"/>

@@ -69,12 +69,17 @@
     </Compile>
     <Compile Include="Extensiones\PasswordBoxExtensiones.cs" />
     <Compile Include="Extensiones\TextBoxExtensiones.cs" />
+    <Compile Include="Singleton\SingletonAdministrador.cs" />
+    <Compile Include="Singleton\SingletonBibliotecario.cs" />
     <Compile Include="Utilidades\CadenaVisibilidadConverter.cs" />
     <Compile Include="Utilidades\Constantes.cs" />
     <Compile Include="Utilidades\ContraseñaHelper.cs" />
     <Compile Include="Utilidades\CursoSobreImagenConverter.cs" />
+    <Compile Include="Utilidades\Encriptador.cs" />
+    <Compile Include="Utilidades\Enumeradores.cs" />
     <Compile Include="Utilidades\GeneradorContrasenia.cs" />
     <Compile Include="Utilidades\LoggerManager.cs" />
+    <Compile Include="Utilidades\ManejadorDeCitasAutores.cs" />
     <Compile Include="Utilidades\Validador.cs" />
     <Compile Include="Ventanas\VentanaArchivarLibro.xaml.cs">
       <DependentUpon>VentanaArchivarLibro.xaml</DependentUpon>
@@ -84,6 +89,15 @@
     </Compile>
     <Compile Include="Ventanas\VentanaEditarSocio.xaml.cs">
       <DependentUpon>VentanaEditarSocio.xaml</DependentUpon>
+    <Compile Include="Utilidades\ValidadorPrestamo.cs" />
+    <Compile Include="Ventanas\PaginaRecuperarContrasenia.xaml.cs">
+      <DependentUpon>PaginaRecuperarContrasenia.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\PaginaValidacionCodigo.xaml.cs">
+      <DependentUpon>PaginaValidacionCodigo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\VentanaCreacionDeReportes.xaml.cs">
+      <DependentUpon>VentanaCreacionDeReportes.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ventanas\VentanaRegistrarEditorial.xaml.cs">
       <DependentUpon>VentanaRegistrarEditorial.xaml</DependentUpon>
@@ -152,6 +166,15 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Ventanas\VentanaEditarSocio.xaml">
+    <Page Include="Ventanas\PaginaRecuperarContrasenia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\PaginaValidacionCodigo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\VentanaCreacionDeReportes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -248,6 +271,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Fuentes\RePublicTRIAL-Condensed-BF676e0d99ce7bf.otf" />
+    <Resource Include="Fuentes\RePublicTRIAL-Medium-BF676e0d99d7ecc.otf" />
+    <Resource Include="Fuentes\RePublicTRIAL-Regular-BF676e0d99d81b6.otf" />
+    <None Include="Connected Services\ServidorElSaber\ClienteBibliotecaElSaber.ServidorElSaber.AccesoBinding.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServidorElSaber\ClienteBibliotecaElSaber.ServidorElSaber.AutorBinding.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -267,18 +296,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServidorElSaber\ElSaberServices.wsdl" />
-    <None Include="Connected Services\ServidorElSaber\item.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServidorElSaber\item1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServidorElSaber\item2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <Resource Include="Fuentes\RePublicTRIAL-Condensed-BF676e0d99ce7bf.otf" />
-    <Resource Include="Fuentes\RePublicTRIAL-Medium-BF676e0d99d7ecc.otf" />
-    <Resource Include="Fuentes\RePublicTRIAL-Regular-BF676e0d99d81b6.otf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -310,24 +327,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\ServidorElSaber\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServidorElSaber\item.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServidorElSaber\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServidorElSaber\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServidorElSaber\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Imagenes\Emblema.png" />
@@ -364,7 +363,87 @@
     <Resource Include="Imagenes\Iconos\Pregunta.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ImagenesLibro\" />
+    <Resource Include="Imagenes\Iconos\CerrarSesion.png" />
+    <Resource Include="Imagenes\Iconos\CerrarSesionOscuro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Iconos\IconoBuho.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImagenesLibro\aaaaa.jpg" />
+    <Resource Include="ImagenesLibro\ASASAS.jpg" />
+    <Resource Include="ImagenesLibro\Don quijote.jpg" />
+    <Resource Include="ImagenesLibro\El Quijote.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Iconos\AgregarSocio.png" />
+    <Resource Include="Imagenes\Iconos\AgregarSocioOscuro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Iconos\BuscarSocio.png" />
+    <Resource Include="Imagenes\Iconos\BuscarSocioOscuro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Iconos\AgregarLibro.png" />
+    <Resource Include="Imagenes\Iconos\AgregarLibroOscuro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Iconos\BuscarUsuario.png" />
+    <Resource Include="Imagenes\Iconos\BuscarUsuarioOscuro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Iconos\RegistrarUsuario.png" />
+    <Resource Include="Imagenes\Iconos\RegistrarUsuarioOscuro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Iconos\Reporte.png" />
+    <Resource Include="Imagenes\Iconos\ReporteOscuro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Iconos\ValidarInventario.png" />
+    <Resource Include="Imagenes\Iconos\ValidarInventarioOscuro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Iconos\BuscarPrestamo.png" />
+    <Resource Include="Imagenes\Iconos\BuscarPrestamoOscuro.png" />
+    <Resource Include="Imagenes\Iconos\BuscarPrestamoSocio.png" />
+    <Resource Include="Imagenes\Iconos\BuscarPrestamoSocioOscuro.png" />
+    <Resource Include="Imagenes\Iconos\RegistrarPrestamo.png" />
+    <Resource Include="Imagenes\Iconos\RegistrarPrestamoOscuro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Iconos\BuscarLibro.png" />
+    <Resource Include="Imagenes\Iconos\BuscarLibroOscuro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\ReporteInventario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\ReporteLibroMasPrestado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\ReporteMultas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\ReportePrestamoPendiente.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\BotonRegresar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ServidorElSaber\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServidorElSaber\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServidorElSaber\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServidorElSaber\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

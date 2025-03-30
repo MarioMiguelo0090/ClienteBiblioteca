@@ -1,7 +1,12 @@
-﻿using ClienteBibliotecaElSaber.Utilidades;
+﻿using ClienteBibliotecaElSaber.ServidorElSaber;
+using ClienteBibliotecaElSaber.Utilidades;
+using System.ServiceModel;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
+using ClienteBibliotecaElSaber.Singleton;
 
 
 namespace ClienteBibliotecaElSaber.Ventanas
@@ -18,12 +23,93 @@ namespace ClienteBibliotecaElSaber.Ventanas
 
         private void IniciarSesion_Click(object sender, RoutedEventArgs e)
         {
+            ResetearColorDeBordes();
+            if (ValidarDatosDeCampos())
+            {
+                var proxyAcceso = new AccesoManejadorClient();
+                AccesoBinding acceso = new AccesoBinding();
 
+                try
+                {
+                    string contraseniaHasheada = Encriptador.hashToSHA2(pb_Contrasenia.Password);
+                    acceso = proxyAcceso.IniciarSesion(txtb_Correo.Text, contraseniaHasheada);
+
+                    if (acceso.IdAcceso != -1 && acceso.IdAcceso != 0)
+                    {
+                        if (acceso.tipoDeUsuario == Constantes.TipoAdministrador)
+                        {
+                            SingletonAdministrador.Instancia.IniciarSesion(acceso);
+                            VentanaMenuPrincipalAdministrador ventanaMenuPrincipalAdministrador = new VentanaMenuPrincipalAdministrador();
+                            ventanaMenuPrincipalAdministrador.Show();
+                            this.Close();
+                        }
+                        else if (acceso.tipoDeUsuario == Constantes.TipoBibliotecario)
+                        {
+                            SingletonBibliotecario.Instancia.IniciarSesion(acceso);
+                            VentanaMenuPrincipalBibliotecario ventanaMenuPrincipalBibliotecario = new VentanaMenuPrincipalBibliotecario();
+                            ventanaMenuPrincipalBibliotecario.Show();
+                            this.Close();
+                        }
+                    }
+                    else if (acceso.IdAcceso == 0)
+                    {
+                        VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoInformacion,
+                            "Datos incorrectos", "El correo electrónico y/o contraseña son incorrectos");
+                    }
+                    else
+                    {
+                        VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError,
+                            Constantes.TituloExcepcionBD, Constantes.ContenidoExcepcionBD);
+                    }
+                }
+                catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException || ex is CommunicationException)
+                {
+                    LoggerManager.Error($"Excepción: {ex.Message}\nTraza: {ex.StackTrace}");
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError,
+                        Constantes.TituloExcepcionServidor, Constantes.ContenidoExcepcionServidor);
+                }
+                finally
+                {
+                    if (proxyAcceso.State == CommunicationState.Opened)
+                    {
+                        proxyAcceso.Close();
+                    }
+                }
+            }
+            else
+            {
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoAdvertencia,
+                    "Campos vacíos", "Favor de ingresar el correo electrónico y/o contraseña");
+            }
         }
 
         private void Salir_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void ResetearColorDeBordes()
+        {
+            txtb_Correo.BorderBrush = Brushes.Transparent;
+            pb_Contrasenia.BorderBrush = Brushes.Transparent;
+        }
+
+        private bool ValidarDatosDeCampos()
+        {
+            bool usuarioNoValidado = string.IsNullOrWhiteSpace(txtb_Correo.Text);
+            bool contraseniaNoValidado = string.IsNullOrWhiteSpace(pb_Contrasenia.Password);
+
+            if (usuarioNoValidado)
+            {
+                txtb_Correo.BorderBrush = Brushes.Red;
+            }
+
+            if (contraseniaNoValidado)
+            {
+                pb_Contrasenia.BorderBrush = Brushes.Red;
+            }
+
+            return !usuarioNoValidado && !contraseniaNoValidado;
         }
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)

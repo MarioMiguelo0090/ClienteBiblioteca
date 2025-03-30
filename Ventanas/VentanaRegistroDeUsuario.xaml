@@ -38,24 +38,27 @@
                                FontSize="20"
                                FontWeight="DemiBold"
                                Margin="0,0,0,10"/>
-                    <TextBox x:Name="Txb_Nombre"
-                             Width="240"/>
+                    <TextBox x:Name="txtb_Nombre"
+                             Width="240"
+                             MaxLength="75"/>
                 </StackPanel>
                 <StackPanel Margin="0,0,20,0">
                     <TextBlock Text="Primer apellido:"
                                FontSize="20"
                                FontWeight="DemiBold"
                                Margin="0,0,0,10"/>
-                    <TextBox x:Name="Txb_PrimerApellido"
-                             Width="240"/>
+                    <TextBox x:Name="txtb_PrimerApellido"
+                             Width="240"
+                             MaxLength="50"/>
                 </StackPanel>
                 <StackPanel>
                     <TextBlock Text="Segundo apellido:"
                                FontSize="20"
                                FontWeight="DemiBold"
                                Margin="0,0,0,10"/>
-                    <TextBox x:Name="Txb_SegundoApellido"
-                             Width="240"/>
+                    <TextBox x:Name="txtb_SegundoApellido"
+                             Width="240"
+                             MaxLength="50"/>
                 </StackPanel>
             </StackPanel>
 
@@ -67,24 +70,27 @@
                                FontSize="20"
                                FontWeight="DemiBold"
                                Margin="0,0,0,10"/>
-                    <TextBox x:Name="Txb_CorreoElectronico"
-                             Width="240"/>
+                    <TextBox x:Name="txtb_CorreoElectronico"
+                             Width="240"
+                             MaxLength="255"/>
                 </StackPanel>
                 <StackPanel Margin="0,0,20,0">
                     <TextBlock Text="Telefono:"
                                FontSize="20"
                                FontWeight="DemiBold"
                                Margin="0,0,0,10"/>
-                    <TextBox x:Name="Txb_Telefono"
-                             Width="240"/>
+                    <TextBox x:Name="txtb_Telefono"
+                             Width="240"
+                             MaxLength="10"/>
                 </StackPanel>
                 <StackPanel>
                     <TextBlock Text="Calle:"
                                FontSize="20"
                                FontWeight="DemiBold"
                                Margin="0,0,0,10"/>
-                    <TextBox x:Name="Txb_Calle"
-                             Width="240"/>
+                    <TextBox x:Name="txtb_Calle"
+                             Width="240"
+                             MaxLength="40"/>
                 </StackPanel>
             </StackPanel>
 
@@ -96,24 +102,27 @@
                                FontSize="20"
                                FontWeight="DemiBold"
                                Margin="0,0,0,10"/>
-                    <TextBox x:Name="Txb_Numero"
-                             Width="240"/>
+                    <TextBox x:Name="txtb_Numero"
+                             Width="240"
+                             MaxLength="3"/>
                 </StackPanel>
                 <StackPanel Margin="0,0,20,0">
                     <TextBlock Text="Código postal:"
                                FontSize="20"
                                FontWeight="DemiBold"
                                Margin="0,0,0,10"/>
-                    <TextBox x:Name="Txb_CodigoPostal"
-                             Width="240"/>
+                    <TextBox x:Name="txtb_CodigoPostal"
+                             Width="240"
+                             MaxLength="5"/>
                 </StackPanel>
                 <StackPanel>
                     <TextBlock Text="Ciudad:"
                                FontSize="20"
                                FontWeight="DemiBold"
                                Margin="0,0,0,10"/>
-                    <TextBox x:Name="Txb_Ciudad"
-                             Width="240"/>
+                    <TextBox x:Name="txtb_Ciudad"
+                             Width="240"
+                             MaxLength="50"/>
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
@@ -124,20 +133,24 @@
                                FontSize="20"
                                FontWeight="DemiBold"
                                Margin="0,0,0,10"/>
-                    <TextBox x:Name="Txb_Puesto"
-                             Width="240"/>
+                    <TextBox x:Name="txtb_Puesto"
+                             Width="240"
+                             MaxLength="25"/>
                 </StackPanel>
-                <StackPanel VerticalAlignment="Center"
+                <StackPanel x:Name="sp_TipoUsuario"
+                            VerticalAlignment="Center"
                             Margin="0,0,35,0">
                     <TextBlock Text="Tipo de usuario:"
                                FontSize="20"
                                FontWeight="DemiBold"/>
-                    <RadioButton GroupName="TipoUsuario"
+                    <RadioButton x:Name="rb_Administrador"
+                                 GroupName="TipoUsuario"
                                  Checked="RadioButton_Checked"
                                  Content="Administrador"
                                  FontSize="20"
                                  VerticalContentAlignment="Center"/>
-                    <RadioButton GroupName="TipoUsuario"
+                    <RadioButton x:Name="rb_Bibliotecario"
+                                 GroupName="TipoUsuario"
                                  Checked="RadioButton_Checked"
                                  Content="Bibliotecario"
                                  FontSize="20"

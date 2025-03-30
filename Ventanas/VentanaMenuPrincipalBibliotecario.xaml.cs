@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ClienteBibliotecaElSaber.Singleton;
+using ClienteBibliotecaElSaber.Utilidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,11 +21,16 @@ namespace ClienteBibliotecaElSaber.Ventanas
     /// </summary>
     public partial class VentanaMenuPrincipalBibliotecario : Window
     {
+        private readonly ManejadorDeCitasAutores manejadorDeCitasAutores;
         public VentanaMenuPrincipalBibliotecario()
         {
             InitializeComponent();
+            manejadorDeCitasAutores = new ManejadorDeCitasAutores();
+            var (autor, cita) = manejadorDeCitasAutores.ObtenerCitaAleatoria();
+            txtbl_Autor.Text = autor.ToString();
+            txtbl_Cita.Text = cita.ToString();
+            txtbl_Bienvenida.Text = $"Bienvenido, {SingletonBibliotecario.Instancia.ObtenerNombreCompleto()}";
         }
-
 
         private void Salir_Click(object sender, RoutedEventArgs e)
         {
@@ -38,25 +45,67 @@ namespace ClienteBibliotecaElSaber.Ventanas
             }
         }
 
-        private void IrVentanaSocios_Click(object sender, RoutedEventArgs e)
+        private void IrVentanaRegistrarSocio_Click(object sender, RoutedEventArgs e)
         {
-            //VentanaDevolucion ventanaDevolucion = new VentanaDevolucion();
-            VentanaRegistroDeDevolucion ventanaRegistroDePrestamo = new VentanaRegistroDeDevolucion();
-            ventanaRegistroDePrestamo.Show();
+            this.Hide();
+            VentanaRegistrarSocio ventanaRegistrarSocio = new VentanaRegistrarSocio();
+            ventanaRegistrarSocio.ShowDialog();
+            this.Show();
         }
 
-        private void IrVentanaLibro_Click(object sender, RoutedEventArgs e)
+        private void IrVentanaBuscarSocio_Click(object sender, RoutedEventArgs e)
         {
-            //VentanaDevolucion ventanaDevolucion = new VentanaDevolucion();
+            this.Hide();
+            VentanaBuscarSocio ventanaBuscarSocio = new VentanaBuscarSocio();
+            ventanaBuscarSocio.ShowDialog();
+            this.Show();
+        }
+
+        private void IrVentanaBuscarLibro_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            VentanaBuscarLibro ventanaBuscarLibro = new VentanaBuscarLibro();
+            ventanaBuscarLibro.ShowDialog();
+            this.Show();
+        }
+
+        private void IrVentanaValidarInventarioLibros_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void IrVentanaBuscarPrestamoSocio_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void IrVentanaBuscarPrestamo_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void IrVentanaRegistrarPrestamo_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
             VentanaRegistroDePrestamo ventanaRegistroDePrestamo = new VentanaRegistroDePrestamo();
-            MarcoPrincipal.Navigate(ventanaRegistroDePrestamo);
+            ventanaRegistroDePrestamo.ShowDialog();
+            this.Show();
         }
 
         private void IrVentanaDevolucion_Click(object sender, RoutedEventArgs e)
         {
-            //VentanaDevolucion ventanaDevolucion = new VentanaDevolucion();
-            VentanaRegistroDePrestamo ventanaRegistroDePrestamo = new VentanaRegistroDePrestamo();
-            MarcoPrincipal.Navigate(ventanaRegistroDePrestamo);
+            this.Hide();
+            VentanaDevolucion ventanaDevolucion = new VentanaDevolucion();
+            ventanaDevolucion.ShowDialog();
+            this.Show();
+        }
+
+        private void CerrarSesion_Click(object sender, RoutedEventArgs e)
+        {
+            SingletonBibliotecario.Instancia.CerrarSesion();
+            VentanaInicioDeSesion ventanaInicioDeSesion = new VentanaInicioDeSesion();
+            ventanaInicioDeSesion.Show();
+            this.Close();
         }
     }
 }

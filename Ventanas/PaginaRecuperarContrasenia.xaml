@@ -1,0 +1,40 @@
+﻿<Page x:Class="ClienteBibliotecaElSaber.Ventanas.PaginaRecuperarContrasenia"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ClienteBibliotecaElSaber.Ventanas"
+      mc:Ignorable="d" 
+      d:DesignHeight="220" d:DesignWidth="490"
+      Title="PaginaRecuperarContrasenia"
+      ShowsNavigationUI="False">
+
+    <Grid>
+        <StackPanel>
+            <TextBlock Text="Recuperación de contraseña"
+                       FontSize="22"
+                       FontWeight="Bold"/>
+            <TextBlock Text="Correo electrónico: "
+                       FontSize="20"
+                       FontWeight="DemiBold"
+                       Margin="50,20"/>
+            <TextBox x:Name="txtb_Correo" 
+                     Margin="50,0"/>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Margin="0,30">
+                <Button Content="Recuperar"
+                        Margin="0,0,20,0"
+                        Width="150"
+                        Background="Green"
+                        Foreground="White" 
+                        Click="Recuperar_Click"/>
+                <Button Content="Cancelar"
+                        Width="150"
+                        Background="Red"
+                        Foreground="White" 
+                        Click="Cancelar_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

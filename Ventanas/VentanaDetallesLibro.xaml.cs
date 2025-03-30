@@ -1,6 +1,7 @@
 ﻿using ClienteBibliotecaElSaber.ServidorElSaber;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,31 +22,45 @@ namespace ClienteBibliotecaElSaber.Ventanas
     /// </summary>
     public partial class VentanaDetallesLibro : Window
     {
-        private LibroDatos libro;
+        private LibroBinding libro;
 
         public VentanaDetallesLibro(LibroBinding datosDelLibro)
         {
             InitializeComponent();
             CargarDatosDeLibro(datosDelLibro);
-        }
-
-        public VentanaDetallesLibro(LibroDatos libro)
-        {
-            this.libro = libro;
+            this.libro = datosDelLibro;
         }
 
         public void CargarDatosDeLibro(LibroBinding datosLibro)
         {
             txb_Titulo.Text = datosLibro.Titulo;
-            txb_Autor.Text = datosLibro.FK_IdAutor.ToString();
+            txb_Autor.Text = datosLibro.autor.Autor;
             txb_ISBN.Text = datosLibro.Isbn;
-            txb_Editorial.Text = datosLibro.FK_IdEditorial.ToString();
+            txb_Editorial.Text = datosLibro.editorial.Editorial;
             txb_FechaPublicacion.Text = datosLibro.AnioDePublicacion.ToString();
-            txb_Genero.Text = datosLibro.FK_IdGenero.ToString();
+            txb_Genero.Text = datosLibro.genero.Genero;
             txb_NumeroDePaginas.Text = datosLibro.NumeroDePaginas.ToString();
             txb_Estado.Text = datosLibro.Estado;
             txb_CantidadEjemplares.Text = datosLibro.CantidadEjemplares.ToString();
             txb_CantidadEjemplaresPrestados.Text = datosLibro.CantidadEjemplaresPrestados.ToString();
+            if(datosLibro.imagenLibro != null && datosLibro.imagenLibro.Length > 0)
+            {
+                img_Libro.Source = ConvertirBytesAImagen(datosLibro.imagenLibro);
+            }
+        }
+
+        private BitmapImage ConvertirBytesAImagen(byte[] imageData)
+        {
+            using (MemoryStream ms = new MemoryStream(imageData))
+            {
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                bitmap.StreamSource = ms;
+                bitmap.EndInit();
+                bitmap.Freeze(); 
+                return bitmap;
+            }
         }
 
         private void Regresar_Click(object sender, RoutedEventArgs e)
