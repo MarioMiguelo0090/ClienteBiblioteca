@@ -1,0 +1,80 @@
+﻿<Window x:Class="ClienteBibliotecaElSaber.Ventanas.VentanaEditarLibro"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClienteBibliotecaElSaber.Ventanas"
+        mc:Ignorable="d"
+        Title="VentanaEditarLibro" Height="600" Width="920"
+            WindowStyle="None"
+            ResizeMode="NoResize"
+            WindowStartupLocation="CenterScreen"
+            Background="Transparent"
+            AllowsTransparency="True">
+    <Grid Background="#F5F5DC">
+        <Border Background="#FF432716" CornerRadius="10" Padding="10" Margin="136,39,155,463">
+            <TextBlock Text="Editar Libro"
+           Foreground="White"
+           FontSize="42"
+           FontWeight="Bold"
+           TextAlignment="Center"
+           VerticalAlignment="Center"/>
+        </Border>
+
+        <Image Source="/Imagenes/Logo Positivo.png"
+           Width="144"
+           HorizontalAlignment="Left"
+           Margin="770,23,0,410"/>
+
+        <Label Content="Para registrar un libro por favor edite los campos que requiera." FontWeight="Bold" FontSize="18" Margin="182,137,186,410"/>
+
+        <Label Content="Título:" FontWeight="Bold" FontSize="20" Margin="40,210,760,358"/>
+        <TextBox x:Name="txb_Titulo" FontSize="18" Margin="118,210,524,354" BorderThickness="1" TextChanged="txb_Titulo_TextChanged"/>
+
+        <Label Content="Autor(es):" FontWeight="Bold" FontSize="20" Margin="460,211,352,354"/>
+        <TextBox x:Name="txb_Autor" FontSize="18" BorderThickness="1" Margin="590,211,42,353" TextChanged="txb_Autor_TextChanged"/>
+
+        <Label Content="Género:" FontWeight="Bold" FontSize="20" Margin="40,258,793,308"/>
+        <TextBox x:Name="txb_Genero" FontSize="18" BorderThickness="1" Margin="118,260,524,303" TextChanged="txb_Genero_TextChanged"/>
+
+        <Label Content="Estado:" FontWeight="Bold" FontSize="20" Margin="458,260,378,305"/>
+        <TextBox x:Name="txb_Estado" FontSize="18" BorderThickness="1" Margin="590,260,42,303" TextChanged="txb_Estado_TextChanged"/>
+
+        <Label Content="Cantidad&#xD;&#xA;Ejemplares:" FontWeight="Bold" FontSize="20" Margin="3,300,741,230"/>
+        <TextBox x:Name="txb_CantidadEjemplares" FontSize="18" BorderThickness="1" Margin="118,316,524,245" TextChanged="txb_CantidadEjemplares_TextChanged"/>
+
+        <Label Content="ISBN:" FontWeight="Bold" FontSize="20" Margin="458,316,360,250"/>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="594,319,48,247">
+            <TextBlock x:Name="txb_ISBN" FontSize="18"/>
+        </Border>
+
+        <Label Content="Editorial:" FontWeight="Bold" FontSize="20" Margin="460,371,353,179"/>
+        <TextBox x:Name="txb_Editorial" FontSize="18" BorderThickness="1" Margin="590,369,42,181" TextChanged="txb_Editorial_TextChanged"/>
+
+        <Label Content="Fecha de &#xD;&#xA;Publicación:" FontWeight="Bold" FontSize="20" Margin="19,375,772,155"/>
+        <TextBox x:Name="txb_FechaPublicacion" FontSize="18" BorderThickness="1" Margin="148,385,550,165" TextChanged="txb_FechaPublicacion_TextChanged"/>
+
+        <Label Content="Número de &#xD;&#xA;Páginas:" FontWeight="Bold" FontSize="20" Margin="460,430,331,100"/>
+        <TextBox x:Name="txb_NumeroDePaginas" FontSize="18" BorderThickness="1" Margin="589,438,109,112" TextChanged="txb_NumeroDePaginas_TextChanged"/>
+
+        <Button Content="Subir imagen"
+            Background="Blue"
+            Foreground="White"
+            FontWeight="Bold"
+            Margin="17,450,753,105" Click="SubirImagen_Click"/>
+        <TextBox x:Name="txb_imagen" Width="Auto" Height="Auto" Margin="172,450,460,108" RenderTransformOrigin="0.487,0.168" IsEnabled="False" Background="Gray" Text=" " TextChanged="txb_imagen_TextChanged"/>
+
+        <Button Content="Cancelar"
+            Background="Red"
+            Foreground="White"
+            FontWeight="Bold"
+            Margin="474,523,294,31"
+            Click="Cancelar_Click"/>
+
+        <Button Content ="Aceptar"
+                Background="Green"
+                Foreground="White"
+                Margin="298,525,470,29"
+                Click="Aceptar_Click"/>
+    </Grid>
+</Window>

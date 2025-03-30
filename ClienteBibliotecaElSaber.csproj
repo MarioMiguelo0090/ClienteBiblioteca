@@ -76,6 +76,15 @@
     <Compile Include="Utilidades\GeneradorContrasenia.cs" />
     <Compile Include="Utilidades\LoggerManager.cs" />
     <Compile Include="Utilidades\Validador.cs" />
+    <Compile Include="Ventanas\VentanaArchivarLibro.xaml.cs">
+      <DependentUpon>VentanaArchivarLibro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\VentanaEditarLibro.xaml.cs">
+      <DependentUpon>VentanaEditarLibro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\VentanaEditarSocio.xaml.cs">
+      <DependentUpon>VentanaEditarSocio.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas\VentanaRegistrarEditorial.xaml.cs">
       <DependentUpon>VentanaRegistrarEditorial.xaml</DependentUpon>
     </Compile>
@@ -134,6 +143,18 @@
     <Compile Include="Ventanas\VentanaRegistrarAutor.xaml.cs">
       <DependentUpon>VentanaRegistrarAutor.xaml</DependentUpon>
     </Compile>
+    <Page Include="Ventanas\VentanaArchivarLibro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\VentanaEditarLibro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\VentanaEditarSocio.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Ventanas\VentanaRegistrarEditorial.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
