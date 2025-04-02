@@ -5,7 +5,7 @@
              xmlns:extensiones="clr-namespace:ClienteBibliotecaElSaber.Extensiones"
              xmlns:utilidades="clr-namespace:ClienteBibliotecaElSaber.Utilidades"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
-             StartupUri="/Ventanas/VentanaInicioDeSesion.xaml">
+             StartupUri="/Ventanas/VentanaBuscarUsuario.xaml">
     <Application.Resources>
         <utilidades:CadenaVisibilidadConverter x:Key="CadenaVisibilidadConverter"/>
         <utilidades:CursoSobreImagenConverter x:Key="CursoSobreImagenConverter"/>
@@ -242,8 +242,25 @@
             </Style.Resources>
         </Style>
 
-        <Style TargetType="Window">
-            <Setter Property="Icon" Value="pack://application:,,,/Imagenes/Iconos/IconoBuho.ico"/>
+        <Style TargetType="DataGrid">
+            <Setter Property="Background" Value="LightBlue"/>
+            <Setter Property="FontSize" Value="14"/>
         </Style>
-    </Application.Resources>
+
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#F4A300"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+
+        <Style TargetType="DataGridCell">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+        
+        </Application.Resources>
 </Application>

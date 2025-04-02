@@ -1,0 +1,156 @@
+﻿<Window x:Class="ClienteBibliotecaElSaber.Ventanas.VentanaEdicionUsuario"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClienteBibliotecaElSaber.Ventanas"
+        mc:Ignorable="d"
+        Title="VentanaEdicionUsuario" Height="600" Width="920"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        AllowsTransparency="True">
+    <Grid Background="#F5F5DC">
+        <StackPanel Margin="20,30">
+            <Grid >
+                <Border Background="#FF432716"
+                    CornerRadius="10"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Padding="80,25">
+                    <TextBlock Text="Edición de usuario"
+                           FontSize="42"
+                           Foreground="White"
+                           FontWeight="Bold"/>
+                </Border>
+                <Image Source="/Imagenes/Logo Positivo.png"
+                   HorizontalAlignment="Right"
+                   Width="120"
+                   Margin="0,0,10,0"/>
+            </Grid>
+            <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Margin="50,15">
+                <StackPanel Margin="0,0,20,0">
+                    <TextBlock Text="Nombre:"
+                           FontSize="20"
+                           FontWeight="DemiBold"
+                           Margin="0,0,0,10"/>
+                    <TextBox x:Name="txtb_Nombre"
+                         Width="240"
+                         MaxLength="75"/>
+                </StackPanel>
+                <StackPanel Margin="0,0,20,0">
+                    <TextBlock Text="Primer apellido:"
+                           FontSize="20"
+                           FontWeight="DemiBold"
+                           Margin="0,0,0,10"/>
+                    <TextBox x:Name="txtb_PrimerApellido"
+                         Width="240"
+                         MaxLength="50"/>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Text="Segundo apellido:"
+                           FontSize="20"
+                           FontWeight="DemiBold"
+                           Margin="0,0,0,10"/>
+                    <TextBox x:Name="txtb_SegundoApellido"
+                         Width="240"
+                         MaxLength="50"/>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Margin="50,15">
+                <StackPanel Margin="0,0,20,0">
+                    <TextBlock Text="CorreoElectronico:"
+                           FontSize="20"
+                           FontWeight="DemiBold"
+                           Margin="0,0,0,10"/>
+                    <TextBox x:Name="txtb_CorreoElectronico"
+                         Width="240"
+                         MaxLength="255"/>
+                </StackPanel>
+                <StackPanel Margin="0,0,20,0">
+                    <TextBlock Text="Telefono:"
+                           FontSize="20"
+                           FontWeight="DemiBold"
+                           Margin="0,0,0,10"/>
+                    <TextBox x:Name="txtb_Telefono"
+                         Width="240"
+                         MaxLength="10"/>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Text="Calle:"
+                           FontSize="20"
+                           FontWeight="DemiBold"
+                           Margin="0,0,0,10"/>
+                    <TextBox x:Name="txtb_Calle"
+                         Width="240"
+                         MaxLength="40"/>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Margin="50,15">
+                <StackPanel Margin="0,0,20,0">
+                    <TextBlock Text="Número:"
+                           FontSize="20"
+                           FontWeight="DemiBold"
+                           Margin="0,0,0,10"/>
+                    <TextBox x:Name="txtb_Numero"
+                         Width="240"
+                         MaxLength="3"/>
+                </StackPanel>
+                <StackPanel Margin="0,0,20,0">
+                    <TextBlock Text="Código postal:"
+                           FontSize="20"
+                           FontWeight="DemiBold"
+                           Margin="0,0,0,10"/>
+                    <TextBox x:Name="txtb_CodigoPostal"
+                         Width="240"
+                         MaxLength="5"/>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Text="Ciudad:"
+                           FontSize="20"
+                           FontWeight="DemiBold"
+                           Margin="0,0,0,10"/>
+                    <TextBox x:Name="txtb_Ciudad"
+                         Width="240"
+                         MaxLength="50"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Margin="50,15">
+                <StackPanel Margin="0,0,200,0">
+                    <TextBlock Text="Puesto:"
+                           FontSize="20"
+                           FontWeight="DemiBold"
+                           Margin="0,0,0,10"/>
+                    <TextBox x:Name="txtb_Puesto"
+                         Width="240"
+                         MaxLength="25"/>
+                </StackPanel>
+                <Button Content="Guardar"
+                    Width="150"
+                    Background="Green"
+                    Foreground="White"
+                    Margin="0,0,20,2" 
+                    Click="Guardar_Click"
+                    VerticalAlignment="Bottom"/>
+                <Button Content="Cancelar"
+                    Width="150"
+                    Background="Red"
+                    Foreground="White" 
+                    Margin="0,0,0,2"
+                    Click="Cancelar_Click"
+                    VerticalAlignment="Bottom"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
