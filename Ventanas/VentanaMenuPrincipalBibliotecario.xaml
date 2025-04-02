@@ -465,6 +465,46 @@
                                 </EventTrigger>
                             </Button.Triggers>
                         </Button>
+
+                        <Button Style="{StaticResource BotonMenu}"
+                                Tag="/Imagenes/Iconos/IconoMulta.png"
+                                HorizontalContentAlignment="Center" 
+                                Click="IrVentanaGestionarMulta_Click">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <TextBlock x:Name="TextoBotonM"
+                                               Text=""
+                                               VerticalAlignment="Center"
+                                               Opacity="0"/>
+                                    <TextBlock Text="" Width="70"/>
+                                </StackPanel>
+                            </Button.Content>
+
+                            <Button.Triggers>
+                                <EventTrigger RoutedEvent="MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <StringAnimationUsingKeyFrames Storyboard.TargetName="TextoBotonM"
+                                                   Storyboard.TargetProperty="Text">
+                                                <DiscreteStringKeyFrame KeyTime="0:0:0" Value="Multas"/>
+                                            </StringAnimationUsingKeyFrames>
+                                            <DoubleAnimation Storyboard.TargetName="TextoBotonM"
+                                                             Storyboard.TargetProperty="Opacity"
+                                                             To="1" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="TextoBotonM"
+                                                             Storyboard.TargetProperty="Opacity"
+                                                             To="0" Duration="0:0:0"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Button.Triggers>
+                        </Button>
                     </StackPanel>
                 </ScrollViewer>
 

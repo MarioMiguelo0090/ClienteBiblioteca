@@ -27,12 +27,15 @@ namespace ClienteBibliotecaElSaber.Ventanas
 
         private void Cancelar_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
 
         private void Editar_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Hide();
+            VentanaEditarPrestamo ventanaEditarPrestamo = new VentanaEditarPrestamo();
+            ventanaEditarPrestamo.ShowDialog();
+            this.Show();
         }
     }
 }

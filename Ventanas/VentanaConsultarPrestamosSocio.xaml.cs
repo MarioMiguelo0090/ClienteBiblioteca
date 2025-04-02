@@ -24,5 +24,10 @@ namespace ClienteBibliotecaElSaber.Ventanas
             InitializeComponent();
             DataContext = this;
         }
+
+        private void Cancelar_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

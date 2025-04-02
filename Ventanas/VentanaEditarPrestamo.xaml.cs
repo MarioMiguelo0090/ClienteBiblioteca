@@ -31,7 +31,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
 
         private void Cancelar_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
     }
 }
