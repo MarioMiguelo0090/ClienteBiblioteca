@@ -76,12 +76,18 @@ namespace ClienteBibliotecaElSaber.Ventanas
 
         private void IrVentanaBuscarPrestamoSocio_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Hide();
+            VentanaConsultarPrestamosSocio ventanaConsultarPrestamosSocio = new VentanaConsultarPrestamosSocio();
+            ventanaConsultarPrestamosSocio.ShowDialog();
+            this.Show();
         }
 
         private void IrVentanaBuscarPrestamo_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Hide();
+            VentanaBuscarPrestamo ventanaBuscarPrestamo = new VentanaBuscarPrestamo();
+            ventanaBuscarPrestamo.ShowDialog();
+            this.Show();
         }
 
         private void IrVentanaRegistrarPrestamo_Click(object sender, RoutedEventArgs e)
@@ -97,6 +103,14 @@ namespace ClienteBibliotecaElSaber.Ventanas
             this.Hide();
             VentanaDevolucion ventanaDevolucion = new VentanaDevolucion();
             ventanaDevolucion.ShowDialog();
+            this.Show();
+        }
+
+        private void IrVentanaGestionarMulta_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            VentanaGestionarMulta ventanaGestionarMulta = new VentanaGestionarMulta();
+            ventanaGestionarMulta.ShowDialog();
             this.Show();
         }
 
