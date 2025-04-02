@@ -1576,6 +1576,18 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocioManejador/ConsultarSocioPorNumeroDeSocio", ReplyAction="http://tempuri.org/ISocioManejador/ConsultarSocioPorNumeroDeSocioResponse")]
         System.Threading.Tasks.Task<ClienteBibliotecaElSaber.ServidorElSaber.SocioBinding> ConsultarSocioPorNumeroDeSocioAsync(int numeroDeSocio);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocioManejador/EditarDatosSocio", ReplyAction="http://tempuri.org/ISocioManejador/EditarDatosSocioResponse")]
+        int EditarDatosSocio(int numeroDeSocio, ClienteBibliotecaElSaber.ServidorElSaber.SocioBinding socio);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocioManejador/EditarDatosSocio", ReplyAction="http://tempuri.org/ISocioManejador/EditarDatosSocioResponse")]
+        System.Threading.Tasks.Task<int> EditarDatosSocioAsync(int numeroDeSocio, ClienteBibliotecaElSaber.ServidorElSaber.SocioBinding socio);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocioManejador/ModificarEstadoSocio", ReplyAction="http://tempuri.org/ISocioManejador/ModificarEstadoSocioResponse")]
+        int ModificarEstadoSocio(int numeroDeSocio, string estado);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocioManejador/ModificarEstadoSocio", ReplyAction="http://tempuri.org/ISocioManejador/ModificarEstadoSocioResponse")]
+        System.Threading.Tasks.Task<int> ModificarEstadoSocioAsync(int numeroDeSocio, string estado);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1635,6 +1647,22 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
         
         public System.Threading.Tasks.Task<ClienteBibliotecaElSaber.ServidorElSaber.SocioBinding> ConsultarSocioPorNumeroDeSocioAsync(int numeroDeSocio) {
             return base.Channel.ConsultarSocioPorNumeroDeSocioAsync(numeroDeSocio);
+        }
+        
+        public int EditarDatosSocio(int numeroDeSocio, ClienteBibliotecaElSaber.ServidorElSaber.SocioBinding socio) {
+            return base.Channel.EditarDatosSocio(numeroDeSocio, socio);
+        }
+        
+        public System.Threading.Tasks.Task<int> EditarDatosSocioAsync(int numeroDeSocio, ClienteBibliotecaElSaber.ServidorElSaber.SocioBinding socio) {
+            return base.Channel.EditarDatosSocioAsync(numeroDeSocio, socio);
+        }
+        
+        public int ModificarEstadoSocio(int numeroDeSocio, string estado) {
+            return base.Channel.ModificarEstadoSocio(numeroDeSocio, estado);
+        }
+        
+        public System.Threading.Tasks.Task<int> ModificarEstadoSocioAsync(int numeroDeSocio, string estado) {
+            return base.Channel.ModificarEstadoSocioAsync(numeroDeSocio, estado);
         }
     }
     
@@ -1756,6 +1784,18 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/ObtenerEditoriales", ReplyAction="http://tempuri.org/ILibroManejador/ObtenerEditorialesResponse")]
         System.Threading.Tasks.Task<ClienteBibliotecaElSaber.ServidorElSaber.EditorialBinding[]> ObtenerEditorialesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/CambiarEstadoDeLibro", ReplyAction="http://tempuri.org/ILibroManejador/CambiarEstadoDeLibroResponse")]
+        int CambiarEstadoDeLibro(string isbn, string estado);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/CambiarEstadoDeLibro", ReplyAction="http://tempuri.org/ILibroManejador/CambiarEstadoDeLibroResponse")]
+        System.Threading.Tasks.Task<int> CambiarEstadoDeLibroAsync(string isbn, string estado);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/EditarDetallesDeLibro", ReplyAction="http://tempuri.org/ILibroManejador/EditarDetallesDeLibroResponse")]
+        int EditarDetallesDeLibro(string isbn, ClienteBibliotecaElSaber.ServidorElSaber.LibroBinding libro);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/EditarDetallesDeLibro", ReplyAction="http://tempuri.org/ILibroManejador/EditarDetallesDeLibroResponse")]
+        System.Threading.Tasks.Task<int> EditarDetallesDeLibroAsync(string isbn, ClienteBibliotecaElSaber.ServidorElSaber.LibroBinding libro);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibroManejador/RegistrarNuevoAutor", ReplyAction="http://tempuri.org/ILibroManejador/RegistrarNuevoAutorResponse")]
         int RegistrarNuevoAutor(string autor);
@@ -1909,6 +1949,22 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
             return base.Channel.ObtenerEditorialesAsync();
         }
         
+        public int CambiarEstadoDeLibro(string isbn, string estado) {
+            return base.Channel.CambiarEstadoDeLibro(isbn, estado);
+        }
+        
+        public System.Threading.Tasks.Task<int> CambiarEstadoDeLibroAsync(string isbn, string estado) {
+            return base.Channel.CambiarEstadoDeLibroAsync(isbn, estado);
+        }
+        
+        public int EditarDetallesDeLibro(string isbn, ClienteBibliotecaElSaber.ServidorElSaber.LibroBinding libro) {
+            return base.Channel.EditarDetallesDeLibro(isbn, libro);
+        }
+        
+        public System.Threading.Tasks.Task<int> EditarDetallesDeLibroAsync(string isbn, ClienteBibliotecaElSaber.ServidorElSaber.LibroBinding libro) {
+            return base.Channel.EditarDetallesDeLibroAsync(isbn, libro);
+        }
+        
         public int RegistrarNuevoAutor(string autor) {
             return base.Channel.RegistrarNuevoAutor(autor);
         }
@@ -2036,6 +2092,108 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
         
         public System.Threading.Tasks.Task<int> ValidarPrestamosVencidosPorNumeroSocioAsync(int numeroSocio) {
             return base.Channel.ValidarPrestamosVencidosPorNumeroSocioAsync(numeroSocio);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServidorElSaber.IReporteInventarioLibroManejador")]
+    public interface IReporteInventarioLibroManejador {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReporteInventarioLibroManejador/ObtenerReporteInventarioLibro" +
+            "s", ReplyAction="http://tempuri.org/IReporteInventarioLibroManejador/ObtenerReporteInventarioLibro" +
+            "sResponse")]
+        byte[] ObtenerReporteInventarioLibros();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReporteInventarioLibroManejador/ObtenerReporteInventarioLibro" +
+            "s", ReplyAction="http://tempuri.org/IReporteInventarioLibroManejador/ObtenerReporteInventarioLibro" +
+            "sResponse")]
+        System.Threading.Tasks.Task<byte[]> ObtenerReporteInventarioLibrosAsync();
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IReporteInventarioLibroManejadorChannel : ClienteBibliotecaElSaber.ServidorElSaber.IReporteInventarioLibroManejador, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ReporteInventarioLibroManejadorClient : System.ServiceModel.ClientBase<ClienteBibliotecaElSaber.ServidorElSaber.IReporteInventarioLibroManejador>, ClienteBibliotecaElSaber.ServidorElSaber.IReporteInventarioLibroManejador {
+        
+        public ReporteInventarioLibroManejadorClient() {
+        }
+        
+        public ReporteInventarioLibroManejadorClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public ReporteInventarioLibroManejadorClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ReporteInventarioLibroManejadorClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ReporteInventarioLibroManejadorClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public byte[] ObtenerReporteInventarioLibros() {
+            return base.Channel.ObtenerReporteInventarioLibros();
+        }
+        
+        public System.Threading.Tasks.Task<byte[]> ObtenerReporteInventarioLibrosAsync() {
+            return base.Channel.ObtenerReporteInventarioLibrosAsync();
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServidorElSaber.IReporteLibroMasPrestadoManejador")]
+    public interface IReporteLibroMasPrestadoManejador {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReporteLibroMasPrestadoManejador/ObtenerReporteLibrosMasPrest" +
+            "ado", ReplyAction="http://tempuri.org/IReporteLibroMasPrestadoManejador/ObtenerReporteLibrosMasPrest" +
+            "adoResponse")]
+        byte[] ObtenerReporteLibrosMasPrestado(string fechaInicioBusqueda, string fechaFinBusqueda);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReporteLibroMasPrestadoManejador/ObtenerReporteLibrosMasPrest" +
+            "ado", ReplyAction="http://tempuri.org/IReporteLibroMasPrestadoManejador/ObtenerReporteLibrosMasPrest" +
+            "adoResponse")]
+        System.Threading.Tasks.Task<byte[]> ObtenerReporteLibrosMasPrestadoAsync(string fechaInicioBusqueda, string fechaFinBusqueda);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IReporteLibroMasPrestadoManejadorChannel : ClienteBibliotecaElSaber.ServidorElSaber.IReporteLibroMasPrestadoManejador, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ReporteLibroMasPrestadoManejadorClient : System.ServiceModel.ClientBase<ClienteBibliotecaElSaber.ServidorElSaber.IReporteLibroMasPrestadoManejador>, ClienteBibliotecaElSaber.ServidorElSaber.IReporteLibroMasPrestadoManejador {
+        
+        public ReporteLibroMasPrestadoManejadorClient() {
+        }
+        
+        public ReporteLibroMasPrestadoManejadorClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public ReporteLibroMasPrestadoManejadorClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ReporteLibroMasPrestadoManejadorClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ReporteLibroMasPrestadoManejadorClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public byte[] ObtenerReporteLibrosMasPrestado(string fechaInicioBusqueda, string fechaFinBusqueda) {
+            return base.Channel.ObtenerReporteLibrosMasPrestado(fechaInicioBusqueda, fechaFinBusqueda);
+        }
+        
+        public System.Threading.Tasks.Task<byte[]> ObtenerReporteLibrosMasPrestadoAsync(string fechaInicioBusqueda, string fechaFinBusqueda) {
+            return base.Channel.ObtenerReporteLibrosMasPrestadoAsync(fechaInicioBusqueda, fechaFinBusqueda);
         }
     }
 }

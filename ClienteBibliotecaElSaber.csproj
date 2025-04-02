@@ -104,6 +104,9 @@
     <Compile Include="Ventanas\VentanaEdicionUsuario.xaml.cs">
       <DependentUpon>VentanaEdicionUsuario.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas\VentanaCreacionDeReportes.xaml.cs">
+      <DependentUpon>VentanaCreacionDeReportes.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas\VentanaRegistrarEditorial.xaml.cs">
       <DependentUpon>VentanaRegistrarEditorial.xaml</DependentUpon>
     </Compile>
@@ -312,15 +315,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServidorElSaber\ElSaberServices.wsdl" />
-    <None Include="Connected Services\ServidorElSaber\item.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServidorElSaber\item1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServidorElSaber\item2.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -456,7 +450,7 @@
     <Resource Include="Imagenes\BotonRegresar.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServidorElSaber\item.disco" />
+    <WCFMetadataStorage Include="Connected Services\ServidorElSaber\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ServidorElSaber\configuration91.svcinfo" />

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="53956d90-7c02-4403-bd74-60c0a8a26dc7" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="176d38a5-859e-4e61-94e1-cc0cf010a377" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,14 +19,10 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://148.226.51.159:1442" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:1442/?singleWsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="5630c296-893b-44f4-8106-a5aea2692c27" SourceId="1" SourceUrl="http://148.226.51.159:1442/?disco" />
-    <MetadataFile FileName="ElSaberServices.wsdl" MetadataType="Wsdl" ID="af50af1e-d640-4f69-99f6-5cb288de5053" SourceId="1" SourceUrl="http://148.226.51.159:1442/?wsdl" />
-    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="a146dfe1-6c02-4dfe-ab3a-83bb5c3e0c4b" SourceId="1" SourceUrl="http://148.226.51.159:1442/?xsd=xsd1" />
-    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="403b4040-735f-44d1-a96b-c4f9215c63aa" SourceId="1" SourceUrl="http://148.226.51.159:1442/?xsd=xsd0" />
-    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="f4dbe20d-6c65-4448-ae13-ff97ba960821" SourceId="1" SourceUrl="http://148.226.51.159:1442/?xsd=xsd2" />
+    <MetadataFile FileName="ElSaberServices.wsdl" MetadataType="Wsdl" ID="2bc75c12-3f5f-422d-8f24-c703b4eb1684" SourceId="1" SourceUrl="http://localhost:1442/?singleWsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

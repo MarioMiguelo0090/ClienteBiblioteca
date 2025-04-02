@@ -1,0 +1,193 @@
+﻿<Window x:Class="ClienteBibliotecaElSaber.Ventanas.VentanaCreacionDeReportes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClienteBibliotecaElSaber.Ventanas"
+        mc:Ignorable="d" 
+        Title="VentanaBuscarSocio" Height="600" Width="920"
+          WindowStyle="None"
+          ResizeMode="NoResize"
+          WindowStartupLocation="CenterScreen"
+          Background="Transparent"
+          AllowsTransparency="True">
+    <Window.Resources>
+        <Style x:Key="BotonActivo" TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Width" Value="375"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Margin" Value="10,10,0,0"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" 
+                            Background="#6D4C41" 
+                            CornerRadius="30" 
+                            BorderBrush="Transparent" 
+                            SnapsToDevicePixels="True">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#5D4037"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="BotonConImagen" TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Width" Value="375"/>
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="Margin" Value="10,10,0,0"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border"
+                            Background="#6D4C41"
+                            CornerRadius="20"
+                            BorderBrush="Transparent"
+                            SnapsToDevicePixels="True"
+                            Padding="5">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Image Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Tag}" 
+                                   Width="30" Height="30" Margin="5"/>
+                                <TextBlock Text="{TemplateBinding Content}" 
+                                       Foreground="White" FontSize="18" FontWeight="Bold" 
+                                       VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#5D4037"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="BotonRegresar" TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Width" Value="375"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Margin" Value="10,10,0,0"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border"
+                            Background="#D32F2F"
+                            CornerRadius="30"
+                            BorderBrush="Transparent"
+                            SnapsToDevicePixels="True">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#B71C1C"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Background="#F5F5DC">
+        <Border Background="#FF432716" CornerRadius="10" Padding="10" Margin="146,31,146,471">
+            <TextBlock
+            Foreground="White"
+            FontSize="42"
+            FontWeight="Bold"
+            TextAlignment="Center"
+            VerticalAlignment="Center"><Run Text="Reportes Administrativos"/><Run Language="es-mx"/></TextBlock>
+        </Border>
+
+        <Label Content="Para generar un reporte, seleccione una de las opciones mostradas." 
+        FontWeight="Bold" 
+        FontSize="20" 
+        Margin="0,134,0,406" 
+        VerticalContentAlignment="Center" 
+        HorizontalContentAlignment="Center"/>
+        <Image x:Name="img_logo" Source="/Imagenes/BuhoSofia.png" Margin="459,204,58,29" Visibility="Visible"/>
+        <Border x:Name="brd_InventarioLibros" Margin="454,205,6,29" BorderBrush="Black" BorderThickness="2" Visibility="Collapsed">
+            <Grid>
+                <Image Source="/Imagenes/BuhoSofia.png" Margin="158,20,158,173" Visibility="Visible"/>
+                <Button x:Name="btn_crearReporteInventarioLibros" Content="Crear reporte" FontSize="20" Background="Blue" Margin="74,205,228,107" Click="btn_crearReporteInventarioLibros_Click"></Button>
+                <Button x:Name="btn_cancelarCreacionReporteInventario" Content="Cancelar" FontSize="20" Background="Red" Margin="244,203,58,109" Click="btn_cancelarCreacionReporteInventario_Click"></Button>
+            </Grid>
+        </Border>
+        <Border x:Name="brd_LibrosMasPrestados" Margin="454,205,6,29" BorderBrush="Black" BorderThickness="2" Visibility="Collapsed">
+            <Grid>
+                <Label FontSize="16" FontFamily="Times New Roman" Content="Atencion: Para generar un reporte sobre los libros &#xD;&#xA;          más prestados, seleccione una opción." Margin="62,29,62,279"></Label>
+                <RadioButton x:Name="rb_dia" FontFamily="Times New Roman" FontSize="15" Content="Día"   GroupName="CriterioBusqueda" Checked="SeleccionarCriterioBusqueda" Tag="Dia" Margin="103,143,293,202"></RadioButton>
+                <RadioButton x:Name="rb_semana" FontFamily="Times New Roman" FontSize="15" Content="Semana"  GroupName="CriterioBusqueda" Checked="SeleccionarCriterioBusqueda" Tag="Semana" Margin="157,143,228,202"></RadioButton>
+                <RadioButton x:Name="rb_mes" FontFamily="Times New Roman" FontSize="15" Content="Mes" GroupName="CriterioBusqueda" Checked="SeleccionarCriterioBusqueda" Tag="Mes" Margin="235,143,161,202"></RadioButton>
+                <RadioButton x:Name="rb_anio" FontFamily="Times New Roman" FontSize="15" Content="Año" GroupName="CriterioBusqueda" Checked="SeleccionarCriterioBusqueda" Tag="Anio" Margin="305,143,91,202"></RadioButton>
+                <DatePicker x:Name="dtp_FechaBusqueda" Margin="140,181,128,157" SelectedDateFormat="Long"
+                                Loaded="Dp_FechaSeleccionada_Loaded">
+                        <DatePicker.Resources>
+                            <Style TargetType="DatePickerTextBox">
+                                <Setter Property="IsReadOnly" Value="True"/>
+                            </Style>
+                        </DatePicker.Resources>
+                 </DatePicker>
+                <DatePicker x:Name="dtp_FechaFinBusqueda" Margin="140,211,128,127" SelectedDateFormat="Long"
+                Loaded="Dp_FechaFinSeleccionada_Loaded">
+                    <DatePicker.Resources>
+                        <Style TargetType="DatePickerTextBox">
+                            <Setter Property="IsReadOnly" Value="True"/>
+                        </Style>
+                    </DatePicker.Resources>
+                </DatePicker>
+                <Button x:Name="btn_crearReporteLibrosMasPrestados" Content="Generar" FontSize="20" Background="Blue" Margin="63,265,239,47" Click="btn_crearReporteLibrosMasPrestados_Click"></Button>
+                <Button x:Name="btn_cancelarReporteLibrosMasPrestados" Content="Cancelar" FontSize="20" Background="Red" Margin="235,265,67,47" Click="btn_cancelarReporteLibrosMasPrestados_Click"></Button>
+                <Label FontSize="16" FontFamily="Times New Roman" Content="Tipo de reporte:" Margin="171,88,171,248"/>
+            </Grid>
+        </Border>
+        <Border Background="#BFA640" BorderThickness="2" BorderBrush="Black" CornerRadius="15"
+            Margin="6,204,483,29" Padding="20">
+            <StackPanel HorizontalAlignment="Center">
+                <Button FontSize="20" Style="{StaticResource BotonActivo}" Width="379" Click="BotonReporteInventarioLibro_Click">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Image Source="/Imagenes/ReporteInventario.png" Width="55" Height="55" Margin="5"/>
+                        <TextBlock Text="Inventario de libros" Foreground="White" FontSize="18" FontWeight="Bold" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button FontSize="20" Style="{StaticResource BotonActivo}" Click="BotonReporteLibrosMasPrestados_Click">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Image Source="/Imagenes/ReporteLibroMasPrestado.png" Width="55" Height="55" Margin="5"/>
+                        <TextBlock Text="Libros más prestados" Foreground="White" FontSize="18" FontWeight="Bold" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button FontSize="20" Style="{StaticResource BotonActivo}">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Image Source="/Imagenes/ReporteMultas.png" Width="55" Height="30" Margin="5"/>
+                        <TextBlock Text="Multas pagadas" Foreground="White" FontSize="18" FontWeight="Bold" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button FontSize="20" Style="{StaticResource BotonActivo}">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Image Source="/Imagenes/ReportePrestamoPendiente.png" Width="55" Height="40" Margin="5"/>
+                        <TextBlock Text="Préstamos pendientes" Foreground="White" FontSize="18" FontWeight="Bold" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button FontSize="20" Style="{StaticResource BotonRegresar}" Height="57" Click="BotonRegresar_Click">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Image Source="/Imagenes/BotonRegresar.png" Width="55" Height="40" Margin="5"/>
+                        <TextBlock Text="Regresar" Foreground="White" FontSize="18" FontWeight="Bold" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+
+</Window>
