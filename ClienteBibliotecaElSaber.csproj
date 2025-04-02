@@ -81,6 +81,15 @@
     <Compile Include="Utilidades\LoggerManager.cs" />
     <Compile Include="Utilidades\ManejadorDeCitasAutores.cs" />
     <Compile Include="Utilidades\Validador.cs" />
+    <Compile Include="Ventanas\VentanaArchivarLibro.xaml.cs">
+      <DependentUpon>VentanaArchivarLibro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\VentanaEditarLibro.xaml.cs">
+      <DependentUpon>VentanaEditarLibro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\VentanaEditarSocio.xaml.cs">
+      <DependentUpon>VentanaEditarSocio.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utilidades\ValidadorPrestamo.cs" />
     <Compile Include="Ventanas\PaginaRecuperarContrasenia.xaml.cs">
       <DependentUpon>PaginaRecuperarContrasenia.xaml</DependentUpon>
@@ -146,11 +155,27 @@
     <Compile Include="Ventanas\VentanaRegistrarAutor.xaml.cs">
       <DependentUpon>VentanaRegistrarAutor.xaml</DependentUpon>
     </Compile>
+    <Page Include="Ventanas\VentanaArchivarLibro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\VentanaEditarLibro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\VentanaEditarSocio.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Ventanas\PaginaRecuperarContrasenia.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Ventanas\PaginaValidacionCodigo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\VentanaCreacionDeReportes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -401,7 +426,19 @@
     <Resource Include="Imagenes\Iconos\BuscarLibroOscuro.png" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\ServidorElSaber\" />
+    <Resource Include="Imagenes\ReporteInventario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\ReporteLibroMasPrestado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\ReporteMultas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\ReportePrestamoPendiente.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\BotonRegresar.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ServidorElSaber\item.disco" />
