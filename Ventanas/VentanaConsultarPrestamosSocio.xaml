@@ -1,0 +1,96 @@
+﻿<Window x:Class="ClienteBibliotecaElSaber.Ventanas.VentanaConsultarPrestamosSocio"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClienteBibliotecaElSaber.Ventanas"
+        xmlns:extensiones="clr-namespace:ClienteBibliotecaElSaber.Extensiones"
+        mc:Ignorable="d"
+        Title="VentanaConsultarPrestamosSocio" Height="600" Width="920"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        AllowsTransparency="True">
+    <Grid Background="#F5F5DC">
+        <StackPanel Margin="20,30">
+            <Grid>
+                <Border Background="#FF432716"
+                        CornerRadius="10"
+                        Padding="80,25"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                    <TextBlock Text="Préstamos de socios"
+                               FontSize="42"
+                               Foreground="White"
+                               FontWeight="Bold"/>
+                </Border>
+                <Image Source="/Imagenes/Logo Positivo.png"
+                       HorizontalAlignment="Right"
+                       Width="120"
+                       Margin="0,0,10,0"/>
+            </Grid>
+            <StackPanel Margin="100,25">
+                <Grid Margin="0,0,0,20">
+                    <TextBox x:Name="txtb_Buscador"
+                             extensiones:TextBoxExtensiones.TextoSugerido="Número de socio"/>
+                    <Button Width="50"
+                            HorizontalAlignment="Right"
+                            Margin="0,0"
+                            Background="Transparent">
+                        <Image Source="/Imagenes/Iconos/IconoBuscarOscuro.png"
+                               Width="30"
+                               Margin="0,3,0,0"/>
+                    </Button>
+                </Grid>
+                <ListView x:Name="lw_prestamos" 
+                          ItemsSource="{Binding Prestamos}"
+                          ScrollViewer.VerticalScrollBarVisibility="Auto"
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                          Height="300">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel />
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="Black"
+                                    BorderThickness="1"
+                                    Margin="5"
+                                    Padding="5">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock Text="{Binding Nota}" 
+                                                   FontSize="14"
+                                                   FontWeight="Bold"
+                                                   TextWrapping="Wrap"
+                                                   Width="120"/>
+                                        <TextBlock Text="Estado: " 
+                                                   FontWeight="Bold"/>
+                                        <TextBlock Text="{Binding Estado}"/>
+                                        <TextBlock Text="Fecha de inicio: "
+                                                   FontWeight="Bold"/>
+                                        <TextBlock Text="{Binding FechaPrestamo, StringFormat=d}"/>
+                                        <TextBlock Text="Fecha de devolución: "
+                                                   FontWeight="Bold"/>
+                                        <TextBlock Text="{Binding FechaDevolucionEsperada, StringFormat=d}"/>
+                                    </StackPanel>
+                                    <Grid Grid.Column="1"
+                                          Margin="5,0,0,0">
+                                        <Image Source="/ImagenesLibro/aaaaa.jpg" Width="150"/>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
