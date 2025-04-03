@@ -29,28 +29,28 @@
            Margin="770,23,0,410"/>
 
         <Label Content="Nombre(s):" FontWeight="Bold" FontSize="20" Margin="40,223,760,345"/>
-        <TextBox x:Name="txb_nombre" FontSize="18" IsEnabled="False" Margin="160,223,482,345" TextChanged="txb_nombre_TextChanged"/>
+        <TextBox x:Name="txb_nombre" FontSize="18" Margin="160,223,482,345" TextChanged="txb_nombre_TextChanged"/>
 
         <Label Content="Primer &#xD;&#xA;Apellido:" FontWeight="Bold" FontSize="20" Margin="477,210,335,327"/>
-        <TextBox x:Name="txb_primerApellido" FontSize="18" IsEnabled="False" Margin="590,224,42,341" TextChanged="txb_primerApellido_TextChanged"/>
+        <TextBox x:Name="txb_primerApellido" FontSize="18" Margin="590,224,42,341" TextChanged="txb_primerApellido_TextChanged"/>
 
         <Label Content="Segundo &#xD;&#xA;Apellido:" FontWeight="Bold" FontSize="20" Margin="40,269,778,257" RenderTransformOrigin="0.531,0.273"/>
-        <TextBox x:Name="txb_segundoApellido" FontSize="18" Margin="160,288,482,278" IsEnabled="False" TextChanged="txb_segundoApellido_TextChanged"/>
+        <TextBox x:Name="txb_segundoApellido" FontSize="18" Margin="160,288,482,278" TextChanged="txb_segundoApellido_TextChanged"/>
 
         <Label Content="Teléfono:" FontWeight="Bold" FontSize="20" Margin="476,287,335,278"/>
-        <TextBox x:Name="txb_telefono" FontSize="18" IsEnabled="False" Margin="590,287,42,278" TextChanged="txb_telefono_TextChanged"/>
+        <TextBox x:Name="txb_telefono" FontSize="18" Margin="590,287,42,278" TextChanged="txb_telefono_TextChanged"/>
 
         <Label Content="Dirección:" FontWeight="Bold" FontSize="20" Margin="40,341,765,220"/>
-        <TextBox x:Name="txb_direccion" FontSize="18" IsEnabled="False" Margin="160,340,482,221" TextChanged="txb_direccion_TextChanged"/>
+        <TextBox x:Name="txb_direccion" FontSize="18" Margin="160,340,482,221" TextChanged="txb_direccion_TextChanged"/>
 
         <Label Content="CP:" FontWeight="Bold" FontSize="20" Margin="478,343,336,223"/>
-        <TextBox x:Name="txb_codigoPostal" FontSize="18" IsEnabled="False" Margin="590,343,42,223" TextChanged="txb_codigoPostal_TextChanged"/>
+        <TextBox x:Name="txb_codigoPostal" FontSize="18" Margin="590,343,42,223" TextChanged="txb_codigoPostal_TextChanged"/>
 
         <Label Content="Fecha de &#xD;&#xA;Nacimiento:" FontWeight="Bold" FontSize="20" Margin="40,392,751,138"/>
-        <TextBox x:Name="txb_fechaDeNacimiento" FontSize="18" IsEnabled="False" Margin="174,402,524,148" TextChanged="txb_fechaDeNacimiento_TextChanged"/>
+        <TextBox x:Name="txb_fechaDeNacimiento" FontSize="18" Margin="174,402,524,148" TextChanged="txb_fechaDeNacimiento_TextChanged"/>
 
         <Label Content="Fecha de &#xD;&#xA;Inscripción:" FontWeight="Bold" FontSize="20" Margin="477,388,314,142"/>
-        <TextBox x:Name="txb_fechaDeInscripcion" FontSize="18" Margin="656,398,42,152" IsEnabled="False" TextChanged="txb_fechaDeInscripcion_TextChanged"/>
+        <TextBox x:Name="txb_fechaDeInscripcion" FontSize="18" Margin="656,398,42,152" TextChanged="txb_fechaDeInscripcion_TextChanged"/>
 
         <Button Content="Aceptar"
             Background="Green"
