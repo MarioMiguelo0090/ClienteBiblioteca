@@ -336,6 +336,9 @@
     <None Include="Connected Services\ServidorElSaber\ClienteBibliotecaElSaber.ServidorElSaber.LibroBinding.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServidorElSaber\ClienteBibliotecaElSaber.ServidorElSaber.MultaBinding.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServidorElSaber\ClienteBibliotecaElSaber.ServidorElSaber.PrestamoBinding.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

@@ -34,7 +34,7 @@
 
         <Button Content="Buscar" Background="Green" Foreground="White" FontWeight="Bold" Margin="643,201,165,349" Click="Buscar_Click" Cursor="Hand"/>
 
-        <ListView x:Name="lw_libros" Margin="40,290,40,60">
+        <ListView x:Name="lw_libros" Margin="40,278,40,56">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border BorderThickness="2" BorderBrush="Black" CornerRadius="10" Padding="10" Background="White" Margin="5">
@@ -44,7 +44,86 @@
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                 <Button Content="Ver Detalles" Background="Blue" Foreground="White" FontWeight="Bold" Width="120" Height="40" Margin="5" Click="Detalles_Click" Tag="{Binding}"/>
                                 <Button Content="Editar" Background="Orange" Foreground="White" FontWeight="Bold" Width="100" Height="40" Margin="5" Click="Editar_Click" Tag="{Binding}"/>
-                                <Button Content="Eliminar" Background="Red" Foreground="White" FontWeight="Bold" Width="100" Height="40" Margin="5" Click="Eliminar_Click" Tag="{Binding}"/>
+                                <Button x:Name="btn_Desactivar" Content="Desactivar" Background="Red" Foreground="White" FontWeight="Bold" Width="100" Height="40" Margin="5" Click="Desactivar_Click" Tag="{Binding}">
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Grid>
+                                                <Border x:Name="BordeBase" 
+                                                     Background="{TemplateBinding Background}" 
+                                                     BorderBrush="{TemplateBinding BorderBrush}" 
+                                                     CornerRadius="20" 
+                                                     Padding="10" 
+                                                     HorizontalAlignment="Stretch" 
+                                                     VerticalAlignment="Center">    
+                                                    <ContentPresenter HorizontalAlignment="Center" 
+                                                    VerticalAlignment="Center" />
+                                                </Border>
+                                            </Grid>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter TargetName="BordeBase" Property="Effect">
+                                                        <Setter.Value>
+                                                            <DropShadowEffect ShadowDepth="5" 
+                                                               BlurRadius="15" 
+                                                               Opacity="0.5" 
+                                                               Color="Black" />
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                    <Button.Style>
+                                        <Style TargetType="Button">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding MostrarBotonDesactivar}" Value="true">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                                <Button x:Name="btn_Activar" Content="Activar" Background="ForestGreen" Foreground="White" FontWeight="Bold" Width="100" Height="40" Margin="5" Click="Activar_Click" Tag="{Binding}">
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Grid>
+                                                <Border x:Name="BordeBase" 
+                 Background="{TemplateBinding Background}" 
+                 BorderBrush="{TemplateBinding BorderBrush}" 
+                 CornerRadius="20" 
+                 Padding="10" 
+                 HorizontalAlignment="Stretch" 
+                 VerticalAlignment="Center">
+                                                    <ContentPresenter HorizontalAlignment="Center" 
+                VerticalAlignment="Center" />
+                                                </Border>
+                                            </Grid>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter TargetName="BordeBase" Property="Effect">
+                                                        <Setter.Value>
+                                                            <DropShadowEffect ShadowDepth="5" 
+                           BlurRadius="15" 
+                           Opacity="0.5" 
+                           Color="Black" />
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                    <Button.Style>
+                                        <Style TargetType="Button">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding MostrarBotonActivar}" Value="true">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
                             </StackPanel>
                         </StackPanel>
                     </Border>
@@ -52,6 +131,6 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Button Content="Regresar" Background="Red" Foreground="White" FontWeight="Bold" Margin="384,549,384,5" Click="Regresar_Click" Cursor="Hand"/>
+        <Button Content="Regresar" Background="Red" Foreground="White" FontWeight="Bold" Margin="374,548,394,6" Click="Regresar_Click" Cursor="Hand"/>
     </Grid>
 </Window>

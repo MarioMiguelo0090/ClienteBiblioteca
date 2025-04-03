@@ -127,7 +127,8 @@ namespace ClienteBibliotecaElSaber.Ventanas
                     int resultadoRegistro = libroManejadorClient.RegistrarNuevoLibro(libroBinding);
                     if(resultadoRegistro == 1)
                     {
-                        VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoExito, "Datos ingresados", "Los datos se han registradod de manera exitosa");     
+                        VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoExito, "Datos ingresados", "Los datos se han registradod de manera exitosa");  
+                        this.Close();
                     }
                     else
                     {
@@ -196,7 +197,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
                 if(idLibro == -1)
                 {
                     VentanaEmergente ventanaEmergente = new VentanaEmergente("Error", "Error en la conexión a la base de datos", "Se ha perdido la conexión a la base de datos");
-                    
+                    this.Close();
                 }
                 else
                 {
@@ -237,7 +238,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
             bool validarNoEjemplares = Validador.ValidarSoloNumeros(txb_noEjemplares.Text);
             bool validarIsbn = Validador.ValidarISBN(txb_isbn.Text);
             bool validarFechaDePublicacion = Validador.ValidarFechas(fechaDePublicacion);
-            bool validarAutor = Validador.ValidarNombre(autor.Autor);
+            bool validarAutor = Validador.ValidarNombreAutor(autor.Autor);
             bool validarEditorial = Validador.ValidarNombre(editorialBinding.Editorial);
 
             if (!validarAutor)
@@ -338,11 +339,6 @@ namespace ClienteBibliotecaElSaber.Ventanas
                     txb_imagen.Text = System.IO.Path.GetFileName(_rutaArchivoOriginal);
                 }
             }
-        }
-
-        private void cbEditorial_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
     }
 }

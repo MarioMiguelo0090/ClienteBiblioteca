@@ -99,7 +99,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
                     if (resultadoRegistroSocio == 1)
                     {
                         VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoExito, "Operación exitosa", "Los datos se han registrado con éxito en la base de datos.");
-                        
+                        this.Close();
                     }
                     else
                     {
