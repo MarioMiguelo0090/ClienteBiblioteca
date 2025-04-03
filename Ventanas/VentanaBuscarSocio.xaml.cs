@@ -16,6 +16,8 @@ namespace ClienteBibliotecaElSaber.Ventanas
 {
     public partial class VentanaBuscarSocio : Window
     {
+        private string _ultimaBusqueda;
+
         public VentanaBuscarSocio()
         {
             InitializeComponent();
@@ -29,6 +31,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
             {
                 string campoDeBusqueda = txb_Busqueda.Text;
                 bool esSoloNumeros = campoDeBusqueda.All(char.IsDigit);
+                _ultimaBusqueda = campoDeBusqueda;
                 if (esSoloNumeros)
                 {
                     BuscarSocioPorNumeroDeSocio();
@@ -85,14 +88,9 @@ namespace ClienteBibliotecaElSaber.Ventanas
             this.Hide();
             VentanaDetallesSocio ventanaDetallesSocio = new VentanaDetallesSocio(socio);
             ventanaDetallesSocio.ShowDialog();
-            this.Show();
         }
 
         private void Editar_Click(object sender, RoutedEventArgs e)
-        {
-        }
-
-        private void Eliminar_Click(object sender, RoutedEventArgs e)
         {
         }
 
@@ -200,6 +198,145 @@ namespace ClienteBibliotecaElSaber.Ventanas
                 VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Comunicacion fallida", "La comunicacion con el servidor se ha perdido, por favor verifique su conexión a internet.");
                 
             }
+        }
+
+        public void Activar_Click(object sender, RoutedEventArgs e)
+        {
+            Button botonPresionado = sender as Button;
+            SocioDatos socioSeleccionado = botonPresionado.DataContext as SocioDatos;
+            if (socioSeleccionado != null)
+            {
+                SocioBinding socio = new SocioBinding()
+                {
+                    numeroDeSocio = socioSeleccionado.numeroSocio,
+                };
+            }
+            ServidorElSaber.SocioManejadorClient socioManejadorClient = new ServidorElSaber.SocioManejadorClient();
+            try
+            {
+                int resultadoModificacion = socioManejadorClient.ModificarEstadoSocio(socioSeleccionado.numeroSocio, "Activo");
+                if (resultadoModificacion == 1)
+                {
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoExito, "Socio Activado", "El socio ha sido activado de manera exitosa");
+                    Buscar_Click(sender, e);
+                }
+                else
+                {
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Error en la conexión a la base de datos", "Se ha perdido la conexión a la base de datos");
+                }
+            }
+            catch (EndpointNotFoundException endpointNotFoundException)
+            {
+                LoggerManager.Error($"Excepción de EndpointNotFoundException: {endpointNotFoundException.Message}." +
+                                    $"\nTraza: {endpointNotFoundException.StackTrace}.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Punto de conexión fallido", "No se ha podido establecer conexión con el servidor.");
+            }
+            catch (TimeoutException timeoutException)
+            {
+                LoggerManager.Error($"Excepción de TimeoutException: {timeoutException.Message}." +
+                                    $"\nTraza: {timeoutException.StackTrace}.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoInformacion, "Tiempo de espera agotado", "El tiempo de espera ha caducado, inténtelo de nuevo.");
+            }
+            catch (CommunicationException communicationException)
+            {
+                LoggerManager.Error($"Excepción de CommunicationException: {communicationException.Message}." +
+                                    $"\nTraza: {communicationException.StackTrace}.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Comunicacion fallida", "La comunicacion con el servidor se ha perdido, por favor verifique su conexión a internet.");
+            }
+        }
+
+        public void Desactivar_Click(object sender, RoutedEventArgs e)
+        {
+            Button botonPresionado = sender as Button;
+            SocioDatos socioSeleccionado = botonPresionado.DataContext as SocioDatos;
+            if (socioSeleccionado != null)
+            {
+                SocioBinding socio = new SocioBinding()
+                {
+                    numeroDeSocio = socioSeleccionado.numeroSocio,
+                };
+            }
+            if (VerificarSocioConPrestamosPendientes(sender, socioSeleccionado))
+            {
+                RealizarDesactivacionDeSocio(socioSeleccionado);
+                Buscar_Click(sender, e);
+            }
+        }
+
+        private void RealizarDesactivacionDeSocio(SocioDatos socioSeleccionado)
+        {
+            ServidorElSaber.SocioManejadorClient socioManejadorClient = new ServidorElSaber.SocioManejadorClient();
+            try
+            {
+                int resultadoModificacion = socioManejadorClient.ModificarEstadoSocio(socioSeleccionado.numeroSocio, "Desactivado");
+                if(resultadoModificacion == 1)
+                {
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoExito, "Socio Desactivado", "El socio ha sido desactivado de manera exitosa");
+                }
+                else
+                {
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Error en la conexión a la base de datos", "Se ha perdido la conexión a la base de datos");
+                }
+            }
+            catch (EndpointNotFoundException endpointNotFoundException)
+            {
+                LoggerManager.Error($"Excepción de EndpointNotFoundException: {endpointNotFoundException.Message}." +
+                                    $"\nTraza: {endpointNotFoundException.StackTrace}.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Punto de conexión fallido", "No se ha podido establecer conexión con el servidor.");
+            }
+            catch (TimeoutException timeoutException)
+            {
+                LoggerManager.Error($"Excepción de TimeoutException: {timeoutException.Message}." +
+                                    $"\nTraza: {timeoutException.StackTrace}.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoInformacion, "Tiempo de espera agotado", "El tiempo de espera ha caducado, inténtelo de nuevo.");
+            }
+            catch (CommunicationException communicationException)
+            {
+                LoggerManager.Error($"Excepción de CommunicationException: {communicationException.Message}." +
+                                    $"\nTraza: {communicationException.StackTrace}.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Comunicacion fallida", "La comunicacion con el servidor se ha perdido, por favor verifique su conexión a internet.");
+            }
+        }
+
+        private bool VerificarSocioConPrestamosPendientes(object sender, SocioDatos socioSeleccionado)
+        {
+            ServidorElSaber.PrestamoManejadorClient prestamoManejadorClient = new ServidorElSaber.PrestamoManejadorClient();
+            bool resultado = false;
+            try
+            {
+                List<PrestamoBinding> prestamosObtenidos = prestamoManejadorClient.RecuperarPrestamosActivosPorNumeroSocio(socioSeleccionado.numeroSocio).ToList();
+                if (prestamosObtenidos.Count==0)
+                {
+                    resultado = true;   
+                }
+                else if (prestamosObtenidos[0].IdPrestamo == -1)
+                {
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Error en la conexión a la base de datos", "Se ha perdido la conexión a la base de datos");
+                }
+                else
+                {
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Socio con préstamos activos", "El socio seleccionado cuenta con préstamos activos, no es posible desactivarlo. ");
+                }
+            }
+            catch (EndpointNotFoundException endpointNotFoundException)
+            {
+                LoggerManager.Error($"Excepción de EndpointNotFoundException: {endpointNotFoundException.Message}." +
+                                    $"\nTraza: {endpointNotFoundException.StackTrace}.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Punto de conexión fallido", "No se ha podido establecer conexión con el servidor.");
+            }
+            catch (TimeoutException timeoutException)
+            {
+                LoggerManager.Error($"Excepción de TimeoutException: {timeoutException.Message}." +
+                                    $"\nTraza: {timeoutException.StackTrace}.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoInformacion, "Tiempo de espera agotado", "El tiempo de espera ha caducado, inténtelo de nuevo.");
+            }
+            catch (CommunicationException communicationException)
+            {
+                LoggerManager.Error($"Excepción de CommunicationException: {communicationException.Message}." +
+                                    $"\nTraza: {communicationException.StackTrace}.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Comunicacion fallida", "La comunicacion con el servidor se ha perdido, por favor verifique su conexión a internet.");
+            }
+            return resultado;
         }
 
         private void CargarSociosEncontrados(List<SocioBinding> socios)

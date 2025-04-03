@@ -41,9 +41,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
 
         private void Regresar_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
-            VentanaBuscarSocio ventanaBuscarSocio = new VentanaBuscarSocio();
-            ventanaBuscarSocio.ShowDialog();
+            this.Close();
         }
     }
 }

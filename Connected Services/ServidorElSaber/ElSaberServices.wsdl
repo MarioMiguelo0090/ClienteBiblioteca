@@ -120,6 +120,30 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IReporteSocioConPrestamosPendientes_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
+          <wsrm:InactivityTimeout Milliseconds="600000" />
+          <wsrm:AcknowledgementInterval Milliseconds="200" />
+        </wsrm:RMAssertion>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IMultaManejador_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
+          <wsrm:InactivityTimeout Milliseconds="600000" />
+          <wsrm:AcknowledgementInterval Milliseconds="200" />
+        </wsrm:RMAssertion>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
       <xs:import namespace="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" />
@@ -151,6 +175,36 @@
         <xs:complexType>
           <xs:sequence>
             <xs:element minOccurs="0" name="VerificarExistenciaDeUsuarioResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DesactivarUsuarioPorIdUsuario">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="idUsuario" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DesactivarUsuarioPorIdUsuarioResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="DesactivarUsuarioPorIdUsuarioResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="EditarInformacionUsuarioPorIdAcceso">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="idAcceso" type="xs:int" />
+            <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="usuario" nillable="true" type="q4:UsuarioBinding" />
+            <xs:element minOccurs="0" name="correo" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="EditarInformacionUsuarioPorIdAccesoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EditarInformacionUsuarioPorIdAccesoResult" type="xs:int" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -252,14 +306,14 @@
       <xs:element name="IniciarSesionResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="IniciarSesionResult" nillable="true" type="q4:AccesoBinding" />
+            <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="IniciarSesionResult" nillable="true" type="q5:AccesoBinding" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
       <xs:element name="RegistrarDireccion">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="direccion" nillable="true" type="q5:DireccionBinding" />
+            <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="direccion" nillable="true" type="q6:DireccionBinding" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -273,7 +327,7 @@
       <xs:element name="RegistrarSocioEnBaseDeDatos">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="socio" nillable="true" type="q6:SocioBinding" />
+            <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="socio" nillable="true" type="q7:SocioBinding" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -308,7 +362,7 @@
       <xs:element name="ConsultarSociosPorNombreResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="ConsultarSociosPorNombreResult" nillable="true" type="q7:ArrayOfSocioBinding" />
+            <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="ConsultarSociosPorNombreResult" nillable="true" type="q8:ArrayOfSocioBinding" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -322,7 +376,7 @@
       <xs:element name="ConsultarSocioPorNumeroDeSocioResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="ConsultarSocioPorNumeroDeSocioResult" nillable="true" type="q8:SocioBinding" />
+            <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="ConsultarSocioPorNumeroDeSocioResult" nillable="true" type="q9:SocioBinding" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -330,7 +384,7 @@
         <xs:complexType>
           <xs:sequence>
             <xs:element minOccurs="0" name="numeroDeSocio" type="xs:int" />
-            <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="socio" nillable="true" type="q9:SocioBinding" />
+            <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="socio" nillable="true" type="q10:SocioBinding" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -359,7 +413,7 @@
       <xs:element name="RegistrarNuevaDevolucion">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="devolucion" nillable="true" type="q10:DevolucionBinding" />
+            <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="devolucion" nillable="true" type="q11:DevolucionBinding" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -399,7 +453,7 @@
       <xs:element name="RegistrarNuevoLibro">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="libro" nillable="true" type="q11:LibroBinding" />
+            <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="libro" nillable="true" type="q12:LibroBinding" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -434,7 +488,7 @@
       <xs:element name="ObtenerLibrosPorTituloResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="ObtenerLibrosPorTituloResult" nillable="true" type="q12:ArrayOfLibroBinding" />
+            <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="ObtenerLibrosPorTituloResult" nillable="true" type="q13:ArrayOfLibroBinding" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -448,7 +502,7 @@
       <xs:element name="ObtenerLibrosPorISBNResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="ObtenerLibrosPorISBNResult" nillable="true" type="q13:ArrayOfLibroBinding" />
+            <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="ObtenerLibrosPorISBNResult" nillable="true" type="q14:ArrayOfLibroBinding" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -462,7 +516,7 @@
       <xs:element name="ObtenerLibrosPorIdAutorResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="ObtenerLibrosPorIdAutorResult" nillable="true" type="q14:ArrayOfLibroBinding" />
+            <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="ObtenerLibrosPorIdAutorResult" nillable="true" type="q15:ArrayOfLibroBinding" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -476,7 +530,7 @@
       <xs:element name="ObtenerLibrosPorIdGeneroResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="ObtenerLibrosPorIdGeneroResult" nillable="true" type="q15:ArrayOfLibroBinding" />
+            <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="ObtenerLibrosPorIdGeneroResult" nillable="true" type="q16:ArrayOfLibroBinding" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -488,7 +542,7 @@
       <xs:element name="ObtenerListaDeGenerosResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="ObtenerListaDeGenerosResult" nillable="true" type="q16:ArrayOfGeneroBinding" />
+            <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="ObtenerListaDeGenerosResult" nillable="true" type="q17:ArrayOfGeneroBinding" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -500,7 +554,7 @@
       <xs:element name="ObtenerListaDeAutoresResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="ObtenerListaDeAutoresResult" nillable="true" type="q17:ArrayOfAutorBinding" />
+            <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="ObtenerListaDeAutoresResult" nillable="true" type="q18:ArrayOfAutorBinding" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -512,7 +566,7 @@
       <xs:element name="ObtenerEditorialesResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="ObtenerEditorialesResult" nillable="true" type="q18:ArrayOfEditorialBinding" />
+            <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="ObtenerEditorialesResult" nillable="true" type="q19:ArrayOfEditorialBinding" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -535,7 +589,7 @@
         <xs:complexType>
           <xs:sequence>
             <xs:element minOccurs="0" name="isbn" nillable="true" type="xs:string" />
-            <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="libro" nillable="true" type="q19:LibroBinding" />
+            <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="libro" nillable="true" type="q20:LibroBinding" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -635,7 +689,7 @@
       <xs:element name="RegistrarNuevoPrestamo">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="prestamo" nillable="true" type="q20:PrestamoBinding" />
+            <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="prestamo" nillable="true" type="q21:PrestamoBinding" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -656,7 +710,7 @@
       <xs:element name="ObtenerPrestamosActivosYVencidosPorNumeroSocioResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="ObtenerPrestamosActivosYVencidosPorNumeroSocioResult" nillable="true" type="q21:ArrayOfPrestamoBinding" />
+            <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="ObtenerPrestamosActivosYVencidosPorNumeroSocioResult" nillable="true" type="q22:ArrayOfPrestamoBinding" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -671,6 +725,78 @@
         <xs:complexType>
           <xs:sequence>
             <xs:element minOccurs="0" name="ValidarPrestamosVencidosPorNumeroSocioResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RecuperarTodosPrestamosPorNumeroSocio">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="numeroSocio" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RecuperarTodosPrestamosPorNumeroSocioResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="RecuperarTodosPrestamosPorNumeroSocioResult" nillable="true" type="q23:ArrayOfPrestamoBinding" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RecuperarPrestamosActivosPorNumeroSocio">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="numeroSocio" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RecuperarPrestamosActivosPorNumeroSocioResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="RecuperarPrestamosActivosPorNumeroSocioResult" nillable="true" type="q24:ArrayOfPrestamoBinding" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ObtenerPrestamosActivosPorISBN">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="isbn" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ObtenerPrestamosActivosPorISBNResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="ObtenerPrestamosActivosPorISBNResult" nillable="true" type="q25:ArrayOfPrestamoBinding" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ObtenerPrestamosActivosPorFechaInicio">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="fechaInicio" type="xs:dateTime" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ObtenerPrestamosActivosPorFechaInicioResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="ObtenerPrestamosActivosPorFechaInicioResult" nillable="true" type="q26:ArrayOfPrestamoBinding" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="EditarPrestamoPorId">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="idPrestamo" type="xs:int" />
+            <xs:element minOccurs="0" name="nota" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="fechaDevolucionEsperada" type="xs:dateTime" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="EditarPrestamoPorIdResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EditarPrestamoPorIdResult" type="xs:int" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -698,6 +824,46 @@
         <xs:complexType>
           <xs:sequence>
             <xs:element minOccurs="0" name="ObtenerReporteLibrosMasPrestadoResult" nillable="true" type="xs:base64Binary" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GenerarReporteSocioConPrestamosPendientes">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GenerarReporteSocioConPrestamosPendientesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GenerarReporteSocioConPrestamosPendientesResult" nillable="true" type="xs:base64Binary" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RegistrarPagoMultaPorIdMulta">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="idMulta" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RegistrarPagoMultaPorIdMultaResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="RegistrarPagoMultaPorIdMultaResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ObtenerMultasPendientesPorNumeroSocio">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="numeroSocio" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ObtenerMultasPendientesPorNumeroSocioResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/ElSaberServices.Contratos" minOccurs="0" name="ObtenerMultasPendientesPorNumeroSocioResult" nillable="true" type="q27:ArrayOfMultaBinding" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -890,6 +1056,21 @@
         </xs:sequence>
       </xs:complexType>
       <xs:element name="ArrayOfPrestamoBinding" nillable="true" type="tns:ArrayOfPrestamoBinding" />
+      <xs:complexType name="ArrayOfMultaBinding">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="MultaBinding" nillable="true" type="tns:MultaBinding" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfMultaBinding" nillable="true" type="tns:ArrayOfMultaBinding" />
+      <xs:complexType name="MultaBinding">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FK_IdPrestamo" type="xs:int" />
+          <xs:element minOccurs="0" name="MontoTotal" type="xs:double" />
+          <xs:element minOccurs="0" name="idMulta" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="MultaBinding" nillable="true" type="tns:MultaBinding" />
     </xs:schema>
   </wsdl:types>
   <wsdl:message name="IUsuarioManejador_RegistrarUsuarioAlaBaseDeDatos_InputMessage">
@@ -903,6 +1084,18 @@
   </wsdl:message>
   <wsdl:message name="IUsuarioManejador_VerificarExistenciaDeUsuario_OutputMessage">
     <wsdl:part name="parameters" element="tns:VerificarExistenciaDeUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsuarioManejador_DesactivarUsuarioPorIdUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:DesactivarUsuarioPorIdUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IUsuarioManejador_DesactivarUsuarioPorIdUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DesactivarUsuarioPorIdUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsuarioManejador_EditarInformacionUsuarioPorIdAcceso_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditarInformacionUsuarioPorIdAcceso" />
+  </wsdl:message>
+  <wsdl:message name="IUsuarioManejador_EditarInformacionUsuarioPorIdAcceso_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditarInformacionUsuarioPorIdAccesoResponse" />
   </wsdl:message>
   <wsdl:message name="IRestablecimientoCuentaManejador_CorreoDeRestablecimientoDeContrasenia_InputMessage">
     <wsdl:part name="parameters" element="tns:CorreoDeRestablecimientoDeContrasenia" />
@@ -1126,6 +1319,36 @@
   <wsdl:message name="IPrestamoManejador_ValidarPrestamosVencidosPorNumeroSocio_OutputMessage">
     <wsdl:part name="parameters" element="tns:ValidarPrestamosVencidosPorNumeroSocioResponse" />
   </wsdl:message>
+  <wsdl:message name="IPrestamoManejador_RecuperarTodosPrestamosPorNumeroSocio_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarTodosPrestamosPorNumeroSocio" />
+  </wsdl:message>
+  <wsdl:message name="IPrestamoManejador_RecuperarTodosPrestamosPorNumeroSocio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarTodosPrestamosPorNumeroSocioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPrestamoManejador_RecuperarPrestamosActivosPorNumeroSocio_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarPrestamosActivosPorNumeroSocio" />
+  </wsdl:message>
+  <wsdl:message name="IPrestamoManejador_RecuperarPrestamosActivosPorNumeroSocio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarPrestamosActivosPorNumeroSocioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPrestamoManejador_ObtenerPrestamosActivosPorISBN_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerPrestamosActivosPorISBN" />
+  </wsdl:message>
+  <wsdl:message name="IPrestamoManejador_ObtenerPrestamosActivosPorISBN_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerPrestamosActivosPorISBNResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPrestamoManejador_ObtenerPrestamosActivosPorFechaInicio_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerPrestamosActivosPorFechaInicio" />
+  </wsdl:message>
+  <wsdl:message name="IPrestamoManejador_ObtenerPrestamosActivosPorFechaInicio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerPrestamosActivosPorFechaInicioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPrestamoManejador_EditarPrestamoPorId_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditarPrestamoPorId" />
+  </wsdl:message>
+  <wsdl:message name="IPrestamoManejador_EditarPrestamoPorId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditarPrestamoPorIdResponse" />
+  </wsdl:message>
   <wsdl:message name="IReporteInventarioLibroManejador_ObtenerReporteInventarioLibros_InputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerReporteInventarioLibros" />
   </wsdl:message>
@@ -1138,6 +1361,24 @@
   <wsdl:message name="IReporteLibroMasPrestadoManejador_ObtenerReporteLibrosMasPrestado_OutputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerReporteLibrosMasPrestadoResponse" />
   </wsdl:message>
+  <wsdl:message name="IReporteSocioConPrestamosPendientes_GenerarReporteSocioConPrestamosPendientes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GenerarReporteSocioConPrestamosPendientes" />
+  </wsdl:message>
+  <wsdl:message name="IReporteSocioConPrestamosPendientes_GenerarReporteSocioConPrestamosPendientes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GenerarReporteSocioConPrestamosPendientesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMultaManejador_RegistrarPagoMultaPorIdMulta_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarPagoMultaPorIdMulta" />
+  </wsdl:message>
+  <wsdl:message name="IMultaManejador_RegistrarPagoMultaPorIdMulta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarPagoMultaPorIdMultaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMultaManejador_ObtenerMultasPendientesPorNumeroSocio_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerMultasPendientesPorNumeroSocio" />
+  </wsdl:message>
+  <wsdl:message name="IMultaManejador_ObtenerMultasPendientesPorNumeroSocio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerMultasPendientesPorNumeroSocioResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUsuarioManejador">
     <wsdl:operation name="RegistrarUsuarioAlaBaseDeDatos">
       <wsdl:input wsaw:Action="http://tempuri.org/IUsuarioManejador/RegistrarUsuarioAlaBaseDeDatos" message="tns:IUsuarioManejador_RegistrarUsuarioAlaBaseDeDatos_InputMessage" />
@@ -1146,6 +1387,14 @@
     <wsdl:operation name="VerificarExistenciaDeUsuario">
       <wsdl:input wsaw:Action="http://tempuri.org/IUsuarioManejador/VerificarExistenciaDeUsuario" message="tns:IUsuarioManejador_VerificarExistenciaDeUsuario_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUsuarioManejador/VerificarExistenciaDeUsuarioResponse" message="tns:IUsuarioManejador_VerificarExistenciaDeUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DesactivarUsuarioPorIdUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsuarioManejador/DesactivarUsuarioPorIdUsuario" message="tns:IUsuarioManejador_DesactivarUsuarioPorIdUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsuarioManejador/DesactivarUsuarioPorIdUsuarioResponse" message="tns:IUsuarioManejador_DesactivarUsuarioPorIdUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditarInformacionUsuarioPorIdAcceso">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsuarioManejador/EditarInformacionUsuarioPorIdAcceso" message="tns:IUsuarioManejador_EditarInformacionUsuarioPorIdAcceso_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsuarioManejador/EditarInformacionUsuarioPorIdAccesoResponse" message="tns:IUsuarioManejador_EditarInformacionUsuarioPorIdAcceso_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IRestablecimientoCuentaManejador">
@@ -1309,6 +1558,26 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IPrestamoManejador/ValidarPrestamosVencidosPorNumeroSocio" message="tns:IPrestamoManejador_ValidarPrestamosVencidosPorNumeroSocio_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPrestamoManejador/ValidarPrestamosVencidosPorNumeroSocioResponse" message="tns:IPrestamoManejador_ValidarPrestamosVencidosPorNumeroSocio_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="RecuperarTodosPrestamosPorNumeroSocio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPrestamoManejador/RecuperarTodosPrestamosPorNumeroSocio" message="tns:IPrestamoManejador_RecuperarTodosPrestamosPorNumeroSocio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPrestamoManejador/RecuperarTodosPrestamosPorNumeroSocioResponse" message="tns:IPrestamoManejador_RecuperarTodosPrestamosPorNumeroSocio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarPrestamosActivosPorNumeroSocio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPrestamoManejador/RecuperarPrestamosActivosPorNumeroSocio" message="tns:IPrestamoManejador_RecuperarPrestamosActivosPorNumeroSocio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPrestamoManejador/RecuperarPrestamosActivosPorNumeroSocioResponse" message="tns:IPrestamoManejador_RecuperarPrestamosActivosPorNumeroSocio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerPrestamosActivosPorISBN">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPrestamoManejador/ObtenerPrestamosActivosPorISBN" message="tns:IPrestamoManejador_ObtenerPrestamosActivosPorISBN_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPrestamoManejador/ObtenerPrestamosActivosPorISBNResponse" message="tns:IPrestamoManejador_ObtenerPrestamosActivosPorISBN_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerPrestamosActivosPorFechaInicio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPrestamoManejador/ObtenerPrestamosActivosPorFechaInicio" message="tns:IPrestamoManejador_ObtenerPrestamosActivosPorFechaInicio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPrestamoManejador/ObtenerPrestamosActivosPorFechaInicioResponse" message="tns:IPrestamoManejador_ObtenerPrestamosActivosPorFechaInicio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditarPrestamoPorId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPrestamoManejador/EditarPrestamoPorId" message="tns:IPrestamoManejador_EditarPrestamoPorId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPrestamoManejador/EditarPrestamoPorIdResponse" message="tns:IPrestamoManejador_EditarPrestamoPorId_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IReporteInventarioLibroManejador">
     <wsdl:operation name="ObtenerReporteInventarioLibros">
@@ -1320,6 +1589,22 @@
     <wsdl:operation name="ObtenerReporteLibrosMasPrestado">
       <wsdl:input wsaw:Action="http://tempuri.org/IReporteLibroMasPrestadoManejador/ObtenerReporteLibrosMasPrestado" message="tns:IReporteLibroMasPrestadoManejador_ObtenerReporteLibrosMasPrestado_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IReporteLibroMasPrestadoManejador/ObtenerReporteLibrosMasPrestadoResponse" message="tns:IReporteLibroMasPrestadoManejador_ObtenerReporteLibrosMasPrestado_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IReporteSocioConPrestamosPendientes">
+    <wsdl:operation name="GenerarReporteSocioConPrestamosPendientes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReporteSocioConPrestamosPendientes/GenerarReporteSocioConPrestamosPendientes" message="tns:IReporteSocioConPrestamosPendientes_GenerarReporteSocioConPrestamosPendientes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReporteSocioConPrestamosPendientes/GenerarReporteSocioConPrestamosPendientesResponse" message="tns:IReporteSocioConPrestamosPendientes_GenerarReporteSocioConPrestamosPendientes_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IMultaManejador">
+    <wsdl:operation name="RegistrarPagoMultaPorIdMulta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMultaManejador/RegistrarPagoMultaPorIdMulta" message="tns:IMultaManejador_RegistrarPagoMultaPorIdMulta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMultaManejador/RegistrarPagoMultaPorIdMultaResponse" message="tns:IMultaManejador_RegistrarPagoMultaPorIdMulta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerMultasPendientesPorNumeroSocio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMultaManejador/ObtenerMultasPendientesPorNumeroSocio" message="tns:IMultaManejador_ObtenerMultasPendientesPorNumeroSocio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMultaManejador/ObtenerMultasPendientesPorNumeroSocioResponse" message="tns:IMultaManejador_ObtenerMultasPendientesPorNumeroSocio_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUsuarioManejador" type="tns:IUsuarioManejador">
@@ -1336,6 +1621,24 @@
     </wsdl:operation>
     <wsdl:operation name="VerificarExistenciaDeUsuario">
       <soap12:operation soapAction="http://tempuri.org/IUsuarioManejador/VerificarExistenciaDeUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DesactivarUsuarioPorIdUsuario">
+      <soap12:operation soapAction="http://tempuri.org/IUsuarioManejador/DesactivarUsuarioPorIdUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditarInformacionUsuarioPorIdAcceso">
+      <soap12:operation soapAction="http://tempuri.org/IUsuarioManejador/EditarInformacionUsuarioPorIdAcceso" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1704,6 +2007,51 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="RecuperarTodosPrestamosPorNumeroSocio">
+      <soap12:operation soapAction="http://tempuri.org/IPrestamoManejador/RecuperarTodosPrestamosPorNumeroSocio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarPrestamosActivosPorNumeroSocio">
+      <soap12:operation soapAction="http://tempuri.org/IPrestamoManejador/RecuperarPrestamosActivosPorNumeroSocio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerPrestamosActivosPorISBN">
+      <soap12:operation soapAction="http://tempuri.org/IPrestamoManejador/ObtenerPrestamosActivosPorISBN" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerPrestamosActivosPorFechaInicio">
+      <soap12:operation soapAction="http://tempuri.org/IPrestamoManejador/ObtenerPrestamosActivosPorFechaInicio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditarPrestamoPorId">
+      <soap12:operation soapAction="http://tempuri.org/IPrestamoManejador/EditarPrestamoPorId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="NetTcpBinding_IReporteInventarioLibroManejador" type="tns:IReporteInventarioLibroManejador">
     <wsp:PolicyReference URI="#NetTcpBinding_IReporteInventarioLibroManejador_policy" />
@@ -1723,6 +2071,41 @@
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="ObtenerReporteLibrosMasPrestado">
       <soap12:operation soapAction="http://tempuri.org/IReporteLibroMasPrestadoManejador/ObtenerReporteLibrosMasPrestado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IReporteSocioConPrestamosPendientes" type="tns:IReporteSocioConPrestamosPendientes">
+    <wsp:PolicyReference URI="#NetTcpBinding_IReporteSocioConPrestamosPendientes_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="GenerarReporteSocioConPrestamosPendientes">
+      <soap12:operation soapAction="http://tempuri.org/IReporteSocioConPrestamosPendientes/GenerarReporteSocioConPrestamosPendientes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IMultaManejador" type="tns:IMultaManejador">
+    <wsp:PolicyReference URI="#NetTcpBinding_IMultaManejador_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="RegistrarPagoMultaPorIdMulta">
+      <soap12:operation soapAction="http://tempuri.org/IMultaManejador/RegistrarPagoMultaPorIdMulta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerMultasPendientesPorNumeroSocio">
+      <soap12:operation soapAction="http://tempuri.org/IMultaManejador/ObtenerMultasPendientesPorNumeroSocio" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1790,6 +2173,18 @@
       <soap12:address location="net.tcp://localhost:1441/ServicioReporteInventarioLibro" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:1441/ServicioReporteInventarioLibro</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IReporteSocioConPrestamosPendientes" binding="tns:NetTcpBinding_IReporteSocioConPrestamosPendientes">
+      <soap12:address location="net.tcp://localhost:1441/ServicioReporteInventarioLibro" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:1441/ServicioReporteInventarioLibro</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IMultaManejador" binding="tns:NetTcpBinding_IMultaManejador">
+      <soap12:address location="net.tcp://localhost:1441/ServicioMulta" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:1441/ServicioMulta</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
   </wsdl:service>
