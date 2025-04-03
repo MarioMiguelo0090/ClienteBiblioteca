@@ -238,7 +238,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
             bool validarNoEjemplares = Validador.ValidarSoloNumeros(txb_noEjemplares.Text);
             bool validarIsbn = Validador.ValidarISBN(txb_isbn.Text);
             bool validarFechaDePublicacion = Validador.ValidarFechas(fechaDePublicacion);
-            bool validarAutor = Validador.ValidarNombre(autor.Autor);
+            bool validarAutor = Validador.ValidarNombreAutor(autor.Autor);
             bool validarEditorial = Validador.ValidarNombre(editorialBinding.Editorial);
 
             if (!validarAutor)

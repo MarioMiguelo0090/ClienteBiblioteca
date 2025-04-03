@@ -1,4 +1,5 @@
 ﻿using ClienteBibliotecaElSaber.ServidorElSaber;
+using ClienteBibliotecaElSaber.Singleton;
 using ClienteBibliotecaElSaber.Utilidades;
 using System;
 using System.Collections.Generic;
@@ -17,11 +18,26 @@ namespace ClienteBibliotecaElSaber.Ventanas
         private List<GeneroBinding> _generos;
         private List<AutorBinding> _autores;
         private string _criterioDeBusqueda;
+        private bool _tienePermisos;
 
         public VentanaBuscarLibro()
         {
             InitializeComponent();
             CargarDatos();
+            VerificarPermisos();
+        }
+
+        
+        public void VerificarPermisos()
+        {
+            if(SingletonBibliotecario.Instancia.IdAcceso != 0)
+            {
+                _tienePermisos = false;
+            }
+            else
+            {
+                _tienePermisos = true;
+            }
         }
 
         public void SeleccionarCriterioBusqueda(object sender, EventArgs e)
@@ -362,13 +378,13 @@ namespace ClienteBibliotecaElSaber.Ventanas
             {
                 LibroManejadorClient libroManejadorClient = new LibroManejadorClient();
                 byte[] imagenLibro = libroManejadorClient.ObtenerImagenLibro(libroSeleccionado.titulo);
-                if(imagenLibro.Length > 0)
+                if(imagenLibro == null)
                 {
-                    VerDetallesDeLibro(libroSeleccionado, imagenLibro);
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Error al obtener imagen de libro", "No se ha podido recuperar la imagen del libro.");
                 }
                 else
                 {
-                    VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Error al obtener imagen de libro", "No se ha podido recuperar la imagen del libro.");
+                    VerDetallesDeLibro(libroSeleccionado, imagenLibro);
                 }
                 
             }
@@ -405,9 +421,145 @@ namespace ClienteBibliotecaElSaber.Ventanas
             this.Close();
         }
 
-        public void Eliminar_Click(object sender, EventArgs e)
+        public void Desactivar_Click(object sender, EventArgs e)
         {
+            Button botonPresionado = sender as Button;
+            LibroDatos libroSeleccionado = botonPresionado.DataContext as LibroDatos;
+            if(libroSeleccionado != null)
+            {
+                if (VerificarLibroSinPrestamosActivos(libroSeleccionado))
+                {
+                    RealizarDesactivacionLibro(libroSeleccionado);
+                }
+                else
+                {
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Libro en prestamo", "No es posible desactivar el libro, ya que cuenta con ejemplares en préstamo");
+                }
+            }
+        }
 
+        private void RealizarDesactivacionLibro(LibroDatos libroDatos)
+        {
+            try
+            {
+                ServidorElSaber.LibroManejadorClient libroManejadorClient = new ServidorElSaber.LibroManejadorClient();
+                int resultadoModificacion = libroManejadorClient.CambiarEstadoDeLibro(libroDatos.isbn, "Desactivado");
+                if(resultadoModificacion == 1)
+                {
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoExito, "Libro desactivado", "El libro seleccionado se ha desactivado con éxito");
+                    lw_libros.Items.Clear();
+                }
+                else if(resultadoModificacion == -1)
+                {
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Error en la conexión a la base de datos", "Se ha perdido la conexión a la base de datos");
+                }
+            }
+            catch (EndpointNotFoundException endpointNotFoundException)
+            {
+                LoggerManager.Error($"Excepción de EndpointNotFoundException: {endpointNotFoundException.Message}." +
+                                    $"\nTraza: {endpointNotFoundException.StackTrace}.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Punto de conexión fallido", "No se ha podido establecer conexión con el servidor.");
+
+            }
+            catch (TimeoutException timeoutException)
+            {
+                LoggerManager.Error($"Excepción de TimeoutException: {timeoutException.Message}." +
+                                    $"\nTraza: {timeoutException.StackTrace}.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoInformacion, "Tiempo de espera agotado", "El tiempo de espera ha caducado, inténtelo de nuevo.");
+
+            }
+            catch (CommunicationException communicationException)
+            {
+                LoggerManager.Error($"Excepción de CommunicationException: {communicationException.Message}." +
+                                    $"\nTraza: {communicationException.StackTrace}.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Comunicacion fallida", "La comunicacion con el servidor se ha perdido, por favor verifique su conexión a internet.");
+
+            }
+        }
+
+        private bool VerificarLibroSinPrestamosActivos(LibroDatos libroSeleccionado)
+        {
+            bool validacion = false;
+            ServidorElSaber.PrestamoManejadorClient prestamoManejadorClient = new ServidorElSaber.PrestamoManejadorClient();
+            try
+            {
+                List<PrestamoBinding> prestamosActivos = prestamoManejadorClient.ObtenerPrestamosActivosPorISBN(libroSeleccionado.isbn).ToList();
+                if(prestamosActivos.Count == 0)
+                {
+                    validacion = true;
+                }
+                else if (prestamosActivos[0].IdPrestamo == -1)
+                {
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Error en la conexión a la base de datos", "Se ha perdido la conexión a la base de datos");
+
+                }
+            }
+            catch (EndpointNotFoundException endpointNotFoundException)
+            {
+                LoggerManager.Error($"Excepción de EndpointNotFoundException: {endpointNotFoundException.Message}." +
+                                    $"\nTraza: {endpointNotFoundException.StackTrace}.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Punto de conexión fallido", "No se ha podido establecer conexión con el servidor.");
+
+            }
+            catch (TimeoutException timeoutException)
+            {
+                LoggerManager.Error($"Excepción de TimeoutException: {timeoutException.Message}." +
+                                    $"\nTraza: {timeoutException.StackTrace}.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoInformacion, "Tiempo de espera agotado", "El tiempo de espera ha caducado, inténtelo de nuevo.");
+
+            }
+            catch (CommunicationException communicationException)
+            {
+                LoggerManager.Error($"Excepción de CommunicationException: {communicationException.Message}." +
+                                    $"\nTraza: {communicationException.StackTrace}.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Comunicacion fallida", "La comunicacion con el servidor se ha perdido, por favor verifique su conexión a internet.");
+
+            }
+            return validacion;
+        }
+
+        public void Activar_Click(object sender, EventArgs e)
+        {
+            Button botonPresionado = sender as Button;
+            LibroDatos libroSeleccionado = botonPresionado.DataContext as LibroDatos;
+            if (libroSeleccionado != null)
+            {
+                try
+                {
+                    ServidorElSaber.LibroManejadorClient libroManejadorClient = new ServidorElSaber.LibroManejadorClient();
+                    int resultadoModificacion = libroManejadorClient.CambiarEstadoDeLibro(libroSeleccionado.isbn, "Disponible");
+                    if (resultadoModificacion == 1)
+                    {
+                        VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoExito, "Libro Activado", "El libro ha sido activado de manera éxitosa");
+                        lw_libros.Items.Clear();
+                    }
+                    else if (resultadoModificacion == -1)
+                    {
+                        VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Error en la conexión a la base de datos", "Se ha perdido la conexión a la base de datos");
+                    }
+                }
+                catch (EndpointNotFoundException endpointNotFoundException)
+                {
+                    LoggerManager.Error($"Excepción de EndpointNotFoundException: {endpointNotFoundException.Message}." +
+                                        $"\nTraza: {endpointNotFoundException.StackTrace}.");
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Punto de conexión fallido", "No se ha podido establecer conexión con el servidor.");
+
+                }
+                catch (TimeoutException timeoutException)
+                {
+                    LoggerManager.Error($"Excepción de TimeoutException: {timeoutException.Message}." +
+                                        $"\nTraza: {timeoutException.StackTrace}.");
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoInformacion, "Tiempo de espera agotado", "El tiempo de espera ha caducado, inténtelo de nuevo.");
+
+                }
+                catch (CommunicationException communicationException)
+                {
+                    LoggerManager.Error($"Excepción de CommunicationException: {communicationException.Message}." +
+                                        $"\nTraza: {communicationException.StackTrace}.");
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Comunicacion fallida", "La comunicacion con el servidor se ha perdido, por favor verifique su conexión a internet.");
+
+                }
+            }
         }
 
         public void Regresar_Click(object sender, EventArgs e)
@@ -429,21 +581,33 @@ namespace ClienteBibliotecaElSaber.Ventanas
                     }
                     LibroManejadorClient libroManejadorClient = new LibroManejadorClient();
                     byte[] imagenLibro = libroManejadorClient.ObtenerImagenLibro(libroObtenido.Titulo);
-                    var libro = new LibroDatos()
+                    bool botonActivar = false;
+                    bool botonDesactivar = false;
+                    if(libroObtenido.Estado.Equals("Disponible") && _tienePermisos)
                     {
-                        idLibro = libroObtenido.idLibro,
-                        titulo = libroObtenido.Titulo,
-                        isbn = libroObtenido.Isbn,
-                        autor = libroObtenido.autor,
-                        editorial = libroObtenido.editorial,
-                        genero = libroObtenido.genero,
-                        fechaPublicacion = fechaPublicacion,
-                        estado = libroObtenido.Estado,
-                        Imagen = imagenLibro,
-                        cantidadEjemplares = libroObtenido.CantidadEjemplares,
-                        cantidadEjemplaresPrestados = libroObtenido.CantidadEjemplaresPrestados,
-                        numeroDePaginas = libroObtenido.NumeroDePaginas,
-                    };
+                        botonDesactivar = true;
+                    }
+                    else if (libroObtenido.Estado.Equals("Desactivado") && _tienePermisos)
+                    {
+                        botonActivar = true;
+                    }
+                    var libro = new LibroDatos()
+                        {
+                            idLibro = libroObtenido.idLibro,
+                            titulo = libroObtenido.Titulo,
+                            isbn = libroObtenido.Isbn,
+                            autor = libroObtenido.autor,
+                            editorial = libroObtenido.editorial,
+                            genero = libroObtenido.genero,
+                            fechaPublicacion = fechaPublicacion,
+                            estado = libroObtenido.Estado,
+                            Imagen = imagenLibro,
+                            cantidadEjemplares = libroObtenido.CantidadEjemplares,
+                            cantidadEjemplaresPrestados = libroObtenido.CantidadEjemplaresPrestados,
+                            numeroDePaginas = libroObtenido.NumeroDePaginas,
+                            MostrarBotonActivar = botonActivar,
+                            MostrarBotonDesactivar = botonDesactivar
+                        };
 
                     lw_libros.Items.Add(libro);
                 }
@@ -523,6 +687,8 @@ namespace ClienteBibliotecaElSaber.Ventanas
             public string numeroDePaginas {  get; set; }
             public int cantidadEjemplares { get; set; }
             public int cantidadEjemplaresPrestados { get; set; }
+            public bool MostrarBotonDesactivar { get; set; }
+            public bool MostrarBotonActivar { get; set; }
         }
 
     }

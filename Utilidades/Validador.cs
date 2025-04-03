@@ -11,6 +11,7 @@ namespace ClienteBibliotecaElSaber.Utilidades
     public static class Validador
     {
         private static Regex _nombreRegex = new Regex(@"^[a-zA-ZñÑáéíóúÁÉÍÓÚ'’-]+(?:\s[a-zA-ZñÑáéíóúÁÉÍÓÚ'’-]+)*$", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
+        private static Regex _nombreAutorRegex = new Regex(@"^[a-zA-ZñÑáéíóúÁÉÍÓÚ.'’-]+(?:\s[a-zA-ZñÑáéíóúÁÉÍÓÚ.'’-]+)*$",RegexOptions.None,TimeSpan.FromMilliseconds(1000));
         private static Regex _primerApellidoRegex = new Regex(@"^[a-zA-ZñÑáéíóúÁÉÍÓÚ'’-]+(?:\s[a-zA-ZñÑáéíóúÁÉÍÓÚ'’-]+)*$", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
         private static Regex _segundoApellidoRegex = new Regex(@"^[a-zA-ZñÑáéíóúÁÉÍÓÚ'’-]+(?:\s[a-zA-ZñÑáéíóúÁÉÍÓÚ'’-]+)*$", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
         private static Regex _numeroTelefonicoRegex = new Regex(@"^[0-9]{10}$", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
@@ -44,6 +45,17 @@ namespace ClienteBibliotecaElSaber.Utilidades
             bool esValido = false;
             string nombreLimpio = Regex.Replace(nombre.Trim(),@"\s+"," ",RegexOptions.None,TimeSpan.FromMilliseconds(1000));
             if (!string.IsNullOrWhiteSpace(nombreLimpio) && ValidarPatronRegex(nombreLimpio,_nombreRegex))
+            {
+                esValido = true;
+            }
+            return esValido;
+        }
+
+        public static bool ValidarNombreAutor(string nombre)
+        {
+            bool esValido = false;
+            string nombreLimpio = Regex.Replace(nombre.Trim(), @"\s+", " ", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
+            if (!string.IsNullOrWhiteSpace(nombreLimpio) && ValidarPatronRegex(nombreLimpio, _nombreAutorRegex))
             {
                 esValido = true;
             }
