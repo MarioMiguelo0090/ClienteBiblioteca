@@ -47,7 +47,7 @@
         <TextBox x:Name="txb_isbn" Width="Auto" Height="Auto" Margin="128,360,514,195" MaxLength="13"/>
 
         <Label Content="Editorial:" FontWeight="Bold" FontSize="20" Margin="477,245,337,305"/>
-        <ComboBox x:Name="cbEditorial" IsEditable="False" Margin="593,244,39,314" SelectionChanged="cbEditorial_SelectionChanged"/>
+        <ComboBox x:Name="cbEditorial" IsEditable="False" Margin="593,244,39,314"/>
 
         <Label Content="Fecha de &#xD;&#xA;publicación:" FontWeight="Bold" FontSize="20" Margin="553,291,237,230"/>
         <Grid Margin="644,299,18,251">

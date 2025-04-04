@@ -6,11 +6,11 @@
       xmlns:local="clr-namespace:ClienteBibliotecaElSaber.Ventanas"
       mc:Ignorable="d" 
       Title="VentanaRegistroDeUsuario" Height="600" Width="920"
-        WindowStyle="None"
-        ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen"
-        Background="Transparent"
-        AllowsTransparency="True">
+      WindowStyle="None"
+      ResizeMode="NoResize"
+      WindowStartupLocation="CenterScreen"
+      Background="Transparent"
+      AllowsTransparency="True">
 
     <Grid Background="#F5F5DC">
         <StackPanel Margin="20,30">

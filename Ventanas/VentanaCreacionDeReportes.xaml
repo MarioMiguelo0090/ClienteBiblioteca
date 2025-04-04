@@ -153,6 +153,14 @@
                 <Label FontSize="16" FontFamily="Times New Roman" Content="Tipo de reporte:" Margin="171,88,171,248"/>
             </Grid>
         </Border>
+        <Border x:Name="brd_PrestamosPendientes" BorderBrush="Black" BorderThickness="2" Visibility="Collapsed" Margin="460,204,10,29">
+            <Grid>
+                <Image x:Name="img_buho" Source="/Imagenes/BuhoSofia.png" Margin="168,10,168,223" Visibility="Visible"/>
+                <Label FontSize="20" FontFamily="Times New Roman" Content="Reporte préstamos pendientes" Margin="95,150,95,171"></Label>
+                <Button x:Name="btn_GenerarReportePrestamosPendientes" Click="btn_GenerarReportePrestamosPendientes_Click" Background="Blue" Content="Generar" Margin="69,217,227,99"></Button>
+                <Button x:Name="btn_CancelarReportePrestamosPendientes" Background="Red" Content="Cancelar" Margin="232,217,64,99" Click="btn_CancelarReportePrestamosPendientes_Click"></Button>
+            </Grid>
+        </Border>
         <Border Background="#BFA640" BorderThickness="2" BorderBrush="Black" CornerRadius="15"
             Margin="6,204,483,29" Padding="20">
             <StackPanel HorizontalAlignment="Center">
@@ -174,7 +182,7 @@
                         <TextBlock Text="Multas pagadas" Foreground="White" FontSize="18" FontWeight="Bold" VerticalAlignment="Center"/>
                     </StackPanel>
                 </Button>
-                <Button FontSize="20" Style="{StaticResource BotonActivo}">
+                <Button FontSize="20" Style="{StaticResource BotonActivo}" Click="btn_PrestamosPendientes_Click">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <Image Source="/Imagenes/ReportePrestamoPendiente.png" Width="55" Height="40" Margin="5"/>
                         <TextBlock Text="Préstamos pendientes" Foreground="White" FontSize="18" FontWeight="Bold" VerticalAlignment="Center"/>

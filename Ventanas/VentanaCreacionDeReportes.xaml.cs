@@ -66,6 +66,49 @@ namespace ClienteBibliotecaElSaber.Ventanas
             btn_crearReporteLibrosMasPrestados.Visibility = Visibility.Visible;
         }
 
+        private void btn_GenerarReportePrestamosPendientes_Click(object sender, RoutedEventArgs e)
+        {
+            ServidorElSaber.ReporteSocioConPrestamosPendientesClient socioConPrestamosPendientesClient = new ServidorElSaber.ReporteSocioConPrestamosPendientesClient();
+            try
+            {
+                byte[] reportePrestamosPendientes = socioConPrestamosPendientesClient.GenerarReporteSocioConPrestamosPendientes();
+                if (reportePrestamosPendientes.Length == 255)
+                {
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Error en la conexión a la base de datos", "No se ha podido establecer conexión con la base de datos.");
+                }
+                else if (reportePrestamosPendientes.Length > 0)
+                {
+                    string rutaDescargas = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
+                    string rutaArchivo = System.IO.Path.Combine(rutaDescargas, "ReportePrestamosPendientes.pdf");
+                    System.IO.File.WriteAllBytes(rutaArchivo, reportePrestamosPendientes);
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoExito, "Informe generado", "Se ha generado el reporte de préstamos pendientes se ha generado de manera exitosa, podrá encontrarlo disponible en la carpeta de descargas de este dispositivo.");
+                }
+                else
+                {
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Sin prestamos pendientes", "No se encuentra ningún prestamo pendiente.");
+                }
+            }
+            catch (EndpointNotFoundException endpointNotFoundException)
+            {
+                LoggerManager.Error($"Excepción de EndpointNotFoundException: {endpointNotFoundException.Message}." +
+                                    $"\nTraza: {endpointNotFoundException.StackTrace}.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Punto de conexión fallido", "No se ha podido establecer conexión con el servidor.");
+            }
+            catch (TimeoutException timeoutException)
+            {
+                LoggerManager.Error($"Excepción de TimeoutException: {timeoutException.Message}." +
+                                    $"\nTraza: {timeoutException.StackTrace}.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoInformacion, "Tiempo de espera agotado", "El tiempo de espera ha caducado, inténtelo de nuevo.");
+            }
+            catch (CommunicationException communicationException)
+            {
+                LoggerManager.Error($"Excepción de CommunicationException: {communicationException.Message}." +
+                                    $"\nTraza: {communicationException.StackTrace}.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Comunicacion fallida", "La comunicacion con el servidor se ha perdido, por favor verifique su conexión a internet.");
+            }
+        }
+
+
         private void btn_crearReporteInventarioLibros_Click(object sender, RoutedEventArgs e)
         {
             ServidorElSaber.ReporteInventarioLibroManejadorClient reporteInventarioLibroManejadorClient = new ServidorElSaber.ReporteInventarioLibroManejadorClient();
@@ -207,11 +250,18 @@ namespace ClienteBibliotecaElSaber.Ventanas
             brd_LibrosMasPrestados.Visibility = Visibility.Visible;
         }
 
+        private void btn_CancelarReportePrestamosPendientes_Click(object sender, RoutedEventArgs e)
+        {
+            OcultarBordes();
+            img_logo.Visibility = Visibility.Visible;
+        }
+
         private void OcultarBordes()
         {
             img_logo.Visibility = Visibility.Collapsed;
             brd_InventarioLibros.Visibility = Visibility.Collapsed;
             brd_LibrosMasPrestados.Visibility = Visibility.Collapsed;
+            brd_PrestamosPendientes.Visibility = Visibility.Collapsed;
         }
 
         private void btn_cancelarReporteLibrosMasPrestados_Click(object sender, RoutedEventArgs e)
@@ -233,6 +283,12 @@ namespace ClienteBibliotecaElSaber.Ventanas
         private void BotonRegresar_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void btn_PrestamosPendientes_Click(object sender, RoutedEventArgs e)
+        {
+            OcultarBordes();
+            brd_PrestamosPendientes.Visibility = Visibility.Visible;
         }
     }
 }
