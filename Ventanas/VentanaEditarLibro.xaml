@@ -29,40 +29,35 @@
         <Label Content="Para registrar un libro por favor edite los campos que requiera." FontWeight="Bold" FontSize="18" Margin="182,137,186,410"/>
 
         <Label Content="Título:" FontWeight="Bold" FontSize="20" Margin="40,210,760,358"/>
-        <TextBox x:Name="txb_Titulo" FontSize="18" Margin="118,210,524,354" BorderThickness="1" TextChanged="txb_Titulo_TextChanged"/>
+        <TextBox x:Name="txb_Titulo" FontSize="18" Margin="113,210,524,353" BorderThickness="1" MaxLength="50"/>
 
         <Label Content="Autor(es):" FontWeight="Bold" FontSize="20" Margin="460,211,352,354"/>
-        <TextBox x:Name="txb_Autor" FontSize="18" BorderThickness="1" Margin="590,211,42,353" TextChanged="txb_Autor_TextChanged"/>
 
-        <Label Content="Género:" FontWeight="Bold" FontSize="20" Margin="40,258,793,308"/>
-        <TextBox x:Name="txb_Genero" FontSize="18" BorderThickness="1" Margin="118,260,524,303" TextChanged="txb_Genero_TextChanged"/>
+        <Label Content="Género:" FontWeight="Bold" FontSize="20" Margin="30,258,803,308"/>
 
         <Label Content="Estado:" FontWeight="Bold" FontSize="20" Margin="458,260,378,305"/>
-        <TextBox x:Name="txb_Estado" FontSize="18" BorderThickness="1" Margin="590,260,42,303" TextChanged="txb_Estado_TextChanged"/>
+        <TextBox x:Name="txb_Estado" FontSize="18" BorderThickness="1" Margin="590,260,42,303" IsEnabled="False" BorderBrush="Gray" Background="Gray"/>
 
         <Label Content="Cantidad&#xD;&#xA;Ejemplares:" FontWeight="Bold" FontSize="20" Margin="3,300,741,230"/>
-        <TextBox x:Name="txb_CantidadEjemplares" FontSize="18" BorderThickness="1" Margin="118,316,524,245" TextChanged="txb_CantidadEjemplares_TextChanged"/>
+        <TextBox x:Name="txb_CantidadEjemplares" FontSize="18" BorderThickness="1" Margin="122,316,524,245" MaxLength="3"/>
 
         <Label Content="ISBN:" FontWeight="Bold" FontSize="20" Margin="458,316,360,250"/>
-        <Border BorderBrush="Black" BorderThickness="1" Margin="594,319,48,247">
-            <TextBlock x:Name="txb_ISBN" FontSize="18"/>
-        </Border>
+        <TextBox x:Name="txb_ISBN" FontSize="18" Margin="592,314,44,248" IsEnabled="False" Background="Gray" BorderBrush="Gray"/>
 
         <Label Content="Editorial:" FontWeight="Bold" FontSize="20" Margin="460,371,353,179"/>
-        <TextBox x:Name="txb_Editorial" FontSize="18" BorderThickness="1" Margin="590,369,42,181" TextChanged="txb_Editorial_TextChanged"/>
+        <ComboBox x:Name="cmb_Autor" Margin="594,214,44,354" IsEditable="False"></ComboBox>
 
-        <Label Content="Fecha de &#xD;&#xA;Publicación:" FontWeight="Bold" FontSize="20" Margin="19,375,772,155"/>
-        <TextBox x:Name="txb_FechaPublicacion" FontSize="18" BorderThickness="1" Margin="148,385,550,165" TextChanged="txb_FechaPublicacion_TextChanged"/>
+        <Label Content="Fecha de &#xD;&#xA;Publicación:" FontWeight="Bold" FontSize="20" Margin="3,369,788,161"/>
 
         <Label Content="Número de &#xD;&#xA;Páginas:" FontWeight="Bold" FontSize="20" Margin="460,430,331,100"/>
-        <TextBox x:Name="txb_NumeroDePaginas" FontSize="18" BorderThickness="1" Margin="589,438,109,112" TextChanged="txb_NumeroDePaginas_TextChanged"/>
+        <TextBox x:Name="txb_NumeroDePaginas" FontSize="18" BorderThickness="1" Margin="589,438,109,112" MaxLength="4"/>
 
         <Button Content="Subir imagen"
             Background="Blue"
             Foreground="White"
             FontWeight="Bold"
             Margin="17,450,753,105" Click="SubirImagen_Click"/>
-        <TextBox x:Name="txb_imagen" Width="Auto" Height="Auto" Margin="172,450,460,108" RenderTransformOrigin="0.487,0.168" IsEnabled="False" Background="Gray" Text=" " TextChanged="txb_imagen_TextChanged"/>
+        <TextBox x:Name="txb_imagen" Width="Auto" Height="Auto" Margin="172,450,460,108" RenderTransformOrigin="0.487,0.168" IsEnabled="False" Background="Gray" Text=" "/>
 
         <Button Content="Cancelar"
             Background="Red"
@@ -76,5 +71,8 @@
                 Foreground="White"
                 Margin="298,525,470,29"
                 Click="Aceptar_Click"/>
+        <ComboBox x:Name="cmb_Editorial" Margin="596,375,42,193" IsEditable="False"/>
+        <ComboBox x:Name="cmb_Genero" Margin="122,261,524,307" IsEditable="False"/>
+        <DatePicker x:Name="dtp_fechaAñoCreacionLibro" Margin="136,387,524,193"></DatePicker>
     </Grid>
 </Window>
