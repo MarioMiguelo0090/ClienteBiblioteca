@@ -91,6 +91,9 @@
     <Compile Include="Ventanas\VentanaCreacionDeReportes.xaml.cs">
       <DependentUpon>VentanaCreacionDeReportes.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas\VentanaEditarLibro.xaml.cs">
+      <DependentUpon>VentanaEditarLibro.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas\VentanaRegistrarEditorial.xaml.cs">
       <DependentUpon>VentanaRegistrarEditorial.xaml</DependentUpon>
     </Compile>
@@ -160,6 +163,10 @@
     <Page Include="Ventanas\VentanaCreacionDeReportes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\VentanaEditarLibro.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Ventanas\VentanaRegistrarEditorial.xaml">
       <SubType>Designer</SubType>

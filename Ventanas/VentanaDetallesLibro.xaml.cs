@@ -65,7 +65,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
 
         private void Regresar_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
+            this.Close();
             VentanaBuscarLibro ventanaBuscarLibro = new VentanaBuscarLibro();
             ventanaBuscarLibro.ShowDialog();
         }

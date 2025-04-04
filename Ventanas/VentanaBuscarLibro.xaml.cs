@@ -26,7 +26,6 @@ namespace ClienteBibliotecaElSaber.Ventanas
             CargarDatos();
             VerificarPermisos();
         }
-
         
         public void VerificarPermisos()
         {
@@ -145,8 +144,6 @@ namespace ClienteBibliotecaElSaber.Ventanas
                     VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoInformacion, "Selección de búsqueda vacía", "Por favor seleccione un tipo de busqueda antes de empezar");
                     break;
             }
-            
-           
         }
 
         private void BuscarLibrosMedianteGenero()
@@ -396,8 +393,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
 
         private void VerDetallesDeLibro(LibroDatos libro, byte[] imagen)
         {
-            this.Hide();
-
+            this.Close();
             LibroBinding libroBinding = new LibroBinding();
             libroBinding.idLibro = libro.idLibro;
             libroBinding.Titulo = libro.titulo;
@@ -413,12 +409,51 @@ namespace ClienteBibliotecaElSaber.Ventanas
             libroBinding.Isbn = libro.isbn;
             VentanaDetallesLibro ventanaDetallesLibro = new VentanaDetallesLibro(libroBinding);
             ventanaDetallesLibro.ShowDialog();
-            this.Show();
+        }
+
+        private void EditarLibro(LibroDatos libro, byte[] imagen)
+        {
+            this.Close();
+            LibroBinding libroBinding = new LibroBinding();
+            libroBinding.idLibro = libro.idLibro;
+            libroBinding.Titulo = libro.titulo;
+            libroBinding.autor = libro.autor;
+            libroBinding.editorial = libro.editorial;
+            libroBinding.genero = libro.genero;
+            libroBinding.AnioDePublicacion = libro.fechaPublicacion.ToString("yyyy");
+            libroBinding.Estado = libro.estado;
+            libroBinding.imagenLibro = libro.Imagen;
+            libroBinding.NumeroDePaginas = libro.numeroDePaginas;
+            libroBinding.CantidadEjemplares = libro.cantidadEjemplares;
+            libroBinding.CantidadEjemplaresPrestados = libro.cantidadEjemplaresPrestados;
+            libroBinding.Isbn = libro.isbn;
+            libroBinding.RutaPortada = libro.rutaImagen;
+            VentanaEditarLibro ventanaEditarLibro = new VentanaEditarLibro(libroBinding);
+            ventanaEditarLibro.ShowDialog();
         }
 
         public void Editar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Button botonPresionado = sender as Button;
+            LibroDatos libroSeleccionado = botonPresionado.DataContext as LibroDatos;
+            if (libroSeleccionado != null)
+            {
+                LibroManejadorClient libroManejadorClient = new LibroManejadorClient();
+                byte[] imagenLibro = libroManejadorClient.ObtenerImagenLibro(libroSeleccionado.titulo);
+                if (imagenLibro == null)
+                {
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Error al obtener imagen de libro", "No se ha podido recuperar la imagen del libro.");
+                }
+                else
+                {
+                    EditarLibro(libroSeleccionado, imagenLibro);
+                }
+
+            }
+            else
+            {
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Error al obtener", "No se han podido obtener datos del libro seleccionado.");
+            }
         }
 
         public void Desactivar_Click(object sender, EventArgs e)
@@ -580,7 +615,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
                         fechaPublicacion = DateTime.Now;
                     }
                     LibroManejadorClient libroManejadorClient = new LibroManejadorClient();
-                    byte[] imagenLibro = libroManejadorClient.ObtenerImagenLibro(libroObtenido.Titulo);
+                    byte[] imagenLibro = libroManejadorClient.ObtenerImagenLibro(libroObtenido.RutaPortada);
                     bool botonActivar = false;
                     bool botonDesactivar = false;
                     if(libroObtenido.Estado.Equals("Disponible") && _tienePermisos)
@@ -605,6 +640,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
                             cantidadEjemplares = libroObtenido.CantidadEjemplares,
                             cantidadEjemplaresPrestados = libroObtenido.CantidadEjemplaresPrestados,
                             numeroDePaginas = libroObtenido.NumeroDePaginas,
+                            rutaImagen = libroObtenido.RutaPortada,
                             MostrarBotonActivar = botonActivar,
                             MostrarBotonDesactivar = botonDesactivar
                         };
@@ -684,6 +720,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
             public DateTime fechaPublicacion { get; set; }
             public string estado { get; set; }
             public byte[] Imagen { get; set; }
+            public string rutaImagen { get; set; }
             public string numeroDePaginas {  get; set; }
             public int cantidadEjemplares { get; set; }
             public int cantidadEjemplaresPrestados { get; set; }
