@@ -63,19 +63,19 @@ namespace ClienteBibliotecaElSaber.Ventanas
             {
                 UsuarioBinding usuario = new UsuarioBinding
                 {
-                    nombre = txtb_Nombre.Text,
-                    primerApellido = txtb_PrimerApellido.Text,
-                    segundoApellido = txtb_SegundoApellido.Text,
+                    nombre = txtb_Nombre.Text.Trim(),
+                    primerApellido = txtb_PrimerApellido.Text.Trim(),
+                    segundoApellido = txtb_SegundoApellido.Text.Trim(),
                     telefono = txtb_Telefono.Text,
-                    puesto = txtb_Puesto.Text
+                    puesto = txtb_Puesto.Text.Trim()
                 };
                 
                 DireccionBinding direccion = new DireccionBinding
                 {
-                    calle = txtb_Calle.Text,
+                    calle = txtb_Calle.Text.Trim(),
                     numero = txtb_Numero.Text,
                     codigoPostal = txtb_CodigoPostal.Text,
-                    ciudad = txtb_Ciudad.Text
+                    ciudad = txtb_Ciudad.Text.Trim()
                 };
 
                 string contraseniaGenerada = GeneradorContrasenia.GenerarContrasenia();
@@ -83,12 +83,12 @@ namespace ClienteBibliotecaElSaber.Ventanas
 
                 AccesoBinding acceso = new AccesoBinding
                 {
-                    correo = txtb_CorreoElectronico.Text,
+                    correo = txtb_CorreoElectronico.Text.Trim(),
                     contrasenia = hashContrasenia,
                     tipoDeUsuario = _opcionSeleccionada,
                 };
 
-                if (EnviarCorreo(txtb_CorreoElectronico.Text, contraseniaGenerada))
+                if (EnviarCorreo(txtb_CorreoElectronico.Text.Trim(), contraseniaGenerada))
                 {
                     resultadoOperacion = proxyUsuario.RegistrarUsuarioAlaBaseDeDatos(usuario, direccion, acceso);
 

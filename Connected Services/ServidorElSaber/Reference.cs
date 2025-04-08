@@ -1559,6 +1559,12 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccesoManejador/IniciarSesion", ReplyAction="http://tempuri.org/IAccesoManejador/IniciarSesionResponse")]
         System.Threading.Tasks.Task<ClienteBibliotecaElSaber.ServidorElSaber.AccesoBinding> IniciarSesionAsync(string correo, string contrasenia);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccesoManejador/ObtenerUsuarios", ReplyAction="http://tempuri.org/IAccesoManejador/ObtenerUsuariosResponse")]
+        ClienteBibliotecaElSaber.ServidorElSaber.AccesoBinding[] ObtenerUsuarios();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccesoManejador/ObtenerUsuarios", ReplyAction="http://tempuri.org/IAccesoManejador/ObtenerUsuariosResponse")]
+        System.Threading.Tasks.Task<ClienteBibliotecaElSaber.ServidorElSaber.AccesoBinding[]> ObtenerUsuariosAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1618,6 +1624,14 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
         
         public System.Threading.Tasks.Task<ClienteBibliotecaElSaber.ServidorElSaber.AccesoBinding> IniciarSesionAsync(string correo, string contrasenia) {
             return base.Channel.IniciarSesionAsync(correo, contrasenia);
+        }
+        
+        public ClienteBibliotecaElSaber.ServidorElSaber.AccesoBinding[] ObtenerUsuarios() {
+            return base.Channel.ObtenerUsuarios();
+        }
+        
+        public System.Threading.Tasks.Task<ClienteBibliotecaElSaber.ServidorElSaber.AccesoBinding[]> ObtenerUsuariosAsync() {
+            return base.Channel.ObtenerUsuariosAsync();
         }
     }
     
@@ -2460,6 +2474,12 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMultaManejador/ObtenerMultasPendientesPorNumeroSocio", ReplyAction="http://tempuri.org/IMultaManejador/ObtenerMultasPendientesPorNumeroSocioResponse")]
         System.Threading.Tasks.Task<ClienteBibliotecaElSaber.ServidorElSaber.MultaBinding[]> ObtenerMultasPendientesPorNumeroSocioAsync(int numeroSocio);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMultaManejador/ActualizarEstadoMultas", ReplyAction="http://tempuri.org/IMultaManejador/ActualizarEstadoMultasResponse")]
+        int ActualizarEstadoMultas();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMultaManejador/ActualizarEstadoMultas", ReplyAction="http://tempuri.org/IMultaManejador/ActualizarEstadoMultasResponse")]
+        System.Threading.Tasks.Task<int> ActualizarEstadoMultasAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2503,6 +2523,14 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
         
         public System.Threading.Tasks.Task<ClienteBibliotecaElSaber.ServidorElSaber.MultaBinding[]> ObtenerMultasPendientesPorNumeroSocioAsync(int numeroSocio) {
             return base.Channel.ObtenerMultasPendientesPorNumeroSocioAsync(numeroSocio);
+        }
+        
+        public int ActualizarEstadoMultas() {
+            return base.Channel.ActualizarEstadoMultas();
+        }
+        
+        public System.Threading.Tasks.Task<int> ActualizarEstadoMultasAsync() {
+            return base.Channel.ActualizarEstadoMultasAsync();
         }
     }
 }
