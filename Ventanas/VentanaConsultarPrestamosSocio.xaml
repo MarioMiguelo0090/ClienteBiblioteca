@@ -33,6 +33,7 @@
             <StackPanel Margin="100,25">
                 <Grid Margin="0,0,0,20">
                     <TextBox x:Name="txtb_Buscador"
+                             KeyDown="ConsultarHistorialPrestamos"
                              extensiones:TextBoxExtensiones.TextoSugerido="Número de socio"/>
                     <Button Width="50"
                             HorizontalAlignment="Right"
@@ -66,7 +67,7 @@
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
                                     <StackPanel Orientation="Vertical">
-                                        <TextBlock Text="{Binding Nota}" 
+                                        <TextBlock Text="{Binding TituloLibro}" 
                                                    FontSize="14"
                                                    FontWeight="Bold"
                                                    TextWrapping="Wrap"

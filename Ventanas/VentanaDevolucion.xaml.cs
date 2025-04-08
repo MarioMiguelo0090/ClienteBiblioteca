@@ -118,8 +118,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
                 if (prestamoObtenido.IdPrestamo == Constantes.ErrorEnLaOperacion)
                 {
                     VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError
-                    , "Error de base de datos", "No se ha podido establecer conexión a la base de datos, inténtelo de nuevo más tarde.");
-                    
+                    , "Error de base de datos", "No se ha podido establecer conexión a la base de datos, inténtelo de nuevo más tarde.");                    
                     RegresaVentanaMenuPrincipal();
                 }
                 else if (prestamoObtenido.IdPrestamo > Constantes.ValorPorDefecto)

@@ -33,6 +33,7 @@
             <StackPanel Margin="100,25">
                 <Grid Margin="0,0,0,20">
                     <TextBox x:Name="txtb_Buscador"
+                             KeyDown="ObtenerPrestamosActivos"
                              extensiones:TextBoxExtensiones.TextoSugerido="Número de socio/Código ISBN"
                              Width="450"
                              HorizontalAlignment="Left"/>
@@ -45,8 +46,9 @@
                                Margin="0,3,0,0"/>
                     </Button>
                     <DatePicker FontSize="20"
-                                HorizontalAlignment="Right"
-                                VerticalAlignment="Center"/>
+                                Name="dtp_FechaInicio"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Bottom" Margin="462,0,0,9"/>
                 </Grid>
                 <ListView x:Name="lw_prestamos" 
                           ItemsSource="{Binding Prestamos}"
@@ -71,7 +73,7 @@
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
                                     <StackPanel Orientation="Vertical">
-                                        <TextBlock Text="{Binding Nota}" 
+                                        <TextBlock Text="{Binding TituloLibro}" 
                                                    FontSize="14"
                                                    FontWeight="Bold"
                                                    TextWrapping="Wrap"

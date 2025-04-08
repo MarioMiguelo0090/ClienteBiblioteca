@@ -38,7 +38,8 @@
                                Margin="0,0,20,0"/>
                     <TextBox x:Name="txtb_Titulo"
                              Width="640"
-                             MaxLength="50"/>
+                             MaxLength="50"
+                             IsReadOnly="True"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal"
                             Margin="0,20">
@@ -49,14 +50,16 @@
                                Margin="0,0,20,0"/>
                     <TextBox x:Name="txtb_NoSocio"
                              Width="160"
-                             Margin="0,0,40,0"/>
+                             Margin="0,0,40,0"
+                             IsReadOnly="True"/>
                     <TextBlock Text="Fecha de inicio:"
                                FontSize="20"
                                FontWeight="DemiBold"
                                VerticalAlignment="Center"
                                Margin="0,0,20,0"/>
                     <DatePicker x:Name="dp_FechaInicio"
-                                FontSize="20"/>
+                                FontSize="20" Width="221"
+                                IsEnabled="False"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Notas:"
@@ -75,12 +78,13 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal"
                             Margin="0,20">
-                    <TextBlock Text="Fecha de inicio:"
+                    <TextBlock Text="Fecha de devolución esperada:"
                                FontSize="20"
                                FontWeight="DemiBold"
                                VerticalAlignment="Center"
                                Margin="0,0,20,0"/>
-                    <DatePicker FontSize="20"/>
+                    <DatePicker FontSize="20"
+                                Name="dtp_FechaDevolucion"/>
                 </StackPanel>
                 <Grid Margin="0,10">
                     <Button Content="Aceptar"
