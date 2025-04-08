@@ -8,6 +8,12 @@ namespace ClienteBibliotecaElSaber.Utilidades
 {
     public class Enumeradores
     {
+        public enum EstadoUsuario
+        {
+            Activo,
+            Desactivado
+        }
+
         public enum Libro
         {
             Daniado,

@@ -88,10 +88,47 @@
                          Width="300"
                          Margin="0,35,0,0"/>
 
-                <PasswordBox x:Name="pb_Contrasenia"
-                             extensiones:PasswordBoxExtensiones.TextoSugerido="Contraseña"
-                             PasswordChanged="PBCambioDeContraseña"
-                             Margin="0,15,0,0"/>
+                <Grid>
+                    <PasswordBox x:Name="pb_Contrasenia"
+                                 extensiones:PasswordBoxExtensiones.TextoSugerido="Contraseña"
+                                 PasswordChanged="PbCambioDeContrasenia"
+                                 HorizontalAlignment="Center"
+                                 Padding="15,0,45,0"
+                                 Margin="0,15"/>
+                    <TextBox x:Name="txtb_Contrasenia"
+                             extensiones:TextBoxExtensiones.TextoSugerido="Contraseña"
+                             HorizontalAlignment="Center"
+                             Visibility="Collapsed"
+                             Padding="15,0,45,0"
+                             Margin="0,15"
+                             Width="300"/>
+                    <ToggleButton x:Name="tbtn_VisibilidadContrasenia" 
+                                  Background="Transparent"
+                                  BorderThickness="0"
+                                  Width="50"
+                                  VerticalAlignment="Center"
+                                  Margin="250,0,0,0"
+                                  Checked="CambiarVisibilidadContrasenia"
+                                  Unchecked="CambiarVisibilidadContrasenia">
+                        <ToggleButton.Style>
+                            <Style TargetType="ToggleButton">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="ToggleButton">
+                                            <Border Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center"
+                                                                  VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ToggleButton.Style>
+                        <Image x:Name="img_Visibilidad" 
+                               Source="/Imagenes/Iconos/IconoNoVisibleOscuro.png" 
+                               Width="30"/>
+                    </ToggleButton>
+                </Grid>
 
                 <TextBlock Text="Recuperar contraseña"
                            VerticalAlignment="Center"

@@ -88,11 +88,35 @@
     <Compile Include="Ventanas\PaginaValidacionCodigo.xaml.cs">
       <DependentUpon>PaginaValidacionCodigo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas\VentanaArchivarLibro.xaml.cs">
+      <DependentUpon>VentanaArchivarLibro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\VentanaBuscarPrestamo.xaml.cs">
+      <DependentUpon>VentanaBuscarPrestamo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\VentanaBuscarUsuario.xaml.cs">
+      <DependentUpon>VentanaBuscarUsuario.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\VentanaConsultarPrestamosSocio.xaml.cs">
+      <DependentUpon>VentanaConsultarPrestamosSocio.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas\VentanaCreacionDeReportes.xaml.cs">
       <DependentUpon>VentanaCreacionDeReportes.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas\VentanaEdicionUsuario.xaml.cs">
+      <DependentUpon>VentanaEdicionUsuario.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas\VentanaEditarLibro.xaml.cs">
       <DependentUpon>VentanaEditarLibro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\VentanaEditarPrestamo.xaml.cs">
+      <DependentUpon>VentanaEditarPrestamo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\VentanaEditarSocio.xaml.cs">
+      <DependentUpon>VentanaEditarSocio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\VentanaGestionarMulta.xaml.cs">
+      <DependentUpon>VentanaGestionarMulta.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ventanas\VentanaRegistrarEditorial.xaml.cs">
       <DependentUpon>VentanaRegistrarEditorial.xaml</DependentUpon>
@@ -160,11 +184,42 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Ventanas\VentanaArchivarLibro.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\VentanaBuscarPrestamo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ventanas\VentanaBuscarUsuario.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ventanas\VentanaConsultarPrestamosSocio.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Ventanas\VentanaCreacionDeReportes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Ventanas\VentanaEdicionUsuario.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Ventanas\VentanaEditarLibro.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ventanas\VentanaEditarPrestamo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ventanas\VentanaEditarSocio.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ventanas\VentanaGestionarMulta.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -437,6 +492,19 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Iconos\IconoBuscarOscuro.png" />
+    <Resource Include="Imagenes\Iconos\IconoEditarOscuro.png" />
+    <Resource Include="Imagenes\Iconos\IconoEliminarOscuro.png" />
+    <Resource Include="Imagenes\Iconos\IconoFiltroOscuro.png" />
+    <Resource Include="Imagenes\Iconos\IconoMulta.png" />
+    <Resource Include="Imagenes\Iconos\IconoMultaOscuro.png" />
+    <Resource Include="Imagenes\Iconos\IconoPagoOscuro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Iconos\IconoNoVisibleOscuro.png" />
+    <Resource Include="Imagenes\Iconos\IconoVisibleOscuro.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

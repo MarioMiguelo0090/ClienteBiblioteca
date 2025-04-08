@@ -33,43 +33,75 @@
             <StackPanel Margin="100,25">
                 <Grid Margin="0,0,0,20">
                     <TextBox x:Name="txtb_Buscador"
-                             extensiones:TextBoxExtensiones.TextoSugerido="Nombre del usuario"/>
+                             extensiones:TextBoxExtensiones.TextoSugerido="Nombre del usuario"
+                             TextChanged="txtbBuscador_TextChanged"/>
                     <Button Width="50"
                             HorizontalAlignment="Right"
-                            Margin="50,0"
-                            Background="Transparent">
-                        <Image Source="/Imagenes/Iconos/IconoBuscarOscuro.png"
-                               Width="30"
-                               Margin="0,3,0,0"/>
-                    </Button>
-                    <Button Width="50"
-                            HorizontalAlignment="Right"
-                            Background="Transparent">
+                            Background="Transparent"
+                            Click="MostrarFiltro_Click">
                         <Image Source="/Imagenes/Iconos/IconoFiltroOscuro.png"
                                Width="30"/>
                     </Button>
                 </Grid>
-                <DataGrid ItemsSource="{Binding Usuarios}"
-                          AutoGenerateColumns="False">
+                <DataGrid x:Name="listaUsuarios" 
+                          ItemsSource="{Binding Accesos}"
+                          VerticalScrollBarVisibility="Visible"
+                          AutoGenerateColumns="False"
+                          CanUserAddRows="False"
+                          IsReadOnly="True"
+                          Height="250">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Nombre" 
-                                            Binding="{Binding nombre}"
-                                            Width="100"/>
+                                            Binding="{Binding IdUsuario.nombre}"
+                                            Width="95">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextWrapping" Value="Wrap"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
                         <DataGridTextColumn Header="Primer apellido" 
-                                            Binding="{Binding primerApellido}"
-                                            Width="160"/>
+                                            Binding="{Binding IdUsuario.primerApellido}"
+                                            Width="155">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextWrapping" Value="Wrap"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
                         <DataGridTextColumn Header="Segundo apellido" 
-                                            Binding="{Binding segundoApellido}"
-                                            Width="160"/>
+                                            Binding="{Binding IdUsuario.segundoApellido}"
+                                            Width="155">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextWrapping" Value="Wrap"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
                         <DataGridTextColumn Header="Puesto" 
-                                            Binding="{Binding puesto}"
-                                            Width="110"/>
+                                            Binding="{Binding IdUsuario.puesto}"
+                                            Width="110">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextWrapping" Value="Wrap"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
                         <DataGridTemplateColumn Header="Editar"
                                                 Width="70">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Button Width="70"
-                                            Background="Transparent">
+                                            Background="Transparent"
+                                            Click="Editar_Click">
                                         <Image Source="/Imagenes/Iconos/IconoEditarOscuro.png"/>
                                     </Button>
                                 </DataTemplate>
@@ -80,7 +112,8 @@
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Button Width="60"
-                                            Background="Transparent">
+                                            Background="Transparent"
+                                            Click="Eliminar_Click">
                                         <Image Source="/Imagenes/Iconos/IconoEliminarOscuro.png"/>
                                     </Button>
                                 </DataTemplate>
@@ -88,7 +121,48 @@
                         </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
+                <Button Content="Regresar"
+                        Width="150"
+                        Background="Red"
+                        Foreground="White" 
+                        Click="Regresar_Click"
+                        HorizontalAlignment="Right"
+                        Margin="0,10,0,0"/>
             </StackPanel>
         </StackPanel>
+        <Canvas x:Name="canvas_Filtro" 
+                Height="110"
+                Width="100"
+                HorizontalAlignment="Right"
+                Margin="0,-100,15,0"
+                Visibility="Hidden">
+            <Border Background="#A67B5B"
+                    CornerRadius="10">
+                <StackPanel Margin="10"
+                            Width="90">
+                    <TextBlock Text="Filtrar por tipo de usuario: "
+                               TextWrapping="Wrap"
+                               Foreground="White"
+                               FontWeight="DemiBold"
+                               Margin="0,0,0,15"/>
+                    <RadioButton x:Name="rb_Todos"
+                                 Content="Todos"
+                                 FontSize="10"
+                                 IsChecked="True"
+                                 GroupName="FiltroTipoUsuario"
+                                 Checked="RadioButton_Checked"/>
+                    <RadioButton x:Name="rb_Administrador"
+                                 Content="Administrador"
+                                 FontSize="10"
+                                 GroupName="FiltroTipoUsuario"
+                                 Checked="RadioButton_Checked"/>
+                    <RadioButton x:Name="rb_Bibliotecario"
+                                 Content="Bibliotecario"
+                                 FontSize="10"
+                                 GroupName="FiltroTipoUsuario"
+                                 Checked="RadioButton_Checked"/>
+                </StackPanel>
+            </Border>
+        </Canvas>
     </Grid>
 </Window>

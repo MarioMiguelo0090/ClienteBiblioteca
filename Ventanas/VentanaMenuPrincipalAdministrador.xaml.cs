@@ -35,7 +35,10 @@ namespace ClienteBibliotecaElSaber.Ventanas
 
         private void IrVentanaBuscarUsuario_Click(object sender, RoutedEventArgs e)
         {
-            
+            this.Hide();
+            VentanaBuscarUsuario ventanaBuscarUsuario = new VentanaBuscarUsuario();
+            ventanaBuscarUsuario.ShowDialog();
+            this.Show();
         }
 
         private void IrVentanaRegistrarUsuario_Click(object sender, RoutedEventArgs e)

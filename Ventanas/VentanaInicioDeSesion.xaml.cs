@@ -7,6 +7,8 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using ClienteBibliotecaElSaber.Singleton;
+using System.Windows.Media.Imaging;
+using System.Windows.Threading;
 
 
 namespace ClienteBibliotecaElSaber.Ventanas
@@ -120,7 +122,27 @@ namespace ClienteBibliotecaElSaber.Ventanas
             }
         }
 
-        private void PBCambioDeContraseña(object sender, RoutedEventArgs e)
+        private void CambiarVisibilidadContrasenia(object sender, RoutedEventArgs e)
+        {
+            if (tbtn_VisibilidadContrasenia.IsChecked == true)
+            {
+                txtb_Contrasenia.Text = pb_Contrasenia.Password;
+                pb_Contrasenia.Visibility = Visibility.Collapsed;
+                txtb_Contrasenia.Visibility = Visibility.Visible;
+
+                img_Visibilidad.Source = new BitmapImage(new Uri("pack://application:,,,/Imagenes/Iconos/IconoVisibleOscuro.png"));
+            }
+            else
+            {
+                pb_Contrasenia.Password = txtb_Contrasenia.Text;
+                pb_Contrasenia.Visibility = Visibility.Visible;
+                txtb_Contrasenia.Visibility = Visibility.Collapsed;
+                
+                img_Visibilidad.Source = new BitmapImage(new Uri("pack://application:,,,/Imagenes/Iconos/IconoNoVisibleOscuro.png"));
+            }
+        }
+
+        private void PbCambioDeContrasenia(object sender, RoutedEventArgs e)
         {
             var passwordBox = sender as PasswordBox;
             var textoSugerido = ContraseñaHelper.EncontrarHijoVisual<TextBlock>(passwordBox, "TextoSugerido");
