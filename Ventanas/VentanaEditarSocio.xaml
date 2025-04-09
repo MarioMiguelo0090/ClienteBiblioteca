@@ -40,17 +40,17 @@
         <Label Content="Teléfono:" FontWeight="Bold" FontSize="20" Margin="476,287,335,278"/>
         <TextBox x:Name="txb_telefono" FontSize="18" Margin="590,287,42,278" TextChanged="txb_telefono_TextChanged"/>
 
-        <Label Content="Dirección:" FontWeight="Bold" FontSize="20" Margin="40,341,765,220"/>
-        <TextBox x:Name="txb_direccion" FontSize="18" Margin="160,340,482,221" TextChanged="txb_direccion_TextChanged"/>
+        <Label Content="Dirección &#xA;(Calle):" FontWeight="Bold" FontSize="20" Margin="40,341,765,177"/>
+        <TextBox x:Name="txb_direccion" FontSize="18" Margin="160,340,42,221" TextChanged="txb_direccion_TextChanged"/>
 
-        <Label Content="CP:" FontWeight="Bold" FontSize="20" Margin="478,343,336,223"/>
-        <TextBox x:Name="txb_codigoPostal" FontSize="18" Margin="590,343,42,223" TextChanged="txb_codigoPostal_TextChanged"/>
+        <Label Content="CP:" FontWeight="Bold" FontSize="20" Margin="388,414,470,152"/>
+        <TextBox x:Name="txb_codigoPostal" FontSize="18" Margin="438,414,330,149" TextChanged="txb_codigoPostal_TextChanged"/>
 
-        <Label Content="Fecha de &#xD;&#xA;Nacimiento:" FontWeight="Bold" FontSize="20" Margin="40,392,751,138"/>
-        <TextBox x:Name="txb_fechaDeNacimiento" FontSize="18" Margin="174,402,524,148" TextChanged="txb_fechaDeNacimiento_TextChanged"/>
+        <Label Content="Numero: " FontWeight="Bold" FontSize="20" Margin="40,414,774,152" />
+        <TextBox x:Name="txb_numero" FontSize="18" Margin="160,411,558,152" TextChanged="txb_numero_TextChanged"/>
 
-        <Label Content="Fecha de &#xD;&#xA;Inscripción:" FontWeight="Bold" FontSize="20" Margin="477,388,314,142"/>
-        <TextBox x:Name="txb_fechaDeInscripcion" FontSize="18" Margin="656,398,42,152" TextChanged="txb_fechaDeInscripcion_TextChanged"/>
+        <Label Content="Ciudad:" FontWeight="Bold" FontSize="20" Margin="590,417,246,134" RenderTransformOrigin="0.494,0.669"/>
+        <TextBox x:Name="txb_ciudad" Width="Auto" Height="Auto" Margin="674,418,42,145" MaxLength="50" TextChanged="txb_ciudad_TextChanged"/>
 
         <Button Content="Aceptar"
             Background="Green"
