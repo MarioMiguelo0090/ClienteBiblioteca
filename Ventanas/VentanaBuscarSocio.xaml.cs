@@ -90,8 +90,11 @@ namespace ClienteBibliotecaElSaber.Ventanas
             ventanaDetallesSocio.ShowDialog();
         }
 
-        private void Editar_Click(object sender, RoutedEventArgs e)
+        private void Editar_Click(SocioBinding socio)
         {
+            this.Hide();
+            VentanaEditarSocio ventanaEditarSocio = new VentanaEditarSocio(socio);
+            ventanaEditarSocio.ShowDialog();
         }
 
         private void Regresar_Click(object sender, RoutedEventArgs e)
