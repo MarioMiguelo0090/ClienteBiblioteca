@@ -85,9 +85,9 @@ namespace ClienteBibliotecaElSaber.Ventanas
 
         private void VerDetallesDeSocio(SocioBinding socio)
         {
-            this.Hide();
             VentanaDetallesSocio ventanaDetallesSocio = new VentanaDetallesSocio(socio);
             ventanaDetallesSocio.ShowDialog();
+            this.Show();
         }
 
         private void Editar_Click(object sender, RoutedEventArgs e)
@@ -119,9 +119,9 @@ namespace ClienteBibliotecaElSaber.Ventanas
 
         private void DesplegarEditarSocio(SocioBinding socio)
         {
-            this.Hide();
             VentanaEditarSocio ventanaEditarSocio = new VentanaEditarSocio(socio);
             ventanaEditarSocio.ShowDialog();
+            this.Show();
         }
 
         private void Regresar_Click(object sender, RoutedEventArgs e)

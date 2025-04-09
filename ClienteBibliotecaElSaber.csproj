@@ -88,9 +88,6 @@
     <Compile Include="Ventanas\PaginaValidacionCodigo.xaml.cs">
       <DependentUpon>PaginaValidacionCodigo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Ventanas\VentanaArchivarLibro.xaml.cs">
-      <DependentUpon>VentanaArchivarLibro.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Ventanas\VentanaBuscarPrestamo.xaml.cs">
       <DependentUpon>VentanaBuscarPrestamo.xaml</DependentUpon>
     </Compile>
@@ -182,9 +179,6 @@
     </Page>
     <Page Include="Ventanas\PaginaValidacionCodigo.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Ventanas\VentanaArchivarLibro.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Ventanas\VentanaBuscarPrestamo.xaml">

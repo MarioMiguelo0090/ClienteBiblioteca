@@ -36,7 +36,6 @@ namespace ClienteBibliotecaElSaber.Ventanas
         {
             if (lw_prestamos.SelectedItem is PrestamoBinding prestamoSeleccionado)
             {
-                this.Hide();
                 VentanaEditarPrestamo ventanaEditarPrestamo = new VentanaEditarPrestamo(prestamoSeleccionado);
                 ventanaEditarPrestamo.ShowDialog();
                 this.Show();
