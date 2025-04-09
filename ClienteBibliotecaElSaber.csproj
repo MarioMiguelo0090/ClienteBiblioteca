@@ -412,7 +412,7 @@
     <Resource Include="Imagenes\Iconos\IconoBuho.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ImagenesLibro\aaaaa.jpg" />
+    <Resource Include="ImagenesLibro\ImagenPorDefecto.jpg" />
     <Resource Include="ImagenesLibro\ASASAS.jpg" />
     <Resource Include="ImagenesLibro\Don quijote.jpg" />
     <Resource Include="ImagenesLibro\El Quijote.jpg" />

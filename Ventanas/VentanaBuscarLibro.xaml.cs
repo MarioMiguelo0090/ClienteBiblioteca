@@ -1,8 +1,10 @@
 ﻿using ClienteBibliotecaElSaber.ServidorElSaber;
 using ClienteBibliotecaElSaber.Singleton;
 using ClienteBibliotecaElSaber.Utilidades;
+using log4net.Repository.Hierarchy;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.ServiceModel;
@@ -10,6 +12,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace ClienteBibliotecaElSaber.Ventanas
 {
@@ -377,7 +380,8 @@ namespace ClienteBibliotecaElSaber.Ventanas
                 byte[] imagenLibro = libroManejadorClient.ObtenerImagenLibro(libroSeleccionado.titulo);
                 if(imagenLibro == null)
                 {
-                    VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Error al obtener imagen de libro", "No se ha podido recuperar la imagen del libro.");
+                    imagenLibro = ObtenerImagenPorDefecto();
+                    VerDetallesDeLibro(libroSeleccionado, imagenLibro);
                 }
                 else
                 {
@@ -393,7 +397,6 @@ namespace ClienteBibliotecaElSaber.Ventanas
 
         private void VerDetallesDeLibro(LibroDatos libro, byte[] imagen)
         {
-            this.Close();
             LibroBinding libroBinding = new LibroBinding();
             libroBinding.idLibro = libro.idLibro;
             libroBinding.Titulo = libro.titulo;
@@ -409,11 +412,11 @@ namespace ClienteBibliotecaElSaber.Ventanas
             libroBinding.Isbn = libro.isbn;
             VentanaDetallesLibro ventanaDetallesLibro = new VentanaDetallesLibro(libroBinding);
             ventanaDetallesLibro.ShowDialog();
+            this.Show();
         }
 
         private void EditarLibro(LibroDatos libro, byte[] imagen)
         {
-            this.Close();
             LibroBinding libroBinding = new LibroBinding();
             libroBinding.idLibro = libro.idLibro;
             libroBinding.Titulo = libro.titulo;
@@ -430,6 +433,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
             libroBinding.RutaPortada = libro.rutaImagen;
             VentanaEditarLibro ventanaEditarLibro = new VentanaEditarLibro(libroBinding);
             ventanaEditarLibro.ShowDialog();
+            this.Show();
         }
 
         public void Editar_Click(object sender, EventArgs e)
@@ -442,7 +446,9 @@ namespace ClienteBibliotecaElSaber.Ventanas
                 byte[] imagenLibro = libroManejadorClient.ObtenerImagenLibro(libroSeleccionado.titulo);
                 if (imagenLibro == null)
                 {
-                    VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Error al obtener imagen de libro", "No se ha podido recuperar la imagen del libro.");
+                    imagenLibro = ObtenerImagenPorDefecto();
+                    EditarLibro(libroSeleccionado, imagenLibro);
+
                 }
                 else
                 {
@@ -616,6 +622,10 @@ namespace ClienteBibliotecaElSaber.Ventanas
                     }
                     LibroManejadorClient libroManejadorClient = new LibroManejadorClient();
                     byte[] imagenLibro = libroManejadorClient.ObtenerImagenLibro(libroObtenido.RutaPortada);
+                    if(imagenLibro == null)
+                    {
+                        imagenLibro = ObtenerImagenPorDefecto();
+                    }
                     bool botonActivar = false;
                     bool botonDesactivar = false;
                     if(libroObtenido.Estado.Equals("Disponible") && _tienePermisos)
@@ -666,6 +676,39 @@ namespace ClienteBibliotecaElSaber.Ventanas
                 VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Comunicacion fallida", "La comunicacion con el servidor se ha perdido, por favor verifique su conexión a internet.");
             }
             
+        }
+
+        private byte[] ObtenerImagenPorDefecto()
+        {
+            string rutaImagen = "ImagenesLibro\\ImagenPorDefecto.jpg";
+            byte[] imagenObtenida = null;
+            try
+            {
+                string[] extensiones = { ".jpg", ".jpeg", ".png" };
+                string directorioBase = AppDomain.CurrentDomain.BaseDirectory;
+                string servidorPath = Path.GetFullPath(Path.Combine(directorioBase, "../../"));
+                string rutaDestino = Path.Combine(servidorPath, rutaImagen);
+                foreach (var extension in extensiones)
+                {
+                    if (File.Exists(rutaDestino))
+                    {
+                        imagenObtenida = File.ReadAllBytes(rutaDestino);
+                    }
+                }
+            }
+            catch (FileNotFoundException fileNotFoundException)
+            {
+                LoggerManager.Error("Error al obtener el archivo");
+            }
+            catch (UnauthorizedAccessException unauthorizedAccessException)
+            {
+                LoggerManager.Error("Acceso a datos no autorizado");
+            }
+            catch (IOException IOException)
+            {
+                LoggerManager.Error(IOException.Message);
+            }
+            return imagenObtenida;
         }
 
         private bool ValidarDatosIngresadosISBN()
