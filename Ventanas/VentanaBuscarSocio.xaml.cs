@@ -90,7 +90,34 @@ namespace ClienteBibliotecaElSaber.Ventanas
             ventanaDetallesSocio.ShowDialog();
         }
 
-        private void Editar_Click(SocioBinding socio)
+        private void Editar_Click(object sender, RoutedEventArgs e)
+        {
+            Button botonPresionado = sender as Button;
+            SocioDatos socioSeleccionado = botonPresionado.DataContext as SocioDatos;
+            if (socioSeleccionado != null)
+            {
+                SocioBinding socio = new SocioBinding()
+                {
+                    direccion = socioSeleccionado.direccion,
+                    nombre = socioSeleccionado.nombre,
+                    primerApellido = socioSeleccionado.primerApellido,
+                    segundoApellido = socioSeleccionado.segundoApellido,
+                    telefono = socioSeleccionado.telefono,
+                    numeroDeSocio = socioSeleccionado.numeroSocio,
+                    estado = socioSeleccionado.estado,
+                    fechaDeInscripcion = socioSeleccionado.fechaDeInscripcion,
+                    fechaDeNacimiento = socioSeleccionado.fechaDeNacimiento
+                };
+                DesplegarEditarSocio(socio);
+            }
+            else
+            {
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Error al obtener", "No se han podido obtener datos del socio seleccionado.");
+
+            }
+        }
+
+        private void DesplegarEditarSocio(SocioBinding socio)
         {
             this.Hide();
             VentanaEditarSocio ventanaEditarSocio = new VentanaEditarSocio(socio);

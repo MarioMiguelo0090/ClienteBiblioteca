@@ -1139,6 +1139,9 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NotaField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TituloLibroField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -1249,6 +1252,19 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
                 if ((object.ReferenceEquals(this.NotaField, value) != true)) {
                     this.NotaField = value;
                     this.RaisePropertyChanged("Nota");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TituloLibro {
+            get {
+                return this.TituloLibroField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TituloLibroField, value) != true)) {
+                    this.TituloLibroField = value;
+                    this.RaisePropertyChanged("TituloLibro");
                 }
             }
         }

@@ -95,13 +95,13 @@ namespace ClienteBibliotecaElSaber.Ventanas
 
             if (!ValidarDatos())
             {
-                new VentanaEmergente(Constantes.TipoAdvertencia, "Datos inválidos", "Por favor corrija los campos marcados en rojo.").ShowDialog();
+                new VentanaEmergente(Constantes.TipoAdvertencia, "Datos inválidos", "Por favor corrija los campos marcados en rojo.");
                 return;
             }
 
             if (!ValidarModificacionDeCampos())
             {
-                new VentanaEmergente(Constantes.TipoInformacion, "Sin cambios", "Debe modificar al menos un campo para guardar los cambios.").ShowDialog();
+                new VentanaEmergente(Constantes.TipoInformacion, "Sin cambios", "Debe modificar al menos un campo para guardar los cambios.");
                 return;
             }
 
@@ -124,9 +124,9 @@ namespace ClienteBibliotecaElSaber.Ventanas
 
                 int resultadoValidacion = ValidarInexistenciaDeSocio();
 
-                if (resultadoValidacion != -1 && resultadoValidacion != socioOriginal.numeroDeSocio)
+                if (resultadoValidacion==1)
                 {
-                    new VentanaEmergente(Constantes.TipoError, "Duplicado", "Ya existe otro socio con el mismo número de teléfono.").ShowDialog();
+                    new VentanaEmergente(Constantes.TipoError, "Duplicado", "Ya existe otro socio con el mismo número de teléfono.");
                     return;
                 }
 
@@ -136,20 +136,20 @@ namespace ClienteBibliotecaElSaber.Ventanas
 
                 if (resultado > 0)
                 {
-                    new VentanaEmergente(Constantes.TipoInformacion, "Éxito", "Datos del socio actualizados correctamente.").ShowDialog();
+                    new VentanaEmergente(Constantes.TipoInformacion, "Éxito", "Datos del socio actualizados correctamente.");
                     Close();
                     new VentanaBuscarSocio().ShowDialog();
                 }
                 else
                 {
-                    new VentanaEmergente(Constantes.TipoError, "Error", "No se pudo actualizar el socio. Verifica que los datos no estén duplicados.").ShowDialog();
+                    new VentanaEmergente(Constantes.TipoError, "Error", "No se pudo actualizar el socio. Verifica que los datos no estén duplicados.");
                 }
 
             }
             catch (Exception ex)
             {
                 LoggerManager.Error($"Error al editar socio: {ex.Message}\n{ex.StackTrace}");
-                new VentanaEmergente(Constantes.TipoError, "Error inesperado", "Ocurrió un error al editar el socio. Inténtalo de nuevo.").ShowDialog();
+                new VentanaEmergente(Constantes.TipoError, "Error inesperado", "Ocurrió un error al editar el socio. Inténtalo de nuevo.");
             }
         }
 

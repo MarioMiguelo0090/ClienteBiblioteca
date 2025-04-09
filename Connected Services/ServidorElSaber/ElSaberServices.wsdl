@@ -1077,6 +1077,7 @@
           <xs:element minOccurs="0" name="FechaPrestamo" type="xs:dateTime" />
           <xs:element minOccurs="0" name="IdPrestamo" type="xs:int" />
           <xs:element minOccurs="0" name="Nota" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TituloLibro" nillable="true" type="xs:string" />
         </xs:sequence>
       </xs:complexType>
       <xs:element name="PrestamoBinding" nillable="true" type="tns:PrestamoBinding" />
