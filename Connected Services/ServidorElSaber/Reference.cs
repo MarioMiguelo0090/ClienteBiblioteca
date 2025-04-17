@@ -1298,6 +1298,9 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
         private double MontoTotalField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ClienteBibliotecaElSaber.ServidorElSaber.PrestamoBinding PrestamoAsociadoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int idMultaField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -1345,6 +1348,19 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
                 if ((this.MontoTotalField.Equals(value) != true)) {
                     this.MontoTotalField = value;
                     this.RaisePropertyChanged("MontoTotal");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ClienteBibliotecaElSaber.ServidorElSaber.PrestamoBinding PrestamoAsociado {
+            get {
+                return this.PrestamoAsociadoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PrestamoAsociadoField, value) != true)) {
+                    this.PrestamoAsociadoField = value;
+                    this.RaisePropertyChanged("PrestamoAsociado");
                 }
             }
         }
@@ -2472,6 +2488,55 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
         
         public System.Threading.Tasks.Task<byte[]> GenerarReporteSocioConPrestamosPendientesAsync() {
             return base.Channel.GenerarReporteSocioConPrestamosPendientesAsync();
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServidorElSaber.IReporteMultasPagadas")]
+    public interface IReporteMultasPagadas {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReporteMultasPagadas/ObtenerReporteMultasPagadasEnFechas", ReplyAction="http://tempuri.org/IReporteMultasPagadas/ObtenerReporteMultasPagadasEnFechasRespo" +
+            "nse")]
+        byte[] ObtenerReporteMultasPagadasEnFechas(string fechaInicioBusqueda, string fechaFinBusqueda);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReporteMultasPagadas/ObtenerReporteMultasPagadasEnFechas", ReplyAction="http://tempuri.org/IReporteMultasPagadas/ObtenerReporteMultasPagadasEnFechasRespo" +
+            "nse")]
+        System.Threading.Tasks.Task<byte[]> ObtenerReporteMultasPagadasEnFechasAsync(string fechaInicioBusqueda, string fechaFinBusqueda);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IReporteMultasPagadasChannel : ClienteBibliotecaElSaber.ServidorElSaber.IReporteMultasPagadas, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ReporteMultasPagadasClient : System.ServiceModel.ClientBase<ClienteBibliotecaElSaber.ServidorElSaber.IReporteMultasPagadas>, ClienteBibliotecaElSaber.ServidorElSaber.IReporteMultasPagadas {
+        
+        public ReporteMultasPagadasClient() {
+        }
+        
+        public ReporteMultasPagadasClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public ReporteMultasPagadasClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ReporteMultasPagadasClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ReporteMultasPagadasClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public byte[] ObtenerReporteMultasPagadasEnFechas(string fechaInicioBusqueda, string fechaFinBusqueda) {
+            return base.Channel.ObtenerReporteMultasPagadasEnFechas(fechaInicioBusqueda, fechaFinBusqueda);
+        }
+        
+        public System.Threading.Tasks.Task<byte[]> ObtenerReporteMultasPagadasEnFechasAsync(string fechaInicioBusqueda, string fechaFinBusqueda) {
+            return base.Channel.ObtenerReporteMultasPagadasEnFechasAsync(fechaInicioBusqueda, fechaFinBusqueda);
         }
     }
     

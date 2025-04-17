@@ -132,6 +132,18 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IReporteMultasPagadas_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
+          <wsrm:InactivityTimeout Milliseconds="600000" />
+          <wsrm:AcknowledgementInterval Milliseconds="200" />
+        </wsrm:RMAssertion>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsp:Policy wsu:Id="NetTcpBinding_IMultaManejador_policy">
     <wsp:ExactlyOne>
       <wsp:All>
@@ -851,6 +863,21 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
+      <xs:element name="ObtenerReporteMultasPagadasEnFechas">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="fechaInicioBusqueda" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="fechaFinBusqueda" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ObtenerReporteMultasPagadasEnFechasResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ObtenerReporteMultasPagadasEnFechasResult" nillable="true" type="xs:base64Binary" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
       <xs:element name="RegistrarPagoMultaPorIdMulta">
         <xs:complexType>
           <xs:sequence>
@@ -1098,6 +1125,7 @@
           <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="FK_IdPrestamo" type="xs:int" />
           <xs:element minOccurs="0" name="MontoTotal" type="xs:double" />
+          <xs:element minOccurs="0" name="PrestamoAsociado" nillable="true" type="tns:PrestamoBinding" />
           <xs:element minOccurs="0" name="idMulta" type="xs:int" />
         </xs:sequence>
       </xs:complexType>
@@ -1404,6 +1432,12 @@
   <wsdl:message name="IReporteSocioConPrestamosPendientes_GenerarReporteSocioConPrestamosPendientes_OutputMessage">
     <wsdl:part name="parameters" element="tns:GenerarReporteSocioConPrestamosPendientesResponse" />
   </wsdl:message>
+  <wsdl:message name="IReporteMultasPagadas_ObtenerReporteMultasPagadasEnFechas_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerReporteMultasPagadasEnFechas" />
+  </wsdl:message>
+  <wsdl:message name="IReporteMultasPagadas_ObtenerReporteMultasPagadasEnFechas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerReporteMultasPagadasEnFechasResponse" />
+  </wsdl:message>
   <wsdl:message name="IMultaManejador_RegistrarPagoMultaPorIdMulta_InputMessage">
     <wsdl:part name="parameters" element="tns:RegistrarPagoMultaPorIdMulta" />
   </wsdl:message>
@@ -1642,6 +1676,12 @@
     <wsdl:operation name="GenerarReporteSocioConPrestamosPendientes">
       <wsdl:input wsaw:Action="http://tempuri.org/IReporteSocioConPrestamosPendientes/GenerarReporteSocioConPrestamosPendientes" message="tns:IReporteSocioConPrestamosPendientes_GenerarReporteSocioConPrestamosPendientes_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IReporteSocioConPrestamosPendientes/GenerarReporteSocioConPrestamosPendientesResponse" message="tns:IReporteSocioConPrestamosPendientes_GenerarReporteSocioConPrestamosPendientes_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IReporteMultasPagadas">
+    <wsdl:operation name="ObtenerReporteMultasPagadasEnFechas">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReporteMultasPagadas/ObtenerReporteMultasPagadasEnFechas" message="tns:IReporteMultasPagadas_ObtenerReporteMultasPagadasEnFechas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReporteMultasPagadas/ObtenerReporteMultasPagadasEnFechasResponse" message="tns:IReporteMultasPagadas_ObtenerReporteMultasPagadasEnFechas_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IMultaManejador">
@@ -2152,6 +2192,19 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IReporteMultasPagadas" type="tns:IReporteMultasPagadas">
+    <wsp:PolicyReference URI="#NetTcpBinding_IReporteMultasPagadas_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="ObtenerReporteMultasPagadasEnFechas">
+      <soap12:operation soapAction="http://tempuri.org/IReporteMultasPagadas/ObtenerReporteMultasPagadasEnFechas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:binding name="NetTcpBinding_IMultaManejador" type="tns:IMultaManejador">
     <wsp:PolicyReference URI="#NetTcpBinding_IMultaManejador_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
@@ -2239,15 +2292,21 @@
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IReporteLibroMasPrestadoManejador" binding="tns:NetTcpBinding_IReporteLibroMasPrestadoManejador">
-      <soap12:address location="net.tcp://localhost:1441/ServicioReporteInventarioLibro" />
+      <soap12:address location="net.tcp://localhost:1441/ServicioReporteLibrosMasPrestados" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:1441/ServicioReporteInventarioLibro</wsa10:Address>
+        <wsa10:Address>net.tcp://localhost:1441/ServicioReporteLibrosMasPrestados</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IReporteSocioConPrestamosPendientes" binding="tns:NetTcpBinding_IReporteSocioConPrestamosPendientes">
-      <soap12:address location="net.tcp://localhost:1441/ServicioReporteInventarioLibro" />
+      <soap12:address location="net.tcp://localhost:1441/ServicioReporteSocioConPrestamosPendientes" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:1441/ServicioReporteInventarioLibro</wsa10:Address>
+        <wsa10:Address>net.tcp://localhost:1441/ServicioReporteSocioConPrestamosPendientes</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IReporteMultasPagadas" binding="tns:NetTcpBinding_IReporteMultasPagadas">
+      <soap12:address location="net.tcp://localhost:1441/ServicioReporteMultasPagadas" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:1441/ServicioReporteMultasPagadas</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IMultaManejador" binding="tns:NetTcpBinding_IMultaManejador">

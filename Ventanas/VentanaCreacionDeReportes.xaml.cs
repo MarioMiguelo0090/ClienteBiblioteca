@@ -1,4 +1,5 @@
-﻿using ClienteBibliotecaElSaber.Utilidades;
+﻿using ClienteBibliotecaElSaber.ServidorElSaber;
+using ClienteBibliotecaElSaber.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -213,6 +214,70 @@ namespace ClienteBibliotecaElSaber.Ventanas
             }
         }
 
+        private void btn_crearReporteMultas_Click(object sender, RoutedEventArgs e)
+        {
+            if (ValidarFechasReportesMulta())
+            {
+                ObtenerReporteMultasPagadas();
+            }
+            else{
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Fechas inválidas", "Verifique que las fechas sean correctas y que la fecha de inicio de busqueda sea menor o igual a la fecha final de búsqueda.");
+            }
+        }
+
+        private void ObtenerReporteMultasPagadas()
+        {
+            ServidorElSaber.ReporteMultasPagadasClient reporteMultasPagadasClient = new ServidorElSaber.ReporteMultasPagadasClient();
+            try
+            {
+                DateTime? fechaInicio = dtp_FechaBusquedaMulta.SelectedDate;
+                DateTime? fechaFin = dtp_FechaFinBusquedaMulta.SelectedDate;
+                byte[] reporteInventarioLibro = reporteMultasPagadasClient.ObtenerReporteMultasPagadasEnFechas(fechaInicio.Value.ToString("yyyy-MM-dd"), fechaFin.Value.ToString("yyyy-MM-dd"));
+                if (reporteInventarioLibro.Length == 255)
+                {
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Error en la conexión a la base de datos", "No se ha podido establecer conexión con la base de datos.");
+                }
+                else if (reporteInventarioLibro.Length > 0)
+                {
+                    string rutaDescargas = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
+                    string rutaArchivo = System.IO.Path.Combine(rutaDescargas, "ReporteMultasPagadas.pdf");
+                    System.IO.File.WriteAllBytes(rutaArchivo, reporteInventarioLibro);
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoExito, "Informe generado", "Se ha generado el reporte de las multas pagadas de manera exitosa, podrá encontrarlo disponible en la carpeta de descargas de este dispositivo.");
+                }
+                else
+                {
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Sin multas encontradas", "No se encuentra ninguna multa pagada en las fechas seleccionadas.");
+                }
+            }
+            catch (EndpointNotFoundException endpointNotFoundException)
+            {
+                LoggerManager.Error($"Excepción de EndpointNotFoundException: {endpointNotFoundException.Message}." +
+                                    $"\nTraza: {endpointNotFoundException.StackTrace}.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Punto de conexión fallido", "No se ha podido establecer conexión con el servidor.");
+            }
+            catch (TimeoutException timeoutException)
+            {
+                LoggerManager.Error($"Excepción de TimeoutException: {timeoutException.Message}." +
+                                    $"\nTraza: {timeoutException.StackTrace}.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoInformacion, "Tiempo de espera agotado", "El tiempo de espera ha caducado, inténtelo de nuevo.");
+            }
+            catch (CommunicationException communicationException)
+            {
+                LoggerManager.Error($"Excepción de CommunicationException: {communicationException.Message}." +
+                                    $"\nTraza: {communicationException.StackTrace}.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError, "Comunicacion fallida", "La comunicacion con el servidor se ha perdido, por favor verifique su conexión a internet.");
+            }
+        }
+
+        private bool ValidarFechasReportesMulta()
+        {
+            DateTime? fechaInicioBusqueda = dtp_FechaBusquedaMulta.SelectedDate;
+            DateTime? fechaFinBusqueda = dtp_FechaFinBusquedaMulta.SelectedDate;
+            bool fechaInicioValidada = Validador.ValidarFechas(fechaInicioBusqueda.Value.ToString("yyyy-MM-dd"));
+            bool fechaFinValidad = Validador.ValidarFechas(fechaFinBusqueda.Value.ToString("yyyy-MM-dd"));
+            return fechaInicioValidada && fechaFinValidad;
+        }
+
         private bool ValidarFechasReporteLibrosMasPrestados()
         {
             DateTime? fechaInicioSeleccionada = dtp_FechaBusqueda.SelectedDate;
@@ -262,6 +327,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
             brd_InventarioLibros.Visibility = Visibility.Collapsed;
             brd_LibrosMasPrestados.Visibility = Visibility.Collapsed;
             brd_PrestamosPendientes.Visibility = Visibility.Collapsed;
+            brd_MultasPagadas.Visibility = Visibility.Collapsed;
         }
 
         private void btn_cancelarReporteLibrosMasPrestados_Click(object sender, RoutedEventArgs e)
@@ -289,6 +355,18 @@ namespace ClienteBibliotecaElSaber.Ventanas
         {
             OcultarBordes();
             brd_PrestamosPendientes.Visibility = Visibility.Visible;
+        }
+
+        private void btn_cancelarReporteMultas_Click(object sender, RoutedEventArgs e)
+        {
+            OcultarBordes();
+            img_logo.Visibility = Visibility.Visible;
+        }
+
+        private void BotonReporteMultas_Click(object sender, RoutedEventArgs e)
+        {
+            OcultarBordes();
+            brd_MultasPagadas.Visibility = Visibility.Visible;
         }
     }
 }

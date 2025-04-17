@@ -125,6 +125,31 @@
                 <Button x:Name="btn_cancelarCreacionReporteInventario" Content="Cancelar" FontSize="20" Background="Red" Margin="244,203,58,109" Click="btn_cancelarCreacionReporteInventario_Click"></Button>
             </Grid>
         </Border>
+        <Border x:Name="brd_MultasPagadas" Margin="454,205,6,29" BorderBrush="Black" BorderThickness="2" Visibility="Collapsed">
+            <Grid>
+                <Label FontSize="16" FontFamily="Times New Roman" Content="Atencion: Para generar un reporte sobre las multas &#xD;&#xA;pagadas, por favor seleccione las fechas de búsqueda." Margin="51,30,51,278"></Label>
+                <DatePicker x:Name="dtp_FechaBusquedaMulta" Margin="29,150,239,188" SelectedDateFormat="Long"
+                        Loaded="Dp_FechaSeleccionada_Loaded">
+                    <DatePicker.Resources>
+                        <Style TargetType="DatePickerTextBox">
+                            <Setter Property="IsReadOnly" Value="True"/>
+                        </Style>
+                    </DatePicker.Resources>
+                </DatePicker>
+                <DatePicker x:Name="dtp_FechaFinBusquedaMulta" Margin="239,149,29,189" SelectedDateFormat="Long"
+        Loaded="Dp_FechaFinSeleccionada_Loaded">
+                    <DatePicker.Resources>
+                        <Style TargetType="DatePickerTextBox">
+                            <Setter Property="IsReadOnly" Value="True"/>
+                        </Style>
+                    </DatePicker.Resources>
+                </DatePicker>
+                <Button x:Name="btn_crearReporteMultas" Content="Generar" FontSize="20" Background="Blue" Margin="63,222,239,90" Click="btn_crearReporteMultas_Click"></Button>
+                <Button x:Name="btn_cancelarReporteMultas" Content="Cancelar" FontSize="20" Background="Red" Margin="239,222,63,90" Click="btn_cancelarReporteMultas_Click"></Button>
+                <Label FontSize="16" FontFamily="Times New Roman" Content="Fecha inicio búsqueda" Margin="45,111,255,225"/>
+                <Label FontSize="16" FontFamily="Times New Roman" Content="Fecha fin búsqueda" Margin="265,111,55,225"/>
+            </Grid>
+        </Border>
         <Border x:Name="brd_LibrosMasPrestados" Margin="454,205,6,29" BorderBrush="Black" BorderThickness="2" Visibility="Collapsed">
             <Grid>
                 <Label FontSize="16" FontFamily="Times New Roman" Content="Atencion: Para generar un reporte sobre los libros &#xD;&#xA;          más prestados, seleccione una opción." Margin="62,29,62,279"></Label>
@@ -176,7 +201,7 @@
                         <TextBlock Text="Libros más prestados" Foreground="White" FontSize="18" FontWeight="Bold" VerticalAlignment="Center"/>
                     </StackPanel>
                 </Button>
-                <Button FontSize="20" Style="{StaticResource BotonActivo}">
+                <Button FontSize="20" Style="{StaticResource BotonActivo}" Click="BotonReporteMultas_Click">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <Image Source="/Imagenes/ReporteMultas.png" Width="55" Height="30" Margin="5"/>
                         <TextBlock Text="Multas pagadas" Foreground="White" FontSize="18" FontWeight="Bold" VerticalAlignment="Center"/>
