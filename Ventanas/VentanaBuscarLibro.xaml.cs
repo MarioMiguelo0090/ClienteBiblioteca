@@ -698,11 +698,11 @@ namespace ClienteBibliotecaElSaber.Ventanas
             }
             catch (FileNotFoundException fileNotFoundException)
             {
-                LoggerManager.Error("Error al obtener el archivo");
+                LoggerManager.Error("Error al obtener el archivo: "+ fileNotFoundException);
             }
             catch (UnauthorizedAccessException unauthorizedAccessException)
             {
-                LoggerManager.Error("Acceso a datos no autorizado");
+                LoggerManager.Error("Acceso a datos no autorizado: "+ unauthorizedAccessException);
             }
             catch (IOException IOException)
             {

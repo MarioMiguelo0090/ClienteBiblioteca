@@ -19,7 +19,6 @@ namespace ClienteBibliotecaElSaber.Ventanas
         private string _rutaDestinoCliente;
         private string _rutaArchivoOriginal;
         private LibroBinding libro;
-        private byte[] nuevaImagen;
 
         public VentanaEditarLibro(LibroBinding datosDelLibro)
         {
