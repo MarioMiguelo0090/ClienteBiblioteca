@@ -28,15 +28,25 @@ namespace ClienteBibliotecaElSaber.Ventanas
             ResetearColorDeBordes();
             if (ValidarDatosDeCampos())
             {
+                string contraseniaHasheada;
                 var proxyAcceso = new AccesoManejadorClient();
                 AccesoBinding acceso = new AccesoBinding();
 
                 try
                 {
-                    string contraseniaHasheada = Encriptador.hashToSHA2(pb_Contrasenia.Password);
-                    acceso = proxyAcceso.IniciarSesion(txtb_Correo.Text, contraseniaHasheada);
+                    if (pb_Contrasenia.Visibility == Visibility.Visible)
+                    {
+                        contraseniaHasheada = Encriptador.hashToSHA2(pb_Contrasenia.Password);
+                        acceso = proxyAcceso.IniciarSesion(txtb_Correo.Text, contraseniaHasheada);
+                    }
+                    else
+                    {
+                        contraseniaHasheada = Encriptador.hashToSHA2(txtb_Contrasenia.Text);
+                        acceso = proxyAcceso.IniciarSesion(txtb_Correo.Text, contraseniaHasheada);
+                    }
+                    
 
-                    if (acceso.IdAcceso != -1 && acceso.IdAcceso != 0)
+                    if (acceso.IdAcceso != -3 && acceso.IdAcceso != -1 && acceso.IdAcceso != 0)
                     {
                         if (acceso.tipoDeUsuario == Constantes.TipoAdministrador)
                         {
@@ -57,6 +67,11 @@ namespace ClienteBibliotecaElSaber.Ventanas
                     {
                         VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoInformacion,
                             "Datos incorrectos", "El correo electrónico y/o contraseña son incorrectos");
+                    }
+                    else if (acceso.IdAcceso == -3)
+                    {
+                        VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoAdvertencia,
+                            "Sesión activa", "La cuenta a la que intenta acceder actualmente se encuentra con la sesión activa.");
                     }
                     else
                     {
@@ -94,12 +109,22 @@ namespace ClienteBibliotecaElSaber.Ventanas
         {
             txtb_Correo.BorderBrush = Brushes.Transparent;
             pb_Contrasenia.BorderBrush = Brushes.Transparent;
+            txtb_Contrasenia.BorderBrush = Brushes.Transparent;
         }
 
         private bool ValidarDatosDeCampos()
         {
             bool usuarioNoValidado = string.IsNullOrWhiteSpace(txtb_Correo.Text);
-            bool contraseniaNoValidado = string.IsNullOrWhiteSpace(pb_Contrasenia.Password);
+            bool contraseniaNoValidado;
+
+            if (pb_Contrasenia.Visibility == Visibility.Visible)
+            {
+                contraseniaNoValidado = string.IsNullOrWhiteSpace(pb_Contrasenia.Password);
+            }
+            else
+            {
+                contraseniaNoValidado = string.IsNullOrEmpty(txtb_Contrasenia.Text);
+            }
 
             if (usuarioNoValidado)
             {
@@ -109,6 +134,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
             if (contraseniaNoValidado)
             {
                 pb_Contrasenia.BorderBrush = Brushes.Red;
+                txtb_Contrasenia.BorderBrush= Brushes.Red;
             }
 
             return !usuarioNoValidado && !contraseniaNoValidado;

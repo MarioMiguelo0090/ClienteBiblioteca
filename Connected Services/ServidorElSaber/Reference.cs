@@ -1592,6 +1592,12 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccesoManejador/IniciarSesion", ReplyAction="http://tempuri.org/IAccesoManejador/IniciarSesionResponse")]
         System.Threading.Tasks.Task<ClienteBibliotecaElSaber.ServidorElSaber.AccesoBinding> IniciarSesionAsync(string correo, string contrasenia);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccesoManejador/CerrarSesion", ReplyAction="http://tempuri.org/IAccesoManejador/CerrarSesionResponse")]
+        int CerrarSesion(string correo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccesoManejador/CerrarSesion", ReplyAction="http://tempuri.org/IAccesoManejador/CerrarSesionResponse")]
+        System.Threading.Tasks.Task<int> CerrarSesionAsync(string correo);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccesoManejador/ObtenerUsuarios", ReplyAction="http://tempuri.org/IAccesoManejador/ObtenerUsuariosResponse")]
         ClienteBibliotecaElSaber.ServidorElSaber.AccesoBinding[] ObtenerUsuarios();
         
@@ -1656,6 +1662,14 @@ namespace ClienteBibliotecaElSaber.ServidorElSaber {
         
         public System.Threading.Tasks.Task<ClienteBibliotecaElSaber.ServidorElSaber.AccesoBinding> IniciarSesionAsync(string correo, string contrasenia) {
             return base.Channel.IniciarSesionAsync(correo, contrasenia);
+        }
+        
+        public int CerrarSesion(string correo) {
+            return base.Channel.CerrarSesion(correo);
+        }
+        
+        public System.Threading.Tasks.Task<int> CerrarSesionAsync(string correo) {
+            return base.Channel.CerrarSesionAsync(correo);
         }
         
         public ClienteBibliotecaElSaber.ServidorElSaber.AccesoBinding[] ObtenerUsuarios() {

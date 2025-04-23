@@ -1,8 +1,10 @@
-﻿using ClienteBibliotecaElSaber.Singleton;
+﻿using ClienteBibliotecaElSaber.ServidorElSaber;
+using ClienteBibliotecaElSaber.Singleton;
 using ClienteBibliotecaElSaber.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -30,6 +32,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
             txtbl_Autor.Text = autor.ToString();
             txtbl_Cita.Text = cita.ToString();
             txtbl_Bienvenida.Text = $"Bienvenido, {SingletonBibliotecario.Instancia.ObtenerNombreCompleto()}";
+            this.Closing += EventoCierreAbrupto;
         }
 
         private void Salir_Click(object sender, RoutedEventArgs e)
@@ -116,10 +119,47 @@ namespace ClienteBibliotecaElSaber.Ventanas
 
         private void CerrarSesion_Click(object sender, RoutedEventArgs e)
         {
+            CerrarSesion();
             SingletonBibliotecario.Instancia.CerrarSesion();
             VentanaInicioDeSesion ventanaInicioDeSesion = new VentanaInicioDeSesion();
             ventanaInicioDeSesion.Show();
             this.Close();
+        }
+
+        private void EventoCierreAbrupto(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            CerrarSesion();
+        }
+
+        private void CerrarSesion()
+        {
+            var proxyAcceso = new AccesoManejadorClient();
+            string correo = SingletonBibliotecario.Instancia.Correo;
+
+            try
+            {
+                if (!string.IsNullOrEmpty(correo))
+                {
+                    if (proxyAcceso.CerrarSesion(correo) == -1)
+                    {
+                        VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError,
+                            "Error al cerrar la sesión", "Ocurrio un error inesperado al cerrar la sesión");
+                    }
+                }
+            }
+            catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException || ex is CommunicationException)
+            {
+                LoggerManager.Error($"Excepción: {ex.Message}\nTraza: {ex.StackTrace}");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoError,
+                    Constantes.TituloExcepcionServidor, Constantes.ContenidoExcepcionServidor);
+            }
+            finally
+            {
+                if (proxyAcceso.State == CommunicationState.Opened)
+                {
+                    proxyAcceso.Close();
+                }
+            }
         }
     }
 }
