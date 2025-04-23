@@ -322,6 +322,20 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
+      <xs:element name="CerrarSesion">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="correo" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CerrarSesionResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="CerrarSesionResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
       <xs:element name="ObtenerUsuarios">
         <xs:complexType>
           <xs:sequence />
@@ -1198,6 +1212,12 @@
   <wsdl:message name="IAccesoManejador_IniciarSesion_OutputMessage">
     <wsdl:part name="parameters" element="tns:IniciarSesionResponse" />
   </wsdl:message>
+  <wsdl:message name="IAccesoManejador_CerrarSesion_InputMessage">
+    <wsdl:part name="parameters" element="tns:CerrarSesion" />
+  </wsdl:message>
+  <wsdl:message name="IAccesoManejador_CerrarSesion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CerrarSesionResponse" />
+  </wsdl:message>
   <wsdl:message name="IAccesoManejador_ObtenerUsuarios_InputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerUsuarios" />
   </wsdl:message>
@@ -1505,6 +1525,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IAccesoManejador/IniciarSesion" message="tns:IAccesoManejador_IniciarSesion_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAccesoManejador/IniciarSesionResponse" message="tns:IAccesoManejador_IniciarSesion_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="CerrarSesion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAccesoManejador/CerrarSesion" message="tns:IAccesoManejador_CerrarSesion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAccesoManejador/CerrarSesionResponse" message="tns:IAccesoManejador_CerrarSesion_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ObtenerUsuarios">
       <wsdl:input wsaw:Action="http://tempuri.org/IAccesoManejador/ObtenerUsuarios" message="tns:IAccesoManejador_ObtenerUsuarios_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAccesoManejador/ObtenerUsuariosResponse" message="tns:IAccesoManejador_ObtenerUsuarios_OutputMessage" />
@@ -1801,6 +1825,15 @@
     </wsdl:operation>
     <wsdl:operation name="IniciarSesion">
       <soap12:operation soapAction="http://tempuri.org/IAccesoManejador/IniciarSesion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CerrarSesion">
+      <soap12:operation soapAction="http://tempuri.org/IAccesoManejador/CerrarSesion" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
