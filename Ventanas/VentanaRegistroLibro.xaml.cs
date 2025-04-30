@@ -127,7 +127,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
                     int resultadoRegistro = libroManejadorClient.RegistrarNuevoLibro(libroBinding);
                     if(resultadoRegistro == 1)
                     {
-                        VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoExito, "Datos ingresados", "Los datos se han registradod de manera exitosa");  
+                        VentanaEmergente ventanaEmergente = new VentanaEmergente(Constantes.TipoExito, "Datos ingresados", "Los datos se han registrado de manera exitosa");  
                         this.Close();
                     }
                     else

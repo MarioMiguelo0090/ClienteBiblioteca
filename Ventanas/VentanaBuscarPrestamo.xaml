@@ -36,7 +36,8 @@
                              KeyDown="ObtenerPrestamosActivos"
                              extensiones:TextBoxExtensiones.TextoSugerido="Número de socio/Código ISBN"
                              Width="450"
-                             HorizontalAlignment="Left"/>
+                             HorizontalAlignment="Left"
+                             MaxLength="13"/>
                     <Button Width="50"
                             HorizontalAlignment="Right"
                             Margin="0,0,230,0"

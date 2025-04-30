@@ -68,11 +68,6 @@ namespace ClienteBibliotecaElSaber.Ventanas
             this.Show();
         }
 
-        private void IrVentanaValidarInventarioLibros_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void IrVentanaReporte_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
