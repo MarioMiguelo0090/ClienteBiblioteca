@@ -303,47 +303,6 @@
                         </Button>
 
                         <Button Style="{StaticResource BotonMenu}"
-                                Tag="/Imagenes/Iconos/ValidarInventario.png"
-                                HorizontalContentAlignment="Center"
-                                Height="100"
-                                Click="IrVentanaValidarInventarioLibros_Click">
-                            <Button.Content>
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                    <TextBlock x:Name="TextoBotonVIL"
-                                               Text=""
-                                               VerticalAlignment="Center"
-                                               Opacity="0"/>
-                                    <TextBlock Text="" Width="70"/>
-                                </StackPanel>
-                            </Button.Content>
-
-                            <Button.Triggers>
-                                <EventTrigger RoutedEvent="MouseEnter">
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <StringAnimationUsingKeyFrames Storyboard.TargetName="TextoBotonVIL"
-                                                       Storyboard.TargetProperty="Text">
-                                                <DiscreteStringKeyFrame KeyTime="0:0:0" Value="Validar&#x0a;inventario&#x0a;libros"/>
-                                            </StringAnimationUsingKeyFrames>
-                                            <DoubleAnimation Storyboard.TargetName="TextoBotonVIL"
-                                                             Storyboard.TargetProperty="Opacity"
-                                                             To="1" Duration="0:0:0.2"/>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger>
-                                <EventTrigger RoutedEvent="MouseLeave">
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <DoubleAnimation Storyboard.TargetName="TextoBotonVIL"
-                                                             Storyboard.TargetProperty="Opacity"
-                                                             To="0" Duration="0:0:0"/>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger>
-                            </Button.Triggers>
-                        </Button>
-
-                        <Button Style="{StaticResource BotonMenu}"
                                 Tag="/Imagenes/Iconos/Reporte.png"
                                 HorizontalContentAlignment="Center"
                                 Click="IrVentanaReporte_Click">
