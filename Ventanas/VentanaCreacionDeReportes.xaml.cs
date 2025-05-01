@@ -275,7 +275,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
             DateTime? fechaFinBusqueda = dtp_FechaFinBusquedaMulta.SelectedDate;
             bool fechaInicioValidada = Validador.ValidarFechas(fechaInicioBusqueda.Value.ToString("yyyy-MM-dd"));
             bool fechaFinValidad = Validador.ValidarFechas(fechaFinBusqueda.Value.ToString("yyyy-MM-dd"));
-            return fechaInicioValidada && fechaFinValidad;
+            return fechaInicioValidada && fechaFinValidad && fechaInicioBusqueda.Value < fechaFinBusqueda.Value;
         }
 
         private bool ValidarFechasReporteLibrosMasPrestados()
