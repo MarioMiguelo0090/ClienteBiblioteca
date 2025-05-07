@@ -71,12 +71,7 @@ namespace ClienteBibliotecaElSaber.Ventanas
             ventanaBuscarLibro.ShowDialog();
             this.Show();
         }
-
-        private void IrVentanaValidarInventarioLibros_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
+        
         private void IrVentanaBuscarPrestamoSocio_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
